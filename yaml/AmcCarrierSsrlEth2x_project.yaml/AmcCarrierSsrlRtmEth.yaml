@@ -1,0 +1,46 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file.
+##############################################################################
+
+include: AmcCarrierSsrlLlrfApp.yaml
+include: AmcCarrierCore.yaml
+
+Device: &AmcCarrierSsrlRtmEth 
+  name: AmcCarrierSsrlRtmEth
+  description: AMC 
+  size: 0x100000000
+  ########
+  MMIODev:
+  ########
+    - <<: *AmcCarrierCore
+      offset: 0x00000000  
+    ##################################################     
+    - <<: *AmcCarrierSsrlLlrfApp
+      offset: 0x80000000 
+    ##################################################     
+  #########
+  Commands:
+  #########
+    ##################################################
+    - name: TrigDaq
+      description: "Initialize DDR buffer and trigger data acquisition from software"
+      sequence:
+        - entry: AmcCarrierCore/AmcCarrierBsa/BsaWaveformEngine[0]/WaveformEngineBuffers/Initialize
+          value: 0x1
+        - entry: AmcCarrierCore/AmcCarrierBsa/BsaWaveformEngine[1]/WaveformEngineBuffers/Initialize
+          value: 0x1
+        # Trigger bay 0 
+        # Only Bay 0 triggered because the module triggers are interconnected in hw and
+        # Bay 1 gets triggered automatically by Cascaded trigger        
+        - entry: AmcCarrierSsrlLlrfApp/DaqMuxV2[0]/TriggerDaq
+          value: 0x1
+        # In case we trigger bay 0 later
+        # - entry: AmcCarrierMrLlrfApp/DaqMuxV2[1]/TriggerDaq       
+          # value: 0x1
+    ##################################################
