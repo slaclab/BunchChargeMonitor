@@ -3,7 +3,10 @@
 #  Name: README
 #
 #  Rem:  
-#        EPICS IOC Application 
+#        This EPICS IOC Application is responsible for 
+#        controlling the Bunch Charge Monitor and its
+#        related components. It can be used with Toroid
+#        or Faraday Cup types.
 #
 #  Side: None
 #
@@ -15,26 +18,15 @@
 #          coment
 #
 #==============================================================
-#
-# NOTE:
-# Please do not type make here !!
-# This module is only a template used by makeBaseApp.pl to create an EPICS IOC Application
 
-This module provides templates that are used by ICD to support our style
-of IOC Application Building for the facilities we support.
-These templates are used by makeBaseApp.pl
-In order to use this template area you must first set 
-"EPICS_MBA_TEMPLATE_TOP" before calling makeBaseApp.pl
-"EPICS_MBA_TEMPLATE_TOP" points to a specific release of the icdTemplates module.
+1. Before using this application, for all IOCs inside iocBoot directory, set correct values for parameters that are available in st.cmd files:
+- K6487_ADDRESS: Keithley address in digi.
+- IP of the ATCA board, that is a parameter of the function YCPSWASYNConfig.
+- BERGOZ_TTY: serial port of the Bergoz equipment.
+- Optional: uncomment functions asynSetTraceIOMask and asynSetTraceMask for diagnostic messages when communicating to equipment.
 
-For example,
-mkdir mySandBox
-cd  mySandBox
-export EPICS_MBA_TEMPLATE_TOP=/afs/slac/g/lcls/epics/R3-14-12-3_1-0/modules/icdTemplates/icdTemplates-R1-0-1
-makeBaseApp.pl -t      slac myTest
-makeBaseApp.pl -i  -t  slac myIOC
+2. In the TOP directory, run make and wait until it finishes.
 
-At this time I have only created one template called "slac" focused on creating IOC applications.
-Indeed, we can imagine a template focused on creating EPICS drivers or Device support.
+3. Go to each ioc directory related to this application inside $IOC directory and change the symbolic link iocSpecificRelease to point to the correct installation location.
 
 # End of file
