@@ -24,7 +24,7 @@
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
 # PV prefix
-epicsEnvSet("PREFIX","yamlIOC1")
+epicsEnvSet("PREFIX","BCM:LI00:IM01")
 epicsEnvSet("CPSW_PORT","Atca2")
 
 
@@ -93,7 +93,7 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    Record name Prefix,        # Record name prefix
 #    Record name Length Max,    # Record name maximum length (must be greater than lenght of prefix + 4)
 cd ${TOP}/iocBoot/vioc-li00-im01
-YCPSWASYNConfig("${CPSW_PORT}", "../../yaml/AmcCarrierSsrlEth2x_project.yaml/000TopLevel.yaml", "", "10.0.1.104", "${PREFIX}", 40)
+YCPSWASYNConfig("${CPSW_PORT}", "../../yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml", "", "10.0.1.104", "${PREFIX}", 40)
 cd ${TOP}
 
 # *********************************
@@ -120,7 +120,7 @@ drvAsynIPPortConfigure("L1","$(K6487_ADDRESS)",0,0,0)
 # unix_socket = path to the unix socket created by the scanner
 # max_message = maximum size of messages between scanner and ioc
 
-#ecAsynInit("/tmp/sock1", 1000000)
+ecAsynInit("/tmp/sock1", 1000000)
 
 
 # ===========================================
