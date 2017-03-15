@@ -29,7 +29,7 @@
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
 # PV prefix
-epicsEnvSet("PREFIX","FARC:LI00:IM01")
+epicsEnvSet("PREFIX","VIOC:LI00:IM01")
 epicsEnvSet("CPSW_PORT1","Atca6")
 
 
@@ -41,7 +41,7 @@ epicsEnvSet("EOFF","$(EOFF=273.15)")
 # ***********************************************************
 # **** Environment variables for Faraday Cup on Keithley ****
 
-epicsEnvSet("P_KEITHLEY","$(P=FARC:)")
+epicsEnvSet("P_KEITHLEY","$(P=VIOC:)")
 epicsEnvSet("R","LI00:IM01:")
 epicsEnvSet("K6487_ADDRESS","$(K6487_ADDRESS=ts-b084-nw01:2110)")
 epicsEnvSet("K6487_PROTOCOL","$(K6487_PROTOCOL=TCP)")
@@ -54,13 +54,13 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 # System Location:
 epicsEnvSet(FAC,"SYS0")
 epicsEnvSet("LOCA","LI00")
-epicsEnvSet("TEMP_IOC_NAME","TEMP:${LOCA}:IM01")
+epicsEnvSet("TEMP_IOC_NAME","VIOC:${LOCA}:IM01")
 
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"FARC:LI00:IM01")
+epicsEnvSet(IOC_NAME,"VIOC:LI00:IM01")
 
 
 cd ${TOP}
@@ -90,7 +90,7 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    Record name Length Max,    # Record name maximum length (must be greater than lenght of prefix + 4)
 cd ${TOP}/iocBoot/vioc-li00-im01
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT1}", "${TOP}/yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml", "", "10.0.1.104", "${PREFIX}", 40)
+YCPSWASYNConfig("${CPSW_PORT1}", "../../yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml", "", "10.0.1.104", "${PREFIX}", 40)
 
 cd ${TOP}
 

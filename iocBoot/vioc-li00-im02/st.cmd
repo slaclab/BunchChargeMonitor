@@ -30,14 +30,14 @@
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
 # PV prefix
-epicsEnvSet("PREFIX","TORO:LI00:IM02")
+epicsEnvSet("PREFIX","VIOC:LI00:IM02")
 epicsEnvSet("CPSW_PORT2","Atca7")
 
 
 # *****************************************************
 # **** Environment variables for Toroid on  Bergoz ****
 
-epicsEnvSet("P_BERGOZ","$(P=TORO:)")
+epicsEnvSet("P_BERGOZ","$(P=VIOC:)")
 epicsEnvSet("R","$(R=LI00:IM02:)")
 epicsEnvSet("BERGOZ_PORT","$(PORT=L0)")
 epicsEnvSet("BERGOZ_TTY","$(BERGOZ_TTY=/dev/ttyACM0)")
@@ -52,7 +52,7 @@ epicsEnvSet("EOFF","$(EOFF=273.15)")
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"TORO:LI00:IM02")
+epicsEnvSet(IOC_NAME,"VIOC:LI00:IM02")
 
 
 cd ${TOP}
@@ -82,7 +82,7 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    Record name Length Max,    # Record name maximum length (must be greater than lenght of prefix + 4)
 cd ${TOP}/iocBoot/vioc-li00-im02
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT2}", "${TOP}/yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml", "", "10.0.1.105", "${PREFIX}", 40)
+YCPSWASYNConfig("${CPSW_PORT2}", "../../yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml", "", "10.0.1.105", "${PREFIX}", 40)
 
 cd ${TOP}
 
