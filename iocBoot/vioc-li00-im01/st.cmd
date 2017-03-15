@@ -58,7 +58,13 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 # System Location:
 epicsEnvSet(FAC,"SYS0")
 epicsEnvSet("LOCA","LI00")
-epicsEnvSet("IOC_NAME","TEMP:${LOCA}:IM01")
+epicsEnvSet("TEMP_IOC_NAME","TEMP:${LOCA}:IM01")
+
+
+# *********************************************
+# **** Environment variables for IOC Admin ****
+
+epicsEnvSet(IOC_NAME,"VIOC:LI00:IM01")
 
 
 cd ${TOP}
@@ -168,17 +174,93 @@ dbLoadRecords ("db/asynRecord.db" "P=$(P_KEITHLEY),R=$(R),PORT=L1,ADDR=-1,OMAX=0
 
 # *****************************************************
 # **** Load db for Temperature Chassis on Ethercat ****
-dbLoadRecords("db/Pattern.db","IOC=${IOC_NAME},SYS="${FAC})
+
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
 dbLoadRecords("db/EK1101.template", "DEVICE=TEMP:LI00:,PORT=COUPLER0,SCAN=1 second")
 dbLoadRecords("db/EL3202-0010.template", "DEVICE=TEMP:LI00,PORT=ANALOGINPUT,SCAN=1 second")
 
 
+# **********************************************************************
+# **** Load iocAdmin databases to support IOC Health and monitoring ****
+dbLoadRecords("db/iocAdminSoft.db","IOC=${IOC_NAME}")
+dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOC_NAME}")
+
+# The following database is a result of a python parser
+# which looks at RELEASE_SITE and RELEASE to discover
+# versions of software your IOC is referencing
+# The python parser is part of iocAdmin
+dbLoadRecords("db/iocRelease.db","IOC=${IOC_NAME}")
+
+
+# *******************************************
+# **** Load database for autosave status ****
+
+dbLoadRecords("db/save_restoreStatus.db", "P=${IOC_NAME}:")
+
+# ===========================================
+#           SETUP AUTOSAVE/RESTORE
+# ===========================================
+
+# If all PVs don't connect continue anyway
+save_restoreSet_IncompleteSetsOk(1)
+
+# created save/restore backup files with date string
+# useful for recovery.
+save_restoreSet_DatedBackupFiles(1)
+
+# Where to find the list of PVs to save
+# Where "/data" is an NFS mount point setup when linuxRT target
+# boots up.
+set_requestfile_path("/data/${IOC}/autosave-req")
+
+# Where to write the save files that will be used to restore
+set_savefile_path("/data/${IOC}/autosave")
+
+# Prefix that is use to update save/restore status database
+# records
+save_restoreSet_UseStatusPVs(1)
+save_restoreSet_status_prefix("${IOC_NAME}:")
+
+## Restore datasets
+set_pass0_restoreFile("info_settings.sav")
+set_pass1_restoreFile("info_settings.sav")
+
+
+# ===========================================
+#          CHANNEL ACESS SECURITY
+# ===========================================
+# This is required if you use caPutLog.
+# Set access security filea
+# Load common LCLS Access Configuration File
+< ${ACF_INIT}
+
+
 # ===========================================
 #               IOC INIT
 # ===========================================
 iocInit()
+
+# Turn on caPutLogging:
+# Log values only on change to the iocLogServer:
+caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
+caPutLogShow(2)
+
+
+# Start autosave routines to save our data
+# optional, needed if the IOC takes a very long time to boot.
+#epicsThreadSleep( 1.0)
+
+cd("/data/${IOC}/autosave-req")
+iocshCmd("makeAutosaveFiles")
+
+# Start the save_restore task
+# save changes on change, but no faster
+# than every 5 seconds.
+# Note: the last arg cannot be set to 0
+create_monitor_set("info_positions.req", 5 )
+create_monitor_set("info_settings.req" , 30 )
+
 
 # ************************
 # **** YCPSWAsyn dbpf ****
