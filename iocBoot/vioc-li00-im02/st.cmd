@@ -42,6 +42,7 @@ epicsEnvSet("R","$(R=LI00:IM02:)")
 epicsEnvSet("BERGOZ_PORT","$(PORT=L0)")
 epicsEnvSet("BERGOZ_TTY","$(BERGOZ_TTY=/dev/ttyACM0)")
 epicsEnvSet("SERIALNUM_EXPECT","$(SERIALNUM_EXPECT=40)")
+epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # Temperature xfer: ESLO, EOFF
 epicsEnvSet("ESLO","$(ESLO=0.01)")

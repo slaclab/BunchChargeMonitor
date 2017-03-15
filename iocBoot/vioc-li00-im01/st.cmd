@@ -29,7 +29,7 @@
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
 # PV prefix
-epicsEnvSet("PREFIX","TORO:LI00:IM01")
+epicsEnvSet("PREFIX","FARC:LI00:IM01")
 epicsEnvSet("CPSW_PORT1","Atca6")
 
 
@@ -42,7 +42,7 @@ epicsEnvSet("EOFF","$(EOFF=273.15)")
 # **** Environment variables for Faraday Cup on Keithley ****
 
 epicsEnvSet("P_KEITHLEY","$(P=FARC:)")
-#epicsEnvSet("R","LI0:BP01:")
+epicsEnvSet("R","LI00:IM01:")
 epicsEnvSet("K6487_ADDRESS","$(K6487_ADDRESS=ts-b084-nw01:2110)")
 epicsEnvSet("K6487_PROTOCOL","$(K6487_PROTOCOL=TCP)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
@@ -60,7 +60,7 @@ epicsEnvSet("TEMP_IOC_NAME","TEMP:${LOCA}:IM01")
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"TORO:LI00:IM01")
+epicsEnvSet(IOC_NAME,"FARC:LI00:IM01")
 
 
 cd ${TOP}
