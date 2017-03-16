@@ -10,6 +10,9 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install)
 # databases, templates, substitutions like this
+
+# ATCA
+## For automatic generated records
 DB_INSTALLS += $(YCPSWASYN)/db/ai.template
 DB_INSTALLS += $(YCPSWASYN)/db/ao.template
 DB_INSTALLS += $(YCPSWASYN)/db/longin.template
@@ -26,6 +29,27 @@ DB_INSTALLS += $(YCPSWASYN)/db/bo.template
 DB_INSTALLS += $(YCPSWASYN)/db/waveform_stream16.template
 DB_INSTALLS += $(YCPSWASYN)/db/waveform_stream32.template
 DB_INSTALLS += $(YCPSWASYN)/db/saveLoadConfig.db
+
+## For manually created record
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterIn.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterOut.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterOutRBV.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterArrayChar.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterArrayIn.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterArrayOut.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumBIn.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumMBBIn.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumBOut.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumBOutRBV.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumMBBOut.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumMBBOutRBV.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterDoubleIn.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterDoubleOut.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterDoubleOutRBV.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterCommand.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterStream.template
+DB_INSTALLS += $(YCPSWASYN)/db/RegisterStream16.template
+DB_INSTALLS += $(YCPSWASYN)/db/example.substitutions
 
 # Keithley
 DB_INSTALLS += $(KEITHLEY6487)/db/asynRecord.db
@@ -45,7 +69,7 @@ DB_INSTALLS += $(ECASYN)/db/EL3202-0010.template
 DB += stream_size.template
 DB += TempMonitoring_TORO.db
 DB += Filter.db
-
+DB += bcm.substitutions
 # ========================================
 # Install timing/event related databases
 # ========================================

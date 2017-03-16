@@ -27,7 +27,9 @@
 # 16K bytes.
 # Uncomment and set appropriate size for your application:
 # Port name
-epicsEnvSet("CPSW_PORT","Atca2")
+epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
+
+epicsEnvSet("CPSW_PORT","Atca6")
 
 # Yaml File
 epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
@@ -40,7 +42,7 @@ epicsEnvSet("FPGA_IP", "10.0.1.104")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-epicsEnvSet("PREFIX","yamlIOC1")
+epicsEnvSet("PREFIX","LI00:IM01")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "")
@@ -146,8 +148,6 @@ ecAsynInit("/tmp/sock1", 1000000)
 # ***************************
 # **** Load YCPSWAsyn db ****
 
-## Load record instances
-
 #Save/Load configuration related records
 dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=config/defaults.yaml")
 
@@ -166,8 +166,8 @@ dbLoadRecords ("db/asynRecord.db" "P=$(P_KEITHLEY),R=$(R),PORT=L1,ADDR=-1,OMAX=0
 
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
-dbLoadRecords("db/EK1101.template", "DEVICE=TEMP:LI00:,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=TEMP:LI00,PORT=ANALOGINPUT,SCAN=1 second")
+dbLoadRecords("db/EK1101.template", "DEVICE=VIOC:LI00:IM01,PORT=COUPLER0,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01,PORT=ANALOGINPUT,SCAN=1 second")
 
 
 # **********************************************************************
@@ -249,15 +249,6 @@ iocshCmd("makeAutosaveFiles")
 # Note: the last arg cannot be set to 0
 create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
-
-
-# ************************
-# **** YCPSWAsyn dbpf ****
-
-# This register gives timeout errors when it is read.
-# For now let's not read it until this problem is fixed
-# register path: /mmio/AmcCarrierSsrlRtmEth/AmcCarrierCore/Axi24LC64FT/MemoryArray
-#dbpf ${PREFIX}:C:A24LC64FT:MemoryArray:Rd.SCAN "Passive"
 
 
 # ************************************************************
