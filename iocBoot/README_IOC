@@ -1,0 +1,36 @@
+These IOCs will be hosted by: cpu-li00-sp01
+During development on LCLSDEV we will use cpu-b084-hp03
+
+*************************************************************************************
+Rack ==> L2KA00-05
+vioc-li00-im01 will interface to : ==> ATCA Shelf: shm-li00-sp01 ==> (IM01)    Slot 6 
+vioc-li00-im02 will interface to : ==> ATCA Shelf: shm-li00-sp01 ==> (FCDG0DU) Slot 7
+*************************************************************************************
+
+*************************************************************************************
+Rack ==> L2KG02-22
+vioc-li02-im01 will interface to : ==> ATCA Shelf: shm-li02-sp02 ==> (IM11B) Slot 6
+*************************************************************************************
+
+*************************************************************************************
+Rack ==> L2KG04-26
+vioc-li04-im01 will interface to : ==> ATCA Shelf: shm-li04-sp02 ==> (IM21B) Slot 5
+*************************************************************************************
+
+*************************************************************************************
+Rack ==> L2KG29-7D
+vioc-li29-im01 will interface to : ==> ATCA Shelf: shm-li29-sp02 ==> (IMSP0H) Slot 3
+vioc-li29-im02 will interface to : ==> ATCA Shelf: shm-li29-sp02 ==> (IMSP0S) Slot 4
+vioc-li29-im03 will interface to : ==> ATCA Shelf: shm-li29-sp02 ==> (IMSP0D) Slot 4
+*************************************************************************************
+
+Where, shm == the ATCA crate's  shelf manager.
+The physical chassis or crate will follow the LCLS naming convention and be named
+crat-li02-sp01, crat-li04-sp01  accordingly.
+
+It was conventioned that the first BCM IOC (the ones ended with im01) will be in 
+charge of the Temperature Chassis. So, for them, it is needed to include the 
+ethercat driver calling, and temperature dbs.
+
+When more than one Toroid BCM is present, the first one (the ones ended with 
+im01) will be in charge of the Bergoz connection, using USB.
