@@ -10,6 +10,13 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R1.0.0        Marcio Donadio - 03/16/2017
+              - Now using ycpswasy R1.1.branch
+              - RELEASE_SITE was not supposed to be in the repo
+              - st.cmd for vioc-li02-im01
+              - Added README_IOC in iocBoot
+              - Added more 2 IOCs directories for sector 29
+
 R0.1.0        Marcio Donadio - 03/15/2017
               - configure/RELEASE correction
 
