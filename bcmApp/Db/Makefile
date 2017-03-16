@@ -25,7 +25,7 @@ DB_INSTALLS += $(YCPSWASYN)/db/mbbo.template
 DB_INSTALLS += $(YCPSWASYN)/db/bo.template
 DB_INSTALLS += $(YCPSWASYN)/db/waveform_stream16.template
 DB_INSTALLS += $(YCPSWASYN)/db/waveform_stream32.template
-DB_INSTALLS += $(YCPSWASYN)/db/saveLoadConfig.template
+DB_INSTALLS += $(YCPSWASYN)/db/saveLoadConfig.db
 
 # Keithley
 DB_INSTALLS += $(KEITHLEY6487)/db/asynRecord.db

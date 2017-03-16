@@ -26,17 +26,24 @@
 # The default maximum size for a channel access array is
 # 16K bytes.
 # Uncomment and set appropriate size for your application:
-epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
+# Port name
+epicsEnvSet("CPSW_PORT","Atca2")
 
-# PV prefix
-epicsEnvSet("PREFIX","VIOC:LI00:IM01")
-epicsEnvSet("CPSW_PORT1","Atca6")
+# Yaml File
+epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 
+# FPGA IP address
+epicsEnvSet("FPGA_IP", "10.0.1.104")
 
-# Temperature xfer: ESLO, EOFF
-epicsEnvSet("ESLO","$(ESLO=0.01)")
-epicsEnvSet("EOFF","$(EOFF=273.15)")
+# Use Automatic generation of records from the YAML definition
+# 0 = No, 1 = Yes
+epicsEnvSet("AUTO_GEN", 0)
 
+# Automatically generated record prefix
+epicsEnvSet("PREFIX","yamlIOC1")
+
+# Dictionary file for manual (empty string if none)
+epicsEnvSet("DICT_FILE", "")
 
 # ***********************************************************
 # **** Environment variables for Faraday Cup on Keithley ****
@@ -88,11 +95,12 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 #    Record name Prefix,        # Record name prefix
 #    Record name Length Max,    # Record name maximum length (must be greater than lenght of prefix + 4)
-cd ${TOP}/iocBoot/vioc-li00-im01
+#    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
+#    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
+#cd ${TOP}/iocBoot/vioc-li00-im01
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT1}", "../../yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml", "", "10.0.1.104", "${PREFIX}", 40)
-
-cd ${TOP}
+YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "${PREFIX}", 40, "${AUTO_GEN}", "${DICT_FILE}")
+#cd ${TOP}
 
 
 # ***********************************
@@ -139,8 +147,12 @@ ecAsynInit("/tmp/sock1", 1000000)
 # **** Load YCPSWAsyn db ****
 
 ## Load record instances
-dbLoadRecords("db/verifyDefaults.db", "P=${PREFIX}, KEY=3")
 
+#Save/Load configuration related records
+dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=config/defaults.yaml")
+
+# Verify Configuration related records
+#dbLoadRecords("db/monitorFPGAReboot.db", "P=${PREFIX}, KEY=3")
 
 
 # **************************
@@ -245,7 +257,7 @@ create_monitor_set("info_settings.req" , 30 )
 # This register gives timeout errors when it is read.
 # For now let's not read it until this problem is fixed
 # register path: /mmio/AmcCarrierSsrlRtmEth/AmcCarrierCore/Axi24LC64FT/MemoryArray
-dbpf ${PREFIX}:C:A24LC64FT:MemoryArray:Rd.SCAN "Passive"
+#dbpf ${PREFIX}:C:A24LC64FT:MemoryArray:Rd.SCAN "Passive"
 
 
 # ************************************************************
