@@ -99,10 +99,8 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    Record name Length Max,    # Record name maximum length (must be greater than lenght of prefix + 4)
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
-#cd ${TOP}/iocBoot/vioc-li00-im01
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
 YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "${PREFIX}", 40, "${AUTO_GEN}", "${DICT_FILE}")
-#cd ${TOP}
 
 
 # ***********************************
