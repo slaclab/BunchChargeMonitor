@@ -69,7 +69,7 @@ DB_INSTALLS += $(ECASYN)/db/EL3202-0010.template
 DB += stream_size.template
 DB += TempMonitoring_TORO.db
 DB += Filter.db
-DB += bcm.substitutions
+DB += bcm.db
 # ========================================
 # Install timing/event related databases
 # ========================================
