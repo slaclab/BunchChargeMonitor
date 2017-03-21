@@ -37,15 +37,18 @@ epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.105")
 
+# AMC slot (0 or 1)
+epicsEnvSet("AMC", "0")
+
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
-epicsEnvSet("AUTO_GEN", 1)
+epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
 epicsEnvSet("PREFIX","LI00:IM02")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "")
+epicsEnvSet("DICT_FILE", "yaml/bcm_00000018.dict")
 
 
 # *****************************************************
@@ -97,7 +100,7 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "${PREFIX}", 40, "${AUTO_GEN}", "${DICT_FILE}")
+YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
 
 
 # *********************************
@@ -133,7 +136,10 @@ drvAsynSerialPortConfigure("$(BERGOZ_PORT)","$(BERGOZ_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=config/defaults.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaults_bergoz.yaml")
+
+# Manually create records
+dbLoadRecords("db/bcm.db", "P=${PREFIX}, PORT=${CPSW_PORT}, AMC=${AMC}")
 
 # Verify Configuration related records
 #dbLoadRecords("db/monitorFPGAReboot.db", "P=${PREFIX}, KEY=3")
@@ -228,6 +234,7 @@ iocshCmd("makeAutosaveFiles")
 create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
 
+cd ${TOP}
 
 # *********************
 # **** Bergoz dbpf ****
