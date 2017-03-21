@@ -69,6 +69,7 @@ DB += stream_size.template
 DB += TempMonitoring_TORO.db
 DB += Filter.db
 DB += bcm.db
+DB += carrier.db
 # ========================================
 # Install timing/event related databases
 # ========================================

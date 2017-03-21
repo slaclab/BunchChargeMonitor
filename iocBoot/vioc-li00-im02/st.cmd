@@ -45,7 +45,11 @@ epicsEnvSet("AMC", "0")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-epicsEnvSet("PREFIX","LI00:IM02")
+#epicsEnvSet("PREFIX","LI00:IM02")
+
+epicsEnvSet("AMC0_PREFIX","LI00:IM02A")
+epicsEnvSet("AMC1_PREFIX","LI00:IM02B")
+epicsEnvSet("AMC_CARRIER_PREFIX","LI00:IM02C")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_00000018.dict")
@@ -136,13 +140,15 @@ drvAsynSerialPortConfigure("$(BERGOZ_PORT)","$(BERGOZ_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaults_bergoz.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaults_bergoz.yaml")
 
 # Manually create records
-dbLoadRecords("db/bcm.db", "P=${PREFIX}, PORT=${CPSW_PORT}, AMC=${AMC}")
+dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
+dbLoadRecords("db/bcm.db", "P=${AMC1_PREFIX}, PORT=${CPSW_PORT}, AMC=1")
+dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Automatic initialization
-dbLoadRecords("db/monitorFPGAReboot.db", "P=${PREFIX}, KEY=-66686157")
+dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 
 # ************************
