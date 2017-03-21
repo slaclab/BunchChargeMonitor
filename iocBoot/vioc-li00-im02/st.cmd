@@ -141,8 +141,8 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${PREFIX}, PORT=${CPSW_PORT}, AMC=${AMC}")
 
-# Verify Configuration related records
-#dbLoadRecords("db/monitorFPGAReboot.db", "P=${PREFIX}, KEY=3")
+# Automatic initialization
+dbLoadRecords("db/monitorFPGAReboot.db", "P=${PREFIX}, KEY=-66686157")
 
 
 # ************************
