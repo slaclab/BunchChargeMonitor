@@ -173,6 +173,10 @@ file "RegisterDoubleIn.template" { pattern
 { $(P),     CHRG,         "Charge",                     "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG     }
 }
 
+file "RegisterDoubleInLimits.template" { pattern
+{ P,        R,       HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI   }
+}
+
 #======================================
 # Register with DoubleVal interfaces
 #======================================
