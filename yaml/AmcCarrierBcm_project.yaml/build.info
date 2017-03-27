@@ -1,0 +1,35 @@
+tag build-AmcCarrierBcm-0x00000001-20170308115557-leosap
+Tagger: “Leonid <“leosap@slac.stanford.edu”>
+Date:   Wed Mar 8 13:11:29 2017 -0800
+
+PROJECT: AmcCarrierBcm
+
+FW_VERSION: 0x00000001
+
+BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, x86_64, Built Wed Mar  8 11:55:57 PST 2017 by leosap
+
+commit f17ed1090c2a8454716c942086ed18119f491c8c
+Author: “Leonid <“leosap@slac.stanford.edu”>
+Date:   Wed Mar 8 11:55:38 2017 -0800
+
+    Building project
+
+diff --git a/set_submodule_tags b/set_submodule_tags
+index 1106cf9..a5df74b 100755
+--- a/set_submodule_tags
++++ b/set_submodule_tags
+@@ -13,10 +13,10 @@ import os, sys
+ from subprocess import check_call
+ 
+ ## Define the GIT submodule path and TAG-ing
+-tagConfig = [ ['/firmware/submodules/amc-carrier-core', 'v1.1.3'],
+-              ['/firmware/submodules/lcls-timing-core', 'v1.0.3'],
+-              ['/firmware/submodules/ruckus',           'v1.1.2'],
+-              ['/firmware/submodules/surf',             'v1.1.0'],
++tagConfig = [ ['/firmware/submodules/amc-carrier-core', 'v1.2.1'],
++              ['/firmware/submodules/lcls-timing-core', 'v1.2.1'],
++              ['/firmware/submodules/ruckus',           'v1.1.5'],
++              ['/firmware/submodules/surf',             'v1.1.3'],
+               ['/firmware/submodules/sysgen-dsp-lib',   'v1.0.0'] ]
+ 
+ # Check that the submodule paths exists

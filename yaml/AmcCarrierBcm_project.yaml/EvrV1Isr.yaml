@@ -8,11 +8,21 @@
 ## the terms contained in the LICENSE.txt file.
 ##############################################################################
 #schemaversion 3.0.0
-#once AxiEmpty.yaml
+#once
 
-AxiEmpty: &AxiEmpty 
-  name: AxiEmpty
-  description: AxiEmpty Module as a placeholder for future module
+EvrV1Isr: &EvrV1Isr
   class: MMIODev
   configPrio: 1
-  size: 0x0
+  description: LCLS-I EVR ISR Controller
+  size: 0x10
+  children:
+    #########################################################  
+    IsrSelect:
+      at:
+        offset: 0x0
+      class: IntField
+      name: IsrSelect
+      sizeBits: 1
+      mode: RW
+      description: 0x1 = Software ISR, 0x0 = Firmware ISR
+    #########################################################  

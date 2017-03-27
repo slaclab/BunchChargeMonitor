@@ -8,20 +8,37 @@
 ## the terms contained in the LICENSE.txt file.
 ##############################################################################
 #schemaversion 3.0.0
-#once AmcCarrierMps.yaml
-#include AmcCarrierMpsPhy.yaml
+#once AppTopTrig.yaml
+#include LclsTriggerPulse.yaml
+#include EvrV1Reg.yaml
+#include EvrV1Isr.yaml
 
-AmcCarrierMps: &AmcCarrierMps 
-  name: AmcCarrierMps
-  description: AmcCarrierMps
+AppTopTrig: &AppTopTrig 
+  description: Common Application Top Level Trigger Module
   class: MMIODev
-  size: 0x01000000 
+  configPrio: 1
+  size: 0x10000000
+  metadata:
+    numTrigPulse: &numTrigPulse 1  
   ########
   children:
   ########
     ##################################################
-    AmcCarrierMpsPhy:
-      <<: *AmcCarrierMpsPhy
+    LclsTriggerPulse:
+      <<: *LclsTriggerPulse
       at:
-        offset: 0x00010000
+        offset: 0x00000000  
+        stride: 0x00001000
+        nelms: *numTrigPulse     
     ##################################################
+    EvrV1Reg:
+      <<: *EvrV1Reg
+      at:
+        offset: 0x01000000  
+    ##################################################
+    EvrV1Isr:
+      <<: *EvrV1Isr
+      at:
+        offset: 0x02000000
+    ##################################################     
+    

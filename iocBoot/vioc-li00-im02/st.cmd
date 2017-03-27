@@ -56,7 +56,7 @@ epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):431")
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):15")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "yaml/bcm_00000018.dict")
+epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
 
 # *****************************************************
@@ -144,7 +144,7 @@ drvAsynSerialPortConfigure("$(BERGOZ_PORT)","$(BERGOZ_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaults_bergoz.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro3-10-17c.yaml")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")

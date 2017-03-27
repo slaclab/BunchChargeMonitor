@@ -1,18 +1,27 @@
 ##############################################################################
-## This file is part of 'SLAC Firmware Standard Library'.
+## This file is part of 'LCLS2 Common Carrier Core'.
 ## It is subject to the license terms in the LICENSE.txt file found in the 
 ## top-level directory of this distribution and at: 
 ##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
-## No part of 'SLAC Firmware Standard Library', including this file, 
+## No part of 'LCLS2 Common Carrier Core', including this file, 
 ## may be copied, modified, propagated, or distributed except according to 
 ## the terms contained in the LICENSE.txt file.
 ##############################################################################
 #schemaversion 3.0.0
-#once AxiEmpty.yaml
+#once AppMps.yaml
+#include AppMpsSalt.yaml
 
-AxiEmpty: &AxiEmpty 
-  name: AxiEmpty
-  description: AxiEmpty Module as a placeholder for future module
+AppMps: &AppMps 
+  name: AppMps
+  description: AppMps
   class: MMIODev
-  configPrio: 1
-  size: 0x0
+  size: 0x01000000 
+  ########
+  children:
+  ########
+    ##################################################
+    AppMpsSalt:
+      <<: *AppMpsSalt
+      at:
+        offset: 0x00000000
+    ##################################################
