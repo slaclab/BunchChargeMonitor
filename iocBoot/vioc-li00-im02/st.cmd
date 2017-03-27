@@ -37,9 +37,6 @@ epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.105")
 
-# AMC slot (0 or 1)
-epicsEnvSet("AMC", "0")
-
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
@@ -47,9 +44,16 @@ epicsEnvSet("AUTO_GEN", 0)
 # Automatically generated record prefix
 #epicsEnvSet("PREFIX","LI00:IM02")
 
-epicsEnvSet("AMC0_PREFIX","LI00:IM02A")
-epicsEnvSet("AMC1_PREFIX","LI00:IM02B")
-epicsEnvSet("AMC_CARRIER_PREFIX","LI00:IM02C")
+epicsEnvSet("AREA","LI00")
+
+# BCM-TORO attached to AMC0
+epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):215")
+
+# BCM-TORO attached to AMC1
+epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):431")
+
+# AMCC in crate 1, slot 5
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):15")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_00000018.dict")
@@ -59,7 +63,7 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_00000018.dict")
 # **** Environment variables for Toroid on  Bergoz ****
 
 epicsEnvSet("P_BERGOZ","$(P=VIOC:)")
-epicsEnvSet("R","$(R=LI00:IM02:)")
+epicsEnvSet("R","$(R=$(AREA):IM02:)")
 epicsEnvSet("BERGOZ_PORT","$(PORT=L0)")
 epicsEnvSet("BERGOZ_TTY","$(BERGOZ_TTY=/dev/ttyACM0)")
 epicsEnvSet("SERIALNUM_EXPECT","$(SERIALNUM_EXPECT=40)")
@@ -73,7 +77,7 @@ epicsEnvSet("EOFF","$(EOFF=273.15)")
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"VIOC:LI00:IM02")
+epicsEnvSet(IOC_NAME,"VIOC:$(AREA):IM02")
 
 
 cd ${TOP}
