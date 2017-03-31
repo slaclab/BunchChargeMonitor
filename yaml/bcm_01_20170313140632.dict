@@ -33,7 +33,9 @@
 /mmio/AppTop/AppCore/AmcGenericAdcDacCore[0]/AmcGenericAdcDacCtrl/AdcData                                 AMC0:AdcData
 /mmio/AppTop/AppCore/AmcGenericAdcDacCore[1]/AmcGenericAdcDacCtrl/AdcData                                 AMC1:AdcData
 /Stream0                                                                                                  AMC0:Stream0
+/Stream1                                                                                                  AMC0:Stream1
 /Stream4                                                                                                  AMC1:Stream0
+/Stream5                                                                                                  AMC1:Stream1
 /mmio/AppTop/DaqMuxV2[0]/TrigCount                                                                        AMC0:MuxTrigCnt
 /mmio/AppTop/DaqMuxV2[1]/TrigCount                                                                        AMC1:MuxTrigCnt
 /mmio/AppTop/DaqMuxV2[0]/FrameCnt                                                                         AMC0:MuxFrameCnt

@@ -42,10 +42,21 @@ epicsEnvSet("FPGA_IP", "10.0.1.104")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-epicsEnvSet("PREFIX","LI00:IM01")
+#epicsEnvSet("PREFIX","LI00:IM01")
+
+epicsEnvSet("AREA","LI00")
+
+# BCM-FARC attached to AMC0
+epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):215")
+
+# BCM-FARC attached to AMC1
+epicsEnvSet("AMC1_PREFIX","FARC:$(AREA):431")
+
+# AMCC in crate 1, slot 4
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):14")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "")
+epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
 # ***********************************************************
 # **** Environment variables for Faraday Cup on Keithley ****
@@ -100,7 +111,7 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "${PREFIX}", 40, "${AUTO_GEN}", "${DICT_FILE}")
+YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
 
 
 # ***********************************
@@ -147,10 +158,15 @@ ecAsynInit("/tmp/sock1", 1000000)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=config/defaults.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsFC3-31-17a.yaml")
 
-# Verify Configuration related records
-#dbLoadRecords("db/monitorFPGAReboot.db", "P=${PREFIX}, KEY=3")
+# Manually create records
+dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
+dbLoadRecords("db/bcm.db", "P=${AMC1_PREFIX}, PORT=${CPSW_PORT}, AMC=1")
+dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+
+# Automatic initialization
+dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 
 # **************************
