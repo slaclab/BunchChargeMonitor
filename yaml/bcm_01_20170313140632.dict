@@ -170,5 +170,9 @@
 /mmio/AppTop/AppCore/SysGen[1]/DspPreprocConfig[0]/Mode                                                   AMC1:Mode
 /mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/NumberSamples0                                         AMC0:NumSamp0
 /mmio/AppTop/AppCore/SysGen[1]/DspPreprocConfig[0]/NumberSamples0                                         AMC1:NumSamp0
+/mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/NumberSamples1                                         AMC0:NumSamp1
+/mmio/AppTop/AppCore/SysGen[1]/DspPreprocConfig[0]/NumberSamples1                                         AMC1:NumSamp1
+/mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/TrigDelay1                                             AMC0:TrigDelay1
+/mmio/AppTop/AppCore/SysGen[1]/DspPreprocConfig[0]/TrigDelay1                                             AMC1:TrigDelay1
 /mmio/AppTop/DaqMuxV2[0]/TriggerHwAutoRearm                                                               AMC0:AutoRearm
 /mmio/AppTop/DaqMuxV2[1]/TriggerHwAutoRearm                                                               AMC1:AutoRearm

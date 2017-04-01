@@ -73,6 +73,8 @@ file "RegisterOut.template" { pattern
 { P,        R,              DESC,                                       PINI,   SCAN,       PORT,  PARAM       }
 { $(P), Mode,           "BCM mode"                                "NO",   "Passive",  $(PORT),    AMC$(AMC):Mode }
 { $(P), NumSamp0,       "Number of samples 0"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):NumSamp0 }
+{ $(P), NumSamp1,       "Number of samples 1"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):NumSamp1 }
+{ $(P), TrigDelay1,     "Trigger delay 1"                         "NO",   "Passive",  $(PORT),    AMC$(AMC):TrigDelay1 }
 # Trigger to Bergoz (TLR0)
 { $(P), TLR0:SelFld,    "fields to use for trig msg comparison",  "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SelFld }
 { $(P), TLR0:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SelSrc }
@@ -115,6 +117,8 @@ file "RegisterOutRBV.template" { pattern
 { P,           R,                DESC,                                     PINI,   SCAN,        PORT,  PARAM       }
 { $(P), ModeRBV,           "BCM mode"                                "YES",  "1 second",  $(PORT),    AMC$(AMC):Mode }
 { $(P), NumSamp0RBV,       "Number of samples 0"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):NumSamp0 }
+{ $(P), NumSamp1RBV,       "Number of samples 1"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):NumSamp1 }
+{ $(P), TrigDelay1RBV,     "Trigger delay 1"                         "YES",  "1 second",  $(PORT),    AMC$(AMC):TrigDelay1 }
 # Trigger to Bergoz (TLR0)
 { $(P), TLR0:SelFldRBV,    "fields to use for trig msg comparison",  "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:SelFld }
 { $(P), TLR0:SelSrcRBV,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:SelSrc }
@@ -229,6 +233,7 @@ file "RegisterCommand.template" { pattern
 file "RegisterStream.template" {pattern
 { P,            R,          DESC,               NELM,       PINI,   PORT,   PARAM       }
 { $(P),   Stream0,    "Stream channel 0", 5000000,    "NO",   $(PORT),     AMC$(AMC):Stream0  }
+{ $(P),   Stream1,    "Stream channel 1", 5000000,    "NO",   $(PORT),     AMC$(AMC):Stream1  }
 }
 
 # For Stream interfaces, an additional parameter is automatically created
@@ -239,4 +244,5 @@ file "RegisterStream.template" {pattern
 file "RegisterStream16.template" {pattern
 { P,            R,          DESC,                           NELM,        PINI,  PORT,  PARAM         }
 { $(P),     Stream0_16, "Stream channel 0 (16-bit)",  10000000,    "NO",  $(PORT),    AMC$(AMC):Stream0:16 }
+{ $(P),     Stream1_16, "Stream channel 1 (16-bit)",  10000000,    "NO",  $(PORT),    AMC$(AMC):Stream1:16 }
 }
