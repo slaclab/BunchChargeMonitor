@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 557
-y 166
+x 561
+y 190
 w 544
 h 831
 font "helvetica-medium-r-10.0"
@@ -166,7 +166,7 @@ x 140
 y 140
 w 110
 h 20
-controlPv "CALC\\\{A*B\}($(prefix):A:S$(amc):DCR:AddSums2:Rd, 6241509.13)"
+controlPv "CALC\\\{A*B\}($(prefix):CHRG, 6241509.13)"
 displayMode "engineer"
 precision 5
 fgColor index 14

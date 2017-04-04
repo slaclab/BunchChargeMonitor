@@ -106,7 +106,7 @@ buttonLabel "YAML Config"
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "defaults2.edl"
+  0 "defaults.edl"
 }
 symbols {
   0 "P=$(prefix)"
