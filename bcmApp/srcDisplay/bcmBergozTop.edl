@@ -1,0 +1,210 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 1359
+y 714
+w 544
+h 243
+font "helvetica-medium-r-10.0"
+ctlFont "helvetica-medium-r-10.0"
+btnFont "helvetica-medium-r-10.0"
+fgColor index 14
+bgColor index 4
+textColor index 14
+ctlFgColor1 index 14
+ctlFgColor2 index 0
+ctlBgColor1 index 0
+ctlBgColor2 index 14
+topShadowColor index 0
+botShadowColor index 14
+snapToGrid
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 80
+y 90
+w 460
+h 130
+lineColor index 2
+fill
+fillColor index 2
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 220
+y 40
+w 108
+h 21
+font "helvetica-bold-r-18.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(MAD) Top"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 90
+y 110
+w 47
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Charge"
+}
+autoSize
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 170
+y 110
+w 120
+h 16
+controlPv "$(prefix):CHRG"
+font "helvetica-bold-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+precision 5
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+id "Charge"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 170
+y 140
+w 90
+h 20
+controlPv "CALC\\\{A*B\}($(prefix):CHRG, 6241509.13)"
+displayMode "engineer"
+precision 3
+fgColor index 14
+fgAlarm
+bgColor index 2
+fill
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 290
+y 144
+w 23
+h 16
+font "helvetica-bold-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Nel"
+}
+autoSize
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 370
+y 100
+w 160
+h 30
+fgColor index 14
+bgColor index 7
+topShadowColor index 7
+botShadowColor index 7
+font "helvetica-bold-r-14.0"
+buttonLabel "Expert"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "bcmBergozDebug.edl"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 290
+y 110
+w 120
+h 16
+controlPv "$(prefix):CHRG.EGU"
+font "helvetica-bold-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+precision 5
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+id "Charge EGU"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 90
+y 144
+w 34
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "TMIT"
+}
+autoSize
+endObjectProperties
+

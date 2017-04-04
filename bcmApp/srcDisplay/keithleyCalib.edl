@@ -1,0 +1,448 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 1189
+y 303
+w 506
+h 662
+font "helvetica-medium-r-10.0"
+ctlFont "helvetica-medium-r-10.0"
+btnFont "helvetica-medium-r-10.0"
+fgColor index 14
+bgColor index 7
+textColor index 14
+ctlFgColor1 index 25
+ctlFgColor2 index 18
+ctlBgColor1 index 3
+ctlBgColor2 index 5
+topShadowColor index 1
+botShadowColor index 11
+title "Keithley 6487: Front Panel Calibration"
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 8
+y 8
+w 488
+h 48
+font "helvetica-bold-r-18.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 3
+value {
+  "Voltage offset and zero correction"
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 72
+w 488
+h 212
+lineColor index 3
+fill
+fillColor index 3
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 8
+y 64
+w 272
+h 16
+font "helvetica-bold-r-14.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 3
+value {
+  "Front panel voltage offset correction"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 120
+w 472
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "1. Press the MENU key, select CAL, then press ENTER."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 140
+w 472
+h 32
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "2. The unit will display the following:"
+  "CAL: VOFFSET"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 172
+w 472
+h 32
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "3. Press ENTER. The instrument will prompt as follows:"
+  "INPUT CAP"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 204
+w 472
+h 32
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "4. Connect the triax shielding cap to the INPUT jack."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 236
+w 472
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "5. Press ENTER to complete voltage offset correction."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 260
+w 472
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "6. Press EXIT to return to normal display."
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 300
+w 488
+h 348
+lineColor index 3
+fill
+fillColor index 3
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 8
+y 292
+w 188
+h 16
+font "helvetica-bold-r-14.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 3
+value {
+  "Front panel zero correct"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 428
+w 472
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "1. Enable zero check (\"ZEROCHK\" message displayed).."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 448
+w 472
+h 32
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "2. Select the range that will be used for measurement or select the lowest range."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 480
+w 472
+h 24
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "3. Press REL to enable zero correct (\"ZCORRECT ON\" message displayed briefly)."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 504
+w 472
+h 28
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "4. Press ZCHK to disable zero check."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 532
+w 448
+h 28
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "5. Readings can now be taken from the display."
+  "The MON annunciator indicates that the displayed reading is zero corrected."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 88
+w 480
+h 24
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "Voltage offset correction should be performed periodically to null input amplifier offsets."
+  "To perform correction:"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 316
+w 480
+h 44
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "The Keithley 6487 has a zero correct feature to algebraically subtract the voltage offset"
+  "term from the measurement."
+  "Perform the following steps to algebraically zero correct the measurement:"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 388
+w 480
+h 36
+font "helvetica-medium-i-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "NOTE: The REL key toggles zero correct on and off if zero check is enabled."
+  "The MON annunciator turns on when zero correct is enabled."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 364
+w 480
+h 24
+font "helvetica-medium-i-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "NOTE: The ZCHK key toggles zero check on and off."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 608
+w 480
+h 36
+font "helvetica-medium-i-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "NOTE: The Keithley 6487 does not have to be re-zero corrected as long as"
+  "the ambient temperature remains stable."
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 568
+w 480
+h 36
+font "helvetica-medium-i-12.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "NOTE: The Keithley 6487 will remain zero corrected even if it is upgranged."
+  "If downranged, re-zero the instrument."
+}
+endObjectProperties
+
