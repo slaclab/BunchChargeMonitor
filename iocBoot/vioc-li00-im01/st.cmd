@@ -46,11 +46,8 @@ epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA","LI00")
 
-# BCM-FARC attached to AMC0
+# BCM-FC attached to AMC0
 epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):215")
-
-# BCM-FARC attached to AMC1
-epicsEnvSet("AMC1_PREFIX","FARC:$(AREA):431")
 
 # AMCC in crate 1, slot 4
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):14")
@@ -61,10 +58,10 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 # ***********************************************************
 # **** Environment variables for Faraday Cup on Keithley ****
 
-epicsEnvSet("P_KEITHLEY","$(P=VIOC:)")
-epicsEnvSet("R","LI00:IM01:")
+epicsEnvSet("K6487_PORT","L1")
+epicsEnvSet("K6487_P","$(AMC0_PREFIX):")
+epicsEnvSet("K6487_R","")
 epicsEnvSet("K6487_ADDRESS","$(K6487_ADDRESS=ts-b084-nw01:2110)")
-epicsEnvSet("K6487_PROTOCOL","$(K6487_PROTOCOL=TCP)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 
@@ -118,7 +115,7 @@ YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUT
 # **** Driver setup for Keithley ****
 
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
-drvAsynIPPortConfigure("L1","$(K6487_ADDRESS)",0,0,0)
+drvAsynIPPortConfigure("$(K6487_PORT)","$(K6487_ADDRESS)",0,0,0)
 
 
 # **********************************************************
@@ -146,8 +143,8 @@ ecAsynInit("/tmp/sock1", 1000000)
 # *********************************
 # **** Asyn Masks for Keithley ****
 
-#asynSetTraceIOMask("L1",-1,0x2)
-#asynSetTraceMask("L1",-1,0x9)
+#asynSetTraceIOMask("$(K6487_PORT)",-1,0x2)
+#asynSetTraceMask("$(K6487_PORT)",-1,0x9)
 
 
 # ===========================================
@@ -162,17 +159,19 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
-dbLoadRecords("db/bcm.db", "P=${AMC1_PREFIX}, PORT=${CPSW_PORT}, AMC=1")
+# ...only one BCM-FC per board is anticipated
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Automatic initialization
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
+# Allow time for Keithley driver to connect
+epicsThreadSleep(1.0)
 
 # **************************
 # **** Load Keithley db ****
-dbLoadRecords ("db/devKeithley6487.db" "P=$(P_KEITHLEY),R=$(R),PORT=L1,A=-1,NELM=1000")
-dbLoadRecords ("db/asynRecord.db" "P=$(P_KEITHLEY),R=$(R),PORT=L1,ADDR=-1,OMAX=0,IMAX=0")
+dbLoadRecords ("db/devKeithley6487.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),A=-1,NELM=1000")
+dbLoadRecords ("db/asynRecord.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
 
 # *****************************************************
