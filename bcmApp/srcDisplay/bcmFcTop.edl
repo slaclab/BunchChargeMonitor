@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 561
-y 190
+x 709
+y 210
 w 544
 h 831
 font "helvetica-medium-r-10.0"
@@ -66,9 +66,9 @@ minor 0
 release 0
 x 140
 y 170
-w 110
+w 90
 h 20
-controlPv "K6487:1:Measure"
+controlPv "$(prefix):Measure"
 displayMode "engineer"
 precision 4
 fgColor index 14
@@ -164,7 +164,7 @@ minor 0
 release 0
 x 140
 y 140
-w 110
+w 100
 h 20
 controlPv "CALC\\\{A*B\}($(prefix):CHRG, 6241509.13)"
 displayMode "engineer"
@@ -182,7 +182,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 250
+x 240
 y 144
 w 23
 h 16
@@ -202,11 +202,11 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 250
+x 240
 y 170
 w 70
 h 20
-controlPv "K6487:1:Measure.EGU"
+controlPv "$(prefix):Measure.EGU"
 precision 3
 fgColor index 14
 bgColor index 2
@@ -308,7 +308,7 @@ y2Max 1
 # Trace Properties
 numTraces 1
 yPv {
-  0 "K6487:1:Measure"
+  0 "$(prefix):Measure"
 }
 nPv {
   0 "60"
@@ -388,7 +388,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 250
+x 240
 y 240
 w 20
 h 16
@@ -410,9 +410,9 @@ minor 0
 release 0
 x 150
 y 240
-w 100
+w 90
 h 20
-controlPv "CALC\\\{A*B/C\}(1000000000000,K6487:1:Measure, $(prefix):A:S0:DPC0:TriggerRate:Rd)"
+controlPv "CALC\\\{A*B/C\}(1000000000000,$(prefix):Measure, $(prefix):RATE"
 precision 5
 fgColor index 14
 fgAlarm
@@ -491,5 +491,25 @@ useHexPrefix
 newPos
 objType "monitors"
 id "Charge"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 60
+y 144
+w 34
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "TMIT"
+}
+autoSize
 endObjectProperties
 

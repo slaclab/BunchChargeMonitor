@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1294
-y 186
+x 1298
+y 210
 w 571
 h 569
 font "helvetica-medium-r-10.0"
@@ -73,16 +73,16 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 180
+x 210
 y 40
-w 223
+w 141
 h 21
 font "helvetica-bold-r-18.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
-  "$(prefix) BCM-FC Debug"
+  "BCM-FC Debug"
 }
 autoSize
 endObjectProperties
@@ -111,46 +111,6 @@ displayFileName {
 symbols {
   0 "P=$(prefix)"
 }
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 170
-y 180
-w 100
-h 20
-controlPv "K6487:1:Measure.VAL"
-displayMode "engineer"
-precision 4
-fgColor index 14
-fgAlarm
-bgColor index 2
-fill
-font "helvetica-bold-r-14.0"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 90
-y 184
-w 75
-h 16
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Avg Current"
-}
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -197,46 +157,6 @@ objType "monitors"
 id "Charge"
 endObjectProperties
 
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 160
-y 140
-w 100
-h 20
-controlPv "CALC\\\{A*B\}($(prefix):A:S$(amc):DCR:AddSums2:Rd, 6241509.13)"
-displayMode "engineer"
-precision 4
-fgColor index 14
-fgAlarm
-bgColor index 2
-fill
-font "helvetica-bold-r-14.0"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 270
-y 144
-w 23
-h 16
-font "helvetica-bold-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Nel"
-}
-autoSize
-endObjectProperties
-
 # (Related Display)
 object relatedDisplayClass
 beginObjectProperties
@@ -264,29 +184,11 @@ menuLabel {
   1 "Keithley 6487: Front Panel Calibration"
 }
 symbols {
-  0 "P=K6487:,R=1:"
+  0 "P=$(prefix),R=:"
 }
 replaceSymbols {
   0 1
 }
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 270
-y 180
-w 50
-h 20
-controlPv "K6487:1:Measure.EGU"
-precision 3
-fgColor index 14
-bgColor index 2
-fill
-font "helvetica-bold-r-14.0"
 endObjectProperties
 
 # (Static Text)
@@ -728,7 +630,7 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 260
+x 280
 y 110
 w 110
 h 16
@@ -744,5 +646,123 @@ useHexPrefix
 newPos
 objType "monitors"
 id "Charge"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 280
+y 170
+w 70
+h 20
+controlPv "$(prefix):Measure.EGU"
+precision 3
+fgColor index 14
+bgColor index 2
+fill
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 280
+y 140
+w 23
+h 16
+font "helvetica-bold-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Nel"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 170
+y 166
+w 90
+h 20
+controlPv "$(prefix):Measure"
+displayMode "engineer"
+precision 4
+fgColor index 14
+fgAlarm
+bgColor index 2
+fill
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 170
+y 136
+w 100
+h 20
+controlPv "CALC\\\{A*B\}($(prefix):CHRG, 6241509.13)"
+displayMode "engineer"
+precision 5
+fgColor index 14
+fgAlarm
+bgColor index 2
+fill
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 90
+y 170
+w 75
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Avg Current"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 90
+y 140
+w 34
+h 16
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "TMIT"
+}
+autoSize
 endObjectProperties
 
