@@ -62,11 +62,11 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 # *****************************************************
 # **** Environment variables for Toroid on  Bergoz ****
 
-epicsEnvSet("P_BERGOZ","$(P=VIOC:)")
-epicsEnvSet("R","$(R=$(AREA):IM02:)")
-epicsEnvSet("BERGOZ_PORT","$(PORT=L0)")
-epicsEnvSet("BERGOZ_TTY","$(BERGOZ_TTY=/dev/ttyACM0)")
-epicsEnvSet("SERIALNUM_EXPECT","$(SERIALNUM_EXPECT=40)")
+epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
+epicsEnvSet("BERGOZ0_R","")
+epicsEnvSet("BERGOZ0_PORT","L0")
+epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
+epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","40")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # Temperature xfer: ESLO, EOFF
@@ -116,7 +116,7 @@ YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUT
 
 # Set up ASYN ports
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
-drvAsynSerialPortConfigure("$(BERGOZ_PORT)","$(BERGOZ_TTY)",0,0,0)
+drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 
 
 # ===========================================
@@ -132,8 +132,8 @@ drvAsynSerialPortConfigure("$(BERGOZ_PORT)","$(BERGOZ_TTY)",0,0,0)
 # *******************************
 # **** Asyn Masks for Bergoz ****
 
-#asynSetTraceIOMask("$(BERGOZ_PORT)",-1,0x2)
-#asynSetTraceMask("$(BERGOZ_PORT)",-1,0x9)
+#asynSetTraceIOMask("$(BERGOZ0_PORT)",-1,0x2)
+#asynSetTraceMask("$(BERGOZ0_PORT)",-1,0x9)
 
 
 # ===========================================
@@ -158,9 +158,9 @@ dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157
 # ************************
 # **** Load Bergoz db ****
 
-dbLoadRecords("db/devBergozBCM.db" "P=$(P_BERGOZ),R=$(R),PORT=$(BERGOZ_PORT),A=-1")
-dbLoadRecords("db/asynRecord.db" "P=$(P_BERGOZ),R=asyn,PORT=$(BERGOZ_PORT),ADDR=-1,OMAX=0,IMAX=0")
-dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(P_BERGOZ)$(R),ESLO=$(ESLO),EOFF=$(EOFF)")
+dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_PORT),A=-1")
+dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADDR=-1,OMAX=0,IMAX=0")
+dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF)")
 
 
 
@@ -250,8 +250,8 @@ cd ${TOP}
 # **** Bergoz dbpf ****
 
 # Save the TTY device name
-dbpf $(P_BERGOZ)$(R)TTY_RD $(BERGOZ_TTY)
+dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 
 # Save the expected BERGOZ serial number
-dbpf $(P_BERGOZ)$(R)SERIALNUM_EXPECT $(SERIALNUM_EXPECT)
+dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 

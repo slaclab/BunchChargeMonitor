@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1950
-y 455
+x 1954
+y 479
 w 563
 h 685
 font "helvetica-medium-r-10.0"
@@ -614,12 +614,6 @@ numPvs 4
 numDsps 1
 displayFileName {
   0 "bergoz/bergozExpert.edl"
-}
-symbols {
-  0 "prefix=BCM:0"
-}
-replaceSymbols {
-  0 1
 }
 endObjectProperties
 
