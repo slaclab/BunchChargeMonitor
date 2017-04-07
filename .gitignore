@@ -2,11 +2,13 @@
 O.*
 *.log
 *.swp
+*.bak
 bin/
 cfg/
 db/
 dbd/
 display/
+edl/
 html/
 include/
 lib/
