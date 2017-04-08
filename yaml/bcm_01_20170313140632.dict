@@ -14,6 +14,17 @@
 /mmio/AmcCarrierCore/AxiVersion/ScratchPad                                                                ScratchPad
 /mmio/AmcCarrierCore/AxiVersion/UpTimeCnt                                                                 UpTimeCnt
 /mmio/AmcCarrierCore/AxiVersion/DeviceId                                                                  DeviceId
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/sofCount                                              sofCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/eofCount                                              eofCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/FidCount                                              FidCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/CrcErrCount                                           CrcErrCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxClkCount                                            RxClkCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxRstCount                                            RxRstCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxDecErrCount                                         RxDecErrCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxDspErrCount                                         RxDspErrCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxLinkUp                                              RxLinkUp
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxPolarity                                            RxPolarity
+/mmio/AmcCarrierCore/AmcCarrierTiming/GthRxAlignCheck/PhaseTarget                                         PhaseTarget
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreRes/Mult2                                                           AMC0:CHRG
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreRes/Mult2                                                           AMC1:CHRG
 /mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/TriggerRate                                            AMC0:RATE
