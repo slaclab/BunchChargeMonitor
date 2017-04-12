@@ -26,7 +26,6 @@ file "RegisterIn.template" { pattern
 # BSA status
 { $(P), SofCount,       "",                             "YES",  "1 second", $(PORT),   "",   sofCount      }
 { $(P), EofCount,       "",                             "YES",  "1 second", $(PORT),   "",   eofCount      }
-{ $(P), FidCount,       "",                             "YES",  "1 second", $(PORT),   "",   FidCount      }
 { $(P), CrcErrCount,    "",                             "YES",  "1 second", $(PORT),   "",   CrcErrCount   }
 { $(P), RxClkCount,     "",                             "YES",  "1 second", $(PORT),   "",   RxClkCount    }
 { $(P), RxRstCount,     "",                             "YES",  "1 second", $(PORT),   "",   RxRstCount    }
@@ -69,6 +68,7 @@ file "RegisterOutRBV.template" { pattern
 # Shared
 { $(P), ScratchPadRBV,     "Register to test R/W",                   "YES",  "1 second",  $(PORT),    ScratchPad }
 # BSA
+{ $(P), ClkSelRBV,  ""                                               "YES",  "1 second",  $(PORT),    ClkSel }
 { $(P), RxPolarityRBV,  ""                                           "YES",  "1 second",  $(PORT),    RxPolarity }
 { $(P), PhaseTargetRBV, ""                                           "YES",  "1 second",  $(PORT),    PhaseTarget }
 }

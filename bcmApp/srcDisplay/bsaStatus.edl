@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 2696
-y 447
+x 2573
+y 538
 w 621
 h 474
 font "helvetica-medium-r-18.0"
@@ -507,68 +507,6 @@ major 4
 minor 0
 release 0
 x 30
-y 160
-w 546
-h 20
-
-beginGroup
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 420
-y 160
-w 156
-h 20
-controlPv "$(carrier_prefix):FidCount"
-format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "Coef_lnQcal"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 160
-w 78
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "FidCount"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 30
 y 130
 w 546
 h 20
@@ -835,5 +773,50 @@ endObjectProperties
 
 endGroup
 
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 420
+y 430
+w 156
+h 20
+controlPv "$(carrier_prefix):ClkSelRBV"
+format "float"
+font "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+precision 5
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+id "CoefA2"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 430
+w 159
+h 20
+font "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "ClkSel (1=LCLS-II)"
+}
+autoSize
 endObjectProperties
 

@@ -16,13 +16,13 @@
 /mmio/AmcCarrierCore/AxiVersion/DeviceId                                                                  DeviceId
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/sofCount                                              sofCount
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/eofCount                                              eofCount
-/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/FidCount                                              FidCount
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/CrcErrCount                                           CrcErrCount
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxClkCount                                            RxClkCount
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxRstCount                                            RxRstCount
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxDecErrCount                                         RxDecErrCount
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxDspErrCount                                         RxDspErrCount
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxLinkUp                                              RxLinkUp
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/ClkSel                                                ClkSel
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxPolarity                                            RxPolarity
 /mmio/AmcCarrierCore/AmcCarrierTiming/GthRxAlignCheck/PhaseTarget                                         PhaseTarget
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreRes/Mult2                                                           AMC0:CHRG
