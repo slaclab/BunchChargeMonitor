@@ -32,7 +32,7 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 epicsEnvSet("CPSW_PORT","Atca7")
 
 # Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
+epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project_bsa.yaml/000TopLevel.yaml")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.105")
@@ -97,6 +97,29 @@ bcm_registerRecordDeviceDriver(pdbbase)
 # ************************************
 # **** Driver setup for YCPSWAsyn ****
 
+## Configure the Yaml Loader Driver
+# cpswLoadYamlFile(
+#    Yaml Doc,                  # Path to the YAML hierarchy description file
+#    Root Device,               # Root Device Name (optional; default = 'root')
+#    YAML Path,                 #directory where YAML includes can be found (optional)
+#    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
+# ==========================================================================================================
+cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
+
+# ====================================
+# Setup BSA Driver
+# ====================================
+# add BSA PVs
+addBsa("CHRG",       "double")
+# BSA1..BSA4 are temporary names
+addBsa("BSA1",       "double")
+addBsa("BSA2",       "double")
+addBsa("BSA3",       "double")
+addBsa("BSA4",       "double")
+
+# BSA driver for yaml
+bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
+
 ## Configure asyn port driver
 # YCPSWASYNConfig(
 #    Port Name,                 # the name given to this port driver
@@ -144,7 +167,7 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro3-31-17a.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro3-31-17b.yaml")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
@@ -162,6 +185,15 @@ dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0
 dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADDR=-1,OMAX=0,IMAX=0")
 dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF)")
 
+# ****************************
+# **** Load BSA driver DB ****
+
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
+# BSA1..BSA4 are temporary names
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA1")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA2")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA3")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA4")
 
 
 # **********************************************************************

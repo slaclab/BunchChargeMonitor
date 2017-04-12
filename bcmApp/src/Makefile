@@ -85,6 +85,8 @@ bcm_DBD += sscanSupport.dbd
 bcm_DBD += calcSupport.dbd
 
 bcm_DBD += ycpswasyn.dbd
+bcm_DBD += bsaAsynDriver.dbd
+bcm_DBD += yamlLoader.dbd
 
 # Ethercat
 bcm_DBD += ecAsyn.dbd
@@ -116,6 +118,7 @@ bcm_SRCS += DaqSizeSub.c
 # Link in the libraries from other EPICS modules
 # =====================================================
 bcm_LIBS += ycpswasyn
+bcm_LIBS += yamlLoader
 bcm_LIBS += seq pv
 bcm_LIBS += stream
 
@@ -139,6 +142,11 @@ bcm_LIBS += calc
 bcm_LIBS += ecAsyn
 bcm_LIBS += scannerlib
 bcm_LIBS += rtutils
+
+# Needed to link bsaDriver support
+bcm_LIBS += bsaDriver
+bsa_DIR = $(BSA_LIB)
+bcm_LIBS += bsa
 
 
 # Link Asyn library support.

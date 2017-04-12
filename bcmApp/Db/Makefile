@@ -43,6 +43,9 @@ DB_INSTALLS += $(BERGOZBCM_RF_ASYN)/db/devBergozBCM.proto
 DB_INSTALLS += $(ECASYN)/db/EK1101.template
 DB_INSTALLS += $(ECASYN)/db/EL3202-0010.template
 
+# BSA
+DB_INSTALLS += $(BSADRIVER)/db/bsa.db
+
 # User-defined functions
 DB += stream_size.template
 DB += TempMonitoring_TORO.db
