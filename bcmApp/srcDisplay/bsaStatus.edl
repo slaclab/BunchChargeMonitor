@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 2573
-y 538
+x 2577
+y 562
 w 621
 h 474
 font "helvetica-medium-r-18.0"
@@ -28,16 +28,16 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 210
+x 170
 y 20
-w 225
+w 177
 h 21
 font "helvetica-bold-r-18.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
-  "BCM-Bergoz BSA Status"
+  "$(MAD) BSA Status"
 }
 autoSize
 endObjectProperties

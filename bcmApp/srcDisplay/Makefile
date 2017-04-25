@@ -13,7 +13,7 @@ EDL += InputBiasCalib.edl bcmBergozDebug.edl  bcmFcCoef.edl   bcmTrigger.edl    
 EDL += bcmBergozMode.edl  bcmFcDebug.edl
 EDL += amcStatus.edl      bcmBergozTop.edl    bcmFcMode.edl   daqmuxV2Status.edl  version.edl
 EDL += bcmCoef.edl        bcmFcTop.edl        defaults.edl    webStatus.edl
-EDL += bcmBergozCoef.edl  bcmDebug.edl        bcmMode.edl
+EDL += bcmBergozCoef.edl  bcmDebug.edl        bcmMode.edl     bsaStatus.edl
 EDL += startEdm_toroid.sh startEdm_FC.sh
 
 # Install images to be used by EDM (Gif and Png are supported)

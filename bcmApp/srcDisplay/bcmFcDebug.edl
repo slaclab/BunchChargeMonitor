@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1298
-y 210
+x 1302
+y 234
 w 571
 h 569
 font "helvetica-medium-r-10.0"
@@ -604,8 +604,8 @@ beginObjectProperties
 major 4
 minor 4
 release 0
-x 90
-y 340
+x 450
+y 260
 w 80
 h 30
 fgColor index 14
@@ -764,5 +764,28 @@ value {
   "TMIT"
 }
 autoSize
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 90
+y 340
+w 80
+h 30
+fgColor index 14
+bgColor index 7
+topShadowColor index 7
+botShadowColor index 7
+font "helvetica-bold-r-14.0"
+buttonLabel "BSA"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "bsaStatus.edl"
+}
 endObjectProperties
 
