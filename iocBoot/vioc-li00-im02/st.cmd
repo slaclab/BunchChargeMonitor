@@ -167,7 +167,7 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro3-31-17b.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro4-21-17a.yaml")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
@@ -188,12 +188,12 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 # ****************************
 # **** Load BSA driver DB ****
 
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
 # BSA1..BSA4 are temporary names
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA1")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA2")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA3")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA4")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA1")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA2")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA3")
+dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA4")
 
 
 # **********************************************************************
