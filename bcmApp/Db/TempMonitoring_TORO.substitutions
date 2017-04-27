@@ -20,7 +20,7 @@ pattern   {P, R, SRC, DEST, ESLO, EOFF, SCAN}
 # EOFF is the offset
 # SCAN is the interval time between two scans
 
-          { $(P), 1, TEMP:BCM_EL3202_1:INPUT1:VALUE, $(P)TempRef, $(ESLO), $(EOFF), "10 second"}
-          { $(P), 2, TEMP:BCM_EL3202_2:INPUT1:VALUE, $(P)TempAmpRef, $(ESLO), $(EOFF), "10 second"}
-          { $(P), 3, TEMP:BCM_EL3202_2:INPUT2:VALUE, $(P)TempElcRef, $(ESLO), $(EOFF), "10 second"}
+          { $(P), 1, VIOC:LI00:IM01:BCM_EL3202_1:INPUT1:VALUE, $(P)TempRef, $(ESLO), $(EOFF), "10 second"}
+          { $(P), 2, VIOC:LI00:IM01:BCM_EL3202_2:INPUT1:VALUE, $(P)TempAmpRef, $(ESLO), $(EOFF), "10 second"}
+          { $(P), 3, VIOC:LI00:IM01:BCM_EL3202_2:INPUT2:VALUE, $(P)TempElcRef, $(ESLO), $(EOFF), "10 second"}
 }

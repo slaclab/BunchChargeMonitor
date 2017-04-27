@@ -46,11 +46,8 @@ epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA","LI00")
 
-# BCM-TORO attached to AMC0
+# BCM-TORO in crate 1, slot 5, AMC 0
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):215")
-
-# BCM-TORO attached to AMC1
-epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):431")
 
 # AMCC in crate 1, slot 5
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):15")
@@ -111,11 +108,10 @@ cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
 # ====================================
 # add BSA PVs
 addBsa("CHRG",       "double")
-# BSA1..BSA4 are temporary names
-addBsa("BSA1",       "double")
-addBsa("BSA2",       "double")
-addBsa("BSA3",       "double")
-addBsa("BSA4",       "double")
+addBsa("CHRGUNC",    "double")
+addBsa("RAWSUM",     "double")
+addBsa("CHRGFLOAT",  "double")
+addBsa("TOROSTATUS", "double")
 
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
@@ -171,7 +167,6 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
-dbLoadRecords("db/bcm.db", "P=${AMC1_PREFIX}, PORT=${CPSW_PORT}, AMC=1")
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Automatic initialization
@@ -188,12 +183,11 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 # ****************************
 # **** Load BSA driver DB ****
 
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
-# BSA1..BSA4 are temporary names
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA1")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA2")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA3")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM02,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA4")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=RAWSUM")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=TOROSTATUS")
 
 
 # **********************************************************************

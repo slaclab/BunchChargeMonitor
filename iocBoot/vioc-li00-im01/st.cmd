@@ -46,7 +46,7 @@ epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA","LI00")
 
-# BCM-FC attached to AMC0
+# BCM-FC in crate 1, slot 4, AMC 0
 epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):215")
 
 # AMCC in crate 1, slot 4
@@ -111,11 +111,10 @@ cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
 # ====================================
 # add BSA PVs
 addBsa("CHRG",       "double")
-# BSA1..BSA4 are temporary names
-addBsa("BSA1",       "double")
-addBsa("BSA2",       "double")
-addBsa("BSA3",       "double")
-addBsa("BSA4",       "double")
+addBsa("JUNK",       "double")
+addBsa("CHRGUNC",    "double")
+addBsa("CHRGFLOAT",  "double")
+addBsa("FCSTATUS",   "double")
 
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
@@ -202,18 +201,17 @@ dbLoadRecords ("db/asynRecord.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),
 
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
-dbLoadRecords("db/EK1101.template", "DEVICE=VIOC:LI00:IM01,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01,PORT=ANALOGINPUT,SCAN=1 second")
+dbLoadRecords("db/EK1101.template", "DEVICE=VIOC:LI00:IM01:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
 
 # ****************************
 # **** Load BSA driver DB ****
 
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM01,PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
-# BSA1..BSA4 are temporary names
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM01,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA1")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM01,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA2")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM01,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA3")
-dbLoadRecords("db/bsa.db", "DEV=BCM:BSA:IM01,PORT=bsaPort,MAXLENGTH=20000,SECN=BSA4")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=FCSTATUS")
 
 # **********************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ****
