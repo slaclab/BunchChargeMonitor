@@ -33,6 +33,7 @@ DB_INSTALLS += $(YCPSWASYN)/db/waveform_stream32.template
 DB_INSTALLS += $(KEITHLEY6487)/db/asynRecord.db
 DB_INSTALLS += $(KEITHLEY6487)/db/devKeithley6487.db
 DB_INSTALLS += $(KEITHLEY6487)/db/devKeithley6487.proto
+DB_INSTALLS += $(KEITHLEY6487)/db/zeroCorrect.db
 
 # Bergoz
 DB_INSTALLS += $(BERGOZBCM_RF_ASYN)/db/asynRecord.db

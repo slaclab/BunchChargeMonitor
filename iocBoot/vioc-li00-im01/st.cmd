@@ -192,7 +192,8 @@ epicsThreadSleep(1.0)
 
 # **************************
 # **** Load Keithley db ****
-dbLoadRecords ("db/devKeithley6487.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),A=-1,NELM=1000")
+dbLoadRecords ("db/devKeithley6487.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
+dbLoadRecords ("db/zeroCorrect.db" "P=$(K6487_P),R=$(K6487_R)")
 dbLoadRecords ("db/asynRecord.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
 
