@@ -1,0 +1,191 @@
+##############################################################################
+## This file is part of 'Axi Lite Utilities'
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'Axi Lite Utilities', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file.
+##############################################################################
+#schemaversion 3.0.0
+#once AxiStreamFifo.yaml
+
+AxiStreamFifoTx: &AxiStreamFifoTx
+  class:       MMIODev
+  description: "Send (framed) AXI Stream from FIFO"
+  size:        32
+  children:
+    Status:
+      description: "Status bits (LSByte: latched)"
+      class: IntField
+      at: { offset: 0x00 }
+    TLASTOverrun:
+      description: "TLast was written before the previous frame was sent"
+      class: IntField
+      sizeBits: 1
+      lsBit:    5
+      at: { offset: 0x00 }
+    TLASTReady:
+      description: "Fifo ready for TLAST to be written"
+      class: IntField
+      sizeBits: 1
+      lsBit:    4
+      at: { offset: 0x00 }
+    Empty:
+      description: "Fifo empty"
+      class: IntField
+      sizeBits: 1
+      lsBit:    3
+      at: { offset: 0x00 }
+    Full:
+      description: "Fifo full"
+      class: IntField
+      sizeBits: 1
+      lsBit:    2
+      at: { offset: 0x00 }
+    ResetDone:
+      description: "Reset Complete"
+      class: IntField
+      sizeBits: 1
+      lsBit:    0
+      at: { offset: 0x00 }
+    IntEnable:
+      description: "Interrupt Mask (ones enable). Any bit in Status can be a source."
+      class: IntField
+      mode:  RW
+      at: { offset: 0x04 }
+    Reset:
+      class: IntField
+      description: "Reset by writing 0xa5"
+      mode:  RW
+      at: { offset: 0x08 }
+    SlotsFilled:
+      description: "Currently occupied slots"
+      class: IntField
+      mode:  RO
+      at: { offset: 0x0C }
+    TxData:
+      description: "Store data into FIFO"
+      class: IntField
+      at: { offset: 0x10 }
+    TLast: 
+      description: "Frame Boundary Marker; write number of valid bytes in last word here."
+      class: IntField
+      at: { offset: 0x14 }
+    FifoDepth: 
+      description: "Max number of items + 1"
+      class: IntField
+      mode:  RO
+      sizeBits: 24
+      at: { offset: 0x18 }
+    StreamWidth:
+      description: "Width of Axi Stream"
+      class: IntField
+      mode:  RO
+      sizeBits:  8
+      at: { offset: 0x1b }
+    TUSER:
+      description: "TUSER for next frame; must only modify prior to writing TLast"
+      class: IntField
+      sizeBits:  16
+      at: { offset: 0x1c }
+    TDEST:
+      description: "TDEST for next frame; must only modify prior to writing TLast"
+      class: IntField
+      sizeBits:  8
+      at: { offset: 0x1e }
+    TID:
+      description: "TID for next frame; must only modify prior to writing TLast"
+      class: IntField
+      sizeBits:  8
+      at: { offset: 0x1f }
+
+
+AxiStreamFifoRx: &AxiStreamFifoRx
+  class:       MMIODev
+  description: "Receive (framed) AXI Stream into FIFO"
+  size:        32
+  children:
+    Status:
+      description: "Status bits (LSByte: latched)"
+      class: IntField
+      at: { offset: 0x00 }
+    NotEmpty:
+      description: "Fifo not empty"
+      class: IntField
+      sizeBits: 1
+      lsBit:    7
+      at: { offset: 0x00 }
+    BadTKeep:
+      description: "Invalid TKEEP combination detected"
+      class: IntField
+      sizeBits: 1
+      lsBit:    6
+      at: { offset: 0x00 }
+    FrameAvail:
+      description: "New frame completed"
+      class: IntField
+      sizeBits: 1
+      lsBit:    5
+      at: { offset: 0x00 }
+    StreamStopped:
+      description: "Waiting for data to be read from FIFO"
+      class: IntField
+      sizeBits: 1
+      lsBit:    4
+      at: { offset: 0x00 }
+    Empty:
+      description: "Fifo empty"
+      class: IntField
+      sizeBits: 1
+      lsBit:    3
+      at: { offset: 0x00 }
+    Full:
+      description: "Fifo full"
+      class: IntField
+      sizeBits: 1
+      lsBit:    2
+      at: { offset: 0x00 }
+    ResetDone:
+      description: "Reset Complete"
+      class: IntField
+      sizeBits: 1
+      lsBit:    0
+      at: { offset: 0x00 }
+    IntEnable:
+      description: "Interrupt Mask (ones enable). Any bit in Status can be a source."
+      class: IntField
+      mode:  RW
+      at: { offset: 0x04 }
+    Reset:
+      class: IntField
+      description: "Reset by writing 0xa5"
+      mode:  RW
+      at: { offset: 0x08 }
+    SlotsFilled:
+      description: "Currently occupied slots"
+      class: IntField
+      mode:  RO
+      at: { offset: 0x0C }
+    RxData:
+      description: "Read data from here"
+      class: IntField
+      mode:  RO
+      at: { offset: 0x10 }
+    FrameSize: 
+      description: "Number of bytes in frame"
+      class: IntField
+      mode:  RO
+      at: { offset: 0x14 }
+    FifoDepth: 
+      description: "Max number of items + 1"
+      class: IntField
+      mode:  RO
+      sizeBits: 24
+      at: { offset: 0x18 }
+    StreamWidth:
+      description: "Width of Axi Stream"
+      class: IntField
+      mode:  RO
+      sizeBits:  8
+      at: { offset: 0x1b }

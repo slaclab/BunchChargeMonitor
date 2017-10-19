@@ -32,7 +32,7 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 epicsEnvSet("CPSW_PORT","Atca6")
 
 # Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project_bsa.yaml/000TopLevel.yaml")
+epicsEnvSet("YAML_FILE", "yaml/000TopLevel.yaml")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.104")
@@ -58,10 +58,10 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 # ***********************************************************
 # **** Environment variables for Faraday Cup on Keithley ****
 
-epicsEnvSet("K6487_PORT","L1")
-epicsEnvSet("K6487_P","$(AMC0_PREFIX):")
-epicsEnvSet("K6487_R","")
-epicsEnvSet("K6487_ADDRESS","$(K6487_ADDRESS=ts-b084-nw01:2110)")
+epicsEnvSet("K6482_PORT","L1")
+epicsEnvSet("K6482_P","$(AMC0_PREFIX):")
+epicsEnvSet("K6482_R","")
+epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-b084-nw01:2110)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 
@@ -137,7 +137,7 @@ YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUT
 # **** Driver setup for Keithley ****
 
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
-drvAsynIPPortConfigure("$(K6487_PORT)","$(K6487_ADDRESS)",0,0,0)
+drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
 
 
 # **********************************************************
@@ -165,8 +165,8 @@ ecAsynInit("/tmp/sock1", 1000000)
 # *********************************
 # **** Asyn Masks for Keithley ****
 
-#asynSetTraceIOMask("$(K6487_PORT)",-1,0x2)
-#asynSetTraceMask("$(K6487_PORT)",-1,0x9)
+#asynSetTraceIOMask("$(K6482_PORT)",-1,0x2)
+#asynSetTraceMask("$(K6482_PORT)",-1,0x9)
 
 
 # ===========================================
@@ -192,9 +192,9 @@ epicsThreadSleep(1.0)
 
 # **************************
 # **** Load Keithley db ****
-dbLoadRecords ("db/devKeithley6487.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
-dbLoadRecords ("db/zeroCorrect.db" "P=$(K6487_P),R=$(K6487_R)")
-dbLoadRecords ("db/asynRecord.db" "P=$(K6487_P),R=$(K6487_R),PORT=$(K6487_PORT),ADDR=-1,OMAX=0,IMAX=0")
+dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
+dbLoadRecords ("db/zeroCorrect.db" "P=$(K6482_P),R=$(K6482_R)")
+dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
 
 # *****************************************************

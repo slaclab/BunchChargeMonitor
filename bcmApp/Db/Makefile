@@ -30,10 +30,10 @@ DB_INSTALLS += $(YCPSWASYN)/db/waveform_stream16.template
 DB_INSTALLS += $(YCPSWASYN)/db/waveform_stream32.template
 
 # Keithley
-DB_INSTALLS += $(KEITHLEY6487)/db/asynRecord.db
-DB_INSTALLS += $(KEITHLEY6487)/db/devKeithley6487.db
-DB_INSTALLS += $(KEITHLEY6487)/db/devKeithley6487.proto
-DB_INSTALLS += $(KEITHLEY6487)/db/zeroCorrect.db
+DB_INSTALLS += $(KEITHLEY6482)/db/asynRecord.db
+DB_INSTALLS += $(KEITHLEY6482)/db/devKeithley6482.db
+DB_INSTALLS += $(KEITHLEY6482)/db/devKeithley6482.proto
+DB_INSTALLS += $(KEITHLEY6482)/db/zeroCorrect.db
 
 # Bergoz
 DB_INSTALLS += $(BERGOZBCM_RF_ASYN)/db/asynRecord.db

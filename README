@@ -34,7 +34,7 @@ USB --> Bergoz
 RS232 --> Keithley
 
 1. Before using this application, for all IOCs inside iocBoot directory, set correct values for parameters that are available in st.cmd files:
-- K6487_ADDRESS: Keithley address in digi.
+- K6482_ADDRESS: Keithley address in digi.
 - IP of the ATCA board, that is a parameter of the function YCPSWASYNConfig.
 - BERGOZ_TTY: serial port of the Bergoz equipment.
 - Optional: uncomment functions asynSetTraceIOMask and asynSetTraceMask for diagnostic messages when communicating to equipment.

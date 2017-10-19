@@ -8,7 +8,7 @@
 ## the terms contained in the LICENSE.txt file.
 ##############################################################################
 #schemaversion 3.0.0
-#once
+#once DspPreprocConfig.yaml
 
 DspPreprocConfig: &DspPreprocConfig
   description: "Sysgen preprocessing configuration and status registers"
@@ -109,6 +109,14 @@ DspPreprocConfig: &DspPreprocConfig
       lsBit: 2
       mode: RW
       description: "Indicate that it is ready for DSP processing affter all configuration id completed"
+    #########################################################
+    TimeStampLSB:
+      class: IntField
+      at:
+        offset: 0x0024
+      sizeBits: 32
+      mode: RO
+      description: "Captured Timing by result ready (LSW)"
     #########################################################
     TriggerRate:
       class: IntField

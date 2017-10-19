@@ -10,12 +10,12 @@ include $(TOP)/configure/CONFIG
 #======================================================
 
 # Support needed for ethercat
-USR_INCLUDES += $(ZLIB_INCLUDE)
-USR_INCLUDES += $(XZ_INCLUDE)
-USR_INCLUDES += $(LIBXML2_INCLUDE)
+USR_INCLUDES += -I$(ZLIB_INCLUDE)
+USR_INCLUDES += -I$(XZ_INCLUDE)
+USR_INCLUDES += -I$(LIBXML2_INCLUDE)
 
 # Support Perl C regular expression library
-USR_INCLUDES += $(PCRE_INCLUDE)
+USR_INCLUDES += -I$(PCRE_INCLUDE)
 
 # Support for CPSW
 USR_INCLUDES = -I$(BOOST_INCLUDE) -I$(CPSW_FRAMEWORK_INCLUDE) -I$(YAML_INCLUDE)
@@ -76,7 +76,7 @@ bcm_DBD += drvAsynSerialPort.dbd
 bcm_DBD += stream.dbd
 bcm_DBD += caPutLog.dbd
 bcm_DBD += $(CEXP_DBDS)
-#bcm_DBD += Keithley6487Test.dbd
+#bcm_DBD += Keithley6482Test.dbd
 
 bcm_DBD += bcmSupport.dbd
 

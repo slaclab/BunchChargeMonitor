@@ -1,18 +1,29 @@
-tag build-AmcCarrierBcm-0x00000001-20170330142430-leosap
-Tagger: “Leonid <“leosap@slac.stanford.edu”>
-Date:   Thu Mar 30 16:29:03 2017 -0700
+tag build-AmcCarrierBcm-0x00000005-20170727132722-leosap
+Tagger: Leonid Sapozhnikov <leosap@slac.stanford.edu>
+Date:   Thu Jul 27 15:17:14 2017 -0700
 
 PROJECT: AmcCarrierBcm
 
-FW_VERSION: 0x00000001
+FW_VERSION: 0x00000005
 
-BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, x86_64, Built Thu Mar 30 14:24:30 PDT 2017 by leosap
+BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, x86_64, Built Thu Jul 27 13:27:22 PDT 2017 by leosap
 
-commit 8c64bb96e6603efbfdb92ca24b7ff949204a058b
-Author: “Leonid <“leosap@slac.stanford.edu”>
-Date:   Thu Mar 30 10:08:55 2017 -0700
+commit c6f89c5e4eda3b7895235015ae0c4d77a66f975f
+Author: Leonid Sapozhnikov <leosap@slac.stanford.edu>
+Date:   Thu Jul 27 12:47:25 2017 -0700
 
-    Add the latest timing constrains to BSA , bsa-variance
+    Fixing BSA summary error contribution
 
-Submodule firmware/submodules/amc-carrier-core 34fdb52..c1fd44d:
-  > Update AppTop.xdc
+diff --git a/firmware/common/DspCoreLib/SysGenCore/rtl/ErrorCaptureBCM.vhd b/firmware/common/DspCoreLib/SysGenCore/rtl/ErrorCaptureBCM.vhd
+index fdd1252..306cd3e 100644
+--- a/firmware/common/DspCoreLib/SysGenCore/rtl/ErrorCaptureBCM.vhd
++++ b/firmware/common/DspCoreLib/SysGenCore/rtl/ErrorCaptureBCM.vhd
+@@ -148,7 +148,7 @@ begin
+  -- Otput err generation
+ 	  if (adcValidOut(0) = '1') then -- only channel 0
+         v.detError.err := '0';
+-	  elsif (r.detError.status(13 downto 0) /= "00000000000000") then --
++	  elsif (r.detError.status(5 downto 0) /= "000000" OR r.detError.status(11 downto 8) /= "0000") then --
+         v.detError.err := '1';
+       end if;
+ 

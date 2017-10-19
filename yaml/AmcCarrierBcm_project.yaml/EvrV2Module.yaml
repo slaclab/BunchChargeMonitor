@@ -8,9 +8,9 @@
 ## the terms contained in the LICENSE.txt file.
 ##############################################################################
 
-Device: &EvrV2Core
-  name: EvrV2Core
-  description: LCLS-II Timing Receiver module
+Device: &EvrV2Module
+  name: EvrV2Module
+  description: LCLS-II Timing Trigger module
   size: 0x800
   #########
   IntField:
