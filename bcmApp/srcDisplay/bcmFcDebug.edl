@@ -180,8 +180,8 @@ displayFileName {
   1 "keithleyCalib.edl"
 }
 menuLabel {
-  0 "Keithley 6487: Remote Control"
-  1 "Keithley 6487: Front Panel Calibration"
+  0 "Keithley 6482: Remote Control"
+  1 "Keithley 6482: Front Panel Calibration"
 }
 symbols {
   0 "P=$(prefix),R=:"

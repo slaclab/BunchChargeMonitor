@@ -76,7 +76,7 @@ bcm_DBD += drvAsynSerialPort.dbd
 bcm_DBD += stream.dbd
 bcm_DBD += caPutLog.dbd
 bcm_DBD += $(CEXP_DBDS)
-#bcm_DBD += Keithley6487Test.dbd
+#bcm_DBD += Keithley6482Test.dbd
 
 bcm_DBD += bcmSupport.dbd
 

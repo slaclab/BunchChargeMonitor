@@ -8,7 +8,7 @@
 ## the terms contained in the LICENSE.txt file.
 ##############################################################################
 #schemaversion 3.0.0
-#once
+#once CmnConfig.yaml
 
 CmnConfig: &CmnConfig
   description: "Common configuration"
@@ -34,4 +34,92 @@ CmnConfig: &CmnConfig
       sizeBits: 1
       mode: RW
       description: "1 - FC, 0 - Bergoz Toroid"
+    #########################################################
+    Eic:
+      class: IntField
+      at:
+        offset: 0x0008
+      sizeBits: 1
+      mode: RW
+      description: "0 - normal operation, 1 - EIC operation"
+    #########################################################
+    SelBpm:
+      class: IntField
+      at:
+        offset: 0x000C
+      sizeBits: 1
+      mode: RW
+      description: "0 - BPM 0 in incomming stream, 1 - BPM 2 in incomming stream"
+    #########################################################
+    TreshTmit:
+      class: IntField
+      at:
+        offset: 0x0010
+      sizeBits: 32
+      mode: RW
+      description: "To analyze TMIT for low value to report to BSA, if lower then reported as Major Error"
+    #########################################################
+    TmitTimeUp:
+      class: IntField
+      at:
+        offset: 0x0014
+      sizeBits: 32
+      mode: RO
+      description: "Received TMIT Time Stamp Upper Part"
+    #########################################################
+    TmitTimeLow:
+      class: IntField
+      at:
+        offset: 0x0018
+      sizeBits: 32
+      mode: RO
+      description: "Received TMIT Time Stamp Lower Part"
+    #########################################################
+    TmitStatus0:
+      class: IntField
+      at:
+        offset: 0x001C
+      sizeBits: 32
+      mode: RO
+      description: "Status from BPM 0"
+    #########################################################
+    TmitStatus1:
+      class: IntField
+      at:
+        offset: 0x0020
+      sizeBits: 32
+      mode: RO
+      description: "Status from BPM 1"
+    #########################################################
+    TmitTmit0:
+      class: IntField
+      at:
+        offset: 0x0024
+      sizeBits: 32
+      mode: RO
+      description: "TMIT from BPM 0"
+    #########################################################
+    TmitTmit1:
+      class: IntField
+      at:
+        offset: 0x0028
+      sizeBits: 32
+      mode: RO
+      description: "TMIT from BPM 1"
+    #########################################################
+    StatusOfBSA0:
+      class: IntField
+      at:
+        offset: 0x0030
+      sizeBits: 32
+      mode: RO
+      description: "Reflect BSA status health 0 "
+    #########################################################
+    StatusOfBSA1:
+      class: IntField
+      at:
+        offset: 0x0034
+      sizeBits: 32
+      mode: RO
+      description: "Reflect BSA status health 1 "
     #########################################################

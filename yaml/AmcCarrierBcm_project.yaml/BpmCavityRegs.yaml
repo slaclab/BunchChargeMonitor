@@ -1,0 +1,272 @@
+##############################################################################
+## This file is part of 'LCLS2 BPM'
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'LCLS2 BPM', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file.
+##############################################################################
+#schemaversion 3.0.0
+#once          BpmCavityRegs.yaml
+#include       BpmCommonRegs.yaml
+
+DFTChannel: &DFTChannel
+  class:    MMIODev
+  size:     32
+  description: "DFT Coefficients and Weights"
+  children:
+    Coeff2C2:
+      class:       IntField
+      description: "2*Cos(2*PI*2*k/N)*2^16 for desired DFT component k"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x00 }
+    Coeff2C1:
+      class:       IntField
+      description: "2*Cos(2*PI*k/N)*2^16 for desired DFT component k"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x04 }
+    Coeff2S1:
+      class:       IntField
+      description: "2*Sin(2*PI*k/N)*2^16 for desired DFT component k"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x08 }
+    ReH_U:
+      class:       IntField
+      description: "Weight factor for this DFT component of U (real-part; norm. to 2^-17)"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x10 }
+    ImH_U:
+      class:       IntField
+      description: "Weight factor for this DFT component of U (imag-part; norm. to 2^-17)"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x14 }
+    ReH_V:
+      class:       IntField
+      description: "Weight factor for this DFT component of V (real-part; norm. to 2^-17)"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x18 }
+    ImH_V:
+      class:       IntField
+      description: "Weight factor for this DFT component of V (imag-part; norm. to 2^-17)"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x1C }
+
+BpmCavityRegs: &BpmCavityRegs
+  class:       MMIODev
+  size:        0x1000
+  description: "Cavity BPM control and status"
+  children:
+    <<: *BpmCommonRegs
+    DFTScaleR:
+      class:       IntField
+      description: "Scale for Ref. DFT Output (norm. to 2^-16)"
+      sizeBits:    18
+      isSigned:    true
+      at:          { offset:  0x804 }
+    DFTScaleU:
+      class:       IntField
+      description: "Scale for U DFT Output (norm. to 2^-16)"
+      sizeBits:    18
+      isSigned:    true
+      at:          { offset:  0x808 }
+    DFTScaleV:
+      class:       IntField
+      description: "Scale for V DFT Output (norm. to 2^-16)"
+      sizeBits:    18
+      isSigned:    true
+      at:          { offset:  0x80C }
+    StatusClear:
+      class:       IntField
+      description: "Reset latched status bits while asserted"
+      sizeBits:    1
+      lsBit:       0
+      at:          { offset:  0x810 }
+    StatusRaw:
+      class:       IntField
+      description: "All status bits"
+      sizeBits:    32
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusRawLatched:
+      class:       IntField
+      description: "All status bits (latched)"
+      sizeBits:    32
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusInputUInvalid:
+      class:       IntField
+      description: "Invalid samples on U channel detected"
+      sizeBits:    1
+      lsBit:       0
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusInputVInvalid:
+      class:       IntField
+      description: "Invalid samples on V channel detected"
+      sizeBits:    1
+      lsBit:       1
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusInputRInvalid:
+      class:       IntField
+      description: "Invalid samples on R channel detected"
+      sizeBits:    1
+      lsBit:       2
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusDFTOvflU:
+      class:       IntField
+      description: "Overflow in U-DFT detected (summary)"
+      sizeBits:    1
+      lsBit:       3
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusDFTOvflV:
+      class:       IntField
+      description: "Overflow in V-DFT detected (summary)"
+      sizeBits:    1
+      lsBit:       4
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusDFTOvflR:
+      class:       IntField
+      description: "Overflow in R-DFT detected (summary)"
+      sizeBits:    1
+      lsBit:       5
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusDivOvflReU:
+      class:       IntField
+      description: "Overflow of division (Re{U}) detected"
+      sizeBits:    1
+      lsBit:       6
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusDivOvflImU:
+      class:       IntField
+      description: "Overflow of division (Im{U}) detected"
+      sizeBits:    1
+      lsBit:       7
+      mode:        RO
+      at:          { offset:  0x820 }
+    StatusDivOvflReV:
+      class:       IntField
+      description: "Overflow of division (Re{V}) detected"
+      sizeBits:    1
+      lsBit:       0
+      mode:        RO
+      at:          { offset:  0x821 }
+    StatusDivOvflImV:
+      class:       IntField
+      description: "Overflow of division (Im{V}) detected"
+      sizeBits:    1
+      lsBit:       1
+      mode:        RO
+      at:          { offset:  0x821 }
+    StatusDFTOvfl:
+      class:       IntField
+      description: "Individual overflow bits of all DFT channels (R5,V5,U5,R4,V4,U4,...R0,V0,U0)"
+      sizeBits:    18
+      lsBit:       3
+      mode:        RO
+      at:          { offset:  0x821 }
+    StatusLatchedInputUInvalid:
+      class:       IntField
+      description: "Invalid samples on U channel detected"
+      sizeBits:    1
+      lsBit:       0
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedInputVInvalid:
+      class:       IntField
+      description: "Invalid samples on V channel detected"
+      sizeBits:    1
+      lsBit:       1
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedInputRInvalid:
+      class:       IntField
+      description: "Invalid samples on R channel detected"
+      sizeBits:    1
+      lsBit:       2
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedDFTOvflU:
+      class:       IntField
+      description: "Overflow in U-DFT detected (summary)"
+      sizeBits:    1
+      lsBit:       3
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedDFTOvflV:
+      class:       IntField
+      description: "Overflow in V-DFT detected (summary)"
+      sizeBits:    1
+      lsBit:       4
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedDFTOvflR:
+      class:       IntField
+      description: "Overflow in R-DFT detected (summary)"
+      sizeBits:    1
+      lsBit:       5
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedDivOvflReU:
+      class:       IntField
+      description: "Overflow of division (Re{U}) detected"
+      sizeBits:    1
+      lsBit:       6
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedDivOvflImU:
+      class:       IntField
+      description: "Overflow of division (Im{U}) detected"
+      sizeBits:    1
+      lsBit:       7
+      mode:        RO
+      at:          { offset:  0x824 }
+    StatusLatchedDivOvflReV:
+      class:       IntField
+      description: "Overflow of division (Re{V}) detected"
+      sizeBits:    1
+      lsBit:       0
+      mode:        RO
+      at:          { offset:  0x825 }
+    StatusLatchedDivOvflImV:
+      class:       IntField
+      description: "Overflow of division (Im{V}) detected"
+      sizeBits:    1
+      lsBit:       1
+      mode:        RO
+      at:          { offset:  0x825 }
+    StatusLatchedDFTOvfl:
+      class:       IntField
+      description: "Individual overflow bits of all DFT channels (R5,V5,U5,R4,V4,U4,...R0,V0,U0)"
+      sizeBits:    18
+      lsBit:       3
+      mode:        RO
+      at:          { offset:  0x825 }
+    ComplexU:
+      class:       IntField
+      description: "Atomic access to complex U reading; Re{U} << 16 | Im{U}"
+      sizeBits:    32
+      mode:        RO
+      at:          { offset:  0x828 }
+    ComplexV:
+      class:       IntField
+      description: "Atomic access to complex V reading; Re{V} << 16 | Im{V}"
+      sizeBits:    32
+      mode:        RO
+      at:          { offset:  0x82C }
+    DFTChannels:
+      <<: *DFTChannel
+      at:          { offset:  0x840, nelms: 6 }

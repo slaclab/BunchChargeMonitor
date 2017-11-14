@@ -8,7 +8,7 @@
 ## the terms contained in the LICENSE.txt file.
 ##############################################################################
 #schemaversion 3.0.0
-#once
+#once DspCoreConfig.yaml
 
 DspCoreConfig: &DspCoreConfig
   description: "Sysgen configuration registers"
@@ -126,4 +126,12 @@ DspCoreConfig: &DspCoreConfig
       mode: RW
       description: "Floating -  Temperature of Amp in K at calibration, like 23C + 273.15, or like 0x43941333)"
     #########################################################
-
+    TmitCoef:
+      class: IntField
+      at:
+        offset: 0x0030
+      encoding: IEEE_754
+      sizeBits: 32
+      mode: RW
+      description: "Floating -  Tmit scaling coeficient"
+    #########################################################

@@ -19,7 +19,7 @@ ctlBgColor1 index 3
 ctlBgColor2 index 5
 topShadowColor index 1
 botShadowColor index 11
-title "Keithley 6487: Front Panel Calibration"
+title "Keithley 6482: Front Panel Calibration"
 showGrid
 snapToGrid
 gridSize 4
@@ -361,7 +361,7 @@ fgColor index 14
 bgColor index 3
 useDisplayBg
 value {
-  "The Keithley 6487 has a zero correct feature to algebraically subtract the voltage offset"
+  "The Keithley 6482 has a zero correct feature to algebraically subtract the voltage offset"
   "term from the measurement."
   "Perform the following steps to algebraically zero correct the measurement:"
 }
@@ -421,7 +421,7 @@ fgColor index 14
 bgColor index 3
 useDisplayBg
 value {
-  "NOTE: The Keithley 6487 does not have to be re-zero corrected as long as"
+  "NOTE: The Keithley 6482 does not have to be re-zero corrected as long as"
   "the ambient temperature remains stable."
 }
 endObjectProperties
@@ -441,7 +441,7 @@ fgColor index 14
 bgColor index 3
 useDisplayBg
 value {
-  "NOTE: The Keithley 6487 will remain zero corrected even if it is upgranged."
+  "NOTE: The Keithley 6482 will remain zero corrected even if it is upgranged."
   "If downranged, re-zero the instrument."
 }
 endObjectProperties

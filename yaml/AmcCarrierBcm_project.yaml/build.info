@@ -1,18 +1,18 @@
-tag build-AmcCarrierBcm-0x00000001-20170330142430-leosap
-Tagger: “Leonid <“leosap@slac.stanford.edu”>
-Date:   Thu Mar 30 16:29:03 2017 -0700
+tag build-AmcCarrierBcm-0x00000005-20171024151552-leosap
+Tagger: Leonid Sapozhnikov <leosap@slac.stanford.edu>
+Date:   Tue Oct 24 19:12:06 2017 -0700
 
 PROJECT: AmcCarrierBcm
 
-FW_VERSION: 0x00000001
+FW_VERSION: 0x00000005
 
-BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, x86_64, Built Thu Mar 30 14:24:30 PDT 2017 by leosap
+BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, rdsrv222 (x86_64), Built Tue Oct 24 15:15:52 PDT 2017 by leosap
 
-commit 8c64bb96e6603efbfdb92ca24b7ff949204a058b
-Author: “Leonid <“leosap@slac.stanford.edu”>
-Date:   Thu Mar 30 10:08:55 2017 -0700
+commit 8e9541ac1815fbfd369998091f28a10480479c3f
+Author: Leonid Sapozhnikov <leosap@slac.stanford.edu>
+Date:   Tue Oct 24 15:14:29 2017 -0700
 
-    Add the latest timing constrains to BSA , bsa-variance
+    Update to latest distribution of surf
 
-Submodule firmware/submodules/amc-carrier-core 34fdb52..c1fd44d:
-  > Update AppTop.xdc
+Submodule firmware/submodules/surf 8c4aa5d..fb9928e:
+  > Merge pull request #101 from slaclab/SlvArraytoAxiLite-update

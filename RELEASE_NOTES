@@ -10,6 +10,11 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R1.0.1	      Carolina Bianchini - 11/08/2017
+	      -updated yaml file for EIC
+	      -moved vioc to sioc and updated st.cmd to handle
+		temperature monitoring from Ethercat and IP address readback.
+
 R1.0.0        Marcio Donadio - 03/16/2017
               - Now using ycpswasy R1.1.branch
               - RELEASE_SITE was not supposed to be in the repo
