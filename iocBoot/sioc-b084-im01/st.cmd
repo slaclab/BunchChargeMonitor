@@ -42,9 +42,9 @@ epicsEnvSet("FPGA_IP", "10.0.1.105")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-#epicsEnvSet("PREFIX","LI00:IM02")
+#epicsEnvSet("PREFIX","B084:IM01")
 
-epicsEnvSet("AREA","LI00")
+epicsEnvSet("AREA","B084")
 
 # BCM-TORO in crate 1, slot 5, AMC 0
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):215")
@@ -74,7 +74,7 @@ epicsEnvSet("EOFF","$(EOFF=273.15)")
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"VIOC:$(AREA):IM02")
+epicsEnvSet(IOC_NAME,"VIOC:$(AREA):IM01")
 
 
 cd ${TOP}

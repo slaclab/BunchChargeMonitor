@@ -42,9 +42,9 @@ epicsEnvSet("FPGA_IP", "10.0.1.106")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-#epicsEnvSet("PREFIX","LI00:IM01")
+#epicsEnvSet("PREFIX","B084:FC01")
 
-epicsEnvSet("AREA","LI00")
+epicsEnvSet("AREA","B084")
 
 # BCM-FC in crate 1, slot 4, AMC 0
 epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):214")
@@ -69,15 +69,15 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 # **** Environment variables for Temperature Chassis on Ethercat ****
 
 # System Location:
-epicsEnvSet(FAC,"SYS0")
-epicsEnvSet("LOCA","LI00")
-epicsEnvSet("TEMP_IOC_NAME","VIOC:${LOCA}:IM01")
+epicsEnvSet(FAC,"SYS2")
+epicsEnvSet("LOCA","B084")
+epicsEnvSet("TEMP_IOC_NAME","VIOC:${LOCA}:FC01")
 
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"VIOC:LI00:IM01")
+epicsEnvSet(IOC_NAME,"VIOC:B084:FC01")
 
 
 cd ${TOP}
