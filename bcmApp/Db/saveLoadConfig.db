@@ -77,3 +77,22 @@ record(mbbi, "$(P):SaveCfgStat") {
   field(VAL,  "0")
   field(PINI, "YES")
 }
+
+record(stringout, "$(P):SaveCfgRoot") {
+  field(DESC, "Save configuration root path")
+  field(DTYP, "asynOctetWrite")
+  field(SCAN, "Passive")
+  field(OUT, "@asyn($(PORT),6)CONFIG_SAVE_ROOT")
+  field(VAL, "$(SAVE_ROOT)")
+  field(PINI, "YES")
+}
+
+record(stringout, "$(P):LoadCfgRoot") {
+  field(DESC, "Load configuration root path")
+  field(DTYP, "asynOctetWrite")
+  field(SCAN, "Passive")
+  field(OUT, "@asyn($(PORT),6)CONFIG_LOAD_ROOT")
+  field(VAL, "$(LOAD_ROOT)")
+  field(PINI, "YES")
+}
+
