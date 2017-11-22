@@ -6,7 +6,7 @@
             - FpgaReloadAddress: !<value> 0x00000000
             - FpgaReload: !<value> 0x0
             - FpgaReloadHalt: !<value> 0x0
-            - ScratchPad: !<value> 0xFC067333
+            - ScratchPad: !<value> 0x00000000
         - AmcCarrierBsa:
             - BsaBufferControl:
                 - BsaBuffers:
