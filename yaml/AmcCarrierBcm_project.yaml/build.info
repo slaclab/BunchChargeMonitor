@@ -1,29 +1,29 @@
-tag build-AmcCarrierBcm-0x00000005-20171108230527-leosap
+tag build-AmcCarrierBcm-0x00000005-20171127181239-leosap
 Tagger: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Thu Nov 9 00:51:10 2017 -0800
+Date:   Mon Nov 27 20:04:10 2017 -0800
 
 PROJECT: AmcCarrierBcm
 
 FW_VERSION: 0x00000005
 
-BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, rdsrv222 (x86_64), Built Wed Nov  8 23:05:27 PST 2017 by leosap
+BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, rdsrv222 (x86_64), Built Mon Nov 27 18:12:39 PST 2017 by leosap
 
-commit 9f8ea4b9128e5bdab8436b8a708445fcb3279be1
+commit e00d279430ce78f2d2809908bccce4e1389c2fc0
 Author: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Wed Nov 8 23:02:40 2017 -0800
+Date:   Mon Nov 27 18:12:35 2017 -0800
 
-    Update to amc-carrier-core v2.0.4-4 to deal with MPS bug
+    Update to modification related to BPM additional BP bits to have beteer TMIT status reporting
 
-Submodule firmware/submodules/amc-carrier-core a33c656..e53538c:
-  > Merge commit 'a33c6562d81732b7b411363c397e1fc30c1afc0b' into release-lcls2
-  > Merge commit '8af8150808bf2a9b0f58cfe161a0b70ceb950304' into release-lcls2
-  > Merge commit 'e778099e77bd33f03af2b5b712a4e1e1f1dcc852' into release-lcls2
-  > Temp test of Ryan update
-Submodule firmware/submodules/lcls-bpm-core 4c44115..e22ae4b:
-  > Merge commit '4c44115e0e186fdbfeb86e4145b73d1f24176f4f'
-  > Adding BPM modifications in distribution
-  > Merge commit '1548f8c10475f33ac32ed03936226dc62d708b07'
-  > Merge commit 'f59e1d7fccf72758dc1ca7edacced17d575e3fda'
-  > update to latest releases
-Submodule firmware/submodules/ruckus 45a4321..8e264fe:
-  > Merge pull request #41 from slaclab/dev
+diff --git a/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd b/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd
+index c6574c7..1c452dd 100644
+--- a/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd
++++ b/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd
+@@ -33,7 +33,7 @@ use work.BpmPkg.all;
+ package AdcIntProcPkg is
+ 
+   -- Due to BPM poor definition of BP interface. Need to be on BPM side, but there are millions of excuses.
+-   constant BPM_XSTAT_MPSIGNORE_TMIT : Slv32 := (  BPM_XSTAT_MPSIGNORE_TMIT_SHFT => '1', others => '0' );
++   constant BPM_XSTAT_MPSIGNORE_TMIT : slv(31 downto 0) := (  BPM_XSTAT_MPSIGNORE_TMIT_SHFT => '1', others => '0' );
+   
+    constant NUM_BCM_APP_C : natural := 2;
+    constant WAIT_TMIT_THRES_G  : integer := 7;

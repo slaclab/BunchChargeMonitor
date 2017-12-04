@@ -1,10 +1,9 @@
-#!../../bin/linuxRT-x86_64/bcm
+#!iocSpecificRelease/bin/linuxRT-x86_64/bcm
 
 #########################################
-# This IOC is related to the Toroid
+# This IOC is related to the Faraday Cup
 # for the Bunch Charge Monitor.
 #########################################
-
 
 ## You may have to change bcm to something else
 ## everywhere it appears in this file
@@ -27,54 +26,58 @@
 # The default maximum size for a channel access array is
 # 16K bytes.
 # Uncomment and set appropriate size for your application:
+# Port name
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
-epicsEnvSet("CPSW_PORT","Atca7")
+epicsEnvSet("CPSW_PORT","Atca6")
 
 # Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project_bsa.yaml/000TopLevel.yaml")
+epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 
 # FPGA IP address
-epicsEnvSet("FPGA_IP", "10.0.1.105")
+epicsEnvSet("FPGA_IP", "10.0.1.106")
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-#epicsEnvSet("PREFIX","B084:IM01")
+#epicsEnvSet("PREFIX","B084:FC01")
 
 epicsEnvSet("AREA","B084")
 
-# BCM-TORO in crate 1, slot 5, AMC 0
-epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):215")
+# BCM-FC in crate 1, slot 4, AMC 0
+epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):214")
 
-# AMCC in crate 1, slot 5
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):15")
+# AMCC in crate 1, slot 4
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):14")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
+# ***********************************************************
+# **** Environment variables for Faraday Cup on Keithley ****
 
-# *****************************************************
-# **** Environment variables for Toroid on  Bergoz ****
-
-epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
-epicsEnvSet("BERGOZ0_R","")
-epicsEnvSet("BERGOZ0_PORT","L0")
-epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","40")
+epicsEnvSet("K6482_PORT","L1")
+epicsEnvSet("K6482_P","$(AMC0_PREFIX):")
+epicsEnvSet("K6482_R","")
+epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-b084-nw01:2110)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
-# Temperature xfer: ESLO, EOFF
-epicsEnvSet("ESLO","$(ESLO=0.01)")
-epicsEnvSet("EOFF","$(EOFF=273.15)")
+
+# *******************************************************************
+# **** Environment variables for Temperature Chassis on Ethercat ****
+
+# System Location:
+epicsEnvSet(FAC,"SYS2")
+epicsEnvSet("LOCA","B084")
+epicsEnvSet("TEMP_IOC_NAME","VIOC:${LOCA}:FC01")
 
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"VIOC:$(AREA):IM01")
+epicsEnvSet(IOC_NAME,"VIOC:B084:FC01")
 
 
 cd ${TOP}
@@ -101,17 +104,17 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
+cpswLoadYamlFile("${YAML_FILE}","NetIODev","","${FPGA_IP}")
 
 # ====================================
 # Setup BSA Driver
 # ====================================
 # add BSA PVs
 addBsa("CHRG",       "double")
+addBsa("JUNK",       "double")
 addBsa("CHRGUNC",    "double")
-addBsa("RAWSUM",     "double")
 addBsa("CHRGFLOAT",  "double")
-addBsa("TOROSTATUS", "double")
+addBsa("FCSTATUS",   "double")
 
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
@@ -130,12 +133,23 @@ bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcC
 YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
 
 
-# *********************************
-# **** Driver setup for Bergoz ****
+# ***********************************
+# **** Driver setup for Keithley ****
 
-# Set up ASYN ports
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
-drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
+drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
+
+
+# **********************************************************
+# **** Driver setup for Temperature Chassis on Ethercat ****
+
+# Init EtherCAT: To support Real Time fieldbus
+# EtherCAT AsynDriver must be initialized in the IOC startup script before iocInit
+# ecAsynInit("<unix_socket>", <max_message>)
+# unix_socket = path to the unix socket created by the scanner
+# max_message = maximum size of messages between scanner and ioc
+
+##################ecAsynInit("/tmp/sock1", 1000000)
 
 
 # ===========================================
@@ -148,11 +162,11 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 #asynSetTraceMask(${PORT},, -1, 9)
 
 
-# *******************************
-# **** Asyn Masks for Bergoz ****
+# *********************************
+# **** Asyn Masks for Keithley ****
 
-#asynSetTraceIOMask("$(BERGOZ0_PORT)",-1,0x2)
-#asynSetTraceMask("$(BERGOZ0_PORT)",-1,0x9)
+#asynSetTraceIOMask("$(K6482_PORT)",-1,0x2)
+#asynSetTraceMask("$(K6482_PORT)",-1,0x9)
 
 
 # ===========================================
@@ -163,32 +177,45 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToroTestLi00-11-28-17.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsFC11-22-17_test.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
+# ...only one BCM-FC per board is anticipated
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+
+# Parse IP address
+dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
+dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePortSwap, DEST=SrvRemotePort")
 
 # Automatic initialization
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
+# Allow time for Keithley driver to connect
+epicsThreadSleep(1.0)
 
-# ************************
-# **** Load Bergoz db ****
+# **************************
+# **** Load Keithley db ****
+dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
+dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
-dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_PORT),A=-1")
-dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADDR=-1,OMAX=0,IMAX=0")
-dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF)")
+
+# *****************************************************
+# **** Load db for Temperature Chassis on Ethercat ****
+
+# Load the database templates for the EtherCAT components
+# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
+dbLoadRecords("db/EK1101.template", "DEVICE=VIOC:LI00:IM01:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
 
 # ****************************
 # **** Load BSA driver DB ****
 
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=RAWSUM")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=TOROSTATUS")
-
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=FCSTATUS")
 
 # **********************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ****
@@ -272,12 +299,7 @@ create_monitor_set("info_settings.req" , 30 )
 
 cd ${TOP}
 
-# *********************
-# **** Bergoz dbpf ****
-
-# Save the TTY device name
-dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
-
-# Save the expected BERGOZ serial number
-dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
-
+# ************************************************************
+# **** System command for Temperature Chassis on Ethercat ****
+# Setup Real-time priorities after iocInit for driver threads
+system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")

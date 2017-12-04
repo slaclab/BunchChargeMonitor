@@ -1,4 +1,4 @@
-#!../../bin/linuxRT-x86_64/bcm
+#!iocSpecificRelease/bin/linuxRT-x86_64/bcm
 
 #########################################
 # This IOC is related to the Toroid
@@ -32,25 +32,25 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 epicsEnvSet("CPSW_PORT","Atca7")
 
 # Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project_bsa.yaml/000TopLevel.yaml")
+epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 
 # FPGA IP address
-epicsEnvSet("FPGA_IP", "10.0.1.105")
+epicsEnvSet("FPGA_IP", "10.0.1.107")
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-#epicsEnvSet("PREFIX","B084:IM01")
+#epicsEnvSet("PREFIX","GUNB:IM01")
 
-epicsEnvSet("AREA","B084")
+epicsEnvSet("AREA","GUNB")
 
-# BCM-TORO in crate 1, slot 5, AMC 0
-epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):215")
+# BCM-TORO in crate 1, slot 7, AMC 0
+epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):217")
 
-# AMCC in crate 1, slot 5
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):15")
+# AMCC in crate 1, slot 7
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):17")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
@@ -63,7 +63,7 @@ epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_PORT","L0")
 epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","40")
+epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","42")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # Temperature xfer: ESLO, EOFF
@@ -163,7 +163,7 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToroTestLi00-11-28-17.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToroTestLi00-11-28-17.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")

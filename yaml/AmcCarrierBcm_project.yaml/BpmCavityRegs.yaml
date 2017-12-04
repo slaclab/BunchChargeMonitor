@@ -13,9 +13,15 @@
 
 DFTChannel: &DFTChannel
   class:    MMIODev
-  size:     32
+  size:     64
   description: "DFT Coefficients and Weights"
   children:
+    Coeff2C4:
+      class:       IntField
+      description: "2*Cos(2*PI*4*k/N)*2^16 for desired DFT component k"
+      isSigned:    true
+      sizeBits:    18
+      at:          { offset: 0x10 }
     Coeff2C2:
       class:       IntField
       description: "2*Cos(2*PI*2*k/N)*2^16 for desired DFT component k"
@@ -34,30 +40,103 @@ DFTChannel: &DFTChannel
       isSigned:    true
       sizeBits:    18
       at:          { offset: 0x08 }
-    ReH_U:
+    CoeffHU_Re:
       class:       IntField
-      description: "Weight factor for this DFT component of U (real-part; norm. to 2^-17)"
+      description: "Real part of HU weight factor (unity is 2^17)"
       isSigned:    true
       sizeBits:    18
-      at:          { offset: 0x10 }
-    ImH_U:
+      at:          { offset: 0x20 }
+    CoeffHU_Im:
       class:       IntField
-      description: "Weight factor for this DFT component of U (imag-part; norm. to 2^-17)"
+      description: "Imag part of HU weight factor (unity is 2^17)"
       isSigned:    true
       sizeBits:    18
-      at:          { offset: 0x14 }
-    ReH_V:
+      at:          { offset: 0x24 }
+    CoeffHV_Re:
       class:       IntField
-      description: "Weight factor for this DFT component of V (real-part; norm. to 2^-17)"
+      description: "Real part of HV weight factor (unity is 2^17)"
       isSigned:    true
       sizeBits:    18
-      at:          { offset: 0x18 }
-    ImH_V:
+      at:          { offset: 0x28 }
+    CoeffHV_Im:
       class:       IntField
-      description: "Weight factor for this DFT component of V (imag-part; norm. to 2^-17)"
+      description: "Imag part of HV weight factor (unity is 2^17)"
       isSigned:    true
       sizeBits:    18
-      at:          { offset: 0x1C }
+      at:          { offset: 0x2c }
+
+
+DFTDiagChannel: &DFTDiagChannel
+  class:    MMIODev
+  size:     64
+  description: "DFT Diagnostic Readback"
+  children:
+    # atomic retrieval of real+imag but user has to unpack
+    DFT_U:
+      class:       IntField
+      description: "Complex U DFT (upper 16-bits: real, lower 16-bits: imag)"
+      isSigned:    false
+      mode:        RO
+      sizeBits:    32
+      at:          { offset: 0x000 }
+    DFT_V:
+      class:       IntField
+      description: "Complex V DFT (upper 16-bits: real, lower 16-bits: imag)"
+      isSigned:    false
+      mode:        RO
+      sizeBits:    32
+      at:          { offset: 0x004 }
+    DFT_R:
+      class:       IntField
+      description: "Complex R DFT (upper 16-bits: real, lower 16-bits: imag)"
+      isSigned:    false
+      mode:        RO
+      sizeBits:    32
+      at:          { offset: 0x008 }
+    # atomic retrieval of real+imag but user has to unpack
+    ReDFT_U:
+      class:       IntField
+      description: "Real part of U DFT"
+      isSigned:    true
+      mode:        RO
+      sizeBits:    16
+      at:          { offset: 0x000 }
+    ImDFT_U:
+      class:       IntField
+      description: "Imag. part of U DFT"
+      isSigned:    true
+      mode:        RO
+      sizeBits:    16
+      at:          { offset: 0x002 }
+    ReDFT_V:
+      class:       IntField
+      description: "Real part of V DFT"
+      isSigned:    true
+      mode:        RO
+      sizeBits:    16
+      at:          { offset: 0x004 }
+    ImDFT_V:
+      class:       IntField
+      description: "Imag. part of V DFT"
+      isSigned:    true
+      mode:        RO
+      sizeBits:    16
+      at:          { offset: 0x006 }
+    ReDFT_R:
+      class:       IntField
+      description: "Real part of R DFT"
+      isSigned:    true
+      mode:        RO
+      sizeBits:    16
+      at:          { offset: 0x008 }
+    ImDFT_R:
+      class:       IntField
+      description: "Imag. part of R DFT"
+      isSigned:    true
+      mode:        RO
+      sizeBits:    16
+      at:          { offset: 0x00A }
+
 
 BpmCavityRegs: &BpmCavityRegs
   class:       MMIODev
@@ -67,19 +146,19 @@ BpmCavityRegs: &BpmCavityRegs
     <<: *BpmCommonRegs
     DFTScaleR:
       class:       IntField
-      description: "Scale for Ref. DFT Output (norm. to 2^-16)"
+      description: "Scale for Ref. DFT Output (unity is 2^-16)"
       sizeBits:    18
       isSigned:    true
       at:          { offset:  0x804 }
     DFTScaleU:
       class:       IntField
-      description: "Scale for U DFT Output (norm. to 2^-16)"
+      description: "Scale for U DFT Output (unity is 2^-16)"
       sizeBits:    18
       isSigned:    true
       at:          { offset:  0x808 }
     DFTScaleV:
       class:       IntField
-      description: "Scale for V DFT Output (norm. to 2^-16)"
+      description: "Scale for V DFT Output (unity is 2^-16)"
       sizeBits:    18
       isSigned:    true
       at:          { offset:  0x80C }
@@ -270,3 +349,6 @@ BpmCavityRegs: &BpmCavityRegs
     DFTChannels:
       <<: *DFTChannel
       at:          { offset:  0x840, nelms: 6 }
+    DFTDiagChannels:
+      <<: *DFTDiagChannel
+      at:          { offset:  0xC40, nelms: 6 }
