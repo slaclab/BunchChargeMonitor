@@ -32,7 +32,7 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 epicsEnvSet("CPSW_PORT","Atca7")
 
 # Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project_bsa.yaml/000TopLevel.yaml")
+epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.105")
@@ -163,7 +163,7 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToroTestLi00-11-28-17.yaml")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToroTestLi00-11-28-17.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
@@ -183,11 +183,11 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 # ****************************
 # **** Load BSA driver DB ****
 
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=RAWSUM")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,SECN=TOROSTATUS")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,BSAKEY=RAWSUM,SECN=RAWSUM")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,MAXLENGTH=20000,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
 
 
 # **********************************************************************
