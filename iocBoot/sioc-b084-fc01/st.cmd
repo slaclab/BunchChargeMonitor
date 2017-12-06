@@ -212,10 +212,10 @@ dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01:BCM_EL3202_2,POR
 # ****************************
 # **** Load BSA driver DB ****
 
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,SECN=FCSTATUS")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=FCSTATUS,SECN=FCSTATUS")
 
 # **********************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ****
