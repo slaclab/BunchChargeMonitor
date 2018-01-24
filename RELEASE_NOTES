@@ -10,6 +10,12 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R1.0.3        Carolina Bianchini - 01/24/2018
+	      -updated BSA module to R1.1.0,
+	       ECASYN module to R4.3-2.1.0,
+	       SSCAN module to R3.10.2-1.0.0,
+	       STREAMDEVICE module to R2.7.7-0.2
+
 R1.0.3	      Carolina Bianchini - 11/15/2017
 	      -changed VIOC to SIOC and updated PV names in st.cmd to the right unit number
 
