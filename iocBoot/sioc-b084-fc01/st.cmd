@@ -69,15 +69,15 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 # **** Environment variables for Temperature Chassis on Ethercat ****
 
 # System Location:
-epicsEnvSet(FAC,"SYS2")
-epicsEnvSet("LOCA","B084")
-epicsEnvSet("TEMP_IOC_NAME","VIOC:${LOCA}:FC01")
+###epicsEnvSet(FAC,"SYS2")
+###epicsEnvSet("LOCA","B084")
+###epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"VIOC:B084:FC01")
+epicsEnvSet(IOC_NAME,"SIOC:B084:FC01")
 
 
 cd ${TOP}
@@ -148,8 +148,8 @@ drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
 # ecAsynInit("<unix_socket>", <max_message>)
 # unix_socket = path to the unix socket created by the scanner
 # max_message = maximum size of messages between scanner and ioc
-
-##################ecAsynInit("/tmp/sock1", 1000000)
+###########ecAsynInit("/tmp/sock1", 1000000)
+##################
 
 
 # ===========================================
@@ -205,9 +205,9 @@ dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),
 
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
-dbLoadRecords("db/EK1101.template", "DEVICE=VIOC:LI00:IM01:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=VIOC:LI00:IM01:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
+#########dbLoadRecords("db/EK1101.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+#########dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
+#########dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
 
 # ****************************
 # **** Load BSA driver DB ****
@@ -302,4 +302,4 @@ cd ${TOP}
 # ************************************************************
 # **** System command for Temperature Chassis on Ethercat ****
 # Setup Real-time priorities after iocInit for driver threads
-system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
+############system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")

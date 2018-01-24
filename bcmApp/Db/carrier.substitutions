@@ -34,6 +34,16 @@ file "RegisterIn.template" { pattern
 { $(P), RxDecErrCount,  "",                             "YES",  "1 second", $(PORT),   "",   RxDecErrCount }
 { $(P), RxDspErrCount,  "",                             "YES",  "1 second", $(PORT),   "",   RxDspErrCount }
 { $(P), RxLinkUp,       "",                             "YES",  "1 second", $(PORT),   "",   RxLinkUp      }
+# CmnConfig status
+{ $(P), TmitTimeUp,     "",                             "YES",  "1 second", $(PORT),   "",   TmitTimeUp    }
+{ $(P), TmitTimeLow,    "",                             "YES",  "1 second", $(PORT),   "",   TmitTimeLow   }
+{ $(P), TmitStatus0,    "",                             "YES",  "1 second", $(PORT),   "",   TmitStatus0   }
+{ $(P), TmitStatus1,    "",                             "YES",  "1 second", $(PORT),   "",   TmitStatus1   }
+{ $(P), TmitTmit0,      "",                             "YES",  "1 second", $(PORT),   "",   TmitTmit0     }
+{ $(P), TmitTmit1,      "",                             "YES",  "1 second", $(PORT),   "",   TmitTmit1     }
+{ $(P), StatusOfBsa0,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa0  }
+{ $(P), StatusOfBsa1,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa1  }
+#
 }
 
 # Array of register

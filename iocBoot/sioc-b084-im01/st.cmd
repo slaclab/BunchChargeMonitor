@@ -70,11 +70,19 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 epicsEnvSet("ESLO","$(ESLO=0.01)")
 epicsEnvSet("EOFF","$(EOFF=273.15)")
 
+# *******************************************************************
+# **** Environment variables for Temperature Chassis on Ethercat ****
+
+# System Location:
+epicsEnvSet(FAC,"SYS2")
+epicsEnvSet("LOCA","B084")
+epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
+
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"VIOC:$(AREA):IM01")
+epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 
 
 cd ${TOP}
@@ -138,6 +146,17 @@ YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUT
 drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 
 
+# **********************************************************
+# **** Driver setup for Temperature Chassis on Ethercat ****
+
+# Init EtherCAT: To support Real Time fieldbus
+# EtherCAT AsynDriver must be initialized in the IOC startup script before iocInit
+# ecAsynInit("<unix_socket>", <max_message>)
+# unix_socket = path to the unix socket created by the scanner
+# max_message = maximum size of messages between scanner and ioc
+ecAsynInit("/tmp/sock1", 1000000)
+
+
 # ===========================================
 #               ASYN MASKS
 # ===========================================
@@ -169,6 +188,10 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
+# Parse IP address
+dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
+dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePortSwap, DEST=SrvRemotePort")
+
 # Automatic initialization
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
@@ -178,7 +201,17 @@ dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157
 
 dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_PORT),A=-1")
 dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADDR=-1,OMAX=0,IMAX=0")
-dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF)")
+#######dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF)")
+dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
+
+# *****************************************************
+# **** Load db for Temperature Chassis on Ethercat ****
+
+# Load the database templates for the EtherCAT components
+# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
+dbLoadRecords("db/EK1101.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
 
 # ****************************
 # **** Load BSA driver DB ****
@@ -281,3 +314,7 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 # Save the expected BERGOZ serial number
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
+# ************************************************************
+# **** System command for Temperature Chassis on Ethercat ****
+# Setup Real-time priorities after iocInit for driver threads
+system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
