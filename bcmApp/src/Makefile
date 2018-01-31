@@ -77,7 +77,11 @@ bcm_DBD += stream.dbd
 bcm_DBD += caPutLog.dbd
 bcm_DBD += $(CEXP_DBDS)
 #bcm_DBD += Keithley6482Test.dbd
-
+ifdef AUTOSAVE_ASSUPPORT
+bcm_DBD += asSupport.dbd
+else
+bcm_DBD += asSupport.dbd
+endif
 bcm_DBD += bcmSupport.dbd
 
 # caf: aCalcout record support

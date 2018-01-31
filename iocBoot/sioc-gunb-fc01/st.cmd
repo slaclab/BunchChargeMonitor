@@ -42,9 +42,9 @@ epicsEnvSet("FPGA_IP", "10.0.1.106")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-#epicsEnvSet("PREFIX","B084:FC01")
+#epicsEnvSet("PREFIX","GUNB:FC01")
 
-epicsEnvSet("AREA","B084")
+epicsEnvSet("AREA","GUNB")
 
 # BCM-FC in crate 1, slot 4, AMC 0
 epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):14")
@@ -70,14 +70,14 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # System Location:
 epicsEnvSet(FAC,"SYS2")
-epicsEnvSet("LOCA","B084")
+epicsEnvSet("LOCA","GUNB")
 epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"SIOC:B084:FC01")
+epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
 
 
 cd ${TOP}
@@ -177,7 +177,7 @@ ecAsynInit("/tmp/sock1", 1000000)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsFC11-22-17_test.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsFC01-24-18_test.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")

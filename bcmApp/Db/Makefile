@@ -44,6 +44,9 @@ DB_INSTALLS += $(BERGOZBCM_RF_ASYN)/db/devBergozBCM.proto
 DB_INSTALLS += $(ECASYN)/db/EK1101.template
 DB_INSTALLS += $(ECASYN)/db/EL3202-0010.template
 
+# Autosave
+DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
+
 # BSA
 DB_INSTALLS += $(BSADRIVER)/db/bsa.db
 
