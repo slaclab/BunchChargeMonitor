@@ -110,11 +110,11 @@ cpswLoadYamlFile("${YAML_FILE}","NetIODev","","${FPGA_IP}")
 # Setup BSA Driver
 # ====================================
 # add BSA PVs
-addBsa("CHRG",       "double")
-addBsa("JUNK",       "double")
-addBsa("CHRGUNC",    "double")
-addBsa("CHRGFLOAT",  "double")
-addBsa("FCSTATUS",   "double")
+addBsa("CHRG",       "uint32")
+addBsa("JUNK",       "uint32")
+addBsa("CHRGUNC",    "uint32")
+addBsa("CHRGFLOAT",  "float32")
+addBsa("FCSTATUS",   "uint32")
 
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
@@ -212,10 +212,10 @@ dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,P
 # ****************************
 # **** Load BSA driver DB ****
 
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRG,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRGUNC,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,MAXLENGTH=20000,BSAKEY=FCSTATUS,SECN=FCSTATUS")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=FCSTATUS,SECN=FCSTATUS")
 
 # **********************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ****
