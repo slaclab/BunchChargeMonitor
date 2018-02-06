@@ -10,6 +10,11 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R1.1.1        Carolina Bianchini - 02/05/2018
+	      -updated BSA API to R1.0.3 and BSA module to R1.4.0 . 
+	      -updated all SIOCs st.cmd files to do not specify max number of data points for bsa 
+	       and to specfy type of data when called Addbsa function.
+
 R1.0.4        Carolina Bianchini - 01/24/2018
 	      -updated BSA module to R1.1.0,
 	       ECASYN module to R4.3-2.1.0,
