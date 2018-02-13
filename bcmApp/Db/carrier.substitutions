@@ -23,7 +23,7 @@ file "RegisterIn.template" { pattern
 { $(P), FpgaVersion,    "FPGA Firmware Version Number", "YES",  "Passive",  $(PORT),   "",   FpgaVersion   }
 { $(P), UpTimeCnt,      "Seconds since last reset",     "YES",  "1 second", $(PORT),   "s",  UpTimeCnt     }
 { $(P), DeviceId,       "Device Identification",        "YES",  "Passive",  $(PORT),   "",   DeviceId      }
-{ $(P), SrvRemotePortSwap, "big-Endian configuration",  "YES",  "Passive",  $(PORT),   "",   ServerRemotePort }
+{ $(P), SrvRemotePort, "big-Endian configuration",  "YES",  "Passive",  $(PORT),   "",   ServerRemotePort }
 { $(P), SrvRemoteIp,    "big-Endian configuration",     "YES",  "Passive",  $(PORT),   "",   ServerRemoteIp }
 # BSA status
 { $(P), SofCount,       "",                             "YES",  "1 second", $(PORT),   "",   sofCount      }
@@ -43,7 +43,20 @@ file "RegisterIn.template" { pattern
 { $(P), TmitTmit1,      "",                             "YES",  "1 second", $(PORT),   "",   TmitTmit1     }
 { $(P), StatusOfBsa0,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa0  }
 { $(P), StatusOfBsa1,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa1  }
-#
+{ $(P), AppType,        "",                             "YES",  "1 second", $(PORT),   "",   AppType       }
+{ $(P), SelBpm,         "",                             "YES",  "1 second", $(PORT),   "",   SelBpm        }
+{ $(P), TreshTmit,      "",                             "YES",  "1 second", $(PORT),   "",   TreshTmit     }
+{ $(P), CalibEnable,    "",                             "YES",  "1 second", $(PORT),   "",   CalibEnable   } 
+#MPS debugging 
+{ $(P), BpTimAlignErrCnt,   "",                             "YES",  "1 second", $(PORT),   "",   BpTimAlignErrCnt }
+{ $(P), BpTmitIntMax,       "",                             "YES",  "1 second", $(PORT),   "",   BpTmitIntMax     }
+{ $(P), BpTimingIntMax,     "",                             "YES",  "1 second", $(PORT),   "",   BpTimingIntMax   }
+{ $(P), BpTimingInt,        "",                             "YES",  "1 second", $(PORT),   "",   BpTimingInt      }
+{ $(P), CntDiag,            "",                             "YES",  "1 second", $(PORT),   "",   CntDiag          }
+{ $(P), CntDiagMin,         "",                             "YES",  "1 second", $(PORT),   "",   CntDiagMin       }
+{ $(P), CntDiagMax,         "",                             "YES",  "1 second", $(PORT),   "",   CntDiagMax       }
+{ $(P), DiagnosticDelay,    "",                             "YES",  "1 second", $(PORT),   "",   DiagnosticDelay  }
+
 }
 
 # Array of register
@@ -80,9 +93,23 @@ file "RegisterOutRBV.template" { pattern
 # Shared
 { $(P), ScratchPadRBV,     "Register to test R/W",                   "YES",  "1 second",  $(PORT),    ScratchPad }
 # BSA
-{ $(P), ClkSelRBV,  ""                                               "YES",  "1 second",  $(PORT),    ClkSel }
-{ $(P), RxPolarityRBV,  ""                                           "YES",  "1 second",  $(PORT),    RxPolarity }
-{ $(P), PhaseTargetRBV, ""                                           "YES",  "1 second",  $(PORT),    PhaseTarget }
+{ $(P), ClkSelRBV,         ""                                           "YES",  "1 second",  $(PORT),     ClkSel        }
+{ $(P), RxPolarityRBV,     ""                                           "YES",  "1 second",  $(PORT),     RxPolarity    }
+{ $(P), PhaseTargetRBV,    ""                                           "YES",  "1 second",  $(PORT),     PhaseTarget   }
+{ $(P), AppTypeRBV,        "",                                          "YES",  "1 second",  $(PORT),     AppType       }
+{ $(P), SelBpmRBV,         "",                                          "YES",  "1 second",  $(PORT),     SelBpm        }
+{ $(P), TreshTmitRBV,      "",                                          "YES",  "1 second",  $(PORT),     TreshTmit     }
+{ $(P), CalibEnableRBV,    "",                                          "YES",  "1 second",  $(PORT),     CalibEnable   }
+#MPS debugging 
+{ $(P), BpTimAlignErrCntRBV,   "",                             "YES",  "1 second", $(PORT),      BpTimAlignErrCnt }
+{ $(P), BpTmitIntMaxRBV,       "",                             "YES",  "1 second", $(PORT),      BpTmitIntMax     }
+{ $(P), BpTimingIntMaxRBV,     "",                             "YES",  "1 second", $(PORT),      BpTimingIntMax   }
+{ $(P), BpTimingIntRBV,        "",                             "YES",  "1 second", $(PORT),      BpTimingInt      }
+{ $(P), CntDiagRBV,            "",                             "YES",  "1 second", $(PORT),      CntDiag          }
+{ $(P), CntDiagMinRBV,         "",                             "YES",  "1 second", $(PORT),      CntDiagMin       }
+{ $(P), CntDiagMaxRBV,         "",                             "YES",  "1 second", $(PORT),      CntDiagMax       }
+{ $(P), DiagnosticDelayRBV,    "",                             "YES",  "1 second", $(PORT),      DiagnosticDelay  }
+#
 }
 
 # ENUM register

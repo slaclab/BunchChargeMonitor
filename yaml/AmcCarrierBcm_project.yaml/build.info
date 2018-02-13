@@ -1,29 +1,29 @@
-tag build-AmcCarrierBcm-0x00000005-20171127181239-leosap
+tag build-AmcCarrierBcm-0x00000006-20180125112300-leosap
 Tagger: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Mon Nov 27 20:04:10 2017 -0800
+Date:   Thu Jan 25 13:15:33 2018 -0800
 
 PROJECT: AmcCarrierBcm
 
-FW_VERSION: 0x00000005
+FW_VERSION: 0x00000006
 
-BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, rdsrv222 (x86_64), Built Mon Nov 27 18:12:39 PST 2017 by leosap
+BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, rdsrv222 (x86_64), Built Thu Jan 25 11:23:00 PST 2018 by leosap
 
-commit e00d279430ce78f2d2809908bccce4e1389c2fc0
+commit ad104afd7cc5486a518d4923af468ac0233537f3
 Author: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Mon Nov 27 18:12:35 2017 -0800
+Date:   Thu Jan 25 11:22:55 2018 -0800
 
-    Update to modification related to BPM additional BP bits to have beteer TMIT status reporting
+    Still some debugging of TMIT come and go case
 
-diff --git a/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd b/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd
-index c6574c7..1c452dd 100644
---- a/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd
-+++ b/firmware/common/DspCoreLib/SysGenCore/rtl/AdcIntProcPkg.vhd
-@@ -33,7 +33,7 @@ use work.BpmPkg.all;
- package AdcIntProcPkg is
- 
-   -- Due to BPM poor definition of BP interface. Need to be on BPM side, but there are millions of excuses.
--   constant BPM_XSTAT_MPSIGNORE_TMIT : Slv32 := (  BPM_XSTAT_MPSIGNORE_TMIT_SHFT => '1', others => '0' );
-+   constant BPM_XSTAT_MPSIGNORE_TMIT : slv(31 downto 0) := (  BPM_XSTAT_MPSIGNORE_TMIT_SHFT => '1', others => '0' );
-   
-    constant NUM_BCM_APP_C : natural := 2;
-    constant WAIT_TMIT_THRES_G  : integer := 7;
+diff --git a/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd b/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd
+index b07a8c3..52d2a2c 100644
+--- a/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd
++++ b/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd
+@@ -139,7 +139,7 @@ begin
+ 	  v.diagnosticBus.fixed(5) := '0';  -- tmit difference, field can be averaged
+ --    v.diagnosticBus.fixed(6) := '1';  -- status debug
+  -- Output sevirity
+-      if (detError.err = '1') OR ((detError.status(14 downto 12) /= "000") AND (and commonConfig.Eic(0) = '1')) then
++      if (detError.err = '1') OR ((detError.status(14 downto 12) /= "000") AND (commonConfig.Eic(0) = '1')) then
+            v.errCnt := r.errCnt + '1';
+       end if;
+ 	  

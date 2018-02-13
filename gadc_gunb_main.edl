@@ -1,0 +1,453 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 2166
+y 276
+w 1008
+h 488
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-medium-r-12.0"
+btnFont "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 5
+textColor index 14
+ctlFgColor1 index 14
+ctlFgColor2 index 14
+ctlBgColor1 index 4
+ctlBgColor2 index 4
+topShadowColor index 1
+botShadowColor index 11
+showGrid
+snapToGrid
+gridSize 8
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 16
+w 992
+h 464
+lineColor index 3
+fill
+fillColor index 3
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 8
+y 8
+w 104
+h 16
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 3
+value {
+  "Map and Status"
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 368
+y 128
+w 432
+h 24
+lineColor index 6
+fillColor index 4
+lineStyle "dash"
+numPoints 4
+xPoints {
+  0 368
+  1 368
+  2 795
+  3 795
+}
+yPoints {
+  0 152
+  1 128
+  2 128
+  3 152
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 536
+y 104
+w 104
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 7
+bgColor index 4
+useDisplayBg
+value {
+  "SIOC-GUNB-BP01"
+}
+autoSize
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 384
+y 144
+w 64
+h 16
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-10.0"
+buttonLabel "BPM1B..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "bpm_stripline_diagnostic_lcls2.edl"
+}
+setPosition {
+  0 "parentWindow"
+}
+symbols {
+  0 "device=BPMS:GUNB:314"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 720
+y 144
+w 64
+h 16
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-10.0"
+buttonLabel "BPM2B..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "bpm_stripline_diagnostic_lcls2.edl"
+}
+setPosition {
+  0 "parentWindow"
+}
+symbols {
+  0 "device=BPMS:GUNB:925"
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 184
+y 208
+w 568
+h 0
+lineColor index 6
+fillColor index 4
+lineWidth 3
+numPoints 2
+xPoints {
+  0 752
+  1 184
+}
+yPoints {
+  0 208
+  1 208
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 416
+y 208
+w 338
+h 0
+lineColor index 25
+fillColor index 4
+lineWidth 3
+visPv "BPMS:GUNB:925:TMITF"
+visMin "9.3E7"
+visMax "1E99"
+numPoints 4
+xPoints {
+  0 416
+  1 416
+  2 754
+  3 754
+}
+yPoints {
+  0 208
+  1 208
+  2 208
+  3 208
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 184
+y 208
+w 234
+h 0
+lineColor index 25
+fillColor index 4
+lineWidth 3
+visPv "BPMS:GUNB:314:TMITF"
+visMin "9.3E7"
+visMax "1E99"
+numPoints 4
+xPoints {
+  0 184
+  1 184
+  2 418
+  3 418
+}
+yPoints {
+  0 208
+  1 208
+  2 208
+  3 208
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 416
+y 224
+w 18
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 8
+bgColor index 3
+value {
+  "314"
+}
+autoSize
+lineWidth 2
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 752
+y 224
+w 18
+h 12
+font "helvetica-medium-r-10.0"
+fontAlign "center"
+fgColor index 8
+bgColor index 3
+value {
+  "925"
+}
+autoSize
+lineWidth 2
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 416
+y 160
+w 0
+h 48
+lineColor index 28
+fillColor index 4
+numPoints 2
+xPoints {
+  0 416
+  1 416
+}
+yPoints {
+  0 160
+  1 208
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 408
+y 200
+w 10
+h 10
+lineColor index 15
+lineAlarm
+fill
+fillColor index 15
+fillAlarm
+lineWidth 0
+alarmPv "BPMS:GUNB:314:STA_ALH"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 408
+y 200
+w 8
+h 16
+font "new century schoolbook-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 4
+useDisplayBg
+visPv "BPMS:GUNB:314:STA_ALHFP"
+visMin "1"
+visMax "2"
+value {
+  "*"
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 1
+x 752
+y 160
+w 0
+h 48
+lineColor index 28
+fillColor index 4
+numPoints 2
+xPoints {
+  0 752
+  1 752
+}
+yPoints {
+  0 160
+  1 208
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 744
+y 200
+w 10
+h 10
+lineColor index 15
+lineAlarm
+fill
+fillColor index 15
+fillAlarm
+lineWidth 0
+alarmPv "BPMS:GUNB:925:STA_ALH"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 744
+y 200
+w 8
+h 16
+font "new century schoolbook-medium-r-10.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 4
+useDisplayBg
+visPv "BPMS:GUNB:925:STA_ALHFP"
+visMin "1"
+visMax "2"
+value {
+  "*"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 96
+y 312
+w 128
+h 24
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-12.0"
+buttonLabel "BCM Diagnostics..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "../bcm/bcm_IOCs_EIC.edl"
+}
+menuLabel {
+  0 "BCM diagnostics"
+}
+setPosition {
+  0 "parentWindow"
+}
+endObjectProperties
+

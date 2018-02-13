@@ -39,6 +39,14 @@
 /mmio/AppTop/AppCore/CmnConfig/TmitTmit1                                                                  TmitTmit1
 /mmio/AppTop/AppCore/CmnConfig/StatusOfBSA0                                                               StatusOfBsa0
 /mmio/AppTop/AppCore/CmnConfig/StatusOfBSA1                                                               StatusOfBsa1
+/mmio/AppTop/AppCore/CmnConfig/BpTimAlignErrCnt								  BpTimAlignErrCnt
+/mmio/AppTop/AppCore/CmnConfig/BpTmitIntMax								  BpTmitIntMax
+/mmio/AppTop/AppCore/CmnConfig/BpTimingIntMax								  BpTimingIntMax
+/mmio/AppTop/AppCore/CmnConfig/BpTimingInt								  BpTimingInt
+/mmio/AppTop/AppCore/CmnConfig/CntDiag									  CntDiag
+/mmio/AppTop/AppCore/CmnConfig/CntDiagMin								  CntDiagMin
+/mmio/AppTop/AppCore/CmnConfig/CntDiagMax								  CntDiagMax	
+/mmio/AppTop/AppCore/CmnConfig/DiagnosticDelay								  DiagnosticDelay
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreRes/Mult2                                                           AMC0:CHRG
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreRes/Mult2                                                           AMC1:CHRG
 /mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/TriggerRate                                            AMC0:RATE

@@ -46,11 +46,11 @@ epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA","B084")
 
-# BCM-TORO in crate 1, slot 5, AMC 0
+# BCM-TORO in crate 1, slot 5, AMC 0  - Since this prototype is in Lab 2 of B084 we use it as prefix.
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):215")
 
 # AMCC in crate 1, slot 5
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):15")
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):215")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
