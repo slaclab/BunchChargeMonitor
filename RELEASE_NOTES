@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R1.1.3        Carolina Bianchini - 02/27/2018
+	      -updating yaml according to Leonid latest release
+
 R1.1.2        Carolina Bianchini - 02/12/2018
 	      -Adding autosave to PicoAmmeter scan from the latest module release R0.0.3.
 	      -Updated the Yaml files. Updated st.cmd for consistencies, typos and new dbs.
