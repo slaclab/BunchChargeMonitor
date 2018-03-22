@@ -311,7 +311,10 @@
     - AppMps:
         - AppMpsRegAppCh:
             - channel:
-                - stdThr:
+                - stdThr[0]:
+                    - minEn: !<value> 0x1
+                    - maxEn: !<value> 0x1
+                - stdThr[1-7]:
                     - max: !<value> 0x00000000
                     - min: !<value> 0x00000000
                     - maxEn: !<value> 0x0
