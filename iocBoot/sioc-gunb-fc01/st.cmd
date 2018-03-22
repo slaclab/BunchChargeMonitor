@@ -240,6 +240,7 @@ dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=FCSTATUS,SECN
 # *******************************
 # **** Load MPS scale factor ****
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
 
 # **********************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ****
