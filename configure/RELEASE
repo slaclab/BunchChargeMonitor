@@ -32,6 +32,7 @@ YCPSWASYN_MODULE_VERSION=R2.0.1
 KEITHLEY6482_MODULE_VERSION=R0.0.4
 #BERGOZBCM_RF_ASYN_MODULE_VERSION=R1.2.2
 BERGOZBCM_RF_ASYN_MODULE_VERSION=R1.2.5
+L2MPSASYN_MODULE_VERSION=R1.0.0
 
 # ==========================================================
 # Define module paths using pattern
@@ -56,6 +57,7 @@ BSADRIVER=$(EPICS_MODULES)/bsaDriver/R1.4.0
 #BSADRIVER=$(EPICS_MODULES)/bsaDriver/R1.3.0
 KEITHLEY6482=$(EPICS_MODULES)/Keithley6482/$(KEITHLEY6482_MODULE_VERSION)
 BERGOZBCM_RF_ASYN=$(EPICS_MODULES)/BergozBCM-RF-asyn/$(BERGOZBCM_RF_ASYN_MODULE_VERSION)
+L2MPSASYN=$(EPICS_MODULES)/l2MpsAsyn/$(L2MPSASYN_MODULE_VERSION)
 
 # =====================================================================
 # Set EPICS_BASE last so it appears last in the DB, DBD, INCLUDE, and LIB search paths

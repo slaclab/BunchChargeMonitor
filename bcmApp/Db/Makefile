@@ -50,6 +50,11 @@ DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 # BSA
 DB_INSTALLS += $(BSADRIVER)/db/bsa.db
 
+# MPS
+DB_INSTALLS += $(L2MPSASYN)/db/mps.db
+DB_INSTALLS += $(L2MPSASYN)/db/mps_bcm.db
+DB_INSTALLS += $(L2MPSASYN)/db/mps_scale_factor.db
+
 # User-defined functions
 DB += stream_size.template
 DB += TempMonitoring_TORO.db

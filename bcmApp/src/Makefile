@@ -18,7 +18,7 @@ USR_INCLUDES += -I$(LIBXML2_INCLUDE)
 USR_INCLUDES += -I$(PCRE_INCLUDE)
 
 # Support for CPSW
-USR_INCLUDES = -I$(BOOST_INCLUDE) -I$(CPSW_FRAMEWORK_INCLUDE) -I$(YAML_INCLUDE)
+USR_INCLUDES = -I$(BOOST_INCLUDE) -I$(CPSW_FRAMEWORK_INCLUDE) -I$(YAML_INCLUDE) -I$(L2MPS_INCLUDE)
 #=====================================================
 
 #======================================================
@@ -34,6 +34,7 @@ pcre_DIR = $(PCRE_LIB)
 cpsw_DIR = $(CPSW_FRAMEWORK_LIB)
 boost_system_DIR = $(BOOST_LIB)
 yaml-cpp_DIR = $(YAML_LIB)
+l2Mps_DIR = $(L2MPS_LIB)
 
 # =====================================================
 
@@ -48,7 +49,7 @@ USR_LIBS_Linux += lzma
 
 USR_LIBS_Linux += pcre
 
-USR_LIBS_Linux += cpsw boost_system yaml-cpp
+USR_LIBS_Linux += l2Mps cpsw boost_system yaml-cpp
 #======================================================
 
 # ================================================
@@ -91,6 +92,7 @@ bcm_DBD += calcSupport.dbd
 bcm_DBD += ycpswasyn.dbd
 bcm_DBD += bsaAsynDriver.dbd
 bcm_DBD += yamlLoader.dbd
+bcm_DBD += l2MpsAsyn.dbd
 
 # Ethercat
 bcm_DBD += ecAsyn.dbd
@@ -123,6 +125,7 @@ bcm_SRCS += DaqSizeSub.c
 # =====================================================
 bcm_LIBS += ycpswasyn
 bcm_LIBS += yamlLoader
+bcm_LIBS += l2MpsAsyn
 bcm_LIBS += seq pv
 bcm_LIBS += stream
 
