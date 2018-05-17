@@ -84,6 +84,9 @@ epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 
+# Start up enviroment variable 
+epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
+
 
 cd ${TOP}
 
