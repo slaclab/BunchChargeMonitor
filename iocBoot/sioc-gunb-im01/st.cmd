@@ -55,6 +55,9 @@ epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):17")
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
+# Start up enviroment variable 
+epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
+
 
 # *****************************************************
 # **** Environment variables for Toroid on  Bergoz ****
