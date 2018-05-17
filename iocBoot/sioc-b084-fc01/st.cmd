@@ -79,6 +79,8 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 epicsEnvSet(IOC_NAME,"SIOC:B084:FC01")
 
+# Start up enviroment variable 
+epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 
 cd ${TOP}
 
