@@ -48,7 +48,7 @@ USR_LIBS_Linux += lzma
 
 USR_LIBS_Linux += pcre
 
-USR_LIBS_Linux += cpsw boost_system yaml-cpp
+USR_LIBS_Linux += cpsw boost_system yaml-cpp hpstpr
 #======================================================
 
 # ================================================
@@ -94,6 +94,15 @@ bcm_DBD += yamlLoader.dbd
 
 # Ethercat
 bcm_DBD += ecAsyn.dbd
+
+# Crossbar Control
+bcm_DBD += crossbarControl.dbd
+
+# DBD file for tprPattern
+bcm_DBD += tprPatternAsynDriver.dbd
+
+# needed for ioc Admin support
+bcm_DBD += iocAdmin.dbd
 
 # ================================================================================
 # The system command will be mainly used by linux hosted IOCs
@@ -152,10 +161,18 @@ bcm_LIBS += bsaDriver
 bsa_DIR = $(BSA_LIB)
 bcm_LIBS += bsa
 
-
 # Link Asyn library support.
 # Should be last for othe modules that depend on asyn
 bcm_LIBS += asyn
+
+# Cross bar control library
+bcm_LIBS += crossbarControl
+
+# Library for tprPattern
+bcm_LIBS += tprPattern
+
+# API for tprPattern
+hpstpr_DIR = $(HPSTPR_LIB)
 
 # =====================================================================
 
