@@ -50,6 +50,16 @@ DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 # BSA
 DB_INSTALLS += $(BSADRIVER)/db/bsa.db
 
+# tprPattern 
+DB_INSTALLS += $(TPRPATTERN)/db/tprPattern.db
+
+# Crossbar
+DB_INSTALL += $(CROSSBARCONTROL)/db/crossbarCTRL.db
+
+# IOC Admin
+DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db   
+IOCRELEASE_DB += iocRelease.db
+
 # User-defined functions
 DB += stream_size.template
 DB += TempMonitoring_TORO.db
@@ -114,16 +124,6 @@ DB += RegisterDoubleInLimits.template
 # Install databases from iocAdmin package
 # These databases support IOC Health and Monitoring
 # ========================================================
-# HardIOC using RTEMS
-#DB_INSTALLS += $(IOCADMIN)/db/iocAdminRTEMS.db
-# SoftIOC
-DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db
-
-DB_INSTALLS += $(IOCADMIN)/db/iocAdminScanMon.db
-DB_INSTALLS += $(IOCADMIN)/db/iocScanMonSum.db
-DB_INSTALLS += $(IOCADMIN)/db/iocScanMon.db
-IOCRELEASE_DB += iocRelease.db
-
 # Install Database to support reading the status of the autosave package:
 DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 
