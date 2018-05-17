@@ -9,6 +9,12 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R1.2	      Dan Sciortino	- 05/17/2018
+	      - Updated configure/release and CONFIG_SITE for TPR integration
+	      - Modified st.cmd with env_variables
+	      - Updated src/Makefile with TPR libs and IOC Admin
+	      - Updated Db/Makefile for tpr and crossbar 
+
 R1.1.3        Carolina Bianchini - 02/27/2018
 	      -updating yaml according to Leonid latest release
 
