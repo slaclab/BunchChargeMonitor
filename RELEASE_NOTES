@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R1.2.1	      Dan Sciortino	- 5/22/2018
+	      - Updated the yaml files and the configuration file to add
+	       Timing distributed Triggering features
+
 R1.2	      Dan Sciortino	- 05/17/2018
 	      - Updated configure/release and CONFIG_SITE for TPR integration
 	      - Modified st.cmd with env_variables
