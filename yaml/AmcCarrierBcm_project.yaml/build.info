@@ -1,29 +1,31 @@
-tag build-AmcCarrierBcm-0x00000006-20180125112300-leosap
+tag build-AmcCarrierBcm-0x00000007-20180518160100-leosap
 Tagger: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Thu Jan 25 13:15:33 2018 -0800
+Date:   Fri May 18 17:55:52 2018 -0700
 
 PROJECT: AmcCarrierBcm
 
-FW_VERSION: 0x00000006
+FW_VERSION: 0x00000007
 
-BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, rdsrv222 (x86_64), Built Thu Jan 25 11:23:00 PST 2018 by leosap
+BUILD_STRING: AmcCarrierBcm: Vivado v2016.4, rdsrv222 (x86_64), Built Fri May 18 16:01:00 PDT 2018 by leosap
 
-commit ad104afd7cc5486a518d4923af468ac0233537f3
+commit 8f281dcc8d823826dc6f7e498765a881f3ebf00d
 Author: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Thu Jan 25 11:22:55 2018 -0800
+Date:   Fri May 18 16:00:55 2018 -0700
 
-    Still some debugging of TMIT come and go case
+    Update to add optins to ignore MPS reporting when no beam is present
 
-diff --git a/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd b/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd
-index b07a8c3..52d2a2c 100644
---- a/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd
-+++ b/firmware/common/DspCoreLib/SysGenCore/rtl/BsaBcmAmc.vhd
-@@ -139,7 +139,7 @@ begin
- 	  v.diagnosticBus.fixed(5) := '0';  -- tmit difference, field can be averaged
- --    v.diagnosticBus.fixed(6) := '1';  -- status debug
-  -- Output sevirity
--      if (detError.err = '1') OR ((detError.status(14 downto 12) /= "000") AND (and commonConfig.Eic(0) = '1')) then
-+      if (detError.err = '1') OR ((detError.status(14 downto 12) /= "000") AND (commonConfig.Eic(0) = '1')) then
-            v.errCnt := r.errCnt + '1';
-       end if;
- 	  
+diff --git a/firmware/common/DspCoreLib/SysGenCore/rtl/BCMAlignment.vhd b/firmware/common/DspCoreLib/SysGenCore/rtl/BCMAlignment.vhd
+index eb0c43e..dacf093 100644
+--- a/firmware/common/DspCoreLib/SysGenCore/rtl/BCMAlignment.vhd
++++ b/firmware/common/DspCoreLib/SysGenCore/rtl/BCMAlignment.vhd
+@@ -93,8 +93,8 @@ architecture rtl of BCMAlignment is
+    signal Timing_empty           : sl;
+    signal timingWe               : sl;
+ 
+-   signal AdcSumDataSlv         : slv(96 downto 0);
+-   signal AdcSumDataOutSlv      : slv(96 downto 0);
++   signal AdcSumDataSlv         : slv(98 downto 0);
++   signal AdcSumDataOutSlv      : slv(98 downto 0);
+    signal AdcSumDataOut         : Slv32Array(2 downto 0);
+ 
+    signal AdcSumData_pempty     : sl;
