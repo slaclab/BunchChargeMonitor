@@ -31,6 +31,7 @@ file "RegisterIn.template" { pattern
 { $(P), MuxTrigSwStat,  "SW trigger status",            "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigSwStat }
 { $(P), WEBBurstSz,     "Burst size",                   "YES",  "1 second", $(PORT),   "",   AMC$(AMC):WEBBurstSz    }
 { $(P), DSPVers,        "System generator core vers",   "YES",  "1 second", $(PORT),   "",   AMC$(AMC):DSPVers       }
+{ $(P), Measure,		"PicoAmmeter measurement",		"YES",	"1 second",	$(PORT),   "mA", AMC$(AMC):Measure      }
 }
 
 # Array of register
@@ -173,12 +174,15 @@ file "RegisterEnumBOutRBV.template" { pattern
 #======================================
 
 file "RegisterDoubleIn.template" { pattern
-{ P,              R,            DESC,                         PINI,   SCAN,        PORT,   EGU,    PARAM    }
+{ P,              R,            DESC,                   PINI,   SCAN,        	PORT,   	EGU,    		PARAM    }
 { $(P),     CHRG,         "Charge",                     "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG     }
 }
 
 file "RegisterDoubleInLimits.template" { pattern
 { P,        R,       HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI   }
+{ $(P),     CHRG,     275,		15,		5,		10,		300,	350}
+{ $(P),     RATE,  1000000,	1000000,	900000,	950000,		1050000,	1100000}
+{ $(P),     Measure,     .28,		.01,		.0005,		.001,		.3,	.35}
 }
 
 #======================================
