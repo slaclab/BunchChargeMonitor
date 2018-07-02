@@ -9,7 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
-R1.2.3		  Dan Sciortino		- 6/29/2018
+R1.2.4		Dan Sciortino		- 7/2/2018
+		  - Updated Keithley6482 to 0.0.5 
+
+R1.2.3		Dan Sciortino		- 6/29/2018
 		  - Added HIHI and LOLO for Charge and trigger limits
 
 R1.2.2        Dan Sciortino     - 5/24/2018
