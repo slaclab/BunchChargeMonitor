@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R1.2.5		Dan Sciortino		- 7/2/2018
+		  - fixed missing HHSV and LLSV values
+
 R1.2.4		Dan Sciortino		- 7/2/2018
 		  - Updated Keithley6482 to 0.0.5 
 
