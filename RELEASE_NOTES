@@ -9,6 +9,13 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R1.2.6		Dan Sciortino		- 7/9/2018
+		  - CONFIG_SITE cpsw was set for 3.6.3
+			BSA was set for 1.1.0 in
+		  	iocTop/BunchChargeMonitor/current
+		  - removed MEASURE from substition file
+			this is meant for the keithley applications
+
 R1.2.5		Dan Sciortino		- 7/2/2018
 		  - fixed missing HHSV and LLSV values
 
