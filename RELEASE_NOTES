@@ -10,6 +10,9 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 R2.0.1		Dan Sciortino		-7/11/2018
+		  - Application was cramable but in the wrong location
+		  - Application meant to be SIOC not HLA
+R2.0.1		Dan Sciortino		-7/11/2018
 		  - Made application cramable
 
 R2.0.0		Dan Sciortino		- 7/9/2018
