@@ -1,4 +1,4 @@
-#!iocSpecificRelease/bin/linuxRT-x86_64/bcm
+#!../../bin/linuxRT-x86_64/bcm
 
 #########################################
 # This IOC is related to the Toroid
