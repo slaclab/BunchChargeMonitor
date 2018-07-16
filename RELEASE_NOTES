@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.6		Dan Sciortino		-7/16/2018
+		 -Upadted picometer address
+		 -Updated RATE record generation:
+
 R2.0.5		Dan Sciortino 		-7/16/2018
 		  -Updated substitutions file for record generation
 		  --Updated record for alarm configuration

@@ -19,8 +19,7 @@
 #======================================
 # Single register
 file "RegisterIn.template" { pattern
-{ P,          R,              DESC,                           PINI,   SCAN,       PORT, EGU,  PARAM        , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI   }
-{ $(P), RATE,           "Trigger rate over 1 sec",      "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):RATE          ,1000000,	1000000,	900000,	950000,		1050000,	1100000}
+{ P,          R,              DESC,                           PINI,   SCAN,       PORT, EGU,  PARAM}
 { $(P), AmcClkFreq,     "AMC Clock frequency",          "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):AmcClkFreq    }
 { $(P), MuxTrigCnt,     "Valid DAQ triggers",           "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigCnt    }
 { $(P), MuxFrzStat,     "Freeze buf status",            "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxFrzStat    }
@@ -175,6 +174,8 @@ file "RegisterEnumBOutRBV.template" { pattern
 file "RegisterDoubleIn.template" { pattern
 { P,              R,            DESC,                   PINI,   SCAN,        	PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
 { $(P),     CHRG,         "Charge",                     "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
+{ $(P), RATE,           "Trigger rate over 1 sec",      "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):RATE          ,1000000,	1000000,	900000,	950000,		1050000,	1100000}
+
 }
 
 file "RegisterDoubleInLimits.template" { pattern

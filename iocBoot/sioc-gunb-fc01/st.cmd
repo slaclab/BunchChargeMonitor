@@ -61,7 +61,7 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 epicsEnvSet("K6482_PORT","L1")
 epicsEnvSet("K6482_P","$(AMC0_PREFIX):")
 epicsEnvSet("K6482_R","")
-epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-b084-nw01:2110)")
+epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-li00-nw01:2110)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 
@@ -79,7 +79,7 @@ epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
 epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
 
-# Start up enviroment variable 
+# Start up enviroment variable
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 
 
