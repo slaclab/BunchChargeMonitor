@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.7		Dan Sciortino		-7/18/2018
+		 - Updated keithley port number
+
 R2.0.6		Dan Sciortino		-7/16/2018
 		 -Upadted picometer address
 		 -Updated RATE record generation:
@@ -44,13 +47,13 @@ R1.2.5		Dan Sciortino		- 7/2/2018
 		  - fixed missing HHSV and LLSV values
 
 R1.2.4		Dan Sciortino		- 7/2/2018
-		  - Updated Keithley6482 to 0.0.5 
+		  - Updated Keithley6482 to 0.0.5
 
 R1.2.3		Dan Sciortino		- 6/29/2018
 		  - Added HIHI and LOLO for Charge and trigger limits
 
 R1.2.2        Dan Sciortino     - 5/24/2018
-	      - Updated the st.cmd for all SIOCs to use latest configuration 
+	      - Updated the st.cmd for all SIOCs to use latest configuration
 		files.
 
 R1.2.1	      Dan Sciortino	- 5/22/2018
@@ -61,7 +64,7 @@ R1.2	      Dan Sciortino	- 05/17/2018
 	      - Updated configure/release and CONFIG_SITE for TPR integration
 	      - Modified st.cmd with env_variables
 	      - Updated src/Makefile with TPR libs and IOC Admin
-	      - Updated Db/Makefile for tpr and crossbar 
+	      - Updated Db/Makefile for tpr and crossbar
 
 R1.1.3        Carolina Bianchini - 02/27/2018
 	      -updating yaml according to Leonid latest release
@@ -69,12 +72,12 @@ R1.1.3        Carolina Bianchini - 02/27/2018
 R1.1.2        Carolina Bianchini - 02/12/2018
 	      -Adding autosave to PicoAmmeter scan from the latest module release R0.0.3.
 	      -Updated the Yaml files. Updated st.cmd for consistencies, typos and new dbs.
-	      -Fix Port and IP Address reverse order. 
+	      -Fix Port and IP Address reverse order.
               -Added new CmnConfig registers to throubleshoot MPS issues
 
 R1.1.1        Carolina Bianchini - 02/05/2018
-	      -updated BSA API to R1.0.3 and BSA module to R1.4.0 . 
-	      -updated all SIOCs st.cmd files to do not specify max number of data points for bsa 
+	      -updated BSA API to R1.0.3 and BSA module to R1.4.0 .
+	      -updated all SIOCs st.cmd files to do not specify max number of data points for bsa
 	       and to specfy type of data when called Addbsa function.
 
 R1.0.4        Carolina Bianchini - 01/24/2018

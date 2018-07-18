@@ -61,7 +61,7 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 epicsEnvSet("K6482_PORT","L1")
 epicsEnvSet("K6482_P","$(AMC0_PREFIX):")
 epicsEnvSet("K6482_R","")
-epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-li00-nw01:2110)")
+epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-li00-nw01:2101)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 
