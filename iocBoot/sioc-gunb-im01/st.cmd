@@ -65,7 +65,7 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_PORT","L0")
-epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
+epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM1")
 epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","42")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 

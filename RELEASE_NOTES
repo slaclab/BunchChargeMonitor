@@ -9,6 +9,12 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.9		Dan Sciortino		-7/20/2018
+		 - Cleaned up extra PVs from substitions
+		  and dict file
+		 - Added mapping to PVs in dict file
+		 - Updated Bergoz location in st.cmd
+
 R2.0.8		Dan Sciortino		-7/18/2018
 		 - Updated Keitley port and address
 
