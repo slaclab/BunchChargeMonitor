@@ -47,7 +47,7 @@ epicsEnvSet("AUTO_GEN", 0)
 epicsEnvSet("AREA","GUNB")
 
 # BCM-TORO in crate 1, slot 7, AMC 0
-epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):17")
+epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):17")
 
 # AMCC in crate 1, slot 7
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):17")
@@ -57,12 +57,13 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
-
+#####
+epicsEnvSet("ST_CMD","startup.cmd")
 
 # *****************************************************
 # **** Environment variables for Toroid on  Bergoz ****
 
-epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
+epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_PORT","L0")
 epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM1")
@@ -77,7 +78,7 @@ epicsEnvSet("EOFF","$(EOFF=273.15)")
 # *********************************************
 # **** Environment variables for IOC Admin ****
 
-epicsEnvSet(IOC_NAME,"VIOC:$(AREA):IM01")
+epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 
 
 cd ${TOP}
