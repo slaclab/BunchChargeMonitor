@@ -9,12 +9,18 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
-R2.0.10		Dan Sciortino		-7/23/2018
+R2.0.11         C. Bianchini (carolina)  -7/24/2018
+		 -Fixed macro in st.cmd for sioc-gunb-im01 AMC0->AMC1
+		 -Fixed the .dict file to match FPGA functionalities:
+			-removed: SelectSource, trigDelay, TrigStretch, 
+			outPolarity, softTrig
+			-added: RxCountReset, MsgDelay
+R2.0.10-DO NOT USE Dan Sciortino		-7/23/2018
 		 - Fixed naming of PVs in st.cmd
 		 - Added bergozExpert display in
 		 bcmApp/srcDisplay
 
-R2.0.9		Dan Sciortino		-7/20/2018
+R2.0.9-DO NOT USE Dan Sciortino		-7/20/2018
 		 - Cleaned up extra PVs from substitions
 		  and dict file
 		 - Added mapping to PVs in dict file
