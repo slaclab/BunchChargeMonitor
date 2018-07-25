@@ -47,10 +47,10 @@ epicsEnvSet("AUTO_GEN", 0)
 epicsEnvSet("AREA","GUNB")
 
 # BCM-TORO in crate 1, slot 7, AMC 0
-epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):17")
+epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):360")
 
 # AMCC in crate 1, slot 7
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):17")
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):360")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
@@ -72,6 +72,11 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 epicsEnvSet("ESLO","$(ESLO=0.01)")
 epicsEnvSet("EOFF","$(EOFF=273.15)")
 
+# *******************************************************************
+# **** Environment variables for Temperature Chassis on Ethercat ****
+
+# System Location:
+epicsEnvSet("TEMP_IOC_NAME","SIOC:$(AREA):IM01")
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
@@ -203,8 +208,9 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
 dbLoadRecords("db/EK1101.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=Node1,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=Node2,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_3,PORT=Node3,SCAN=1 second")
 
 # ****************************
 # **** Load BSA driver DB ****
