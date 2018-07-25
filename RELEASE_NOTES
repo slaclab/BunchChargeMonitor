@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.13 	Carolina Bianchini (carolina) - 7/25/2018		
+		 -updated unit PV number to match the Z location 360
+		 -Temperature is now working, corrected the templates' macros.
 
 R2.0.12		Dan Sciortino (disco)    -7/24/2018
 		 -Added etc/ 
