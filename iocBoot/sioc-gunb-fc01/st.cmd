@@ -47,10 +47,10 @@ epicsEnvSet("AUTO_GEN", 0)
 epicsEnvSet("AREA","GUNB")
 
 # BCM-FC in crate 1, slot 4, AMC 0
-epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):16")
+epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):999")
 
 # AMCC in crate 1, slot 4
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):16")
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):999")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
