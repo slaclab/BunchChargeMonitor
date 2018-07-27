@@ -1,4 +1,4 @@
-#!iocSpecificRelease/bin/linuxRT-x86_64/bcm
+#!../../bin/linuxRT-x86_64/bcm
 
 #########################################
 # This IOC is related to the Faraday Cup
@@ -47,10 +47,10 @@ epicsEnvSet("AUTO_GEN", 0)
 epicsEnvSet("AREA","GUNB")
 
 # BCM-FC in crate 1, slot 4, AMC 0
-epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):16")
+epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):999")
 
 # AMCC in crate 1, slot 4
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):16")
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):999")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
@@ -68,7 +68,7 @@ epicsEnvSet("MPS_PREFIX", "MPLN:LI00:MP01:4")
 epicsEnvSet("K6482_PORT","L1")
 epicsEnvSet("K6482_P","$(AMC0_PREFIX):")
 epicsEnvSet("K6482_R","")
-epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-b084-nw01:2110)")
+epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-li00-nw02:2001)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 
@@ -85,6 +85,10 @@ epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 # **** Environment variables for IOC Admin ****
 
 epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
+
+# Start up enviroment variable
+epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
+
 
 
 cd ${TOP}
@@ -197,7 +201,7 @@ ecAsynInit("/tmp/sock1", 1000000)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsFC01-24-18_test.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsFC05-21-18_test.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
@@ -219,15 +223,6 @@ epicsThreadSleep(1.0)
 dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
 dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
-
-# *****************************************************
-# **** Load db for Temperature Chassis on Ethercat ****
-
-# Load the database templates for the EtherCAT components
-# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
-dbLoadRecords("db/EK1101.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
 
 # ****************************
 # **** Load BSA driver DB ****

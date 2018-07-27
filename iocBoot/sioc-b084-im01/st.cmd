@@ -84,6 +84,9 @@ epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 
+# Start up enviroment variable 
+epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
+
 
 cd ${TOP}
 
@@ -182,7 +185,7 @@ ecAsynInit("/tmp/sock1", 1000000)
 # **** Load YCPSWAsyn db ****
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro01-24-18.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro05-21-18.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")

@@ -1,0 +1,6 @@
+<chain>
+	<device type_name="EK1101" revision="0x00120000" position="0" name="COUPLER0" />
+	<device type_name="EL3202-0010" revision="0x0016000A" position="1" name="Node1" />
+	<device type_name="EL3202-0010" revision="0x0016000A" position="2" name="Node2" />
+	<device type_name="EL3202-0010" revision="0x0016000A" position="3" name="Node3" />
+</chain>

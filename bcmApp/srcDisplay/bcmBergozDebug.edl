@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1958
-y 503
+x -5
+y 311
 w 563
 h 685
 font "helvetica-medium-r-10.0"
@@ -90,7 +90,7 @@ minor 1
 release 1
 x 80
 y 40
-w 133
+w 129
 h 21
 font "helvetica-bold-r-18.0"
 fontAlign "center"
@@ -221,7 +221,7 @@ minor 1
 release 1
 x 100
 y 240
-w 51
+w 52
 h 16
 font "helvetica-medium-r-14.0"
 fgColor index 14
@@ -306,7 +306,7 @@ minor 1
 release 1
 x 100
 y 320
-w 39
+w 41
 h 16
 font "helvetica-medium-r-14.0"
 fgColor index 14
@@ -356,7 +356,7 @@ minor 1
 release 1
 x 100
 y 400
-w 53
+w 54
 h 16
 font "helvetica-medium-r-14.0"
 fgColor index 14
@@ -613,7 +613,7 @@ buttonLabel "BERGOZ BCM-RF"
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "bergoz/bergozExpert.edl"
+  0 "./bergozExpert.edl"
 }
 endObjectProperties
 
@@ -640,7 +640,7 @@ minor 1
 release 1
 x 100
 y 560
-w 88
+w 90
 h 16
 font "helvetica-medium-r-14.0"
 fgColor index 14
@@ -814,7 +814,7 @@ minor 1
 release 1
 x 90
 y 190
-w 59
+w 58
 h 16
 font "helvetica-medium-r-14.0"
 fgColor index 14
@@ -903,7 +903,7 @@ minor 1
 release 1
 x 90
 y 144
-w 34
+w 36
 h 16
 font "helvetica-medium-r-14.0"
 fgColor index 14

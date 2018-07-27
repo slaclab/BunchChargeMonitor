@@ -15,7 +15,12 @@ record(ai,       "$(P):$(R)") {
     field(HOPR,  "$(HOPR)")
     field(LOPR,  "$(LOPR)")
     field(LOLO,  "$(LOLO)")
+    field(LLSV,  "MAJOR")
     field(LOW,   "$(LOW)")
+    field(LSV,   "MINOR")
     field(HIGH,  "$(HIGH)")
+    field(HSV,   "MINOR")
     field(HIHI,  "$(HIHI)")
+    field(HHSV,  "MAJOR")
+    info(autosaveFields, "HIHI LOLO")
 }

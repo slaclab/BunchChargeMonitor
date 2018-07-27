@@ -97,6 +97,15 @@ bcm_DBD += l2MpsAsyn.dbd
 # Ethercat
 bcm_DBD += ecAsyn.dbd
 
+# Crossbar Control
+bcm_DBD += crossbarControl.dbd
+
+# DBD file for tprPattern
+bcm_DBD += tprPatternAsynDriver.dbd
+
+# needed for ioc Admin support
+bcm_DBD += iocAdmin.dbd
+
 # ================================================================================
 # The system command will be mainly used by linux hosted IOCs
 # Very useful for changing kernel thread priorities for kernel drivers
@@ -155,10 +164,18 @@ bcm_LIBS += bsaDriver
 bsa_DIR = $(BSA_LIB)
 bcm_LIBS += bsa
 
-
 # Link Asyn library support.
 # Should be last for othe modules that depend on asyn
 bcm_LIBS += asyn
+
+# Cross bar control library
+bcm_LIBS += crossbarControl
+
+# Library for tprPattern
+bcm_LIBS += tprPattern
+
+# API for tprPattern
+hpstpr_DIR = $(HPSTPR_LIB)
 
 # =====================================================================
 
