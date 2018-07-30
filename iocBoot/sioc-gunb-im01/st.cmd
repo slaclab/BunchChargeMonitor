@@ -71,7 +71,10 @@ epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 # **** Environment variables for bergoz detection  ****
 # Serial number for bergoz
 epicsEnvSet("IM01","0x2c")
-system("${EPICS_IOC_APP}/getBergozLocation.sh")
+
+cd(${TOP}/iocBoot/${IOC})
+system("./getBergozLocation.sh")
+cd(${TOP})
 
 
 # *****************************************************
