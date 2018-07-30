@@ -54,12 +54,8 @@ epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):360")
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
-# Serial number for bergoz
-epcisEnvSet("IM01","0x2c")
-
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
-< .${STARTUP}/getBergozLocation.sh
 
 # *******************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ****
@@ -69,8 +65,14 @@ epicsEnvSet("TEMP_IOC_NAME","SIOC:$(AREA):IM01")
 
 # *********************************************
 # **** Environment variables for IOC Admin ****
-
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
+
+# *****************************************************
+# **** Environment variables for bergoz detection  ****
+# Serial number for bergoz
+epicsEnvSet("IM01","0x2c")
+< .${STARTUP}/iocboot/${IOC_NAME}/getBergozLocation.sh
+
 
 # *****************************************************
 # **** Environment variables for Toroid on  Bergoz ****
