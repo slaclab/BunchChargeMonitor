@@ -10,8 +10,8 @@
 ## everywhere it appears in this file
 
 < envPaths 
-< pwd 
-< ./${TOP}/getBergozLocation.sh
+< .${STARTUP}/getBergozLocation.sh
+< export IM01='0x2c'
 
 # ===========================================
 #            ENVIRONMENT VARIABLES
@@ -59,19 +59,6 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 
-# *****************************************************
-# **** Environment variables for Toroid on  Bergoz ****
-
-epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
-epicsEnvSet("BERGOZ0_R","")
-epicsEnvSet("BERGOZ0_PORT","L0")
-epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM1")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","42")
-epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
-
-# Temperature xfer: ESLO, EOFF
-epicsEnvSet("ESLO","$(ESLO=0.01)")
-epicsEnvSet("EOFF","$(EOFF=273.15)")
 
 # *******************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ****
@@ -83,6 +70,20 @@ epicsEnvSet("TEMP_IOC_NAME","SIOC:$(AREA):IM01")
 # **** Environment variables for IOC Admin ****
 
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
+
+# *****************************************************
+# **** Environment variables for Toroid on  Bergoz ****
+
+epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
+epicsEnvSet("BERGOZ0_R","")
+epicsEnvSet("BERGOZ0_PORT","L0")
+epicsEnvSet("BERGOZ0_TTY","IM01")
+epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","42")
+epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
+
+# Temperature xfer: ESLO, EOFF
+epicsEnvSet("ESLO","$(ESLO=0.01)")
+epicsEnvSet("EOFF","$(EOFF=273.15)")
 
 
 cd ${TOP}
