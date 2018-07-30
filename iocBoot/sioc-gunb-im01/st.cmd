@@ -9,8 +9,9 @@
 ## You may have to change bcm to something else
 ## everywhere it appears in this file
 
-< envPaths
-
+< envPaths 
+< pwd
+< ./getBergozLocation.sh
 
 # ===========================================
 #            ENVIRONMENT VARIABLES
