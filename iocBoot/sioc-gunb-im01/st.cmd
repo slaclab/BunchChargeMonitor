@@ -10,8 +10,6 @@
 ## everywhere it appears in this file
 
 < envPaths 
-< .${STARTUP}/getBergozLocation.sh
-< export IM01='0x2c'
 
 # ===========================================
 #            ENVIRONMENT VARIABLES
@@ -56,9 +54,12 @@ epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):360")
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
+# Serial number for bergoz
+epcisEnvSet("IM01","0x2c")
+
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
-
+< .${STARTUP}/getBergozLocation.sh
 
 # *******************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ****
@@ -84,7 +85,6 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 # Temperature xfer: ESLO, EOFF
 epicsEnvSet("ESLO","$(ESLO=0.01)")
 epicsEnvSet("EOFF","$(EOFF=273.15)")
-
 
 cd ${TOP}
 
