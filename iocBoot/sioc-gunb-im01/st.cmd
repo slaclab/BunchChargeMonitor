@@ -10,7 +10,7 @@
 ## everywhere it appears in this file
 
 < envPaths 
-< pwd
+$PWD
 < ./getBergozLocation.sh
 
 # ===========================================
