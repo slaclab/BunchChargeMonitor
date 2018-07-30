@@ -10,8 +10,8 @@
 ## everywhere it appears in this file
 
 < envPaths 
-$PWD
-< ./getBergozLocation.sh
+< pwd 
+< ./${TOP}/getBergozLocation.sh
 
 # ===========================================
 #            ENVIRONMENT VARIABLES
