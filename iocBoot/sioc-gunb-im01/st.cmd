@@ -61,7 +61,7 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # **** Environment variables for MPS ****
 epicsEnvSet("MPS_PORT",   "mpsPort")
 epicsEnvSet("MPS_APP_ID", "0x06")
-epicsEnvSet("MPS_PREFIX", "MPLN:LI00:MP01:5")
+epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:5")
 
 # *******************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ****

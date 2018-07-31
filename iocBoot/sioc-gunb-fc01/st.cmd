@@ -60,7 +60,7 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 # **** Environment variables for MPS ****
 epicsEnvSet("MPS_PORT",   "mpsPort")
 epicsEnvSet("MPS_APP_ID", "0x05")
-epicsEnvSet("MPS_PREFIX", "MPLN:LI00:MP01:4")
+epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:4")
 
 # ***********************************************************
 # **** Environment variables for Faraday Cup on Keithley ****
