@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.15         J. Vasquez              -7/31/2018
+                 - Integrate the LCLS-II MPS module.
+
 R2.0.14		Dan Sciortino		-7/30/2018
 		 - added getBergozLocation to IM01
 		 - modified st.cmd to call
