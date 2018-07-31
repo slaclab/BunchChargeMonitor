@@ -145,7 +145,7 @@ bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcC
 #    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
 #    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
 #    MPS Root Path              # OPTIONAL: Root path to the MPS register area
-L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
+L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}", "", "")
 
 ## Configure asyn port driver
 # YCPSWASYNConfig(
@@ -247,8 +247,8 @@ dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SE
 
 # *******************************
 # **** Load MPS scale factor ****
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
 
 # **********************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ****
