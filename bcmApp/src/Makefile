@@ -49,7 +49,7 @@ USR_LIBS_Linux += lzma
 
 USR_LIBS_Linux += pcre
 
-USR_LIBS_Linux += l2Mps cpsw boost_system yaml-cpp
+USR_LIBS_Linux += l2Mps cpsw boost_system yaml-cpp hpstpr
 #======================================================
 
 # ================================================
