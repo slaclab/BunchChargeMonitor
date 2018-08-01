@@ -9,6 +9,11 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.16		Dan Sciortino		-8/01/2018
+		 - Updated st.cmd for bergoz location, ethercat PV 
+		 name generation
+		 - updated getBergozLocation.sh
+
 R2.0.15         J. Vasquez              -7/31/2018
                  - Integrate the LCLS-II MPS module.
 
