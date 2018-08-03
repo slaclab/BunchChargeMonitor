@@ -16,7 +16,7 @@ for SERIAL_DEVICE in $DEVICE_PATH ; do
 
     DEVICE=$SERIAL_DEVICE
     # start 'cat' process and save the PID
-    cat $SERIAL_DEVICE >> Reterived_Serial &
+    cat $SERIAL_DEVICE >> /data/Reterived_Serial &
     CAT_PID=$!
 
     # configure serial port
@@ -24,22 +24,24 @@ for SERIAL_DEVICE in $DEVICE_PATH ; do
 
     # get register values
     echo -en "S0?\n\0" > $SERIAL_DEVICE
-    
+
     # stop the 'cat' process by PID
     # wait for the 5 seconds to fill the file
     sleep 5
     kill $CAT_PID
 
     # Get one serial number from file
-    FOUND_DEVICE=$(cat file.txt | grep -iE -m 1 'S0:.{4}=.{8}')
+    FOUND_DEVICE=$(cat /data/Reterived_Serial | grep -iE -m 1 'S0:.{4}=.{8}')
+    echo 'Found Serial Number ' $FOUND_DEVICE
 
     case $FOUND_DEVICE in
-        $SERIAL_NUMBER)
+        *"$SERIAL_NUMBER"*)
             echo 'Making enviroment Variable for path'
-            echo "epicsEnvSet('IM01_PATH','${DEVICE}')" > /data/im01_path
+            echo "epicsEnvSet(IM01_PATH,${DEVICE})"
+            echo "epicsEnvSet(IM01_PATH,${DEVICE})" > /data/im01_path
         ;;
     esac
-    
-    rm Reterived_Serial
+
+    rm /data/Reterived_Serial
 done
 exit

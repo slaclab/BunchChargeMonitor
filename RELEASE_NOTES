@@ -9,6 +9,16 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.19		Dan Sciortino		-8/03/2018
+		- Fixed script setting enviroment variable
+		- fixed macro for ethercat generation
+
+R2.0.18		Dan Sciortino		-8/03/2018
+		- Add calc pv records for ethercat
+		- updated st.cmd for setting enviroment variables
+		bergoz serial number
+		- updated getBergozLocation
+
 R2.0.17		Dan Sciortino		-8/01/2018
 		 -fixed ethercat tempurature pv generation
 
