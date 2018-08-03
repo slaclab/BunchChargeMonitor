@@ -226,8 +226,8 @@ file "RegisterStream16.template" {pattern
 #======================================
 file "RegisterCalc.template" { pattern
 { P,          R,              DESC,                            	EGU,  PARAM}
-{ $(P),     Temp,         "Temperature of toroid",           	"K",    $(AMC1_PREFIX):TEMP1:INPUT1:VALUE }
-{ $(P),     TempFarc,     "Temperature of faraday cup",			"K",    $(AMC1_PREFIX):TEMP2:INPUT1:VALUE }
-{ $(P),     TempAmp,      "Temperature of amp",              	"K",    $(AMC1_PREFIX):TEMP3:INPUT1:VALUE }
-{ $(P),     TempElc,      "Temperature of electronics",      	"K",    $(AMC1_PREFIX):TEMP3:INPUT2:VALUE }
+{ $(P),     Temp,         "Temperature of toroid",           	"K",    $(P):TEMP1:INPUT1:VALUE }
+{ $(P),     TempFarc,     "Temperature of faraday cup",			"K",    $(P):TEMP2:INPUT1:VALUE }
+{ $(P),     TempAmp,      "Temperature of amp",              	"K",    $(P):TEMP3:INPUT1:VALUE }
+{ $(P),     TempElc,      "Temperature of electronics",      	"K",    $(P):TEMP3:INPUT2:VALUE }
 }

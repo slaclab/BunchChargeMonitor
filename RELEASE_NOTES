@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.21		Dan Sciortino		-8/03/2018
+		-Fixed Passing macro for ethercat PVs
+
 R2.0.20		Dan Sciortino		-8/03/2018
 		- Fixed Passing macro for ethercat PVs
 
