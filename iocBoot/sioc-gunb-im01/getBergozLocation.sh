@@ -16,28 +16,30 @@ for SERIAL_DEVICE in $DEVICE_PATH ; do
 
     DEVICE=$SERIAL_DEVICE
     # start 'cat' process and save the PID
-    cat $SERIAL_DEVICE | egrep '^[B-Z]' &
+    cat $SERIAL_DEVICE >> Reterived_Serial &
     CAT_PID=$!
 
     # configure serial port
-    stty -F "$SERIAL_DEVICE" raw pass8 -echo -crtscts -cstopb
+    stty -F $SERIAL_DEVICE raw pass8 echo -crtscts cstopb
 
     # get register values
-    echo -en "S0?\n\0" > "$SERIAL_DEVICE"
-    FOUND_DEVICE=$(cat $SERIAL_DEVICE)
+    echo -en "S0?\n\0" > $SERIAL_DEVICE
+    
+    # stop the 'cat' process by PID
+    # wait for the 5 seconds to fill the file
+    sleep 5
+    kill $CAT_PID
 
-    echo $FOUND_DEVICE
-    echo $SERIALNUMBER
-    echo $DEVICE
+    # Get one serial number from file
+    FOUND_DEVICE=$(cat file.txt | grep -iE -m 1 'S0:.{4}=.{8}')
+
     case $FOUND_DEVICE in
-        $SERIALNUMBER)
-            echo $DEVICE
-            #echo "epicsEnvSet('IM01_PATH','${DEVICE}')" > /data/im01_path
+        $SERIAL_NUMBER)
+            echo 'Making enviroment Variable for path'
+            echo "epicsEnvSet('IM01_PATH','${DEVICE}')" > /data/im01_path
         ;;
     esac
     
-    sleep 1
-    # stop the 'cat' process by PID
-    kill $CAT_PID
+    rm Reterived_Serial
 done
 exit

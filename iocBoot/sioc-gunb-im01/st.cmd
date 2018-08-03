@@ -73,7 +73,7 @@ epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 epicsEnvSet("IM01","2C")
 
 cd(${TOP}/iocBoot/${IOC})
-system("./getBergozLocation.sh")
+system("./getBergozLocation.sh ")
 < /data/im01_path
 cd(${TOP})
 
@@ -84,8 +84,8 @@ cd(${TOP})
 epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_PORT","L0")
-epicsEnvSet("BERGOZ0_TTY","IM01")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","42")
+epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","44")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # Temperature xfer: ESLO, EOFF
