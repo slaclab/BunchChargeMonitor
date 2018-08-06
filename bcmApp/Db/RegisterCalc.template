@@ -1,7 +1,6 @@
 #==================================================================
 # Record example for reading back an IntField, RW, 1 element, 
 # IEEE_754 encoding register.
-# It is an calc record with type asynFloat64.
 # The INP field has the form @asyn(PORT,ADDR)PARAM where:
 #  - PORT  : The asyn port name. It must match the port name given 
 #            when calling "YCPSWASYNConfig" on st.cmd
@@ -14,9 +13,9 @@
 record(calc,   	"$(P):$(R)"){
 	field(DESC,	"$(DESC)")
 	field(EGU,	"$(EGU)")
-	field(DTYP, "asynInt32")
 	field(PREC,	"2")
-	field(CALC, "($(PARAM)/A)+B")
-	field(INPA,	"100")
+	field(CALC, "(A/B)+C")
+	field(INPA, "$(PARAM).VAL")
+	field(INPB,	"100")
 	field(INPB,	"273.15")
 }
