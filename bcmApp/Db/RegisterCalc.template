@@ -18,5 +18,5 @@ record(calc,   	"$(P):$(R)"){
 	field(CALC, "(A/B)+C")
 	field(INPA, "$(PARAM).VAL")
 	field(INPB,	"100")
-	field(INPB,	"273.15")
+	field(INPC,	"273.15")
 }
