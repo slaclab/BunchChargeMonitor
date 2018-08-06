@@ -13,6 +13,7 @@
 record(calc,   	"$(P):$(R)"){
 	field(DESC,	"$(DESC)")
 	field(EGU,	"$(EGU)")
+	field(SCAN, "$(SCAN)")
 	field(PREC,	"2")
 	field(CALC, "(A/B)+C")
 	field(INPA, "$(PARAM).VAL")

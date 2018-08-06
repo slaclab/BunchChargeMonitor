@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.0.23		Dan Sciortino		-8/06/2018
+		- Removed extra /etc/*.xml files
+		- Added scan field for ethercat PVs
+
 R2.0.22		Dan Sciortino		-8/06/2018
 		- Updated calc record for ethercat PVs
 
