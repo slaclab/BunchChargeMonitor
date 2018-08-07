@@ -9,6 +9,13 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.1.0          Carolina Bianchini      -8/07/2018
+		Upgraded tprTriggers to release R1.2.0 
+		added tprTrig.db and tprDeviceNamePV.db 
+                to Db/Makefile
+		added dbLoadRecords of teh triggers 
+                PVs for the 15 Channels
+
 R2.0.24		Dan Sciortino		-8/06/2018
 		- fixed Calc record inpb duplication
 
