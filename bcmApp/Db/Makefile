@@ -58,6 +58,10 @@ DB_INSTALLS += $(L2MPSASYN)/db/mps_scale_factor.db
 # tprPattern 
 DB_INSTALLS += $(TPRPATTERN)/db/tprPattern.db
 
+# tprTrigger
+DB_INSTALLS += $(TPRTRIGGER)/db/tprTrg.db
+DB_INSTALLS += $(TPRTRIGGER)/db/tprDeviceNamePV.db
+
 # Crossbar
 DB_INSTALL += $(CROSSBARCONTROL)/db/crossbarCTRL.db
 
