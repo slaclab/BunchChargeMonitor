@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.1.2		Dan Sciortino					- 8/08/2018
+				- Uncommented dbpf to make pvs tty_rd, serialnum_expect
+				- fixed pv name generation for tprDeviceNamePV
+
 R2.1.1		Dan Sciortino					- 8/08/2018
 				- Added triggers dbLoadRecords for
 					sioc-gunb-fc01/st.cmd
