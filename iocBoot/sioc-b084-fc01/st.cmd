@@ -201,6 +201,27 @@ epicsThreadSleep(1.0)
 dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
 dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
+# ******************************
+# **** Load TPR Triggers db ****
+dbLoadRecords("db/tprTrig.db","LOCA=B084,IOC_UNIT=FC01,INST=0")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=03,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=04,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=05,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=06,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=07,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=08,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=09,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=10,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=11,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=12,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=13,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}")
+
+
 
 # *****************************************************
 # **** Load db for Temperature Chassis on Ethercat ****

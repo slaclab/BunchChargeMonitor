@@ -232,6 +232,26 @@ dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGUNC,SECN=
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=FCSTATUS,SECN=FCSTATUS")
 
+# ******************************
+# **** Load TPR Triggers db ****
+dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=03,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=04,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=05,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=06,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=07,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=08,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=09,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=10,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=11,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=12,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=13,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}")
+
 # *******************************
 # **** Load MPS scale factor ****
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")

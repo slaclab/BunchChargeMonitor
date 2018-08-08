@@ -9,182 +9,190 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
-R2.1.0          Carolina Bianchini      -8/07/2018
-		Upgraded tprTriggers to release R1.2.0 
-		added tprTrig.db and tprDeviceNamePV.db 
-                to Db/Makefile
-		added dbLoadRecords of teh triggers 
-                PVs for the 15 Channels
+R2.1.1		Dan Sciortino					- 8/08/2018
+				- Added triggers dbLoadRecords for
+					sioc-gunb-fc01/st.cmd
+					sioc-b084-im01/st.cmd
+					sioc-b084-fc01/st.cmd
+				- Cleaned up formatting for RELEASE_NOTES
 
-R2.0.24		Dan Sciortino		-8/06/2018
-		- fixed Calc record inpb duplication
+R2.1.0      Carolina Bianchini      		- 8/07/2018
+				- Upgraded tprTriggers to release R1.2.0 
+				- added tprTrig.db and tprDeviceNamePV.db 
+	              to Db/Makefile
+				- added dbLoadRecords of teh triggers 
+	              PVs for the 15 Channels
 
-R2.0.23		Dan Sciortino		-8/06/2018
-		- Removed extra /etc/*.xml files
-		- Added scan field for ethercat PVs
+R2.0.24		Dan Sciortino					- 8/06/2018
+				- fixed Calc record inpb duplication
 
-R2.0.22		Dan Sciortino		-8/06/2018
-		- Updated calc record for ethercat PVs
+R2.0.23		Dan Sciortino					- 8/06/2018
+				- Removed extra /etc/*.xml files
+				- Added scan field for ethercat PVs
 
-R2.0.21		Dan Sciortino		-8/03/2018
-		-Fixed Passing macro for ethercat PVs
+R2.0.22		Dan Sciortino					- 8/06/2018
+				- Updated calc record for ethercat PVs
 
-R2.0.20		Dan Sciortino		-8/03/2018
-		- Fixed Passing macro for ethercat PVs
+R2.0.21		Dan Sciortino					- 8/03/2018
+				-Fixed Passing macro for ethercat PVs
 
+R2.0.20		Dan Sciortino					- 8/03/2018
+				- Fixed Passing macro for ethercat PVs
 
-R2.0.19		Dan Sciortino		-8/03/2018
-		- Fixed script setting enviroment variable
-		- fixed macro for ethercat generation
+R2.0.19		Dan Sciortino					- 8/03/2018
+				- Fixed script setting enviroment variable
+				- fixed macro for ethercat generation
 
-R2.0.18		Dan Sciortino		-8/03/2018
-		- Add calc pv records for ethercat
-		- updated st.cmd for setting enviroment variables
-		bergoz serial number
-		- updated getBergozLocation
+R2.0.18		Dan Sciortino					- 8/03/2018
+				- Add calc pv records for ethercat
+				- updated st.cmd for setting enviroment variables
+				  bergoz serial number
+				- updated getBergozLocation
 
-R2.0.17		Dan Sciortino		-8/01/2018
-		 -fixed ethercat tempurature pv generation
+R2.0.17		Dan Sciortino					- 8/01/2018
+			 	-fixed ethercat tempurature pv generation
 
-R2.0.16		Dan Sciortino		-8/01/2018
-		 - Updated st.cmd for bergoz location, ethercat PV 
-		 name generation
-		 - updated getBergozLocation.sh
+R2.0.16		Dan Sciortino					- 8/01/2018
+			 	- Updated st.cmd for bergoz location, ethercat PV 
+			 	  name generation
+			 	- updated getBergozLocation.sh
 
-R2.0.15         J. Vasquez              -7/31/2018
-                 - Integrate the LCLS-II MPS module.
+R2.0.15		J. Vasquez              		- 7/31/2018
+	            - Integrate the LCLS-II MPS module.
 
-R2.0.14		Dan Sciortino		-7/30/2018
-		 - added getBergozLocation to IM01
-		 - modified st.cmd to call
-R2.0.13 	Carolina Bianchini (carolina) - 7/25/2018		
-		 -updated unit PV number to match the Z location 360
-		 -Temperature is now working, corrected the templates' macros.
+R2.0.14		Dan Sciortino					- 7/30/2018
+			 	- added getBergozLocation to IM01
+			 	- modified st.cmd to call
 
-R2.0.12		Dan Sciortino (disco)    -7/24/2018
-		 -Added etc/ 
-		 -updated main MakeFile to call etc/makefile
-		 -added ethercat templates, driver calls for ethercat 
-		  into st.cmd for gunb SIOCs
+R2.0.13 	Carolina Bianchini (carolina) 	- 7/25/2018		
+			 	- updated unit PV number to match the Z location 360
+			 	- Temperature is now working, corrected the templates' macros.
 
-R2.0.11         C. Bianchini (carolina)  -7/24/2018
-		 -Fixed macro in st.cmd for sioc-gunb-im01 AMC0->AMC1
-		 -Fixed the .dict file to match FPGA functionalities:
-			-removed: SelectSource, trigDelay, TrigStretch, 
-			outPolarity, softTrig
-			-added: RxCountReset, MsgDelay
-R2.0.10-DO NOT USE Dan Sciortino		-7/23/2018
-		 - Fixed naming of PVs in st.cmd
-		 - Added bergozExpert display in
-		 bcmApp/srcDisplay
+R2.0.12		Dan Sciortino (disco)			- 7/24/2018
+			 	- Added etc/ 
+			 	- updated main MakeFile to call etc/makefile
+			 	- added ethercat templates, driver calls for ethercat 
+			  	  into st.cmd for gunb SIOCs
 
-R2.0.9-DO NOT USE Dan Sciortino		-7/20/2018
-		 - Cleaned up extra PVs from substitions
-		  and dict file
-		 - Added mapping to PVs in dict file
-		 - Updated Bergoz location in st.cmd
+R2.0.11		C. Bianchini (carolina)  		- 7/24/2018
+			 	- Fixed macro in st.cmd for sioc-gunb-im01 AMC0->AMC1
+			 	- Fixed the .dict file to match FPGA functionalities:
+				- removed: SelectSource, trigDelay, TrigStretch, 
+				  outPolarity, softTrig
+				- added: RxCountReset, MsgDelay
 
-R2.0.8		Dan Sciortino		-7/18/2018
-		 - Updated Keitley port and address
+R2.0.10 	Dan Sciortino					- 7/23/2018----------
+		 		- Fixed naming of PVs in st.cmd 				|
+				- Added bergozExpert display in 				|
+		 		  bcmApp/srcDisplay								|  Do
+		 														|  Not
+R2.0.9		Dan Sciortino					- 7/20/2018			|  Use
+		 		- Cleaned up extra PVs from substitions 		|
+		  	  	  and dict file 								|
+		 		- Added mapping to PVs in dict file 			|
+		 		- Updated Bergoz location in st.cmds-------------
 
-R2.0.7		Dan Sciortino		-7/18/2018
-		 - Updated keithley port number
+R2.0.8		Dan Sciortino					- 7/18/2018
+			 	- Updated Keitley port and address
 
-R2.0.6		Dan Sciortino		-7/16/2018
-		 -Upadted picometer address
-		 -Updated RATE record generation:
+R2.0.7		Dan Sciortino					- 7/18/2018
+			 	- Updated keithley port number
 
-R2.0.5		Dan Sciortino 		-7/16/2018
-		  -Updated substitutions file for record generation
-		  --Updated record for alarm configuration
+R2.0.6		Dan Sciortino					- 7/16/2018
+			 	- Upadted picometer address
+			 	- Updated RATE record generation:
 
-R2.0.4		Dan Sciortino		-7/12/2018
-		  - Updated yaml files in AmcCarrierBcm_project.yaml
+R2.0.5		Dan Sciortino 					- 7/16/2018
+			  	- Updated substitutions file for record generation
+			  	- Updated record for alarm configuration
 
-R2.0.3		Dan Sciortino		-7/11/2018
-		  - updated bin path in st.cmds
+R2.0.4		Dan Sciortino					- 7/12/2018
+			  	- Updated yaml files in AmcCarrierBcm_project.yaml
 
-R2.0.2		Dan Sciortino		-7/11/2018
-		  - Application was cramable but in the wrong location
-		  - Application meant to be SIOC not HLA
-R2.0.1		Dan Sciortino		-7/11/2018
-		  - Made application cramable
+R2.0.3		Dan Sciortino					- 7/11/2018
+			  	- updated bin path in st.cmds
 
-R2.0.0		Dan Sciortino		- 7/9/2018
-		  - Updated tagged version to 2.0.0
+R2.0.2		Dan Sciortino					- 7/11/2018
+			  	- Application was cramable but in the wrong location
+			  	- Application meant to be SIOC not HLA
 
+R2.0.1		Dan Sciortino					- 7/11/2018
+			  	- Made application cramable
 
-R1.2.6		Dan Sciortino		- 7/9/2018
-		  - CONFIG_SITE cpsw was set for 3.6.3
-			BSA was set for 1.1.0 in
-		  	iocTop/BunchChargeMonitor/current
-		  - removed MEASURE from substition file
-			this is meant for the keithley applications
+R2.0.0		Dan Sciortino					- 7/9/2018
+			  	- Updated tagged version to 2.0.0
 
-R1.2.5		Dan Sciortino		- 7/2/2018
-		  - fixed missing HHSV and LLSV values
+R1.2.6		Dan Sciortino					- 7/9/2018
+			  	- CONFIG_SITE cpsw was set for 3.6.3
+				  BSA was set for 1.1.0 in
+			  	  iocTop/BunchChargeMonitor/current
+			  	- removed MEASURE from substition file
+				  this is meant for the keithley applications
 
-R1.2.4		Dan Sciortino		- 7/2/2018
-		  - Updated Keithley6482 to 0.0.5
+R1.2.5		Dan Sciortino					- 7/2/2018
+			  	- fixed missing HHSV and LLSV values
 
-R1.2.3		Dan Sciortino		- 6/29/2018
-		  - Added HIHI and LOLO for Charge and trigger limits
+R1.2.4		Dan Sciortino					- 7/2/2018
+			  	- Updated Keithley6482 to 0.0.5
 
-R1.2.2        Dan Sciortino     - 5/24/2018
-	      - Updated the st.cmd for all SIOCs to use latest configuration
-		files.
+R1.2.3		Dan Sciortino					- 6/29/2018
+			  	- Added HIHI and LOLO for Charge and trigger limits
 
-R1.2.1	      Dan Sciortino	- 5/22/2018
-	      - Updated the yaml files and the configuration file to add
-	       Timing distributed Triggering features
+R1.2.2		Dan Sciortino     				- 5/24/2018
+		      	- Updated the st.cmd for all SIOCs to use latest configuration
+				  files.
 
-R1.2	      Dan Sciortino	- 05/17/2018
-	      - Updated configure/release and CONFIG_SITE for TPR integration
-	      - Modified st.cmd with env_variables
-	      - Updated src/Makefile with TPR libs and IOC Admin
-	      - Updated Db/Makefile for tpr and crossbar
+R1.2.1	    Dan Sciortino					- 5/22/2018
+		      	- Updated the yaml files and the configuration file to add
+		       	  Timing distributed Triggering features
 
-R1.1.3        Carolina Bianchini - 02/27/2018
-	      -updating yaml according to Leonid latest release
+R1.2		Dan Sciortino					- 05/17/2018
+		      	- Updated configure/release and CONFIG_SITE for TPR integration
+		      	- Modified st.cmd with env_variables
+		      	- Updated src/Makefile with TPR libs and IOC Admin
+		      	- Updated Db/Makefile for tpr and crossbar
 
-R1.1.2        Carolina Bianchini - 02/12/2018
-	      -Adding autosave to PicoAmmeter scan from the latest module release R0.0.3.
-	      -Updated the Yaml files. Updated st.cmd for consistencies, typos and new dbs.
-	      -Fix Port and IP Address reverse order.
-              -Added new CmnConfig registers to throubleshoot MPS issues
+R1.1.3      Carolina Bianchini 				- 02/27/2018
+		      	- updating yaml according to Leonid latest release
 
-R1.1.1        Carolina Bianchini - 02/05/2018
-	      -updated BSA API to R1.0.3 and BSA module to R1.4.0 .
-	      -updated all SIOCs st.cmd files to do not specify max number of data points for bsa
-	       and to specfy type of data when called Addbsa function.
+R1.1.2      Carolina Bianchini 				- 02/12/2018
+		      	- Adding autosave to PicoAmmeter scan from the latest module release R0.0.3.
+		      	- Updated the Yaml files. Updated st.cmd for consistencies, typos and new dbs.
+		      	- Fix Port and IP Address reverse order.
+	            - Added new CmnConfig registers to throubleshoot MPS issues
 
-R1.0.4        Carolina Bianchini - 01/24/2018
-	      -updated BSA module to R1.1.0,
-	       ECASYN module to R4.3-2.1.0,
-	       SSCAN module to R3.10.2-1.0.0,
-	       STREAMDEVICE module to R2.7.7-0.2
+R1.1.1      Carolina Bianchini 				- 02/05/2018
+		      	- updated BSA API to R1.0.3 and BSA module to R1.4.0 .
+		     	- updated all SIOCs st.cmd files to do not specify max number of data points for bsa
+		          and to specfy type of data when called Addbsa function.
 
-R1.0.3	      Carolina Bianchini - 11/15/2017
-	      -changed VIOC to SIOC and updated PV names in st.cmd to the right unit number
+R1.0.4      Carolina Bianchini 				- 01/24/2018
+		      	- updated BSA module to R1.1.0,
+		       	  ECASYN module to R4.3-2.1.0,
+		       	  SSCAN module to R3.10.2-1.0.0,
+		       	  STREAMDEVICE module to R2.7.7-0.2
 
-R1.0.2        Carolina Bianchini - 11/14/2017
-	      -updated yaml files for EIC
-              -updated dict file to communicate with BPMs
+R1.0.3	    Carolina Bianchini 				- 11/15/2017
+		      	- changed VIOC to SIOC and updated PV names in st.cmd to the right unit number
 
-R1.0.1	      Carolina Bianchini - 11/08/2017
-	      -updated yaml file for EIC
-	      -moved vioc to sioc and updated st.cmd to handle
-		temperature monitoring from Ethercat and IP address readback.
+R1.0.2      Carolina Bianchini 				- 11/14/2017
+		      	- updated yaml files for EIC
+	            - updated dict file to communicate with BPMs
 
-R1.0.0        Marcio Donadio - 03/16/2017
-              - Now using ycpswasy R1.1.branch
-              - RELEASE_SITE was not supposed to be in the repo
-              - st.cmd for vioc-li02-im01
-              - Added README_IOC in iocBoot
-              - Added more 2 IOCs directories for sector 29
+R1.0.1	    Carolina Bianchini 				- 11/08/2017
+		      	- updated yaml file for EIC
+		      	- moved vioc to sioc and updated st.cmd to handle
+				- temperature monitoring from Ethercat and IP address readback.
 
-R0.1.0        Marcio Donadio - 03/15/2017
-              - configure/RELEASE correction
+R1.0.0      Marcio Donadio 					- 03/16/2017
+	            - Now using ycpswasy R1.1.branch
+	            - RELEASE_SITE was not supposed to be in the repo
+	            - st.cmd for vioc-li02-im01
+	            - Added README_IOC in iocBoot
+	            - Added more 2 IOCs directories for sector 29
 
-R0.1.0        Marcio Donadio - 03/15/2017
-              - First release of the application
+R0.1.0      Marcio Donadio 					- 03/15/2017
+	            - configure/RELEASE correction
+
+R0.1.0      Marcio Donadio - 03/15/2017
+	            - First release of the application
