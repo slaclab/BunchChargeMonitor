@@ -57,6 +57,12 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 
+# ***************************************
+# **** Environment variables for MPS ****
+epicsEnvSet("MPS_PORT",   "mpsPort")
+epicsEnvSet("MPS_APP_ID", "0x06")
+epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:5")
+
 # *******************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ****
 
@@ -130,6 +136,18 @@ addBsa("TOROSTATUS", "uint32")
 
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
+
+# ====================================
+# Setup MPS Driver
+# ====================================
+# LCLS2MPSCPASYNConfig(
+#    Port Name,                 # the name given to this port driver
+#    App ID,                    # Application ID
+#    Record name Prefix,        # Record name prefix
+#    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
+#    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
+#    MPS Root Path              # OPTIONAL: Root path to the MPS register area
+L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}", "", "")
 
 ## Configure asyn port driver
 # YCPSWASYNConfig(
@@ -247,6 +265,11 @@ dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+
+# *******************************
+# **** Load MPS scale factor ****
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
 
 # **********************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ****

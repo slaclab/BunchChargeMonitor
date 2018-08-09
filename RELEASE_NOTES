@@ -9,7 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
-R2.2.1		Dan Sciortino					- 8/09/2018
+R2.2.3		Dan Sciortino					- 8/09/2018
+				- Restore missing MPS module
+				
+R2.2.2		Dan Sciortino					- 8/09/2018
 				- Fixed typo in dbLoadRecords tprTrg.db -> tprTrig.db
 				- Fixed Db/Makefile for correct tprTrig.db
 
