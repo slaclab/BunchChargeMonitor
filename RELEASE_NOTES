@@ -10,6 +10,10 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 R2.2.1		Dan Sciortino					- 8/09/2018
+				- Fixed typo in dbLoadRecords tprTrg.db -> tprTrig.db
+				- Fixed Db/Makefile for correct tprTrig.db
+
+R2.2.1		Dan Sciortino					- 8/09/2018
 				- Fixed typo in dbLoadRecords tprTrig.db -> tprTrg.db
 
 R2.2.0		Dan Sciortino					- 8/09/2018

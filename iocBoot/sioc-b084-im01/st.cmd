@@ -200,7 +200,7 @@ dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157
 
 # ******************************
 # **** Load TPR Triggers db ****
-dbLoadRecords("db/tprTrg.db","LOCA=B084,IOC_UNIT=IM01,INST=0")
+dbLoadRecords("db/tprTrig.db","LOCA=B084,IOC_UNIT=IM01,INST=0")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}:TRG00:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}:TRG01:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}:TRG02:")
