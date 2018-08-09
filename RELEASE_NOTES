@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.2.1		Dan Sciortino					- 8/09/2018
+				- Fixed typo in dbLoadRecords tprTrig.db -> tprTrg.db
+
 R2.2.0		Dan Sciortino					- 8/09/2018
 				- Updated tprTriggers 1.2.0 -> 1.2.1
 				- CrossbarControl  1.0.3 -> 1.05
