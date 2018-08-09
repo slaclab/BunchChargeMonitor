@@ -204,22 +204,22 @@ dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),
 # ******************************
 # **** Load TPR Triggers db ****
 dbLoadRecords("db/tprTrig.db","LOCA=B084,IOC_UNIT=FC01,INST=0")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=03,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=04,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=05,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=06,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=07,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=08,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=09,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=10,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=11,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=12,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=13,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}:TRG00:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}:TRG01:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}:TRG02:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=03,DEV_PREFIX=${AMC0_PREFIX}:TRG03:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=04,DEV_PREFIX=${AMC0_PREFIX}:TRG04:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=05,DEV_PREFIX=${AMC0_PREFIX}:TRG05:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=06,DEV_PREFIX=${AMC0_PREFIX}:TRG06:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=07,DEV_PREFIX=${AMC0_PREFIX}:TRG07:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=08,DEV_PREFIX=${AMC0_PREFIX}:TRG08:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=09,DEV_PREFIX=${AMC0_PREFIX}:TRG09:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=10,DEV_PREFIX=${AMC0_PREFIX}:TRG10:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=11,DEV_PREFIX=${AMC0_PREFIX}:TRG11:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=12,DEV_PREFIX=${AMC0_PREFIX}:TRG12:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=13,DEV_PREFIX=${AMC0_PREFIX}:TRG13:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}:TRG14:")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}:TRG15:")
 
 
 
@@ -227,7 +227,7 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,N
 # **** Load db for Temperature Chassis on Ethercat ****
 
 # Load the database templates for the EtherCAT components
-# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>)
+# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
 #########dbLoadRecords("db/EK1101.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
 #########dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
 #########dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
