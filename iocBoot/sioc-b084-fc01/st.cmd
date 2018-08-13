@@ -153,6 +153,12 @@ drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
 ###########ecAsynInit("/tmp/sock1", 1000000)
 ##################
 
+# ====================================
+# Setup TprTrigger Driver
+# ====================================
+tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
+tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStream")
+
 
 # ===========================================
 #               ASYN MASKS
