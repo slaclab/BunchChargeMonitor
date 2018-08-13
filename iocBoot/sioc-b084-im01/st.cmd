@@ -159,6 +159,11 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 # max_message = maximum size of messages between scanner and ioc
 ecAsynInit("/tmp/sock1", 1000000)
 
+# ====================================
+# Setup TprTrigger Driver
+# ====================================
+tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
+tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStream")
 
 # ===========================================
 #               ASYN MASKS
