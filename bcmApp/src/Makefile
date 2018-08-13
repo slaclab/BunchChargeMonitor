@@ -103,6 +103,9 @@ bcm_DBD += crossbarControl.dbd
 # DBD file for tprPattern
 bcm_DBD += tprPatternAsynDriver.dbd
 
+# DBD file for tprTrigger
+bcm_DBD += tprTriggerAsynDriver.dbd
+
 # needed for ioc Admin support
 bcm_DBD += iocAdmin.dbd
 
@@ -173,6 +176,9 @@ bcm_LIBS += crossbarControl
 
 # Library for tprPattern
 bcm_LIBS += tprPattern
+
+# Library for tprTrigger
+bcm_LIBS += tprTrigger
 
 # API for tprPattern
 hpstpr_DIR = $(HPSTPR_LIB)
