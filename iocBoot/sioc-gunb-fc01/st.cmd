@@ -179,7 +179,6 @@ ecAsynInit("/tmp/sock1", 1000000)
 # Setup TprTrigger Driver
 # ====================================
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
-tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStream")
 
 # ===========================================
 #               ASYN MASKS
