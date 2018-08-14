@@ -66,7 +66,8 @@ DB_INSTALLS += $(TPRTRIGGER)/db/tprDeviceNamePV.db
 DB_INSTALL += $(CROSSBARCONTROL)/db/crossbarCTRL.db
 
 # IOC Admin
-DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db   
+DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db
+DB_INSTALLS += $(IOCADMIN)/db/iocAdminScanMon.db   
 IOCRELEASE_DB += iocRelease.db
 
 # User-defined functions
