@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.2.5		Carolina Bianchini (carolina)			- 8/14/2018
+				-adding macro PORT for tprTrig.db
+
 R2.2.4		Carolina Bianchini (carolina) 			- 8/13/2018
 				-Updating the dictionary file for TimingProc 
 				 to include only the following timing related signals: 
@@ -16,6 +19,7 @@ R2.2.4		Carolina Bianchini (carolina) 			- 8/13/2018
 				-Adding tpr Trigger driver setup to startup script.
 				-Adding tprTrigger dbd and LIB
 				-Updating tprTrigger release to R1.2.2
+				
 R2.2.3		Dan Sciortino					- 8/09/2018
 				- Restore missing MPS module
 				
