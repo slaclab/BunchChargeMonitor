@@ -238,7 +238,7 @@ dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=FCSTATUS,SECN
 
 # ******************************
 # **** Load TPR Triggers db ****
-dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0")
+dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}:TRG00:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}:TRG01:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}:TRG02:")
