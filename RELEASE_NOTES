@@ -13,8 +13,9 @@ R2.2.4		Carolina Bianchini (carolina) 			- 8/13/2018
 				-Updating the dictionary file for TimingProc 
 				 to include only the following timing related signals: 
 				 SelectSource, SoftTrig, outPolarity, trigDelay, trigStretch. 
-				-adding tpr Trigger driver setup to startup script.
-
+				-Adding tpr Trigger driver setup to startup script.
+				-Adding tprTrigger dbd and LIB
+				-Updating tprTrigger release to R1.2.2
 R2.2.3		Dan Sciortino					- 8/09/2018
 				- Restore missing MPS module
 				
