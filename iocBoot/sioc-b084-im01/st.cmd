@@ -232,6 +232,10 @@ dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADD
 #######dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF)")
 dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
 
+# *******************************
+# **** Load message status   ****
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+
 # *****************************************************
 # **** Load db for Temperature Chassis on Ethercat ****
 

@@ -256,6 +256,12 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,N
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}:TRG14:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}:TRG15:")
 
+
+# *******************************
+# **** Load message status   ****
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+
+
 # *******************************
 # **** Load MPS scale factor ****
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")

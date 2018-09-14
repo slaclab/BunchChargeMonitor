@@ -238,6 +238,11 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,N
 #########dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
 #########dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
 
+# *******************************
+# **** Load message status   ****
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+
+
 # ****************************
 # **** Load BSA driver DB ****
 
