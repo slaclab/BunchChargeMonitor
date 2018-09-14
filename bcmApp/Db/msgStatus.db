@@ -1,0 +1,23 @@
+record(calc, "$(carrier_prefix):BPMS_SYNC_CALC") {
+   field(CALC, "A & B")
+   field(INPA, "$(carrier_prefix):StatusOfBsa1")
+   field(INPB, "0x4000")
+   field(HIHI, "1")
+   field(LOLO, "-1")
+   field(HHSV, "MAJOR")
+   field(LLSV, "MAJOR")
+   field(SCAN, "2 seconds")
+   field(FLINK, "$(carrier_prefix):BPMS_SYNC") 
+}
+
+record(bi, "$(carrier_prefix):BPMS_SYNC"){
+   field(DESC, "$(DESC)")
+   field(DTYP, "Soft Channel")
+   field(INP, "$(carrier_prefix):BPMS_SYNC_CALC")
+   field(ZNAM, "OK")
+   field(ONAM, "NO_SYNC")
+   field(PINI, "YES")
+   field(SCAN, "Passive")
+}
+
+
