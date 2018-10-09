@@ -9,6 +9,13 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.2.7		Carolina Bianchini (carolina)
+				-updating tprTrigger module to R1.2.4
+				-removing HIHI LOLO from RegisterIn.template when not in autosave or alarmed.
+				-bcmApp/Db/registerIn.template changing the ADDR to 1 from 0 for line:
+				 field(INP,  "@asyn($(PORT),1)$(PARAM)")
+				-Adding a new databaase to handle message status readback over the back pane, msgStatus.db
+				-Adding to st.cmd line: dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
 
 R2.2.6		Carolina Bianchini (carolina)			- 8/14/2018
 				-adding macro PORT for tprTrig.db
