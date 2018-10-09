@@ -16,8 +16,8 @@
 #            ENVIRONMENT VARIABLES
 # ===========================================
 
-# ****************************************************
-# **** Environment variables for BCM on YCPSWAsyn ****
+# ***********************************************************************
+# **** Environment variables for BCM on YCPSWAsyn ***********************
 
 # Support Large Arrays/Waveforms; Number in Bytes
 # Please calculate the size of the largest waveform
@@ -55,9 +55,8 @@ epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):215")
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
-
-# *****************************************************
-# **** Environment variables for Toroid on  Bergoz ****
+# **********************************************************************
+# **** Environment variables for Toroid on  Bergoz *********************
 
 epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
@@ -78,15 +77,11 @@ epicsEnvSet(FAC,"SYS2")
 epicsEnvSet("LOCA","B084")
 epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
-
-# *********************************************
-# **** Environment variables for IOC Admin ****
-
+# ******************************************************************
+# **** Environment variables for IOC Admin *************************
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
-
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
-
 
 cd ${TOP}
 
@@ -97,13 +92,12 @@ cd ${TOP}
 dbLoadDatabase("dbd/bcm.dbd",0,0)
 bcm_registerRecordDeviceDriver(pdbbase)
 
-
 # ===========================================
 #              DRIVER SETUP
 # ===========================================
 
-# ************************************
-# **** Driver setup for YCPSWAsyn ****
+# ******************************************************************
+# **** Driver setup for YCPSWAsyn **********************************
 
 ## Configure the Yaml Loader Driver
 # cpswLoadYamlFile(
@@ -150,7 +144,6 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 
 # **********************************************************************
 # **** Driver setup for Temperature Chassis on Ethercat ****************
-
 # Init EtherCAT: To support Real Time fieldbus
 # EtherCAT AsynDriver must be initialized in the IOC startup script before iocInit
 # ecAsynInit("<unix_socket>", <max_message>)
@@ -174,13 +167,10 @@ tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
 # ***********************************************************************
 # **** Asyn Masks for YCPSWAsyn *****************************************
-
 #asynSetTraceMask(${PORT},, -1, 9)
-
 
 # ***********************************************************************
 # **** Asyn Masks for Bergoz ********************************************
-
 #asynSetTraceIOMask("$(BERGOZ0_PORT)",-1,0x2)
 #asynSetTraceMask("$(BERGOZ0_PORT)",-1,0x9)
 
@@ -191,7 +181,6 @@ tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
 # ***********************************************************************
 # **** Load YCPSWAsyn db ************************************************
-
 # Save/Load configuration related records
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro05-21-18.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
@@ -311,7 +300,6 @@ set_pass1_restoreFile("info_settings.sav")
 # Load common LCLS Access Configuration File
 < ${ACF_INIT}
 
-
 # ===========================================
 #               IOC INIT
 # ===========================================
@@ -321,7 +309,6 @@ iocInit()
 # Log values only on change to the iocLogServer:
 caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 caPutLogShow(2)
-
 
 # Start autosave routines to save our data
 # optional, needed if the IOC takes a very long time to boot.
@@ -341,7 +328,6 @@ cd ${TOP}
 
 # *********************
 # **** Bergoz dbpf ****
-
 # Save the TTY device name
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 
