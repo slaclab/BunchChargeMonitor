@@ -15,8 +15,8 @@
 #            ENVIRONMENT VARIABLES
 # ===========================================
 
-# ****************************************************
-# **** Environment variables for BCM on YCPSWAsyn ****
+# ***********************************************************************
+# **** Environment variables for BCM on YCPSWAsyn ***********************
 
 # Support Large Arrays/Waveforms; Number in Bytes
 # Please calculate the size of the largest waveform
@@ -56,25 +56,24 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
-
-# ***************************************
-# **** Environment variables for MPS ****
+# ***********************************************************************
+# **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
 epicsEnvSet("MPS_APP_ID", "0x06")
 epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:5")
 
-# *******************************************************************
-# **** Environment variables for Temperature Chassis on Ethercat ****
+# ***********************************************************************
+# **** Environment variables for Temperature Chassis on Ethercat ********
 
 # System Location:
 epicsEnvSet("TEMP_IOC_NAME","SIOC:$(AREA):IM01")
 
-# *********************************************
-# **** Environment variables for IOC Admin ****
+# ***********************************************************************
+# **** Environment variables for IOC Admin ******************************
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 
-# *****************************************************
-# **** Environment variables for bergoz detection  ****
+# ***********************************************************************
+# **** Environment variables for bergoz detection  **********************
 # Serial number for bergoz
 epicsEnvSet("IM01","2C")
 
@@ -84,8 +83,8 @@ system("./getBergozLocation.sh ")
 cd(${TOP})
 
 
-# *****************************************************
-# **** Environment variables for Toroid on  Bergoz ****
+# **********************************************************************
+# **** Environment variables for Toroid on  Bergoz *********************
 
 epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
@@ -111,9 +110,8 @@ bcm_registerRecordDeviceDriver(pdbbase)
 # ===========================================
 #              DRIVER SETUP
 # ===========================================
-
-# ************************************
-# **** Driver setup for YCPSWAsyn ****
+# ***********************************************************************
+# **** Driver setup for YCPSWAsyn ***************************************
 
 ## Configure the Yaml Loader Driver
 # cpswLoadYamlFile(
@@ -124,22 +122,19 @@ bcm_registerRecordDeviceDriver(pdbbase)
 # ==========================================================================================================
 cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
 
-# ====================================
-# Setup BSA Driver
-# ====================================
+# **********************************************************************
+# **** Setup BSA Driver*************************************************
 # add BSA PVs
 addBsa("CHRG",       "uint32")
 addBsa("CHRGUNC",    "uint32")
 addBsa("RAWSUM",     "uint32")
 addBsa("CHRGFLOAT",  "float32")
 addBsa("TOROSTATUS", "uint32")
-
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
-# ====================================
-# Setup MPS Driver
-# ====================================
+# **********************************************************************
+# **** Setup MPS Driver ************************************************
 # LCLS2MPSCPASYNConfig(
 #    Port Name,                 # the name given to this port driver
 #    App ID,                    # Application ID
@@ -163,17 +158,15 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}"
 YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
 
 
-# *********************************
-# **** Driver setup for Bergoz ****
-
+# ***********************************************************************
+# **** Driver setup for Bergoz ******************************************
 # Set up ASYN ports
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
 drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 
 
-# **********************************************************
-# **** Driver setup for Temperature Chassis on Ethercat ****
-
+# ***********************************************************************
+# **** Driver setup for Temperature Chassis on Ethercat *****************
 # Init EtherCAT: To support Real Time fieldbus
 # EtherCAT AsynDriver must be initialized in the IOC startup script before iocInit
 # ecAsynInit("<unix_socket>", <max_message>)
@@ -181,26 +174,27 @@ drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
 # max_message = maximum size of messages between scanner and ioc
 ecAsynInit("/tmp/sock1", 1000000)
 
-# ====================================
-# Setup TprTrigger Driver
-# ====================================
+# ***********************************************************************
+# **** Setup TprTrigger Driver ******************************************
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
-tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStream")
+
+# ***********************************************************************
+# **** Setup TprPattern driver ******************************************
+#This driver needs to be loaded only for LCLS1 devices
+#tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStream")
 
 
 # ===========================================
 #               ASYN MASKS
 # ===========================================
 
-# **********************************
-# **** Asyn Masks for YCPSWAsyn ****
-
+# ***********************************************************************
+# **** Asyn Masks for YCPSWAsyn *****************************************
 #asynSetTraceMask(${PORT},, -1, 9)
 
 
-# *******************************
-# **** Asyn Masks for Bergoz ****
-
+# ***********************************************************************
+# **** Asyn Masks for Bergoz ********************************************
 #asynSetTraceIOMask("$(BERGOZ0_PORT)",-1,0x2)
 #asynSetTraceMask("$(BERGOZ0_PORT)",-1,0x9)
 
@@ -209,8 +203,8 @@ tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStre
 #               DB LOADING
 # ===========================================
 
-# ***************************
-# **** Load YCPSWAsyn db ****
+# ************************************************************************
+# **** Load YCPSWAsyn db *************************************************
 
 #Save/Load configuration related records
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro05-21-18.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
@@ -223,11 +217,15 @@ dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
 dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePortSwap, DEST=SrvRemotePort")
 
+# *******************************
+# **** Load message status   ****
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC1_PREFIX}")
+
 # Automatic initialization
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
-# ******************************
-# **** Load TPR Triggers db ****
+# ***********************************************************************
+# **** Load TPR Triggers db *********************************************
 dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC1_PREFIX}:TRG00:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC1_PREFIX}:TRG01:")
@@ -246,20 +244,18 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,N
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC1_PREFIX}:TRG14:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC1_PREFIX}:TRG15:")
 
-# ************************
-# **** Load Bergoz db ****
-
+# ***********************************************************************
+# **** Load Bergoz db ***************************************************
 dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_PORT),A=-1")
 dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADDR=-1,OMAX=0,IMAX=0")
 dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
 
-# *******************************
-# **** Load message status   ****
+# ***********************************************************************
+# **** Load message status   ********************************************
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC1_PREFIX}")
 
-# *****************************************************
-# **** Load db for Temperature Chassis on Ethercat ****
-
+# ***********************************************************************
+# **** Load db for Temperature Chassis on Ethercat **********************
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
 dbLoadRecords("db/EK1101.template", "DEVICE=${AMC1_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
@@ -267,22 +263,21 @@ dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP1,PORT=Node1
 dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
 dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
 
-# ****************************
-# **** Load BSA driver DB ****
-
+# ************************************************************************
+# **** Load BSA driver DB ************************************************
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
 dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
 
-# *******************************
-# **** Load MPS scale factor ****
+# ************************************************************************
+# **** Load MPS scale factor *********************************************
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
 
-# **********************************************************************
-# **** Load iocAdmin databases to support IOC Health and monitoring ****
+# ************************************************************************
+# **** Load iocAdmin databases to support IOC Health and monitoring ******
 dbLoadRecords("db/iocAdminSoft.db","IOC=${IOC_NAME}")
 dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOC_NAME}")
 
@@ -293,9 +288,8 @@ dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOC_NAME}")
 dbLoadRecords("db/iocRelease.db","IOC=${IOC_NAME}")
 
 
-# *******************************************
-# **** Load database for autosave status ****
-
+# ***********************************************************************
+# **** Load database for autosave status ********************************
 dbLoadRecords("db/save_restoreStatus.db", "P=${IOC_NAME}:")
 
 # ===========================================
