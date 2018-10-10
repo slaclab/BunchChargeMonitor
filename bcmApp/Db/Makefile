@@ -78,6 +78,8 @@ DB += bcm.db
 DB += carrier.db
 DB += ipAddr.db
 
+# For BCM specific diagnostics
+DB += msgStatus.db
 # For byte swapping
 DB += swap.db
 
