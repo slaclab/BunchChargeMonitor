@@ -14,7 +14,10 @@ R2.2.9		Carolina Bianchini (carolina)			-10/10/2018
 				- Adding DB+= msgStatus.db in bcmApp/Db/Makefile
 				- Adding the comma after PINI where missing in carrier.substituitions
 				- Moving AppType, SelBpm, ThreshTmit, CalibEnable from RegisterIn to 
-					RegisterOut template and adding them to RegisterOutRBV as well."
+					RegisterOut template and adding them to RegisterOutRBV as well.
+				- Changed macros for dbLoadRecords of swap.db
+				- Changed SCAN to 1sec from PASSIVE for BPMS Ip and Port PV in carrier.substituitions
+
 R2.2.8		Carolina Bianchini (carolina)			- 10/10/2018
 				- clean up all st.cmd 
 
