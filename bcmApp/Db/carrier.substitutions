@@ -114,11 +114,11 @@ file "RegisterOutRBV.template" { pattern
 
 # ENUM register
 file "RegisterEnumBOut.template" { pattern
-{ P,        R,              DESC,        PINI   ZNAM,        ONAM,     SCAN,       PORT, PARAM     }
+{ P,        R,              DESC,        PINI,   ZNAM,        ONAM,     SCAN,       PORT, PARAM     }
 }
 
 file "RegisterEnumBOutRBV.template" { pattern
-{ P,        R,              DESC,         PINI    ZNAM,        ONAM,     SCAN,        PORT, PARAM     }
+{ P,        R,              DESC,         PINI,    ZNAM,        ONAM,     SCAN,        PORT, PARAM     }
 }
 
 #======================================
