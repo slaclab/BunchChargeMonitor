@@ -15,8 +15,8 @@
 #            ENVIRONMENT VARIABLES
 # ===========================================
 
-# ****************************************************
-# **** Environment variables for BCM on YCPSWAsyn ****
+# ***********************************************************************
+# **** Environment variables for BCM on YCPSWAsyn ***********************
 
 # Support Large Arrays/Waveforms; Number in Bytes
 # Please calculate the size of the largest waveform
@@ -55,15 +55,14 @@ epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):999")
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
-
-# ***************************************
-# **** Environment variables for MPS ****
+# ***********************************************************************
+# **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
 epicsEnvSet("MPS_APP_ID", "0x05")
 epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:4")
 
-# ***********************************************************
-# **** Environment variables for Faraday Cup on Keithley ****
+# ***********************************************************************
+# **** Environment variables for Faraday Cup on Keithley ****************
 
 epicsEnvSet("K6482_PORT","L1")
 epicsEnvSet("K6482_P","$(AMC0_PREFIX):")
@@ -72,8 +71,8 @@ epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-li00-nw02:2001)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 
-# *******************************************************************
-# **** Environment variables for Temperature Chassis on Ethercat ****
+# ***********************************************************************
+# **** Environment variables for Temperature Chassis on Ethercat ********
 
 # System Location:
 epicsEnvSet(FAC,"SYS2")
@@ -81,8 +80,8 @@ epicsEnvSet("LOCA","GUNB")
 epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
 
-# *********************************************
-# **** Environment variables for IOC Admin ****
+# **********************************************************************
+# **** Environment variables for IOC Admin *****************************
 
 epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
 
@@ -104,9 +103,8 @@ bcm_registerRecordDeviceDriver(pdbbase)
 # ===========================================
 #              DRIVER SETUP
 # ===========================================
-
-# ************************************
-# **** Driver setup for YCPSWAsyn ****
+# **********************************************************************
+# **** Driver setup for YCPSWAsyn **************************************
 
 ## Configure the Yaml Loader Driver
 # cpswLoadYamlFile(
@@ -116,24 +114,19 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
 cpswLoadYamlFile("${YAML_FILE}","NetIODev","","${FPGA_IP}")
-
-# ====================================
-# Setup BSA Driver
-# ====================================
+# *********************************************************************
+# **** BSA Driver setup ***********************************************
 # add BSA PVs
 addBsa("CHRG",       "uint32")
 addBsa("JUNK",       "uint32")
 addBsa("CHRGUNC",    "uint32")
 addBsa("CHRGFLOAT",  "float32")
 addBsa("FCSTATUS",   "uint32")
-
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
-
-# ====================================
-# Setup MPS Driver
-# ====================================
+# *********************************************************************
+# **** MPS Driver setup ***********************************************
 # LCLS2MPSCPASYNConfig(
 #    Port Name,                 # the name given to this port driver
 #    App ID,                    # Application ID
@@ -156,43 +149,41 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}"
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
 YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
 
-
-# ***********************************
-# **** Driver setup for Keithley ****
-
+# *********************************************************************
+# **** Driver setup for Keithley **************************************
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
 drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
 
 
-# **********************************************************
-# **** Driver setup for Temperature Chassis on Ethercat ****
-
+# *********************************************************************
+# **** Driver setup for Temperature Chassis on Ethercat ***************
 # Init EtherCAT: To support Real Time fieldbus
 # EtherCAT AsynDriver must be initialized in the IOC startup script before iocInit
 # ecAsynInit("<unix_socket>", <max_message>)
 # unix_socket = path to the unix socket created by the scanner
 # max_message = maximum size of messages between scanner and ioc
-
 ecAsynInit("/tmp/sock1", 1000000)
 
-# ====================================
-# Setup TprTrigger Driver
-# ====================================
+# *********************************************************************
+# **** TprTrigger driver setup ****************************************
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
+# *********************************************************************
+# **** Setup TprPattern driver ****************************************
+#This driver needs to be loaded only for LCLS1 devices
+#tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStream")
+#
 # ===========================================
 #               ASYN MASKS
 # ===========================================
 
 # **********************************
 # **** Asyn Masks for YCPSWAsyn ****
-
 #asynSetTraceMask(${PORT},, -1, 9)
 
 
-# *********************************
-# **** Asyn Masks for Keithley ****
-
+# ********************************************************************
+# **** Asyn Masks for Keithley ***************************************
 #asynSetTraceIOMask("$(K6482_PORT)",-1,0x2)
 #asynSetTraceMask("$(K6482_PORT)",-1,0x9)
 
@@ -201,9 +192,8 @@ tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 #               DB LOADING
 # ===========================================
 
-# ***************************
-# **** Load YCPSWAsyn db ****
-
+# *********************************************************************
+# **** Load YCPSWAsyn db **********************************************
 #Save/Load configuration related records
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsFC05-21-18_test.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
@@ -222,22 +212,22 @@ dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157
 # Allow time for Keithley driver to connect
 epicsThreadSleep(1.0)
 
-# **************************
-# **** Load Keithley db ****
+# **********************************************************************
+# **** Load Keithley db ************************************************
 dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
 dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
 
-# ****************************
-# **** Load BSA driver DB ****
+# **********************************************************************
+# **** Load BSA driver DB **********************************************
 
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=FCSTATUS,SECN=FCSTATUS")
 
-# ******************************
-# **** Load TPR Triggers db ****
+# ************************************************************************
+# **** Load TPR Triggers db **********************************************
 dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}:TRG00:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}:TRG01:")
@@ -257,18 +247,18 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,N
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}:TRG15:")
 
 
-# *******************************
-# **** Load message status   ****
+# *************************************************************************
+# **** Load message status   **********************************************
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
 
 
-# *******************************
-# **** Load MPS scale factor ****
+# *************************************************************************
+# **** Load MPS scale factor **********************************************
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
 
-# **********************************************************************
-# **** Load iocAdmin databases to support IOC Health and monitoring ****
+# *************************************************************************
+# **** Load iocAdmin databases to support IOC Health and monitoring *******
 dbLoadRecords("db/iocAdminSoft.db","IOC=${IOC_NAME}")
 dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOC_NAME}")
 
@@ -279,9 +269,8 @@ dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOC_NAME}")
 dbLoadRecords("db/iocRelease.db","IOC=${IOC_NAME}")
 
 
-# *******************************************
-# **** Load database for autosave status ****
-
+# ************************************************************************
+# **** Load database for autosave status *********************************
 dbLoadRecords("db/save_restoreStatus.db", "P=${IOC_NAME}:")
 
 # ===========================================
