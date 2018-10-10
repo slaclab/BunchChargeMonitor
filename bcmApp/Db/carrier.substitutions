@@ -81,17 +81,27 @@ file "RegisterEnumBIn.template" { pattern
 #======================================
 
 file "RegisterOut.template" { pattern
-{ P,        R,              DESC,                                       PINI,   SCAN,       PORT,  PARAM       }
-{ $(P), ScratchPad,     "Register to test R/W"                    "NO",   "Passive",  $(PORT),    ScratchPad }
+{ P,        R,              DESC,                       PINI,   SCAN,       PORT,        PARAM         }
+{ $(P), ScratchPad,     "Register to test R/W",          "NO",   "Passive",  $(PORT),    ScratchPad    }
 # BSA
-{ $(P), RxPolarity,     ""                                        "NO",   "Passive",  $(PORT),    RxPolarity }
-{ $(P), PhaseTarget,    ""                                        "NO",   "Passive",  $(PORT),    PhaseTarget }
+{ $(P), RxPolarity,     "",                              "NO",   "Passive",  $(PORT),    RxPolarity    }
+{ $(P), PhaseTarget,    "",                              "NO",   "Passive",  $(PORT),    PhaseTarget   }
+#ATCA Specific
+{ $(P), AppType,        "",                             "YES",  "1 second",  $(PORT),    AppType       }
+{ $(P), SelBpm,         "",                             "YES",  "1 second",  $(PORT),    SelBpm        }
+{ $(P), TreshTmit,      "",                             "YES",  "1 second",  $(PORT),    TreshTmit     }
+{ $(P), CalibEnable,    "",                             "YES",  "1 second",  $(PORT),    CalibEnable   } 
 }
 
 file "RegisterOutRBV.template" { pattern
 { P,           R,                DESC,                                     PINI,   SCAN,        PORT,  PARAM       }
 # Shared
 { $(P), ScratchPadRBV,     "Register to test R/W",                   "YES",  "1 second",  $(PORT),    ScratchPad }
+#ATCA Specific
+{ $(P), AppType,        "",                             "YES",  "1 second",  $(PORT),    AppType       }
+{ $(P), SelBpm,         "",                             "YES",  "1 second",  $(PORT),    SelBpm        }
+{ $(P), TreshTmit,      "",                             "YES",  "1 second",  $(PORT),    TreshTmit     }
+{ $(P), CalibEnable,    "",                             "YES",  "1 second",  $(PORT),    CalibEnable   } 
 # BSA
 { $(P), ClkSelRBV,         ""                                           "YES",  "1 second",  $(PORT),     ClkSel        }
 { $(P), RxPolarityRBV,     ""                                           "YES",  "1 second",  $(PORT),     RxPolarity    }
