@@ -336,13 +336,6 @@
             - PllRst: !<value> 0x0
             - CntRst: !<value> 0x0
             - RollOverEn: !<value> 0x0000
-        - AppMpsRegBase:
-            - beamDestMask: !<value> 0x0000
-            - altDestMask: !<value> 0x0000
-            - mpsVersion: !<value> 0x00
-            - lcls1Mode: !<value> 0x0
-            - mpsEnable: !<value> 0x1
-            - mpsAppId: !<value> 0x005
     # - SwRssiServer:
         # - MaxOutOfSeq: !<value> 0x00
         # - MaxCumAck: !<value> 0x03
