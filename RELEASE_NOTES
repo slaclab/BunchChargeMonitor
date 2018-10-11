@@ -26,6 +26,11 @@ R2.2.9		Carolina Bianchini (carolina)			-10/10/2018
 					RegisterStream.template RegisterStream16.template
 				- Added macro PORT=trig to dbLoadRecords for all SIOCs' st.cmd
 				- In msgStatus.db fixed typos in Record FLINK to FLNK and 2 seconds to 1second
+				- modified yaml/defaultsFC05-21-18_test.yaml to remove the mps configuration section as 
+					Jesus does it dorectly from MPS system. yaml/defaultsFC05-21-18_test.yaml
+				- Added TORO configuration files in yaml/ for normal operation and to test mps
+					yaml/defaultsToro08-21-18.yaml yaml/defaultsToro08-21-18_mps.yaml
+
 R2.2.8		Carolina Bianchini (carolina)			- 10/10/2018
 				- clean up all st.cmd 
 
