@@ -43,10 +43,6 @@ file "RegisterIn.template" { pattern
 { $(P), TmitTmit1,      "",                             "YES",  "1 second", $(PORT),   "",   TmitTmit1     }
 { $(P), StatusOfBsa0,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa0  }
 { $(P), StatusOfBsa1,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa1  }
-{ $(P), AppType,        "",                             "YES",  "1 second", $(PORT),   "",   AppType       }
-{ $(P), SelBpm,         "",                             "YES",  "1 second", $(PORT),   "",   SelBpm        }
-{ $(P), TreshTmit,      "",                             "YES",  "1 second", $(PORT),   "",   TreshTmit     }
-{ $(P), CalibEnable,    "",                             "YES",  "1 second", $(PORT),   "",   CalibEnable   } 
 #MPS debugging 
 { $(P), BpTimAlignErrCnt,   "",                             "YES",  "1 second", $(PORT),   "",   BpTimAlignErrCnt }
 { $(P), BpTmitIntMax,       "",                             "YES",  "1 second", $(PORT),   "",   BpTmitIntMax     }
@@ -87,29 +83,25 @@ file "RegisterOut.template" { pattern
 { $(P), RxPolarity,     "",                              "NO",   "Passive",  $(PORT),    RxPolarity    }
 { $(P), PhaseTarget,    "",                              "NO",   "Passive",  $(PORT),    PhaseTarget   }
 #ATCA Specific
-{ $(P), AppType,        "",                             "YES",  "1 second",  $(PORT),    AppType       }
-{ $(P), SelBpm,         "",                             "YES",  "1 second",  $(PORT),    SelBpm        }
-{ $(P), TreshTmit,      "",                             "YES",  "1 second",  $(PORT),    TreshTmit     }
-{ $(P), CalibEnable,    "",                             "YES",  "1 second",  $(PORT),    CalibEnable   } 
+{ $(P), AppType,        "",                             "NO",  "Passive",  $(PORT),    AppType       }
+{ $(P), SelBpm,         "",                             "NO",  "Passive",  $(PORT),    SelBpm        }
+{ $(P), TreshTmit,      "",                             "NO",  "Passive",  $(PORT),    TreshTmit     }
+{ $(P), CalibEnable,    "",                             "NO",  "Passive",  $(PORT),    CalibEnable   } 
 }
 
 file "RegisterOutRBV.template" { pattern
-{ P,           R,                DESC,                                     PINI,   SCAN,        PORT,  PARAM       }
+{ P,           R,                DESC,                  PINI,      SCAN,        PORT,  PARAM       }
 # Shared
 { $(P), ScratchPadRBV,     "Register to test R/W",                   "YES",  "1 second",  $(PORT),    ScratchPad }
-#ATCA Specific
-{ $(P), AppType,        "",                             "YES",  "1 second",  $(PORT),    AppType       }
-{ $(P), SelBpm,         "",                             "YES",  "1 second",  $(PORT),    SelBpm        }
-{ $(P), TreshTmit,      "",                             "YES",  "1 second",  $(PORT),    TreshTmit     }
-{ $(P), CalibEnable,    "",                             "YES",  "1 second",  $(PORT),    CalibEnable   } 
 # BSA
 { $(P), ClkSelRBV,         ""                                           "YES",  "1 second",  $(PORT),     ClkSel        }
 { $(P), RxPolarityRBV,     ""                                           "YES",  "1 second",  $(PORT),     RxPolarity    }
 { $(P), PhaseTargetRBV,    ""                                           "YES",  "1 second",  $(PORT),     PhaseTarget   }
-{ $(P), AppTypeRBV,        "",                                          "YES",  "1 second",  $(PORT),     AppType       }
-{ $(P), SelBpmRBV,         "",                                          "YES",  "1 second",  $(PORT),     SelBpm        }
-{ $(P), TreshTmitRBV,      "",                                          "YES",  "1 second",  $(PORT),     TreshTmit     }
-{ $(P), CalibEnableRBV,    "",                                          "YES",  "1 second",  $(PORT),     CalibEnable   }
+#ATCA Specific
+{ $(P), AppTypeRBV,        "",                                          "NO",   "1 second",  $(PORT),     AppType       }
+{ $(P), SelBpmRBV,         "",                                          "NO",   "1 second",  $(PORT),     SelBpm        }
+{ $(P), TreshTmitRBV,      "",                                          "NO",   "1 second",  $(PORT),     TreshTmit     }
+{ $(P), CalibEnableRBV,    "",                                          "NO",   "1 second",  $(PORT),     CalibEnable   }
 #MPS debugging 
 { $(P), BpTimAlignErrCntRBV,   "",                             "YES",  "1 second", $(PORT),      BpTimAlignErrCnt }
 { $(P), BpTmitIntMaxRBV,       "",                             "YES",  "1 second", $(PORT),      BpTmitIntMax     }
