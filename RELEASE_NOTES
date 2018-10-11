@@ -30,6 +30,8 @@ R2.2.9		Carolina Bianchini (carolina)			-10/10/2018
 					Jesus does it dorectly from MPS system. yaml/defaultsFC05-21-18_test.yaml
 				- Added TORO configuration files in yaml/ for normal operation and to test mps
 					yaml/defaultsToro08-21-18.yaml yaml/defaultsToro08-21-18_mps.yaml
+				- Changed the dbLoadrecords macro to LOAD_FILE=yaml/defaultsToro08-21-18.yaml 
+					iocBoot/sioc-gunb-im01/st.cmd iocBoot/sioc-b084-im01/st.cmd
 
 R2.2.8		Carolina Bianchini (carolina)			- 10/10/2018
 				- clean up all st.cmd 
