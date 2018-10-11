@@ -17,7 +17,14 @@ R2.2.9		Carolina Bianchini (carolina)			-10/10/2018
 					RegisterOut template and adding them to RegisterOutRBV as well.
 				- Changed macros for dbLoadRecords of swap.db
 				- Changed SCAN to 1sec from PASSIVE for BPMS Ip and Port PV in carrier.substituitions
-
+				- Removed the following templates from the app. The templates are now loaded by Makefile.
+					RegisterArrayIn.template RegisterArrayOut.template RegisterIn.template RegisterOut.template 
+					RegisterOutRBV.template RegisterArrayChar.template RegisterEnumBIn.template 
+					RegisterEnumBOut.template RegisterEnumBOutRBV.template RegisterEnumMBBIn.template 
+					RegisterEnumMBBOut.template RegisterEnumMBBOutRBV.template RegisterDoubleIn.template 
+					RegisterDoubleOut.template RegisterDoubleOutRBV.template RegisterCommand.template 
+					RegisterStream.template RegisterStream16.template
+				- Added macro PORT=trig to dbLoadRecords for all SIOCs' st.cmd
 R2.2.8		Carolina Bianchini (carolina)			- 10/10/2018
 				- clean up all st.cmd 
 
