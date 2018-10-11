@@ -77,10 +77,11 @@ epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
 # Serial number for bergoz
 epicsEnvSet("IM01","2C")
 
-cd(${TOP}/iocBoot/${IOC})
-system("./getBergozLocation.sh ")
-< /data/im01_path
-cd(${TOP})
+# Not currently working
+#cd(${TOP}/iocBoot/${IOC})
+#system("./getBergozLocation.sh ")
+#< /data/im01_path
+#cd(${TOP})
 
 
 # **********************************************************************
@@ -226,7 +227,7 @@ dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157
 
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
-dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0")
+dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC1_PREFIX}:TRG00:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC1_PREFIX}:TRG01:")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC1_PREFIX}:TRG02:")
@@ -249,10 +250,6 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,N
 dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_PORT),A=-1")
 dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADDR=-1,OMAX=0,IMAX=0")
 dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
-
-# ***********************************************************************
-# **** Load message status   ********************************************
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC1_PREFIX}")
 
 # ***********************************************************************
 # **** Load db for Temperature Chassis on Ethercat **********************
