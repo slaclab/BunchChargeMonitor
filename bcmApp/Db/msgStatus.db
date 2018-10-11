@@ -6,8 +6,8 @@ record(calc, "$(carrier_prefix):BPMS_SYNC_CALC") {
    field(LOLO, "-1")
    field(HHSV, "MAJOR")
    field(LLSV, "MAJOR")
-   field(SCAN, "2 seconds")
-   field(FLINK, "$(carrier_prefix):BPMS_SYNC") 
+   field(SCAN, "1 second")
+   field(FLNK, "$(carrier_prefix):BPMS_SYNC") 
 }
 
 record(bi, "$(carrier_prefix):BPMS_SYNC"){

@@ -25,6 +25,7 @@ R2.2.9		Carolina Bianchini (carolina)			-10/10/2018
 					RegisterDoubleOut.template RegisterDoubleOutRBV.template RegisterCommand.template 
 					RegisterStream.template RegisterStream16.template
 				- Added macro PORT=trig to dbLoadRecords for all SIOCs' st.cmd
+				- In msgStatus.db fixed typos in Record FLINK to FLNK and 2 seconds to 1second
 R2.2.8		Carolina Bianchini (carolina)			- 10/10/2018
 				- clean up all st.cmd 
 
