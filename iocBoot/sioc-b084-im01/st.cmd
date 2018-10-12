@@ -93,6 +93,14 @@ dbLoadDatabase("dbd/bcm.dbd",0,0)
 bcm_registerRecordDeviceDriver(pdbbase)
 
 # ===========================================
+#	        IDENTIFY Bergoz 
+# ===========================================
+cd(${TOP}/iocBoot/${IOC})
+system("./getBergozLocation.sh ")
+< /data/im01_path
+cd(${TOP})
+
+# ===========================================
 #              DRIVER SETUP
 # ===========================================
 
@@ -154,6 +162,10 @@ ecAsynInit("/tmp/sock1", 1000000)
 # *********************************************************************
 # **** Setup TprTrigger driver ****************************************
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
+
+# ***********************************************************************
+# **** Setup Crossbar Control Driver ******************************************
+crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040"
 
 # *********************************************************************
 # **** Setup TprPattern driver ****************************************
