@@ -33,7 +33,9 @@ R2.2.9		Carolina Bianchini (carolina)			-10/10/2018
 				- Changed the dbLoadrecords macro to LOAD_FILE=yaml/defaultsToro08-21-18.yaml 
 					iocBoot/sioc-gunb-im01/st.cmd iocBoot/sioc-b084-im01/st.cmd
 				- In TORO st.cmd: Added Crossbar Control Driver call. And moved getBergoz script after bcm.dbd load
-
+				- Moved BERGOZ0_TTY set EPICS environment in the st.cmds after getBergoz.sh script for:
+				 	iocBoot/sioc-b084-im01/st.cmd 
+					iocBoot/sioc-gunb-im01/st.cmd
 
 R2.2.8		Carolina Bianchini (carolina)			- 10/10/2018
 				- clean up all st.cmd 
