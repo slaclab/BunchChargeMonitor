@@ -61,7 +61,6 @@ epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_PORT","L0")
-epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
 epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","40")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
@@ -99,6 +98,7 @@ cd(${TOP}/iocBoot/${IOC})
 system("./getBergozLocation.sh ")
 < /data/im01_path
 cd(${TOP})
+epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 
 # ===========================================
 #              DRIVER SETUP

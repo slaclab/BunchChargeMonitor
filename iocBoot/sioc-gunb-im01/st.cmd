@@ -83,7 +83,6 @@ epicsEnvSet("IM01","2C")
 epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_PORT","L0")
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","44")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
@@ -107,7 +106,7 @@ cd(${TOP}/iocBoot/${IOC})
 system("./getBergozLocation.sh ")
 < /data/im01_path
 cd(${TOP})
-
+epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 # ===========================================
 #              DRIVER SETUP
 # ===========================================
