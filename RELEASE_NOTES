@@ -37,11 +37,13 @@ R2.2.9		Carolina Bianchini (carolina)			-10/10/2018
 				 	iocBoot/sioc-b084-im01/st.cmd 
 					iocBoot/sioc-gunb-im01/st.cmd
 				- in st.cmd for sioc-gunb-im01:
-					Adding macro DESC for dbLoadRecords(db/msgStatus.db,carrier_prefix=${AMC1_PREFIX},DESC=Communications Diagnostics)
+					Adding macro DESC for dbLoadRecords(db/msgStatus.db,carrier_prefix=${AMC1_PREFIX},
+						DESC=Communications Diagnostics)
 				 	-epicsEnvSet("TEMP_IOC_NAME","SIOC:$(AREA):IM01")
 					+epicsEnvSet("TEMP_IOC_NAME","$(AMC1_PREFIX)")
-
-
+				- in bcmApp/Db/TempMonitoring_TORO.substitutions changed P from $(DEVICE):BCM_EL3202_2:INPUT2:VALUE 
+					to $(DEVICE):TEMP1:INPUT1:VALUE 
+			
 R2.2.8		Carolina Bianchini (carolina)			- 10/10/2018
 				- clean up all st.cmd 
 
