@@ -66,7 +66,7 @@ epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:5")
 # **** Environment variables for Temperature Chassis on Ethercat ********
 
 # System Location:
-epicsEnvSet("TEMP_IOC_NAME","SIOC:$(AREA):IM01")
+epicsEnvSet("TEMP_IOC_NAME","$(AMC1_PREFIX)")
 
 # ***********************************************************************
 # **** Environment variables for IOC Admin ******************************
@@ -223,9 +223,8 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 
 # *******************************
 # **** Load message status   ****
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC1_PREFIX}")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC1_PREFIX},DESC=Communications Diagnostics")
 
-# Automatic initialization
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 # ***********************************************************************
