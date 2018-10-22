@@ -10,6 +10,11 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R2.2.10		Carolina Bianchini (carolina) 			-10/22/2018
+				- Adding bcmApp/srcEng folder to BCM app for FW Eng to have scripts available in PROD.
+				- Adding MSG DELAY for MPS / BPMS communication
+				- Changed macros P to point to carrier_prefix=AMC_CARRIER_PREFIX for dbLoadRecords msgStatus
+
 R2.2.9		Carolina Bianchini (carolina)			-10/10/2018	
 				- Adding DB+= msgStatus.db in bcmApp/Db/Makefile
 				- Adding the comma after PINI where missing in carrier.substituitions
