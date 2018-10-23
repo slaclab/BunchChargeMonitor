@@ -16,6 +16,7 @@ R2.2.10		Carolina Bianchini (carolina) 			-10/22/2018
 				- Changed macros P to point to carrier_prefix=AMC_CARRIER_PREFIX for dbLoadRecords msgStatus
 				- Added Make file for srcEng: bcmApp/srcEng/Makefile
 				- Modified srcDisplay/Makefile commenting out the EDM+= 
+				- Updated the CALC record calculation to A&B?1:0 for bcmApp/Db/msgStatus.db
 
 R2.2.9		Carolina Bianchini (carolina)			-10/10/2018	
 				- Adding DB+= msgStatus.db in bcmApp/Db/Makefile
