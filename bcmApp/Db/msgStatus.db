@@ -20,7 +20,7 @@ record(bi, "$(carrier_prefix):BPMS_SYNC"){
    field(SCAN, "Passive")
 }
 
-record(longout, "$(carrier_prefix):BPM_Tmit") {
+record(ao, "$(carrier_prefix):BPM_Tmit") {
    field(DESC, "RBV BPMS to BCM register")
    field(DTYP, "Soft Channel")
    field(SCAN, "Passive") 
