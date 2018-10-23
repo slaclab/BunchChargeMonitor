@@ -177,6 +177,8 @@
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/CoefA1                                                       AMC1:CoefA1
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/CoefA2                                                       AMC0:CoefA2
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/CoefA2                                                       AMC1:CoefA2
+/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TmitCoef							  AMC0:TmitCoef
+/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TmitCoef                                                     AMC1:TmitCoef
 /mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/Mode                                                   AMC0:Mode
 /mmio/AppTop/AppCore/SysGen[1]/DspPreprocConfig[0]/Mode                                                   AMC1:Mode
 /mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/NumberSamples0                                         AMC0:NumSamp0

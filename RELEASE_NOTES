@@ -10,6 +10,13 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R2.2.11		Carolina Bianchini (carolina)			-10/23/2018
+				- Adding /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TmitCoef to yaml/bcm dict file
+				- in msgStatus.template adding a record TORO:$(AREA):$(LOCA):TmitCoef to readback teh Tmit value from
+				  	BPMS BPMS:$(AREA):$(BPM_LOCA):CHRG_FWSCL and writing it into the AMC0/1:TmitCoef register.
+					Pv added into msgStatus.db $(carrier_prefix):BPM_Tmit
+				- in bcm.subst added RBV and PV such as:
+					{ $(P),     TmitCoefRBV,  "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 R2.2.10		Carolina Bianchini (carolina) 			-10/22/2018
 				- Adding bcmApp/srcEng folder to BCM app for FW Eng to have scripts available in PROD.
 				- Adding MSG DELAY for MPS / BPMS communication

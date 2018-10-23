@@ -20,4 +20,9 @@ record(bi, "$(carrier_prefix):BPMS_SYNC"){
    field(SCAN, "Passive")
 }
 
-
+record(ao, "$(carrier_prefix):BPM_Tmit") {
+   field(DESC, "RBV from BPMS application that writes into BCM register")
+   field(DTYP, "Soft Channel")
+   field(INP, "BPMS:$(AREA):$(BPM_LOCA):CHRG_FWSCL")
+   field(OUT, "TORO:$(AREA):$(LOCA):TmitCoef")
+}
