@@ -21,7 +21,7 @@ record(bi, "$(carrier_prefix):BPMS_SYNC"){
 }
 
 record(longout, "$(carrier_prefix):BPM_Tmit") {
-   field(DESC, "RBV from BPMS application that writes into BCM register")
+   field(DESC, "RBV BPMS to BCM register")
    field(DTYP, "Soft Channel")
    field(SCAN, "Passive") 
    field(DOL, "BPMS:$(AREA):$(BPM_LOCA):CHRG_FWSCL CPP")
