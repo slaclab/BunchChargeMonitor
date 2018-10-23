@@ -175,6 +175,7 @@ file "RegisterDoubleOut.template" { pattern
 { $(P),     CoefA0,       "Coef A0 for 1st group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefA0 }
 { $(P),     CoefA1,       "Coef A1 for 2nd group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefA1 }
 { $(P),     CoefA2,       "Coef A2 for 3rd group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefA2 }
+{ $(P),     TmitCoef,     "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 }
 
 file "RegisterDoubleOutRBV.template" { pattern
@@ -187,6 +188,7 @@ file "RegisterDoubleOutRBV.template" { pattern
 { $(P),     CoefA0RBV,    "Coef A0 for 1st group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefA0 }
 { $(P),     CoefA1RBV,    "Coef A1 for 2nd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefA1 }
 { $(P),     CoefA2RBV,    "Coef A2 for 3rd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefA2 }
+{ $(P),     TmitCoefRBV,  "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 }
 
 #======================================
