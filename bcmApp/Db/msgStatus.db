@@ -1,5 +1,5 @@
 record(calc, "$(carrier_prefix):BPMS_SYNC_CALC") {
-   field(CALC, "A & B")
+   field(CALC, "A&B?1:0")
    field(INPA, "$(carrier_prefix):StatusOfBsa1")
    field(INPB, "0x4000")
    field(HIHI, "1")
