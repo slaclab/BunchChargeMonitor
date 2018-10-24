@@ -115,6 +115,7 @@ epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
 cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
+cpswLoadConfigFile(getenv("yaml/defaultsToro08-21-18.yaml"), "mmio")
 
 # *********************************************************************
 # **** Setup BSA driver ***********************************************
@@ -200,6 +201,7 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=360,AREA=GUNB")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
