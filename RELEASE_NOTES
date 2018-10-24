@@ -22,6 +22,7 @@ R2.2.11		Carolina Bianchini (carolina)			-10/23/2018
 				- in bcm.subst added RBV and PV such as:
 					{ $(P),     TmitCoefRBV,  "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 				- Adding macro to load msgStatus in iocBoot/sioc-gunb-im01/st.cmd
+				- File with list of triggers setpoints for IM01 in bcmApp/srcEng/RESTORE_TRIGGERS_IM01
 
 R2.2.10		Carolina Bianchini (carolina) 			-10/22/2018
 				- Adding bcmApp/srcEng folder to BCM app for FW Eng to have scripts available in PROD.
