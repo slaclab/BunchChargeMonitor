@@ -68,7 +68,7 @@ DBD += bcm.dbd
 
 # bcm.dbd will be made up from these files:
 bcm_DBD += base.dbd
-bcm_DBD += devIocStats.dbd
+#bcm_DBD += devIocStats.dbd
 bcm_DBD += asSupport.dbd
 # Include dbd files from all support applications:
 bcm_DBD += asyn.dbd
@@ -107,7 +107,8 @@ bcm_DBD += tprPatternAsynDriver.dbd
 bcm_DBD += tprTriggerAsynDriver.dbd
 
 # needed for ioc Admin support
-bcm_DBD += iocAdmin.dbd
+#The db changed name when moved to version R3.1.15-1.1.0 from  bcm_DBD += iocAdmin.dbd
+bcm_DBD += devIocStats.dbd
 
 # ================================================================================
 # The system command will be mainly used by linux hosted IOCs
