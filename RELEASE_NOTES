@@ -10,7 +10,7 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 R2.2.13 	Carolina Bianchini (carolina)			-10/29/2018
-				- Upgrading the module version to latest in config/RELEASE.
+				- Upgrading the module version to latest in RELEASE_NOTES.
 				- IOCADMIN from R3.1.15-1.0.0 to R3.1.15-1.1.0
 					  needed for ioc Admin support
 					 -bcm_DBD += iocAdmin.dbd
