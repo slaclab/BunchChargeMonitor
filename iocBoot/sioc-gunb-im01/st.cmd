@@ -364,3 +364,6 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 # Save the expected BERGOZ serial number
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
+# Start loading configuration file
+dbpf AMCC:GUNB:360:LoadCfg 1
+dbpf AMCC:GUNB:360:SaveCfg 1

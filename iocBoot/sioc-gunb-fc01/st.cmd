@@ -342,3 +342,8 @@ cd ${TOP}
 # **** System command for Temperature Chassis on Ethercat ****
 # Setup Real-time priorities after iocInit for driver threads
 system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
+
+# Start loading configuration file
+dbpf AMCC:GUNB:999:LoadCfg 1
+dbpf AMCC:GUNB:999:SaveCfg 1
+
