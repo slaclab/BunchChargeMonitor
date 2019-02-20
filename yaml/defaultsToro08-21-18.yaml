@@ -367,7 +367,6 @@
             - ResetLen: !<value> 0x3
             - PhaseTarget: !<value> 0x11
         - TimingFrameRx:
-            - MsgDelay: !<value> 0x00000
             - BypassRst: !<value> 0x0
             - RxDown: !<value> 0x1
             - ClkSel: !<value> 0x1
