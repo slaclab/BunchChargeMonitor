@@ -9,6 +9,16 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R2.2.14		Carolina Bianchini (carolina)			-2/20/2019
+				-Changed Temp and TempElc input to match Leonid's requests:
+					Temp is now pointing to TEMP3:INPUT2 from TEMP1:INPUT1
+					TempEls is now pointing to TEMP1:INPUT1 from TEMP3:INPUT2
+	 				in file bcmApp/Db/bcm.substitutions
+				-Automatically load the yaml file nstead of manually set Load from the EPICS interface
+					dbpf to start loading fpga configuration at boot
+					iocBoot/sioc-gunb-im01/st.cmd 
+					iocBoot/sioc-gunb-fc01/st.cmd
+
 R2.2.13 	Carolina Bianchini (carolina)			-10/29/2018
 				- Upgrading the module version to latest in RELEASE_NOTES.
 				- IOCADMIN from R3.1.15-1.0.0 to R3.1.15-1.1.0
