@@ -20,6 +20,10 @@ R2.2.14		Carolina Bianchini (carolina)			-2/20/2019
 					iocBoot/sioc-gunb-fc01/st.cmd
 				-Removed MsgDelay register initial settings from the default configuration file
 					yaml/defaultsToro08-21-18.yaml
+				-Upgraded YCPSWASYN to R3.0.1 from R3.0.0
+				-Changed YCPSWASYNConfig call:
+					from YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+					to YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 
 R2.2.13 	Carolina Bianchini (carolina)			-10/29/2018
 				- Upgrading the module version to latest in RELEASE_NOTES.
