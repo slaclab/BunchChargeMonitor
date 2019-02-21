@@ -155,7 +155,6 @@ YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
 drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
 
-
 # *********************************************************************
 # **** Driver setup for Temperature Chassis on Ethercat ***************
 # Init EtherCAT: To support Real Time fieldbus
