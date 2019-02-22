@@ -24,8 +24,8 @@ pattern   {P, R, SRC, DEST, ESLO, EOFF, SCAN}
 #          { $(P), 2, VIOC:LI00:IM01:BCM_EL3202_2:INPUT1:VALUE, $(P)TempAmpRef, $(ESLO), $(EOFF), "10 second"}
 #          { $(P), 3, VIOC:LI00:IM01:BCM_EL3202_2:INPUT2:VALUE, $(P)TempElcRef, $(ESLO), $(EOFF), "10 second"}
 
-  { $(P), 1, $(DEVICE):TEMP1:INPUT1:VALUE, $(P)TempAmpRef, $(ESLO), $(EOFF), "10 second"}
-  { $(P), 2, $(DEVICE):TEMP2:INPUT1:VALUE, $(P)TempRef, $(ESLO), $(EOFF), "10 second"}
-  { $(P), 3, $(DEVICE):TEMP3:INPUT2:VALUE, $(P)TempElcRef, $(ESLO), $(EOFF), "10 second"}
+  { $(P), 1, $(DEVICE):TEMP3:INPUT2:VALUE, $(P)TempAmpRef, $(ESLO), $(EOFF), "10 second"}
+  { $(P), 2, $(DEVICE):TEMP3:INPUT1:VALUE, $(P)TempRef   , $(ESLO), $(EOFF), "10 second"}
+  { $(P), 3, $(DEVICE):TEMP1:INPUT1:VALUE, $(P)TempElcRef, $(ESLO), $(EOFF), "10 second"}
           
 }
