@@ -21,10 +21,11 @@ file "RegisterIn.template" { pattern
 { P,          R,              DESC,                           PINI,   SCAN,       PORT, EGU,  PARAM         }
 { $(P), DeviceDna,      "Xilinx Device DNA",            "YES",  "Passive",  $(PORT),   "",   DeviceDna     }
 { $(P), FpgaVersion,    "FPGA Firmware Version Number", "YES",  "Passive",  $(PORT),   "",   FpgaVersion   }
-{ $(P), UpTimeCnt,      "Seconds since last reset",     "YES",  "1 second", $(PORT),   "s",  UpTimeCnt     }
+{ $(P), UpTimeCnt,      "Seconds since last reset",     "YES",  "1 second", $(PORT),  "s",   UpTimeCnt     }
 { $(P), DeviceId,       "Device Identification",        "YES",  "Passive",  $(PORT),   "",   DeviceId      }
-{ $(P), SrvRemotePort, "big-Endian configuration",      "YES",  "1 second",  $(PORT),   "",   ServerRemotePort }
-{ $(P), SrvRemoteIp,    "big-Endian configuration",     "YES",  "1 second",  $(PORT),   "",   ServerRemoteIp }
+{ $(P), SrvRemotePort,  "big-Endian configuration",     "YES",  "1 second", $(PORT),   "",   ServerRemotePort }
+{ $(P), SrvRemoteIp,    "big-Endian configuration",     "YES",  "1 second", $(PORT),   "",   ServerRemoteIp }
+{ $(P), GitHash,        "FPGA Firmware Git HashTag",    "YES",  "Passive",  $(PORT),   "",   GitHash   }
 # BSA status
 { $(P), SofCount,       "",                             "YES",  "1 second", $(PORT),   "",   sofCount      }
 { $(P), EofCount,       "",                             "YES",  "1 second", $(PORT),   "",   eofCount      }
