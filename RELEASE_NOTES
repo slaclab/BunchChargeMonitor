@@ -12,9 +12,11 @@
 
 R2.2.18		Carolina Bianchini (carolina)			-2/28/2019
 				-The following change was a request from Leonid, not sure if we should just read from the register instead of RTD (2/28/2019)
-					{ $(P),     Temp,        "Temperature of toroid",             "1 second",              "K",    $(P):TempRef }
-					{ $(P),     TempAmp,     "Temperature of amp",                 "1 second",              "K",    $(P):TempAmpRef }
-					{ $(P),     TempElc,     "Temperature of electronics",         "1 second",              "K",    $(P):TempElcRef }
+					file "RegisterDoubleOutRBV.template" { pattern
+					{ P,              R,            DESC,                         PINI,   SCAN,       PORT,   EGU,    PARAM   }
+					{ $(P),     Temp,      "Temperature of toroid",      "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempRef }
+					{ $(P),     TempAmp,   "Temperature of amp",         "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempAmpRef }
+					{ $(P),     TempElc,   "Temperature of electronics", "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempElcRef }
 					Changed file bcm.substitutions
 
 R2.2.17		Carolina Bianchini (carolina)			-2/27/2019
