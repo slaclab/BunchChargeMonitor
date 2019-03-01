@@ -180,9 +180,9 @@ file "RegisterDoubleOut.template" { pattern
 
 file "RegisterDoubleOutRBV.template" { pattern
 { P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM   }
-{ $(P),     Temp,      "Temperature of toroid",         "YES",  "Passive",   $(PORT),    "K",    AMC$(AMC):TempRef }
-{ $(P),     TempAmp,   "Temperature of amp",            "YES",  "Passive",   $(PORT),    "K",    AMC$(AMC):TempAmpRef }
-{ $(P),     TempElc,   "Temperature of electronics",    "YES",  "Passive",   $(PORT),    "K",    AMC$(AMC):TempElcRef }
+{ $(P),     Temp,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempRef }
+{ $(P),     TempAmp,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmpRef }
+{ $(P),     TempElc,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElcRef }
 { $(P),     CoefT0RBV,    "Temp coef of toroid",        "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT0 }
 { $(P),     CoefT1RBV,    "Temp coef of amp",           "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2RBV,    "Temp coef of electronics",   "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT2 }
