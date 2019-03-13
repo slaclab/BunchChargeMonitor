@@ -10,6 +10,10 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R2.2.19		Carolina Bianchini (carolina)			-3/13/2019
+				-Added a new configuration file for EIC
+				        yaml/defaultsToro09-14-18-beam.yaml
+
 R2.2.18		Carolina Bianchini (carolina)			-2/28/2019
 				-The following change was a request from Leonid, not sure if we should just read from the register instead of RTD (2/28/2019)
 					file "RegisterDoubleOutRBV.template" { pattern
