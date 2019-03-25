@@ -367,6 +367,7 @@
             - ResetLen: !<value> 0x3
             - PhaseTarget: !<value> 0x11
         - TimingFrameRx:
+            # - MsgDelay: !<value> 0x00000
             - BypassRst: !<value> 0x0
             - RxDown: !<value> 0x1
             - ClkSel: !<value> 0x1
@@ -377,15 +378,15 @@
             - EvrV2TriggerReg:
                 - DelayTap: !<value> 0x00
                 - Width: !<value> 
-                    - 0x0000002
-                    - 0x0000002
-                    - 0x0000002
-                    - 0x0000002
-                    - 0x0000002
-                    - 0x0000002
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
                     - 0x00000c3
-                    - 0x0000002
-                    - 0x0000002
+                    - 0x0000004
+                    - 0x0000004
                     - 0x0000002
                     - 0x0000002
                     - 0x0000002
@@ -393,19 +394,35 @@
                     - 0x0000002
                     - 0x0000002
                     - 0x0000002  
-                - Delay: !<value> 0x0000000
+                - Delay: !<value> 
+                    - 0x0
+                    - 0x1
+                    - 0x1
+                    - 0x0
+                    - 0x1
+                    - 0x1
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
                 - Polarity: !<value> Rising
                 - Source: !<value>
                     - 0x1
-                    - 0x2
-                    - 0x2
                     - 0x1
-                    - 0x2
-                    - 0x2
-                    - 0x2
                     - 0x1
-                    - 0x2
-                    - 0x3
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x4
+                    - 0x1
+                    - 0x1
+                    - 0x1
                     - 0x1
                     - 0x1
                     - 0x1
@@ -1037,7 +1054,7 @@
             - DiagnosticDelay: !<value> 0x00000040
             - MpsThreshOnly: !<value> 0x0
             - AppType: !<value> 0x0
-            - CalibEnable: !<value> 0x1
+            - CalibEnable: !<value> 0x0
             - SelBpm: !<value> 0x0
             - Eic: !<value> 0x1
             - TreshTmit: !<value> 0x0
@@ -1087,24 +1104,24 @@
                     - 0x00
                     - 0x00
                 - SelectSource: !<value>
-                    - 0x2
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x0
                     - 0x0
                     - 0x1
-                    - 0x2
-                    - 0x2
-                    - 0x2
                     - 0x1
-                    - 0x3
-                    - 0x0
-                    - 0x0
-                    - 0x2
-                    - 0x0
                     - 0x1
-                    - 0x2
-                    - 0x2
-                    - 0x2
                     - 0x1
-                    - 0x3
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
                     - 0x0
                     - 0x0
                 - trigDelay: !<value>

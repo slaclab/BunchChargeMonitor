@@ -9,6 +9,54 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+
+R2.2.19		Carolina Bianchini (carolina)			-3/13/2019
+				-Added a new configuration file for EIC
+				        yaml/defaultsToro09-14-18-beam.yaml
+					updated iocBoot/sioc-gunb-im01/st.cmd to use latest configuration file
+
+R2.2.18		Carolina Bianchini (carolina)			-2/28/2019
+				-The following change was a request from Leonid, not sure if we should just read from the register instead of RTD (2/28/2019)
+					file "RegisterDoubleOutRBV.template" { pattern
+					{ P,              R,            DESC,                         PINI,   SCAN,       PORT,   EGU,    PARAM   }
+					{ $(P),     Temp,      "Temperature of toroid",      "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempRef }
+					{ $(P),     TempAmp,   "Temperature of amp",         "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempAmpRef }
+					{ $(P),     TempElc,   "Temperature of electronics", "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempElcRef }
+					Changed file bcm.substitutions
+
+R2.2.17		Carolina Bianchini (carolina)			-2/27/2019
+				-Adding PV read back for /mmio/AmcCarrierCore/AxiVersion/GitHash 
+
+R2.2.16         Carolina Bianchini (carolina)                   -2/26/2019
+                                -Changed bcmApp/Db/bcm.substitutions
+					Per Leonid's request: Changed EPICS readback PV to report firmware 
+					register value instead of direct beckhoff values.
+					example: Temp is now reporting AMC$(AMC):TempRef instead of $(P):TEMP3:INPUT1:VALUE 
+
+R2.2.15		Carolina Bianchini (carolina) 			-2/21/2019
+				-Changed bcmApp/Db/TempMonitoring_TORO.substitutions
+					To match Leonid's request:
+					TEMP1:INPUT1 TempElcRef	  TempEls
+					TEMP3:INPUT2 TempAmpRef	  TempAmp
+					TEMP3:INPUT1 TempToroRef  Temp
+					This db contains PVs that update the firmware registers. 
+
+R2.2.14		Carolina Bianchini (carolina)			-2/20/2019
+				-Changed Temp and TempElc input to match Leonid's requests:
+					Temp is now pointing to TEMP3:INPUT2 from TEMP1:INPUT1
+					TempEls is now pointing to TEMP1:INPUT1 from TEMP3:INPUT2
+	 				in file bcmApp/Db/bcm.substitutions
+				-Automatically load the yaml file nstead of manually set Load from the EPICS interface
+					dbpf to start loading fpga configuration at boot
+					iocBoot/sioc-gunb-im01/st.cmd 
+					iocBoot/sioc-gunb-fc01/st.cmd
+				-Removed MsgDelay register initial settings from the default configuration file
+					yaml/defaultsToro08-21-18.yaml
+				-Upgraded YCPSWASYN to R3.0.1 from R3.0.0
+				-Changed YCPSWASYNConfig call:
+					from YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+					to YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
+
 R2.2.13 	Carolina Bianchini (carolina)			-10/29/2018
 				- Upgrading the module version to latest in RELEASE_NOTES.
 				- IOCADMIN from R3.1.15-1.0.0 to R3.1.15-1.1.0

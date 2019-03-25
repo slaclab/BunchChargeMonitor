@@ -121,7 +121,7 @@ epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
 cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile("yaml/defaultsToro08-21-18.yaml", "mmio")
+cpswLoadConfigFile("yaml/defaultsToro09-14-18.yaml", "mmio")
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
@@ -155,8 +155,8 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}"
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
-
+#YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 
 # ***********************************************************************
 # **** Driver setup for Bergoz ******************************************
@@ -364,3 +364,6 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 # Save the expected BERGOZ serial number
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
+# Start loading configuration file
+dbpf AMCC:GUNB:360:LoadCfg 1
+dbpf AMCC:GUNB:360:SaveCfg 1

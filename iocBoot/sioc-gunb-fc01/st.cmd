@@ -147,13 +147,13 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}"
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+#YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 
 # *********************************************************************
 # **** Driver setup for Keithley **************************************
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
 drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
-
 
 # *********************************************************************
 # **** Driver setup for Temperature Chassis on Ethercat ***************
@@ -342,3 +342,8 @@ cd ${TOP}
 # **** System command for Temperature Chassis on Ethercat ****
 # Setup Real-time priorities after iocInit for driver threads
 system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
+
+# Start loading configuration file
+dbpf AMCC:GUNB:999:LoadCfg 1
+dbpf AMCC:GUNB:999:SaveCfg 1
+

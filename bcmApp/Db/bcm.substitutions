@@ -179,7 +179,10 @@ file "RegisterDoubleOut.template" { pattern
 }
 
 file "RegisterDoubleOutRBV.template" { pattern
-{ P,              R,            DESC,                         PINI,   SCAN,       PORT,   EGU,    PARAM   }
+{ P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM   }
+{ $(P),     Temp,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempRef }
+{ $(P),     TempAmp,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmpRef }
+{ $(P),     TempElc,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElcRef }
 { $(P),     CoefT0RBV,    "Temp coef of toroid",        "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT0 }
 { $(P),     CoefT1RBV,    "Temp coef of amp",           "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2RBV,    "Temp coef of electronics",   "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT2 }
@@ -227,8 +230,9 @@ file "RegisterStream16.template" {pattern
 #======================================
 file "RegisterCalc.template" { pattern
 { P,          R,              DESC,                           	SCAN,		EGU,  		PARAM 				}
-{ $(P),     Temp,         "Temperature of toroid",         	"1 second",		"K",    $(P):TEMP1:INPUT1:VALUE }
+#{ $(P),     Temp,         "Temperature of toroid",         	"1 second",		"K",    $(P):TEMP3:INPUT1:VALUE }
 { $(P),     TempFarc,     "Temperature of faraday cup",		"1 second",		"K",    $(P):TEMP2:INPUT1:VALUE }
-{ $(P),     TempAmp,      "Temperature of amp",             "1 second",		"K",    $(P):TEMP3:INPUT1:VALUE }
-{ $(P),     TempElc,      "Temperature of electronics",     "1 second",		"K",    $(P):TEMP3:INPUT2:VALUE }
+#{ $(P),     TempAmp,      "Temperature of amp",                 "1 second",		"K",    $(P):TEMP3:INPUT2:VALUE }
+#{ $(P),     TempElc,      "Temperature of electronics",         "1 second",		"K",    $(P):TEMP1:INPUT1:VALUE }
+#Those PVs are now reading directly from the FPGA registers instead of the ethercat module RTDs, request from Leonid (2/28/2019)
 }
