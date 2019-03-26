@@ -109,6 +109,15 @@ cd ${TOP}
 dbLoadDatabase("dbd/bcm.dbd",0,0)
 bcm_registerRecordDeviceDriver(pdbbase)
 
+# ===========================================
+#               IDENTIFY Bergoz
+# ===========================================
+cd(${TOP}/iocBoot/${IOC})
+system("./getBergozLocation.sh ")
+< /data/im01_path
+cd(${TOP})
+epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+
 
 # ===========================================
 #              DRIVER SETUP
@@ -162,7 +171,8 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}"
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+#YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 
 
 # **********************************************************************
@@ -222,8 +232,6 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
-#dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
-#dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=360,AREA=GUNB")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
@@ -261,7 +269,7 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 
 # **********************************************************************
 # **** Load message status   *******************************************
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=360,AREA=B084")
 
 # **********************************************************************
 # **** Load db for Temperature Chassis on Ethercat *********************
