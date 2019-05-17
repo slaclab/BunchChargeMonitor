@@ -55,18 +55,15 @@ epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):215")
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
-# **********************************************************************
-# **** Environment variables for Toroid on  Bergoz *********************
+# Start up enviroment variable
+epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 
-epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
-epicsEnvSet("BERGOZ0_R","")
-epicsEnvSet("BERGOZ0_PORT","L0")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","40")
-epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
+# ***************************************
+# **** Environment variables for MPS ****
+epicsEnvSet("MPS_PORT",   "mpsPort")
+epicsEnvSet("MPS_APP_ID", "0x06")
+epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:5")
 
-# Temperature xfer: ESLO, EOFF
-epicsEnvSet("ESLO","$(ESLO=0.01)")
-epicsEnvSet("EOFF","$(EOFF=273.15)")
 
 # *******************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ****
@@ -74,13 +71,34 @@ epicsEnvSet("EOFF","$(EOFF=273.15)")
 # System Location:
 epicsEnvSet(FAC,"SYS2")
 epicsEnvSet("LOCA","B084")
-epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
+epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:IM01")
 
 # ******************************************************************
 # **** Environment variables for IOC Admin *************************
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):IM01")
-# Start up enviroment variable 
-epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
+
+# *****************************************************
+# **** Environment variables for bergoz detection  ****
+# Serial number for bergoz
+epicsEnvSet("IM01","26")
+
+cd(${TOP}/iocBoot/${IOC})
+system("./getBergozLocation.sh ")
+< /data/im01_path
+cd(${TOP})
+
+# **********************************************************************
+# **** Environment variables for Toroid on  Bergoz *********************
+
+epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
+epicsEnvSet("BERGOZ0_R","")
+epicsEnvSet("BERGOZ0_PORT","L0")
+epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","38")
+epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
+
+# Temperature xfer: ESLO, EOFF
+epicsEnvSet("ESLO","$(ESLO=0.01)")
+epicsEnvSet("EOFF","$(EOFF=273.15)")
 
 cd ${TOP}
 
@@ -92,13 +110,14 @@ dbLoadDatabase("dbd/bcm.dbd",0,0)
 bcm_registerRecordDeviceDriver(pdbbase)
 
 # ===========================================
-#	        IDENTIFY Bergoz 
+#               IDENTIFY Bergoz
 # ===========================================
 cd(${TOP}/iocBoot/${IOC})
 system("./getBergozLocation.sh ")
 < /data/im01_path
 cd(${TOP})
 epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+
 
 # ===========================================
 #              DRIVER SETUP
@@ -115,7 +134,7 @@ epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
 cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile(getenv("yaml/defaultsToro08-21-18.yaml"), "mmio")
+#cpswLoadConfigFile(getenv("yaml/defaultsToro08-21-18.yaml"), "mmio")
 
 # *********************************************************************
 # **** Setup BSA driver ***********************************************
@@ -127,6 +146,18 @@ addBsa("CHRGFLOAT",  "float32")
 addBsa("TOROSTATUS", "uint32")
 #BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
+
+# ====================================
+# Setup MPS Driver
+# ====================================
+# LCLS2MPSCPASYNConfig(
+#    Port Name,                 # the name given to this port driver
+#    App ID,                    # Application ID
+#    Record name Prefix,        # Record name prefix
+#    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
+#    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
+#    MPS Root Path              # OPTIONAL: Root path to the MPS register area
+L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}", "", "")
 
 # *********************************************************************
 # **** Configure asyn port driver**************************************
@@ -140,7 +171,8 @@ bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcC
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
-YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+#YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
+YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 
 
 # **********************************************************************
@@ -166,7 +198,7 @@ tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
 # ***********************************************************************
 # **** Setup Crossbar Control Driver ******************************************
-crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040"
+#crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040"
 
 # *********************************************************************
 # **** Setup TprPattern driver ****************************************
@@ -195,13 +227,11 @@ crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040"
 # ***********************************************************************
 # **** Load YCPSWAsyn db ************************************************
 # Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro08-21-18.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/defaultsToro05-21-18.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=360,AREA=GUNB")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
@@ -239,16 +269,21 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 
 # **********************************************************************
 # **** Load message status   *******************************************
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=360,AREA=B084")
 
 # **********************************************************************
 # **** Load db for Temperature Chassis on Ethercat *********************
 
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
-dbLoadRecords("db/EK1101.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
+#dbLoadRecords("db/EK1101.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_1,PORT=ANALOGINPUT1,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${TEMP_IOC_NAME}:BCM_EL3202_2,PORT=ANALOGINPUT2,SCAN=1 second")
+dbLoadRecords("db/EK1101.template", "DEVICE=${AMC1_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
+
 
 # **********************************************************************
 # **** Load BSA driver DB **********************************************
@@ -351,4 +386,4 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 # ************************************************************
 # **** System command for Temperature Chassis on Ethercat ****
 # Setup Real-time priorities after iocInit for driver threads
-system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
+#system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")

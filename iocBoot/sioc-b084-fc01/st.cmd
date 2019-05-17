@@ -56,6 +56,12 @@ epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):14")
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
 
 # ***********************************************************************
+# **** Environment variables for MPS ************************************
+epicsEnvSet("MPS_PORT",   "mpsPort")
+epicsEnvSet("MPS_APP_ID", "0x05")
+epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:4")
+
+# ***********************************************************************
 # **** Environment variables for Faraday Cup on Keithley ****************
 
 epicsEnvSet("K6482_PORT","L1")
@@ -239,6 +245,11 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=B084,IOC_UNIT=FC01,INST=0,SYS=SYS2,N
 # ***********************************************************************
 # **** Load message status   ********************************************
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+
+# *************************************************************************
+# **** Load MPS scale factor **********************************************
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
 
 # ***********************************************************************
 # **** Load BSA driver DB ***********************************************
