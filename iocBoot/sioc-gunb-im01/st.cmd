@@ -121,7 +121,7 @@ epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
 cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile("yaml/defaultsToro09-14-18.yaml", "mmio")
+cpswLoadConfigFile("yaml/defaultsToro09-14-18-beam.yaml", "mmio")
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
