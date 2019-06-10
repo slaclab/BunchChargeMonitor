@@ -1,0 +1,2 @@
+registrar(BcmIOCFunctionsRegistrar)
+function(calcTimeArray)

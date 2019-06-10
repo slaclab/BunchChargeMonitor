@@ -19,6 +19,8 @@ USR_INCLUDES += -I$(PCRE_INCLUDE)
 
 # Support for CPSW
 USR_INCLUDES = -I$(BOOST_INCLUDE) -I$(CPSW_FRAMEWORK_INCLUDE) -I$(YAML_INCLUDE) -I$(L2MPS_INCLUDE)
+USR_INCLUDES += -I$(CPSW_DEVICE_LIBRARY_INCLUDE)
+USR_INCLUDES += -I$(YAMLREADER_INCLUDE)
 #=====================================================
 
 #======================================================
@@ -34,6 +36,9 @@ pcre_DIR = $(PCRE_LIB)
 cpsw_DIR = $(CPSW_FRAMEWORK_LIB)
 boost_system_DIR = $(BOOST_LIB)
 yaml-cpp_DIR = $(YAML_LIB)
+deviceLib_DIR = $(CPSW_DEVICE_LIBRARY_LIB)
+hpstpr_DIR = $(HPSTPR_LIB)
+yamlReader_DIR = $(YAMLREADER_LIB)
 l2Mps_DIR = $(L2MPS_LIB)
 
 # =====================================================
@@ -49,7 +54,7 @@ USR_LIBS_Linux += lzma
 
 USR_LIBS_Linux += pcre
 
-USR_LIBS_Linux += l2Mps cpsw boost_system yaml-cpp hpstpr
+USR_LIBS_Linux += l2Mps cpsw boost_system yaml-cpp hpstpr yamlReader deviceLib
 #======================================================
 
 # ================================================
@@ -68,6 +73,7 @@ DBD += bcm.dbd
 
 # bcm.dbd will be made up from these files:
 bcm_DBD += base.dbd
+bcm_DBD += bcmDrv.dbd
 #bcm_DBD += devIocStats.dbd
 bcm_DBD += asSupport.dbd
 # Include dbd files from all support applications:
@@ -91,8 +97,14 @@ bcm_DBD += calcSupport.dbd
 
 bcm_DBD += ycpswasyn.dbd
 bcm_DBD += bsaAsynDriver.dbd
+bcm_DBD += bsaCore.dbd
+bcm_DBD += bsa.dbd
 bcm_DBD += yamlLoader.dbd
+bcm_DBD += yamlDownloader.dbd
 bcm_DBD += l2MpsAsyn.dbd
+
+# For calculated waveforms
+bcm_DBD += calc.dbd
 
 # Ethercat
 bcm_DBD += ecAsyn.dbd
@@ -132,6 +144,10 @@ bcm_SRCS_vxWorks += -nil-
 # bcm_SRCS += file1.c
 # bcm_SRCS += file2.c
 bcm_SRCS += DaqSizeSub.c
+bcm_SRCS += bcmBSA.cpp
+bcm_SRCS += bcmIOCFunctions.cpp
+bcm_SRCS += cpswStreamBSA.cpp
+bcm_SRCS += asubWeightXAxis.c
 
 # =====================================================
 # Link in the libraries from other EPICS modules
@@ -141,6 +157,7 @@ bcm_LIBS += yamlLoader
 bcm_LIBS += l2MpsAsyn
 bcm_LIBS += seq pv
 bcm_LIBS += stream
+bcm_LIBS += yamlDownloader
 
 # Needed to link in iocAdmin support
 bcm_LIBS += devIocStats
@@ -150,14 +167,14 @@ bcm_LIBS += autosave
 
 # Needed to link caPutLog support
 bcm_LIBS += caPutLog
+bcm_LIBS += seq pv
 
 # Needed to link cexpsh() support
 bcm_LIBS += $(CEXP_LIBS)
 
 # caf: Needed to link in aCalcout support
-bcm_LIBS += sscan
 bcm_LIBS += calc
-
+bcm_LIBS += sscan
 # Ethercat (Order of libraries listed is important gor the Gnu Linker)
 bcm_LIBS += ecAsyn
 bcm_LIBS += scannerlib
@@ -167,6 +184,9 @@ bcm_LIBS += rtutils
 bcm_LIBS += bsaDriver
 bsa_DIR = $(BSA_LIB)
 bcm_LIBS += bsa
+# BSA on the SW side (MR and FACET-II)
+bcm_LIBS += eventBsaSupport
+bcm_LIBS += BsaCore
 
 # Link Asyn library support.
 # Should be last for othe modules that depend on asyn

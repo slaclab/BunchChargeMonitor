@@ -9,6 +9,13 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.0.0		Carolina Bianchini (carolina)
+				-Merge of BunchChargeMonitor_MR and BunchChargeMonitor (From LCLS-II)
+				-Upgraded to EPICS V7, changed: configure/RELEASE, RELEASE_SITE
+				-Adding SIOCs for FACET-II: sioc-in10-im01/im02/im03 sioc-li11-bl01/im01 sioc-li14-bl01/im01
+				-Adding SIOCs for MR: sioc-li21-im01/im02  sioc-li24-im01
+
+
 R2.2.20		Carolina Bianchini (carolina)			-3/25/2019
 				-Updated sioc-b084 startup file with MPS COMM configurations 
 				 	and updated port/IP
