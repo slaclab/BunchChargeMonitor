@@ -84,7 +84,7 @@ DB_INSTALLS += $(TPRTRIGGER)/db/tprTrig.db
 DB_INSTALLS += $(TPRTRIGGER)/db/tprDeviceNamePV.db
 
 # Crossbar
-DB_INSTALL += $(CROSSBARCONTROL)/db/crossbarCTRL.db
+DB_INSTALL += $(CROSSBARCONTROL)/db/crossbarCtrl.db
 
 # IOC Admin
 DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db

@@ -46,15 +46,19 @@ l2Mps_DIR = $(L2MPS_LIB)
 # ======================================================
 # LINK "NON EPICS" EXTERNAL PACKAGE LIBRARIES STATICALLY
 #=======================================================
+USR_LIBS_Linux += yamlReader
+USR_LIBS_Linux += deviceLib
+USR_LIBS_Linux += cpsw
+USR_LIBS_Linux += yaml-cpp
+USR_LIBS_Linux += boost_system
+USR_LIBS_Linux += hpstpr
+USR_LIBS_Linux += l2Mps
 
 USR_LIBS_Linux += xml2 
 USR_LIBS_Linux += z 
 USR_LIBS_Linux += lzma 
-
-
 USR_LIBS_Linux += pcre
 
-USR_LIBS_Linux += l2Mps cpsw boost_system yaml-cpp hpstpr yamlReader deviceLib
 #======================================================
 
 # ================================================
@@ -152,29 +156,12 @@ bcm_SRCS += asubWeightXAxis.c
 # =====================================================
 # Link in the libraries from other EPICS modules
 # =====================================================
-bcm_LIBS += ycpswasyn
-bcm_LIBS += yamlLoader
 bcm_LIBS += l2MpsAsyn
-bcm_LIBS += seq pv
 bcm_LIBS += stream
-bcm_LIBS += yamlDownloader
 
-# Needed to link in iocAdmin support
-bcm_LIBS += devIocStats
-
-# Needed to link in autosave support
-bcm_LIBS += autosave
-
-# Needed to link caPutLog support
-bcm_LIBS += caPutLog
-bcm_LIBS += seq pv
-
-# Needed to link cexpsh() support
-bcm_LIBS += $(CEXP_LIBS)
-
-# caf: Needed to link in aCalcout support
 bcm_LIBS += calc
 bcm_LIBS += sscan
+
 # Ethercat (Order of libraries listed is important gor the Gnu Linker)
 bcm_LIBS += ecAsyn
 bcm_LIBS += scannerlib
@@ -184,13 +171,6 @@ bcm_LIBS += rtutils
 bcm_LIBS += bsaDriver
 bsa_DIR = $(BSA_LIB)
 bcm_LIBS += bsa
-# BSA on the SW side (MR and FACET-II)
-bcm_LIBS += eventBsaSupport
-bcm_LIBS += BsaCore
-
-# Link Asyn library support.
-# Should be last for othe modules that depend on asyn
-bcm_LIBS += asyn
 
 # Cross bar control library
 bcm_LIBS += crossbarControl
@@ -200,6 +180,31 @@ bcm_LIBS += tprPattern
 
 # Library for tprTrigger
 bcm_LIBS += tprTrigger
+
+# BSA on the SW side (MR and FACET-II)
+bcm_LIBS += eventBsaSupport
+bcm_LIBS += BsaCore
+
+bcm_LIBS += yamlDownloader
+bcm_LIBS += yamlLoader
+bcm_LIBS += ycpswasyn
+
+# Needed to link in iocAdmin support
+bcm_LIBS += devIocStats
+# Needed to link in autosave support
+bcm_LIBS += autosave
+
+# Needed to link caPutLog support
+bcm_LIBS += caPutLog
+bcm_LIBS += seq pv
+
+# Needed to link cexpsh() support
+bcm_LIBS += $(CEXP_LIBS)
+bcm_SYS_LIBS += $(CEXP_SYS_LIBS)
+
+# Link Asyn library support.
+# Should be last for othe modules that depend on asyn
+bcm_LIBS += asyn
 
 # API for tprPattern
 hpstpr_DIR = $(HPSTPR_LIB)
