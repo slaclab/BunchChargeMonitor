@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.0.2		Carolina Bianchini (carolina)			-7/12/2019
+				-Updated yaml files and defaults file
+				-updated st.cmd for FC and IM in GUNB area to load the firmware from the board
+
 R3.0.1		Carolina Bianchini (carolina)    		-7/3/2019
 				-Upgraded to Keithley6482 R0.0.6, this release has the PV :Measure changed to :I
 		

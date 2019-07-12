@@ -101,7 +101,7 @@ dbLoadRecords("db/tprPattern.db",   "LOCA=${AREA}, IOC_UNIT=${IOC_UNIT}, INST=2,
 dbLoadRecords("db/crossbarCtrl.db", "DEV=EVR:${AREA}:${IOC_UNIT}, PORT=crossbar")
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=cpsw")
+dbLoadRecords("db/saveLoadConfig.db", "P=${PREFIX}, PORT=cpsw, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=${IOC_DATA}/${IOC}/firmware/yaml/config/defaults.yaml")
 
 # Automatic initialization
 #dbLoadRecords("db/monitorFPGAReboot.db", "P=${PREFIX}:, KEY=840202")

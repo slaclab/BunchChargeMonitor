@@ -211,3 +211,43 @@ CmnConfig: &CmnConfig
       mode: RW
       description: "Specify minimum delay between output diagnostics pulses, need to be less then 1mSec but more then TBD requirements of MPS and BSA"
     #########################################################
+    StatusOfBSA2:
+      class: IntField
+      at:
+        offset: 0x006C
+      sizeBits: 32
+      mode: RO
+      description: "Reflect BSA status health 2 "
+    #########################################################
+    StatusOfBSA3:
+      class: IntField
+      at:
+        offset: 0x0070
+      sizeBits: 32
+      mode: RO
+      description: "Reflect BSA status health 3 "
+    #########################################################
+    StatusOfBSA4:
+      class: IntField
+      at:
+        offset: 0x0074
+      sizeBits: 32
+      mode: RO
+      description: "Reflect BSA status health 4 "
+    #########################################################
+    StatusOfBSA5:
+      class: IntField
+      at:
+        offset: 0x0078
+      sizeBits: 32
+      mode: RO
+      description: "Reflect BSA status health 5 "
+    #########################################################
+    StatusOfBSA6:
+      class: IntField
+      at:
+        offset: 0x007C
+      sizeBits: 32
+      mode: RO
+      description: "Reflect BSA status health 6 "
+    #########################################################    

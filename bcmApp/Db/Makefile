@@ -84,7 +84,7 @@ DB_INSTALLS += $(TPRTRIGGER)/db/tprTrig.db
 DB_INSTALLS += $(TPRTRIGGER)/db/tprDeviceNamePV.db
 
 # Crossbar
-DB_INSTALL += $(CROSSBARCONTROL)/db/crossbarCtrl.db
+DB_INSTALLS += $(CROSSBARCONTROL)/db/crossbarCtrl.db
 
 # IOC Admin
 DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db
@@ -126,7 +126,7 @@ DB += xfer.db
 DB += acalcStats.db
 
 # For saving and loading yaml configuration
-DB += saveLoadConfig.db
+DB_INSTALLS += $(YCPSWASYN)/db/saveLoadConfig.db
 
 # For automatic initialization (requires saveLoadConfig.db)
 DB += monitorFPGAReboot.db
