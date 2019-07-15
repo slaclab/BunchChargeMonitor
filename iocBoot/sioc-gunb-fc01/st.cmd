@@ -205,7 +205,7 @@ dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
-dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePortSwap, DEST=SrvRemotePort")
+dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=SrvRemotePortSwap")
 
 # Automatic initialization
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
@@ -250,7 +250,7 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,N
 
 # *************************************************************************
 # **** Load message status   **********************************************
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=999,AREA=GUNB")
 
 
 # *************************************************************************
