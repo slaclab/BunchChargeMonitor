@@ -255,8 +255,8 @@ dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX}")
 
 # *************************************************************************
 # **** Load MPS scale factor **********************************************
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,VAL=0.0078125")
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,VAL=0.0078125")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFESET=0")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 
 # *************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring *******
