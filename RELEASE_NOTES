@@ -11,7 +11,9 @@
 #--------------------------------------------------------------
 R3.0.2		Carolina Bianchini (carolina)			-7/12/2019
 				-Updated yaml files and defaults file
-				-updated st.cmd for FC and IM in GUNB area to load the firmware from the board
+				-Updated st.cmd for FC and IM in GUNB area to load the firmware from the board
+				-Updated l2MpsAsyn module and API
+				-Added PORT=trig new macro required from dbLoadsRecord in st.cmd to use tprTrigger module sioc-gunb-im01/fc01
 
 R3.0.1		Carolina Bianchini (carolina)    		-7/3/2019
 				-Upgraded to Keithley6482 R0.0.6, this release has the PV :Measure changed to :I
