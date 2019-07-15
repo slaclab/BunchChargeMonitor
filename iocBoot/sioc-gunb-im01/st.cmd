@@ -44,12 +44,12 @@ epicsEnvSet("AUTO_GEN", 0)
 #epicsEnvSet("PREFIX","GUNB:IM01")
 
 epicsEnvSet("AREA","GUNB")
-
+epicsEnvSet("UNIT","360")
 # BCM-TORO in crate 1, slot 7, AMC 0
-epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):360")
+epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):$(UNIT)")
 
 # AMCC in crate 1, slot 7
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):360")
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(UNIT)")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
@@ -223,7 +223,7 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 
 # *******************************
 # **** Load message status   ****
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=360,AREA=GUNB")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 # ***********************************************************************

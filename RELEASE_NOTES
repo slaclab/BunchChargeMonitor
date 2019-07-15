@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.0.3		Carolina Bianchini (carolina) 			-7/15/2019
+				-Updated ycpswasyn: R3.1.1, the previous version had a typo ":"
+				-Updated st.cmd with UNIT macro and B084 im01 to match gunb sioc.
+
 R3.0.2		Carolina Bianchini (carolina)			-7/12/2019
 				-Updated yaml files and defaults file
 				-Updated st.cmd for FC and IM in GUNB area to load the firmware from the board
