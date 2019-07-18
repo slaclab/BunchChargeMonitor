@@ -365,5 +365,8 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
 # Start loading configuration file
-dbpf AMCC:GUNB:360:LoadCfg 1
-dbpf AMCC:GUNB:360:SaveCfg 1
+dbpf AMCC:GUNB:360:loadConfig 1
+dbpf AMCC:GUNB:360:saveConfig 1
+dbpf TORO:GUNB:360:Temp.EGU K
+dbpf TORO:GUNB:360:TempAmp.EGU K
+dbpf TORO:GUNB:360:TempElc.EGU K
