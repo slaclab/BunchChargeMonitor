@@ -9,6 +9,14 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.0.4		Marcio Donadio (marcio) 			-7/22/2019
+                                - Updated version of l2MpsAsyn/R2.3.0.
+                                - saveLoadConfig.db now takes only P and PORT
+                                  as macros. All other parameters - file names
+                                  and yaml root - were transferred to dbpf. In
+                                  the future this should go to autosave.
+                                - Added file etc/scanner.xml to .gitignore.
+
 R3.0.3		Carolina Bianchini (carolina) 			-7/15/2019
 				-Updated ycpswasyn: R3.1.1, the previous version had a typo ":"
 				-Updated st.cmd with UNIT macro and B084 im01 to match gunb sioc.
