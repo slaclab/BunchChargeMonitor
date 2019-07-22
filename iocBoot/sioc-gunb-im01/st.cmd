@@ -211,7 +211,7 @@ crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 # **** Load YCPSWAsyn db *************************************************
 
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC1_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
@@ -365,8 +365,12 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
 # Start loading configuration file
-dbpf AMCC:GUNB:360:loadConfig 1
+dbpf AMCC:GUNB:360:saveConfigFile "/tmp/configDump.yaml"
+dbpf AMCC:GUNB:360:saveConfigRoot "mmio"
 dbpf AMCC:GUNB:360:saveConfig 1
+dbpf AMCC:GUNB:360:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
+dbpf AMCC:GUNB:360:loadConfigRoot "mmio"
+dbpf AMCC:GUNB:360:loadConfig 1
 dbpf TORO:GUNB:360:Temp.EGU K
 dbpf TORO:GUNB:360:TempAmp.EGU K
 dbpf TORO:GUNB:360:TempElc.EGU K
