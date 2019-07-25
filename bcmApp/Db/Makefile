@@ -57,7 +57,6 @@ DB_INSTALLS += $(KEITHLEY6482)/db/devKeithley6482.proto
 DB_INSTALLS += $(KEITHLEY6482)/db/zeroCorrect.db
 
 # Bergoz
-DB_INSTALLS += $(BERGOZBCM_RF_ASYN)/db/asynRecord.db
 DB_INSTALLS += $(BERGOZBCM_RF_ASYN)/db/devBergozBCM.db
 DB_INSTALLS += $(BERGOZBCM_RF_ASYN)/db/devBergozBCM.proto
 
