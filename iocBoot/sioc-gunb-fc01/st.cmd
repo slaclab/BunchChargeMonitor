@@ -45,6 +45,7 @@ epicsEnvSet("AUTO_GEN", 0)
 #epicsEnvSet("PREFIX","GUNB:FC01")
 
 epicsEnvSet("AREA","GUNB")
+epicsEnvSet("UNIT","999")
 
 # BCM-FC in crate 1, slot 4, AMC 0
 epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):999")
@@ -196,7 +197,7 @@ tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 # *********************************************************************
 # **** Load YCPSWAsyn db **********************************************
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}, SAVE_FILE=/tmp/configDump.yaml, LOAD_FILE=yaml/AmcCarrierBcm_project.yaml/config/defaultsFC.yaml, SAVE_ROOT=mmio, LOAD_ROOT=mmio")
+dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Manually create records
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
@@ -229,23 +230,23 @@ dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=FCSTATUS,SECN
 
 # ************************************************************************
 # **** Load TPR Triggers db **********************************************
-dbLoadRecords("db/tprTrig.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}:TRG00:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}:TRG01:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}:TRG02:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=03,DEV_PREFIX=${AMC0_PREFIX}:TRG03:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=04,DEV_PREFIX=${AMC0_PREFIX}:TRG04:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=05,DEV_PREFIX=${AMC0_PREFIX}:TRG05:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=06,DEV_PREFIX=${AMC0_PREFIX}:TRG06:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=07,DEV_PREFIX=${AMC0_PREFIX}:TRG07:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=08,DEV_PREFIX=${AMC0_PREFIX}:TRG08:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=09,DEV_PREFIX=${AMC0_PREFIX}:TRG09:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=10,DEV_PREFIX=${AMC0_PREFIX}:TRG10:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=11,DEV_PREFIX=${AMC0_PREFIX}:TRG11:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=12,DEV_PREFIX=${AMC0_PREFIX}:TRG12:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=13,DEV_PREFIX=${AMC0_PREFIX}:TRG13:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}:TRG14:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}:TRG15:,PORT=trig")
+dbLoadRecords("db/tprTrig.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}:TRG00:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}:TRG01:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}:TRG02:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=03,DEV_PREFIX=${AMC0_PREFIX}:TRG03:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=04,DEV_PREFIX=${AMC0_PREFIX}:TRG04:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=05,DEV_PREFIX=${AMC0_PREFIX}:TRG05:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=06,DEV_PREFIX=${AMC0_PREFIX}:TRG06:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=07,DEV_PREFIX=${AMC0_PREFIX}:TRG07:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=08,DEV_PREFIX=${AMC0_PREFIX}:TRG08:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=09,DEV_PREFIX=${AMC0_PREFIX}:TRG09:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=10,DEV_PREFIX=${AMC0_PREFIX}:TRG10:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=11,DEV_PREFIX=${AMC0_PREFIX}:TRG11:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=12,DEV_PREFIX=${AMC0_PREFIX}:TRG12:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=13,DEV_PREFIX=${AMC0_PREFIX}:TRG13:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}:TRG14:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}:TRG15:,PORT=trig")
 
 
 # *************************************************************************
@@ -345,6 +346,12 @@ cd ${TOP}
 system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
 
 # Start loading configuration file
-dbpf AMCC:GUNB:999:LoadCfg 1
-dbpf AMCC:GUNB:999:SaveCfg 1
-
+dbpf AMCC:${AREA}:${UNIT}:saveConfigFile "/tmp/configDump.yaml"
+dbpf AMCC:${AREA}:${UNIT}:saveConfigRoot "mmio"
+dbpf AMCC:${AREA}:${UNIT}:saveConfig 1
+dbpf AMCC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsFC.yaml"
+dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
+# We should never load the configuration file after autosave already changed
+# the parameters. Uncomment the line below only if you are sure about what you
+# are doing.
+#dbpf AMCC:${AREA}:${UNIT}:loadConfig 1
