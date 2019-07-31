@@ -9,6 +9,23 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.1.0          Marcio Donadio (marcio)                         -7/31/2019
+                      - Using new version of the Bergoz and Stream Device
+                        modules.
+                      - Separated serial traffic of outgoing messages from
+                        incoming messages for Bergoz, as the amount of messages
+                        was preventing the IOC to write to the device. Due to
+                        an yet non-identified problem, booting the IOC with
+                        Bergoz sending unsolicited messages makes the CPU go to
+                        100% load. Provisionally, the st.cmd is turning off the
+                        trigger to stop Bergoz messages and turning them back
+                        on after 1 second.
+                      - Removed ethercat.pyc file, as it is generated during
+                        the build process.
+                      - Updated yaml files. In the future they should be read
+                        from the FPGA PROM.
+                      - Improvements in st.cmd.
+
 R3.0.4		Marcio Donadio (marcio) 			-7/22/2019
                                 - Updated version of l2MpsAsyn/R2.3.0.
                                 - saveLoadConfig.db now takes only P and PORT
