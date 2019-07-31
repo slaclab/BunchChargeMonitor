@@ -82,7 +82,8 @@ epicsEnvSet("IM01","2C")
 
 epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
-epicsEnvSet("BERGOZ0_PORT","L0")
+epicsEnvSet("BERGOZ0_IN_PORT","L0")
+epicsEnvSet("BERGOZ0_OUT_PORT","L1")
 epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","44")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
@@ -162,7 +163,8 @@ YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 # **** Driver setup for Bergoz ******************************************
 # Set up ASYN ports
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
-drvAsynSerialPortConfigure("$(BERGOZ0_PORT)","$(BERGOZ0_TTY)",0,0,0)
+drvAsynSerialPortConfigure("$(BERGOZ0_IN_PORT)","$(BERGOZ0_TTY)",0,0,0)
+drvAsynSerialPortConfigure("$(BERGOZ0_OUT_PORT)","$(BERGOZ0_TTY)",0,0,0)
 
 
 # ***********************************************************************
@@ -199,8 +201,10 @@ crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 
 # ***********************************************************************
 # **** Asyn Masks for Bergoz ********************************************
-#asynSetTraceIOMask("$(BERGOZ0_PORT)",-1,0x2)
-#asynSetTraceMask("$(BERGOZ0_PORT)",-1,0x9)
+#asynSetTraceIOMask("$(BERGOZ0_IN_PORT)",-1,0x2)
+#asynSetTraceMask("$(BERGOZ0_IN_PORT)",-1,0x9)
+#asynSetTraceIOMask("$(BERGOZ0_OUT_PORT)",-1,0x2)
+#asynSetTraceMask("$(BERGOZ0_OUT_PORT)",-1,0x9)
 
 
 # ===========================================
@@ -248,8 +252,8 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=GUNB,IOC_UNIT=IM01,INST=0,SYS=SYS2,N
 
 # ***********************************************************************
 # **** Load Bergoz db ***************************************************
-dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_PORT),A=-1")
-dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_PORT),ADDR=-1,OMAX=0,IMAX=0")
+dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_IN_PORT),PORT_OUT=$(BERGOZ0_OUT_PORT),A=-1")
+dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),ADDR=-1,OMAX=0,IMAX=0")
 dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
 
 # ***********************************************************************
@@ -333,6 +337,9 @@ set_pass1_restoreFile("info_settings.sav")
 # ===========================================
 iocInit()
 
+# Deactivate trigger in order to stop unsolicited messages from Bergoz
+dbpf TPR:GUNB:IM01:0:CH01_SYS2_TCTL 0
+
 # Turn on caPutLogging:
 # Log values only on change to the iocLogServer:
 caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
@@ -370,7 +377,15 @@ dbpf AMCC:GUNB:360:saveConfigRoot "mmio"
 dbpf AMCC:GUNB:360:saveConfig 1
 dbpf AMCC:GUNB:360:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
 dbpf AMCC:GUNB:360:loadConfigRoot "mmio"
-dbpf AMCC:GUNB:360:loadConfig 1
+# We should never load the configuration file after autosave already changed
+# the parameters. Uncomment the line below only if you are sure about what you
+# are doing.
+#dbpf AMCC:GUNB:360:loadConfig 1
 dbpf TORO:GUNB:360:Temp.EGU K
 dbpf TORO:GUNB:360:TempAmp.EGU K
 dbpf TORO:GUNB:360:TempElc.EGU K
+dbpf TORO:GUNB:360:READ_PARMS 1
+
+# Reactivate trigger to restart unsolicited messages from Bergoz
+epicsThreadSleep 1
+dbpf TPR:GUNB:IM01:0:CH01_SYS2_TCTL 1
