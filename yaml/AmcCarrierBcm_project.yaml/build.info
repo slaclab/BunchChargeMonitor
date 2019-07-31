@@ -1,19 +1,29 @@
-tag build-AmcCarrierBcm-0x00000007-20190703164955-leosap
+tag build-AmcCarrierBcm-0x00000007-20190730180605-leosap
 Tagger: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Wed Jul 3 19:15:59 2019 -0700
+Date:   Tue Jul 30 20:47:06 2019 -0700
 
 PROJECT: AmcCarrierBcm
 
 FW_VERSION: 0x00000007
 
-BUILD_STRING: AmcCarrierBcm: Vivado v2018.3, rdsrv223 (x86_64), Built Wed Jul  3 16:49:55 PDT 2019 by leosap
+BUILD_STRING: AmcCarrierBcm: Vivado v2018.3, rdsrv223 (x86_64), Built Tue Jul 30 18:06:05 PDT 2019 by leosap
 
-commit e88e1d293d0e9a95b186c49f2c58464675a22d56
+commit 82dc48ec32735d7c0e5647fa9c53d7a01a5ed97b
 Author: Leonid Sapozhnikov <leosap@slac.stanford.edu>
-Date:   Wed Jul 3 16:49:46 2019 -0700
+Date:   Tue Jul 30 18:05:56 2019 -0700
 
-    Updating yaml to pass new strict parcer and updating libraries amc_carrier v2.6.3 and surf v1.9.10 and ruckus v1.7.8
+    Adding debug for bunch present timeout
 
-Submodule firmware/submodules/ruckus ee6b695..5e81cf1:
-  > Merge pull request #103 from slaclab/pre-release
-  > try to generate the .hdf at the end
+diff --git a/firmware/common/DspCoreLib/SysGenCore/rtl/DisplayUpdate.vhd b/firmware/common/DspCoreLib/SysGenCore/rtl/DisplayUpdate.vhd
+index d475784..33a5ec6 100644
+--- a/firmware/common/DspCoreLib/SysGenCore/rtl/DisplayUpdate.vhd
++++ b/firmware/common/DspCoreLib/SysGenCore/rtl/DisplayUpdate.vhd
+@@ -36,7 +36,7 @@ end entity DisplayUpdate;
+ 
+ architecture rtl of DisplayUpdate is
+ 
+-   constant CNT_MAX_C  : natural := 9285714;  --MAX bunch rate (so, update once a second)
++   constant CNT_MAX_C  : natural := 928571;  --MAX bunch rate (so, update once a second)
+    constant CNT_SIZE_C : natural := bitSize(CNT_MAX_C);
+ 
+    type RegType is record

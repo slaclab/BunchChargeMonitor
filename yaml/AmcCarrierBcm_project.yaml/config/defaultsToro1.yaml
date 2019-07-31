@@ -325,7 +325,117 @@
             - RxCountReset: !<value> 0x0
         - EvrV2CoreTriggers:
             - EvrV2TriggerReg:
+                - DelayTap: !<value> 0x00
+                - Width: !<value> 
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x0000010
+                    - 0x00000c3
+                    - 0x0000004
+                    - 0x0000004
+                    - 0x0000002
+                    - 0x0000002
+                    - 0x0000002
+                    - 0x0000002
+                    - 0x0000002
+                    - 0x0000002
+                    - 0x0000002  
+                - Delay: !<value> 
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
+                    - 0x0
                 - Polarity: !<value> Rising
+                - Source: !<value>
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x2
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                - Enable: !<value>
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x0
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+                    - 0x1
+            - EvrV2ChannelReg:
+                - BsaWindowWidth: !<value> 0x00000
+                - BsaWindowSetup: !<value> 0x00
+                - DestSel: !<value> 
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x0FFFF
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                    - 0x20000
+                - RateSel: !<value>
+                    - 0x0000
+                    - 0x0000
+                    - 0x0006
+                    - 0x0006
+                    - 0x0000
+                    - 0x0006
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                    - 0x0000
+                - DmaEnabled: !<value> 0x0
+                - BsaWindowDelay: !<value> 0x00000
+                - Enable: !<value> 0x1
+                - BsaEnabled: !<value> 0x0
         - TPGMiniCore:
             - CountInterval: !<value> 0x0000488b
             - BsaAvgToWr: !<value> 0x0000
@@ -352,9 +462,9 @@
             - TxLoopback: !<value> 0x0
             - TxPolarity: !<value> 0x0
             - TxReset: !<value> 0x0
-    # - BpUdpClient:
-        # - ClientRemoteIp: !<value> 0xA000168
-        # - ClientRemotePort: !<value> 0x2003
+    - BpUdpClient:
+        - ClientRemoteIp: !<value> 0xA000168
+        - ClientRemotePort: !<value> 0x2003
     ## Unused
     # - AxiCdcm6208:
         # - Cdcm6208: !<value>

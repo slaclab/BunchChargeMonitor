@@ -250,4 +250,22 @@ CmnConfig: &CmnConfig
       sizeBits: 32
       mode: RO
       description: "Reflect BSA status health 6 "
+    ######################################################### 
+    bunchPresetBit:
+      class: IntField
+      at:
+        offset: 0x0080
+      sizeBits: 1
+      lsBit: 0
+      mode: RO
+      description: "Bunch present bit"
+    #########################################################
+    debugCnt:
+      class: IntField
+      at:
+        offset: 0x0080
+      sizeBits: 31
+      lsBit: 1
+      mode: RO
+      description: "Counter for no bunch present timeout"
     #########################################################    
