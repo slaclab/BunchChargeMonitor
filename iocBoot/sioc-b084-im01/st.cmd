@@ -107,17 +107,6 @@ dbLoadDatabase("dbd/bcm.dbd",0,0)
 bcm_registerRecordDeviceDriver(pdbbase)
 
 # ===========================================
-#	        IDENTIFY Bergoz 
-# ===========================================
-cd(${TOP}/iocBoot/${IOC})
-# This doens't work in dev, so we just hard code the tty path 
-#system("./getBergozLocation.sh ")
-#< /data/im01_path
-cd(${TOP})
-#epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
-epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
-
-# ===========================================
 #              DRIVER SETUP
 # ===========================================
 # ***********************************************************************
@@ -132,6 +121,7 @@ epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
 # ==========================================================================================================
 cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
 cpswLoadConfigFile("yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml", "mmio")
+
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
@@ -152,9 +142,9 @@ bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcC
 #    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
 #    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
 #    MPS Root Path              # OPTIONAL: Root path to the MPS register area
-L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
+#L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
 # Call this only in dev:
-L2MPSASYNSetManagerHost("lcls-dev3", 0)
+#L2MPSASYNSetManagerHost("lcls-dev3", 0)
 
 ## Configure asyn port driver
 # YCPSWASYNConfig(
@@ -170,13 +160,23 @@ L2MPSASYNSetManagerHost("lcls-dev3", 0)
 #YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
 YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 
+
+# ===========================================
+#	        IDENTIFY Bergoz 
+# ===========================================
+cd(${TOP}/bcmApp/scripts/${IOC})
+system("./getBergozLocation.sh ")
+< /tmp/im01_path
+cd(${TOP})
+epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+
+
 # ***********************************************************************
 # **** Driver setup for Bergoz ******************************************
 # Set up ASYN ports
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
 drvAsynSerialPortConfigure("$(BERGOZ0_IN_PORT)","$(BERGOZ0_TTY)",0,0,0)
 drvAsynSerialPortConfigure("$(BERGOZ0_OUT_PORT)","$(BERGOZ0_TTY)",0,0,0)
-
 
 # ***********************************************************************
 # **** Driver setup for Temperature Chassis on Ethercat *****************
@@ -271,10 +271,10 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 # **** Load db for Temperature Chassis on Ethercat **********************
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
-dbLoadRecords("db/EK1101.template", "DEVICE=${AMC0_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
+#dbLoadRecords("db/EK1101.template", "DEVICE=${AMC0_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
@@ -286,8 +286,8 @@ dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SE
 
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
+#dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
+#dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 
 # ************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ******
