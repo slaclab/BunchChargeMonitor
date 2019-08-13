@@ -101,14 +101,6 @@ dbLoadDatabase("dbd/bcm.dbd",0,0)
 bcm_registerRecordDeviceDriver(pdbbase)
 
 # ===========================================
-#	        IDENTIFY Bergoz 
-# ===========================================
-cd(${TOP}/iocBoot/${IOC})
-system("./getBergozLocation.sh ")
-< /data/im01_path
-cd(${TOP})
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
-# ===========================================
 #              DRIVER SETUP
 # ===========================================
 # ***********************************************************************
@@ -158,6 +150,17 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}"
 # In Sector 0 L2KA00-05, the BCMs are in slots 6 and 7. Here, for testing purposes we are using slots 4 and 5.
 #YCPSWASYNConfig("${CPSW_PORT}", "${YAML_FILE}", "", "${FPGA_IP}", "", 40, "${AUTO_GEN}", "${DICT_FILE}")
 YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
+
+
+# ===========================================
+#	        IDENTIFY Bergoz 
+# ===========================================
+cd(${TOP}/bcmApp/scripts/${IOC})
+system("./getBergozLocation.sh ")
+< /tmp/im01_path
+cd(${TOP})
+epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+
 
 # ***********************************************************************
 # **** Driver setup for Bergoz ******************************************
