@@ -9,6 +9,21 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+
+R3.2.0    Marcio Donadio (marcio) - 8/13/2019
+            - Transferred getBergozLocation.sh from the iocBoot/sioc*
+              directories to bcmApp/scripts in order to avoid copying and
+              maitaining the same script to all Toroid IOCs.
+            - When the script configured the serial port, Bergoz parameters got
+              corrupted. Leonid explained that all the features of this script 
+              were used when we had one CPU taking care of many Bergoz. This use
+              case is not needed anymore and, so, the script could be 
+              simplified. The misconfiguration issue was fixed with the
+              simplified script.
+            - getBergozLocation.sh now saves the file in /tmp instead of /data.
+            - getBergozConfig.sh and setBergozConfig_dev*.sh are now part of
+              the IOC app.
+
 R3.1.0          Marcio Donadio (marcio)                         -7/31/2019
                       - Using new version of the Bergoz and Stream Device
                         modules.
