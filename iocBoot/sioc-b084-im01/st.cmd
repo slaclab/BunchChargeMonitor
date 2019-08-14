@@ -142,9 +142,9 @@ bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcC
 #    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
 #    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
 #    MPS Root Path              # OPTIONAL: Root path to the MPS register area
-#L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
+L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
 # Call this only in dev:
-#L2MPSASYNSetManagerHost("lcls-dev3", 0)
+L2MPSASYNSetManagerHost("lcls-dev3", 0)
 
 ## Configure asyn port driver
 # YCPSWASYNConfig(
