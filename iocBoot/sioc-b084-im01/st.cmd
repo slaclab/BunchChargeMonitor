@@ -164,7 +164,7 @@ YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 # ===========================================
 #	        IDENTIFY Bergoz 
 # ===========================================
-cd(${TOP}/bcmApp/scripts/${IOC})
+cd(${TOP}/bcmApp/scripts/)
 system("./getBergozLocation.sh ")
 < /tmp/im01_path
 cd(${TOP})
