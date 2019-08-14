@@ -10,6 +10,11 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.3.0    Marcio Donadio (marcio) - 8/13/2019
+            - Deleted getBergozLocation.sh from iocBoot/sioc-gunb-im01.
+            - Added script to configure Bergoz device 44.
+            - Fixed path for getBergozLocation.sh in st.cmd.
+
 R3.2.0    Marcio Donadio (marcio) - 8/13/2019
             - Transferred getBergozLocation.sh from the iocBoot/sioc*
               directories to bcmApp/scripts in order to avoid copying and
