@@ -48,10 +48,10 @@ epicsEnvSet("AREA","GUNB")
 epicsEnvSet("UNIT","999")
 
 # BCM-FC in crate 1, slot 4, AMC 0
-epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):999")
+epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):$(UNIT)")
 
 # AMCC in crate 1, slot 4
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):999")
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(UNIT)")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
@@ -251,7 +251,7 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=FC01,INST=0,SYS=SYS
 
 # *************************************************************************
 # **** Load message status   **********************************************
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=999,AREA=GUNB")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
 
 
 # *************************************************************************
