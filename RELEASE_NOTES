@@ -10,6 +10,9 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.3.2    Marcio Donadio (marcio) - 8/16/2019
+            - Updated Keithley and L2MPS modules.
+
 R3.3.1    Marcio Donadio (marcio) - 8/13/2019
             - Updated modules with fix to MPS.
 
