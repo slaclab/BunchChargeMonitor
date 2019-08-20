@@ -3,24 +3,57 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 2369
-y 560
-w 594
-h 241
-font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-18.0"
-btnFont "helvetica-medium-r-18.0"
+x 4283
+y 272
+w 588
+h 280
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-medium-r-12.0"
+btnFont "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 4
+bgColor index 7
 textColor index 14
-ctlFgColor1 index 14
-ctlFgColor2 index 0
-ctlBgColor1 index 0
-ctlBgColor2 index 14
-topShadowColor index 0
-botShadowColor index 14
+ctlFgColor1 index 16
+ctlFgColor2 index 14
+ctlBgColor1 index 4
+ctlBgColor2 index 12
+topShadowColor index 1
+botShadowColor index 11
+showGrid
 snapToGrid
+gridSize 4
 endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 20
+y 52
+w 560
+h 212
+lineColor index 3
+fill
+fillColor index 3
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 1000
+h 40
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
 
 # (Static Text)
 object activeXTextClass
@@ -28,10 +61,10 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 160
-y 20
-w 184
-h 21
+x 132
+y 12
+w 256
+h 20
 font "helvetica-bold-r-18.0"
 fontAlign "center"
 fgColor index 14
@@ -40,26 +73,6 @@ useDisplayBg
 value {
   "$(MAD) Coefficients"
 }
-autoSize
-endObjectProperties
-
-# (Exit Button)
-object activeExitButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 490
-y 20
-w 40
-h 20
-fgColor index 49
-bgColor index 17
-topShadowColor index 0
-botShadowColor index 14
-label "EXIT"
-font "helvetica-medium-r-12.0"
-3d
 endObjectProperties
 
 # (Static Text)
@@ -79,7 +92,6 @@ useDisplayBg
 value {
   "Store"
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -99,7 +111,6 @@ useDisplayBg
 value {
   "Readback"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -109,15 +120,13 @@ major 4
 minor 7
 release 0
 x 420
-y 110
+y 100
 w 156
 h 20
 controlPv "$(prefix):DSPVers"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 limitsFromDb
 nullColor index 0
 useHexPrefix
@@ -132,32 +141,37 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 30
-y 110
-w 78
+x 32
+y 100
+w 51
 h 20
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "DSPVers"
 }
-autoSize
 endObjectProperties
 
-# (Group)
-object activeGroupClass
+# (Exit Button)
+object activeExitButtonClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
-x 30
-y 190
-w 546
+x 510
+y 10
+w 48
 h 24
-
-beginGroup
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+label "Exit"
+font "helvetica-medium-r-12.0"
+3d
+endObjectProperties
 
 # (Text Monitor)
 object activeXTextDspClass:noedit
@@ -166,17 +180,79 @@ major 4
 minor 7
 release 0
 x 420
-y 190
+y 164
+w 156
+h 20
+controlPv "$(prefix):CoefA1RBV"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 8
+nullColor index 0
+newPos
+objType "monitors"
+id "CoefA1"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 210
+y 160
+w 170
+h 24
+controlPv "$(prefix):CoefA1"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 2
+editable
+motifWidget
+precision 8
+nullColor index 0
+changeValOnLoseFocus
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 164
+w 42
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "CoefA1"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 420
+y 196
 w 156
 h 20
 controlPv "$(prefix):CoefA2RBV"
 format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 8
 nullColor index 0
 useHexPrefix
 newPos
@@ -191,19 +267,17 @@ major 4
 minor 7
 release 0
 x 210
-y 190
+y 192
 w 170
 h 24
 controlPv "$(prefix):CoefA2"
 format "float"
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 2
 editable
-autoHeight
 motifWidget
-precision 5
+precision 8
 nullColor index 0
 changeValOnLoseFocus
 useHexPrefix
@@ -218,35 +292,17 @@ major 4
 minor 1
 release 1
 x 30
-y 190
-w 64
+y 196
+w 42
 h 20
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "CoefA2"
 }
-autoSize
 endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 30
-y 170
-w 546
-h 24
-
-beginGroup
 
 # (Text Monitor)
 object activeXTextDspClass:noedit
@@ -255,103 +311,15 @@ major 4
 minor 7
 release 0
 x 420
-y 165
-w 156
-h 20
-controlPv "$(prefix):CoefA1RBV"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
-nullColor index 0
-newPos
-objType "monitors"
-id "CoefA1"
-endObjectProperties
-
-# (Text Control)
-object activeXTextDspClass
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 210
-y 165
-w 170
-h 24
-controlPv "$(prefix):CoefA1"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-editable
-autoHeight
-motifWidget
-precision 5
-nullColor index 0
-changeValOnLoseFocus
-useHexPrefix
-newPos
-objType "controls"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 165
-w 64
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "CoefA1"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 30
-y 140
-w 546
-h 24
-
-beginGroup
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 420
-y 140
+y 132
 w 156
 h 20
 controlPv "$(prefix):CoefA0RBV"
 format "gfloat"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 7
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 8
 nullColor index 0
 useHexPrefix
 newPos
@@ -366,19 +334,17 @@ major 4
 minor 7
 release 0
 x 210
-y 140
+y 128
 w 170
 h 24
 controlPv "$(prefix):CoefA0"
 format "gfloat"
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 2
 editable
-autoHeight
 motifWidget
-precision 7
+precision 8
 nullColor index 0
 changeValOnLoseFocus
 useHexPrefix
@@ -393,20 +359,82 @@ major 4
 minor 1
 release 1
 x 30
-y 140
-w 64
+y 132
+w 42
 h 20
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "CoefA0"
 }
-autoSize
 endObjectProperties
 
-endGroup
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 420
+y 228
+w 156
+h 20
+controlPv "$(prefix):TmitCoefRBV"
+format "float"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 8
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+id "CoefA2"
+endObjectProperties
 
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 210
+y 224
+w 170
+h 24
+controlPv "$(prefix):TmitCoef"
+format "float"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 2
+editable
+motifWidget
+precision 8
+nullColor index 0
+changeValOnLoseFocus
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 228
+w 76
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "TmitCoef"
+}
 endObjectProperties
 
