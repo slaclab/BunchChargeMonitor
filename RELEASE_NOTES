@@ -10,6 +10,11 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.4.0    Marcio Donadio (marcio) - 8/21/2019
+            - Included adittional parameter to LCLS-II toroid BSA: 
+              charge minus TMIT.
+            - Raised precision of the fields on bcmFcCoef.edl.
+
 R3.3.2    Marcio Donadio (marcio) - 8/16/2019
             - Updated Keithley and L2MPS modules.
 
