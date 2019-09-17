@@ -19,7 +19,7 @@
 #======================================
 # Single register
 file "RegisterIn.template" { pattern
-{ P,          R,              DESC,                           PINI,   SCAN,       PORT, EGU,  PARAM}
+{ P,          R,              DESC,                      PINI,   SCAN,       PORT,      EGU,  PARAM}
 { $(P), AmcClkFreq,     "AMC Clock frequency",          "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):AmcClkFreq    }
 { $(P), MuxTrigCnt,     "Valid DAQ triggers",           "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigCnt    }
 { $(P), MuxFrzStat,     "Freeze buf status",            "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxFrzStat    }
@@ -30,6 +30,7 @@ file "RegisterIn.template" { pattern
 { $(P), MuxTrigSwStat,  "SW trigger status",            "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigSwStat }
 { $(P), WEBBurstSz,     "Burst size",                   "YES",  "1 second", $(PORT),   "",   AMC$(AMC):WEBBurstSz    }
 { $(P), DSPVers,        "System generator core vers",   "YES",  "1 second", $(PORT),   "",   AMC$(AMC):DSPVers       }
+{ $(P), RATE,           "Trigger rate over 1 sec",      "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):RATE          }
 }
 
 # Array of register
@@ -150,7 +151,6 @@ file "RegisterEnumBOutRBV.template" { pattern
 file "RegisterDoubleIn.template" { pattern
 { P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
 { $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
-{ $(P), RATE,   "Trigger rate over 1 sec", "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):RATE  ,1000000,	1000000,	900000,	950000,		1050000,	1100000}
 }
 
 file "RegisterDoubleInLimits.template" { pattern
@@ -210,8 +210,8 @@ file "RegisterCommand.template" { pattern
 
 file "RegisterStream.template" {pattern
 { P,            R,          DESC,               NELM,       PINI,   PORT,   PARAM       }
-{ $(P),   Stream0,    "Stream channel 0", 5000000,    "NO",   $(PORT),     AMC$(AMC):Stream0  }
-{ $(P),   Stream1,    "Stream channel 1", 5000000,    "NO",   $(PORT),     AMC$(AMC):Stream1  }
+{ $(P),   Stream0,    "Stream channel 0",       1024,    "NO",   $(PORT),     AMC$(AMC):Stream0  }
+{ $(P),   Stream1,    "Stream channel 1",       1024,    "NO",   $(PORT),     AMC$(AMC):Stream1  }
 }
 
 # For Stream interfaces, an additional parameter is automatically created
@@ -220,9 +220,9 @@ file "RegisterStream.template" {pattern
 # is the case for ADC samples for example. Note that the NELM is 2x
 
 file "RegisterStream16.template" {pattern
-{ P,            R,          DESC,                           NELM,        PINI,  PORT,  PARAM         }
-{ $(P),     Stream0_16, "Stream channel 0 (16-bit)",  10000000,    "NO",  $(PORT),    AMC$(AMC):Stream0:16 }
-{ $(P),     Stream1_16, "Stream channel 1 (16-bit)",  10000000,    "NO",  $(PORT),    AMC$(AMC):Stream1:16 }
+{ P,            R,          DESC,                    NELM,     PINI,  PORT,  PARAM         }
+{ $(P),     Stream0_16, "Stream channel 0 (16-bit)",  2048,    "NO",  $(PORT),    AMC$(AMC):Stream0:16 }
+{ $(P),     Stream1_16, "Stream channel 1 (16-bit)",  2048,    "NO",  $(PORT),    AMC$(AMC):Stream1:16 }
 }
 
 #======================================
