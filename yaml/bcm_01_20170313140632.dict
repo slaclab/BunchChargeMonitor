@@ -11,6 +11,7 @@
 /mmio/AmcCarrierCore/AxiVersion/BuildStamp                                                                BuildStamp
 /mmio/AmcCarrierCore/AxiVersion/FpgaVersion                                                               FpgaVersion
 /mmio/AmcCarrierCore/AxiVersion/DeviceDna                                                                 DeviceDna
+/mmio/AmcCarrierCore/AxiVersion/GitHash                                                                   GitHash
 /mmio/AmcCarrierCore/AxiVersion/ScratchPad                                                                ScratchPad
 /mmio/AmcCarrierCore/AxiVersion/UpTimeCnt                                                                 UpTimeCnt
 /mmio/AmcCarrierCore/AxiVersion/DeviceId                                                                  DeviceId
