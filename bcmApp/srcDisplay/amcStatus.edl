@@ -3,23 +3,42 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 416
-y 545
+x 274
+y 131
 w 732
 h 500
-font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-18.0"
-btnFont "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-medium-r-12.0"
+btnFont "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 4
+bgColor index 7
 textColor index 14
-ctlFgColor1 index 14
-ctlFgColor2 index 0
-ctlBgColor1 index 0
-ctlBgColor2 index 14
-topShadowColor index 0
-botShadowColor index 14
+ctlFgColor1 index 16
+ctlFgColor2 index 14
+ctlBgColor1 index 4
+ctlBgColor2 index 12
+topShadowColor index 1
+botShadowColor index 11
+showGrid
+snapToGrid
+gridSize 4
 endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 1000
+h 40
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
 
 # (Rectangle)
 object activeRectangleClass
@@ -46,7 +65,7 @@ x 115
 y 84
 w 2
 h 0
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
@@ -62,20 +81,130 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 239
-y 29
+x 236
+y 12
 w 237
-h 27
-font "helvetica-bold-r-24.0"
+h 20
+font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
-  "$(MAD) AMC Status"
+  "AMC Status"
 }
-autoSize
 endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 267
+y 91
+w 307
+h 20
+controlPv "$(prefix):AmcClkFreq"
+fgColor index 16
+fgAlarm
+bgColor index 12
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 268
+y 124
+w 307
+h 20
+controlPv "$(prefix):AdcData"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+limitsFromDb
+fieldLen "4"
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+id "AdcData"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 96
+y 124
+w 106
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "AdcData:Rd"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 97
+y 91
+w 105
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "AmcClkFreq"
+}
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 672
+y 8
+w 48
+h 24
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+label "Exit"
+font "helvetica-medium-r-12.0"
+3d
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 32
+y 172
+w 638
+h 268
+
+beginGroup
 
 # (X-Y Graph)
 object xyGraphClass
@@ -84,8 +213,8 @@ major 4
 minor 8
 release 0
 # Geometry
-x 30
-y 170
+x 32
+y 172
 w 638
 h 268
 # Appearance
@@ -94,7 +223,7 @@ graphTitle "Stream0_16"
 fgColor index 14
 bgColor index 2
 gridColor index 14
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 # Operating Modes
 nPts 400
 # X axis properties
@@ -125,85 +254,38 @@ plotColor {
 }
 endObjectProperties
 
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 267
-y 85
-w 377
-h 34
-controlPv "$(prefix):AmcClkFreq"
-fgColor index 14
-fgAlarm
-bgColor index 2
-font "helvetica-medium-r-18.0"
+endGroup
+
+visPv "$(prefix):AutoRearmRBV.RVAL"
+visMin "1"
+visMax "2"
 endObjectProperties
 
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 266
-y 123
-w 307
-h 20
-controlPv "$(prefix):AdcData"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-fieldLen "4"
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "AdcData"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
+# (Button)
+object activeButtonClass
 beginObjectProperties
 major 4
 minor 1
-release 1
-x 97
-y 123
-w 106
-h 20
-font "helvetica-medium-r-18.0"
+release 0
+x 530
+y 452
+w 140
+h 28
 fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "AdcData:Rd"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 97
-y 91
-w 105
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "AmcClkFreq"
-}
-autoSize
+onColor index 4
+offColor index 4
+inconsistentColor index 12
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(prefix):AutoRearm"
+indicatorPv "$(prefix):AutoRearmRBV"
+onLabel "Disable Waveform"
+offLabel "Enable Waveform"
+labelType "literal"
+3d
+font "helvetica-medium-r-12.0"
+objType "controls"
+controlBitPos 0
+readBitPos 0
 endObjectProperties
 
