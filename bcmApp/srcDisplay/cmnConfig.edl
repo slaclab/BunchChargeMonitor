@@ -3,24 +3,57 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1987
-y 218
-w 687
-h 838
-font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-18.0"
-btnFont "helvetica-medium-r-18.0"
+x 3154
+y 1239
+w 727
+h 856
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-medium-r-12.0"
+btnFont "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 4
+bgColor index 7
 textColor index 14
-ctlFgColor1 index 14
-ctlFgColor2 index 0
-ctlBgColor1 index 0
-ctlBgColor2 index 14
-topShadowColor index 0
-botShadowColor index 14
+ctlFgColor1 index 16
+ctlFgColor2 index 14
+ctlBgColor1 index 4
+ctlBgColor2 index 12
+topShadowColor index 1
+botShadowColor index 11
+showGrid
 snapToGrid
+gridSize 4
 endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 72
+w 700
+h 736
+lineColor index 3
+fill
+fillColor index 3
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 1000
+h 40
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
 
 # (Static Text)
 object activeXTextClass
@@ -28,37 +61,17 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 160
-y 20
-w 176
+x 250
+y 10
+w 173
 h 21
-font "helvetica-bold-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "$(MAD) CmnConfig"
 }
-autoSize
-endObjectProperties
-
-# (Exit Button)
-object activeExitButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 520
-y 20
-w 40
-h 20
-fgColor index 49
-bgColor index 17
-topShadowColor index 0
-botShadowColor index 14
-label "EXIT"
-font "helvetica-medium-r-12.0"
-3d
 endObjectProperties
 
 # (Static Text)
@@ -71,14 +84,13 @@ x 250
 y 160
 w 34
 h 16
-font "helvetica-medium-i-14.0"
+font "helvetica-medium-i-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "Store"
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -91,14 +103,13 @@ x 450
 y 160
 w 64
 h 16
-font "helvetica-medium-i-14.0"
+font "helvetica-medium-i-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "Readback"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -110,106 +121,12 @@ release 0
 x 210
 y 90
 w 20
-h 20
-controlPv "$(carrier_prefix):SrvRemoteIpA"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 0
-nullColor index 0
-newPos
-objType "monitors"
-id "A"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 90
-w 156
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Remote Server IP:"
-}
-autoSize
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 240
-y 90
-w 20
-h 20
-controlPv "$(carrier_prefix):SrvRemoteIpB"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 0
-nullColor index 0
-newPos
-objType "monitors"
-id "B"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 270
-y 90
-w 20
-h 20
-controlPv "$(carrier_prefix):SrvRemoteIpC"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 0
-nullColor index 0
-newPos
-objType "monitors"
-id "C"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 300
-y 90
-w 30
-h 20
+h 21
 controlPv "$(carrier_prefix):SrvRemoteIpD"
 format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 0
 nullColor index 0
 newPos
@@ -223,18 +140,102 @@ beginObjectProperties
 major 4
 minor 1
 release 1
+x 30
+y 90
+w 151
+h 21
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Remote Server IP:"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 240
+y 90
+w 20
+h 21
+controlPv "$(carrier_prefix):SrvRemoteIpC"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 0
+nullColor index 0
+newPos
+objType "monitors"
+id "C"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 270
+y 90
+w 20
+h 21
+controlPv "$(carrier_prefix):SrvRemoteIpB"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 0
+nullColor index 0
+newPos
+objType "monitors"
+id "B"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 300
+y 90
+w 30
+h 21
+controlPv "$(carrier_prefix):SrvRemoteIpA"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 0
+nullColor index 0
+newPos
+objType "monitors"
+id "A"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
 x 350
 y 90
-w 41
-h 20
-font "helvetica-medium-r-18.0"
+w 40
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "Port:"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -246,14 +247,12 @@ release 0
 x 400
 y 90
 w 40
-h 20
+h 21
 controlPv "$(carrier_prefix):SrvRemotePort"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 0
 nullColor index 0
 newPos
@@ -270,15 +269,14 @@ release 1
 x 230
 y 90
 w 5
-h 20
-font "helvetica-medium-r-18.0"
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "."
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -290,15 +288,14 @@ release 1
 x 260
 y 90
 w 5
-h 20
-font "helvetica-medium-r-18.0"
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "."
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -310,15 +307,14 @@ release 1
 x 290
 y 90
 w 5
-h 20
-font "helvetica-medium-r-18.0"
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "."
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -328,10 +324,10 @@ major 4
 minor 1
 release 1
 x 520
-y 650
-w 40
-h 20
-font "helvetica-medium-r-18.0"
+y 440
+w 55
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 15
 visPv "$(carrier_prefix):AppTypeRBV"
@@ -339,9 +335,8 @@ visInvert
 visMin "1"
 visMax "3"
 value {
-  "Pyro"
+  "Toroid"
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -351,85 +346,18 @@ major 4
 minor 1
 release 1
 x 520
-y 650
-w 92
-h 20
-font "helvetica-medium-r-18.0"
+y 440
+w 105
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 15
 visPv "$(carrier_prefix):AppTypeRBV"
 visMin "1"
 visMax "3"
 value {
-  "Gap Diode"
+  "Faraday Cup"
 }
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 520
-y 680
-w 37
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 15
-visPv "$(carrier_prefix):IMAXScale"
-visMin "64"
-visMax "65"
-value {
-  "BC1"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 520
-y 680
-w 37
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 15
-visPv "$(carrier_prefix):IMAXScale"
-visMin "8"
-visMax "9"
-value {
-  "BC2"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 520
-y 680
-w 63
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 15
-visPv "$(carrier_prefix):IMAXScale"
-visMin "1024"
-visMax "1025"
-value {
-  "Injector"
-}
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -439,16 +367,14 @@ major 4
 minor 7
 release 0
 x 450
-y 650
+y 440
 w 60
 h 20
 controlPv "$(carrier_prefix):AppTypeRBV"
 format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 newPos
@@ -463,17 +389,15 @@ major 4
 minor 7
 release 0
 x 250
-y 650
+y 440
 w 170
 h 24
 controlPv "$(carrier_prefix):AppType"
 format "decimal"
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 2
 editable
-autoHeight
 motifWidget
 precision 5
 nullColor index 0
@@ -489,17 +413,16 @@ major 4
 minor 1
 release 1
 x 30
-y 650
-w 142
-h 20
-font "helvetica-medium-r-18.0"
+y 440
+w 141
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "AppType (0 or 1)"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -509,86 +432,14 @@ major 4
 minor 7
 release 0
 x 450
-y 680
-w 60
-h 20
-controlPv "$(carrier_prefix):LocationRBV"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
-nullColor index 0
-newPos
-objType "monitors"
-id "Location"
-endObjectProperties
-
-# (Text Control)
-object activeXTextDspClass
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 250
-y 680
-w 170
-h 24
-controlPv "$(carrier_prefix):Location"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-editable
-autoHeight
-motifWidget
-precision 5
-nullColor index 0
-changeValOnLoseFocus
-newPos
-objType "controls"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 680
-w 138
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Location (0 or 1)"
-}
-autoSize
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 450
-y 800
+y 530
 w 160
 h 20
 controlPv "$(carrier_prefix):CalibEnableRBV"
 format "hex"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 newPos
@@ -603,17 +454,15 @@ major 4
 minor 7
 release 0
 x 250
-y 800
+y 530
 w 170
 h 24
 controlPv "$(carrier_prefix):CalibEnable"
 format "hex"
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 2
 editable
-autoHeight
 motifWidget
 precision 5
 nullColor index 0
@@ -629,17 +478,16 @@ major 4
 minor 1
 release 1
 x 30
-y 800
-w 167
-h 20
-font "helvetica-medium-r-18.0"
+y 530
+w 161
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "CalibEnable (0 or 1)"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -649,16 +497,14 @@ major 4
 minor 7
 release 0
 x 450
-y 770
+y 500
 w 160
 h 20
 controlPv "$(carrier_prefix):TreshTmitRBV"
 format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 newPos
@@ -673,17 +519,15 @@ major 4
 minor 7
 release 0
 x 250
-y 770
+y 500
 w 170
 h 24
 controlPv "$(carrier_prefix):TreshTmit"
 format "decimal"
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 2
 editable
-autoHeight
 motifWidget
 precision 5
 nullColor index 0
@@ -699,17 +543,16 @@ major 4
 minor 1
 release 1
 x 30
-y 770
-w 85
-h 20
-font "helvetica-medium-r-18.0"
+y 500
+w 83
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "TreshTmit"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -719,16 +562,14 @@ major 4
 minor 7
 release 0
 x 450
-y 740
+y 470
 w 160
 h 20
 controlPv "$(carrier_prefix):SelBpmRBV"
 format "hex"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 newPos
@@ -743,17 +584,15 @@ major 4
 minor 7
 release 0
 x 250
-y 740
+y 470
 w 170
 h 24
 controlPv "$(carrier_prefix):SelBpm"
 format "hex"
-font "helvetica-medium-r-18.0"
+font "helvetica-medium-r-12.0"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 2
 editable
-autoHeight
 motifWidget
 precision 5
 nullColor index 0
@@ -769,17 +608,16 @@ major 4
 minor 1
 release 1
 x 30
-y 740
-w 131
-h 20
-font "helvetica-medium-r-18.0"
+y 470
+w 129
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "SelBpm (0 or 1)"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -789,150 +627,14 @@ major 4
 minor 7
 release 0
 x 450
-y 710
-w 160
-h 20
-controlPv "$(carrier_prefix):IMAXScale"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 1
-nullColor index 0
-newPos
-objType "monitors"
-id "IMAXScale"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 710
-w 96
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "IMAXScale"
-}
-autoSize
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 450
-y 440
-w 156
-h 20
-controlPv "$(carrier_prefix):TmitSmall"
-format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "LclTimeLow"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 440
-w 86
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "TmitSmall"
-}
-autoSize
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 450
-y 410
-w 156
-h 20
-controlPv "$(carrier_prefix):TmitInvalid"
-format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "LclTimeUp"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 410
-w 94
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "TmitInvalid"
-}
-autoSize
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 450
-y 380
+y 350
 w 156
 h 20
 controlPv "$(carrier_prefix):TmitTmit1"
 format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -948,17 +650,16 @@ major 4
 minor 1
 release 1
 x 30
-y 380
-w 86
-h 20
-font "helvetica-medium-r-18.0"
+y 350
+w 82
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "TmitTmit1"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -968,16 +669,14 @@ major 4
 minor 7
 release 0
 x 450
-y 350
+y 320
 w 156
 h 20
 controlPv "$(carrier_prefix):TmitTmit0"
 format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -993,17 +692,16 @@ major 4
 minor 1
 release 1
 x 30
-y 350
-w 86
-h 20
-font "helvetica-medium-r-18.0"
+y 320
+w 82
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "TmitTmit0"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1018,11 +716,9 @@ w 156
 h 20
 controlPv "$(carrier_prefix):TmitStatus1"
 format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -1039,16 +735,15 @@ minor 1
 release 1
 x 30
 y 290
-w 103
-h 20
-font "helvetica-medium-r-18.0"
+w 99
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "TmitStatus1"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1063,11 +758,9 @@ w 156
 h 20
 controlPv "$(carrier_prefix):TmitStatus0"
 format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -1084,16 +777,15 @@ minor 1
 release 1
 x 30
 y 260
-w 103
-h 20
-font "helvetica-medium-r-18.0"
+w 99
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "TmitStatus0"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1107,12 +799,10 @@ y 230
 w 156
 h 20
 controlPv "$(carrier_prefix):TmitTimeLow"
-format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -1129,16 +819,15 @@ minor 1
 release 1
 x 30
 y 230
-w 116
-h 20
-font "helvetica-medium-r-18.0"
+w 111
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "TmitTimeLow"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1152,12 +841,10 @@ y 200
 w 156
 h 20
 controlPv "$(carrier_prefix):TmitTimeUp"
-format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -1174,16 +861,15 @@ minor 1
 release 1
 x 30
 y 200
-w 105
-h 20
-font "helvetica-medium-r-18.0"
+w 100
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "TmitTimeUp"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1193,16 +879,14 @@ major 4
 minor 7
 release 0
 x 540
-y 350
+y 320
 w 156
 h 20
 controlPv "CALC\\\{A/128\}($(carrier_prefix):TmitTmit0)"
 format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 newPos
@@ -1217,17 +901,16 @@ major 4
 minor 1
 release 1
 x 640
-y 350
+y 320
 w 31
-h 20
-font "helvetica-medium-r-18.0"
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "pC)"
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -1237,17 +920,16 @@ major 4
 minor 1
 release 1
 x 530
-y 350
+y 320
 w 6
-h 20
-font "helvetica-medium-r-18.0"
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "("
 }
-autoSize
 endObjectProperties
 
 # (Group)
@@ -1257,7 +939,7 @@ major 4
 minor 0
 release 0
 x 530
-y 380
+y 350
 w 166
 h 20
 
@@ -1270,17 +952,16 @@ major 4
 minor 1
 release 1
 x 640
-y 380
+y 350
 w 31
-h 20
-font "helvetica-medium-r-18.0"
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "pC)"
 }
-autoSize
 endObjectProperties
 
 # (Static Text)
@@ -1290,17 +971,16 @@ major 4
 minor 1
 release 1
 x 530
-y 380
+y 350
 w 6
-h 20
-font "helvetica-medium-r-18.0"
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "("
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1310,16 +990,14 @@ major 4
 minor 7
 release 0
 x 540
-y 380
+y 350
 w 156
 h 20
 controlPv "CALC\\\{A/128\}($(carrier_prefix):TmitTmit1)"
 format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 newPos
@@ -1338,16 +1016,14 @@ major 4
 minor 7
 release 0
 x 450
-y 470
+y 380
 w 156
 h 20
 controlPv "$(carrier_prefix):StatusOfBsa0"
 format "hex"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -1363,17 +1039,16 @@ major 4
 minor 1
 release 1
 x 30
-y 470
-w 119
-h 20
-font "helvetica-medium-r-18.0"
+y 380
+w 115
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "StatusOfBsa0"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1383,16 +1058,14 @@ major 4
 minor 7
 release 0
 x 450
-y 500
+y 410
 w 156
 h 20
 controlPv "$(carrier_prefix):StatusOfBsa1"
 format "hex"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
 useHexPrefix
@@ -1408,17 +1081,16 @@ major 4
 minor 1
 release 1
 x 30
-y 500
-w 119
-h 20
-font "helvetica-medium-r-18.0"
+y 410
+w 115
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
   "StatusOfBsa1"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1428,152 +1100,19 @@ major 4
 minor 7
 release 0
 x 450
-y 530
-w 156
-h 20
-controlPv "$(carrier_prefix):StatusOfBsa2"
+y 560
+w 160
+h 21
+controlPv "$(carrier_prefix):BpTimAlignErrCnt"
 format "hex"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 5
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
-id "LclTimeLow"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 530
-w 119
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "StatusOfBsa2"
-}
-autoSize
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 450
-y 590
-w 156
-h 20
-controlPv "$(carrier_prefix):LclTimeUp"
-format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "LclTimeLow"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 590
-w 92
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "LclTimeUp"
-}
-autoSize
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 450
-y 620
-w 156
-h 20
-controlPv "$(carrier_prefix):LclTimeLow"
-format "float"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 5
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "LclTimeLow"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 620
-w 103
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "LclTimeLow"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 30
-y 320
-w 93
-h 20
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "TmitStatus"
-}
-autoSize
+id "CalibEnable"
 endObjectProperties
 
 # (Static Text)
@@ -1584,16 +1123,15 @@ minor 1
 release 1
 x 30
 y 560
-w 95
-h 20
-font "helvetica-medium-r-18.0"
+w 148
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
-  "BpmStatus"
+  "BpTimAlignErrCnt"
 }
-autoSize
 endObjectProperties
 
 # (Text Monitor)
@@ -1603,21 +1141,38 @@ major 4
 minor 7
 release 0
 x 450
-y 320
-w 156
-h 20
-controlPv "$(carrier_prefix):TmitStatus"
-format "decimal"
-font "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-precision 0
+y 590
+w 160
+h 21
+controlPv "$(carrier_prefix):BpTmitIntMax"
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 5
 nullColor index 0
 newPos
 objType "monitors"
-id "TmitStatus1"
+id "CalibEnable"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 590
+w 117
+h 21
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "BpTmitIntMax"
+}
 endObjectProperties
 
 # (Text Monitor)
@@ -1627,20 +1182,320 @@ major 4
 minor 7
 release 0
 x 450
-y 560
-w 156
-h 20
-controlPv "$(carrier_prefix):BpmStatus"
-format "decimal"
-font "helvetica-medium-r-18.0"
+y 620
+w 160
+h 21
+controlPv "$(carrier_prefix):BpTimingIntMax"
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 5
+nullColor index 0
+newPos
+objType "monitors"
+id "CalibEnable"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 620
+w 136
+h 21
+font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
-autoHeight
+value {
+  "BpTimingIntMax"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 450
+y 650
+w 160
+h 21
+controlPv "$(carrier_prefix):BpTimingInt"
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 5
+nullColor index 0
+newPos
+objType "monitors"
+id "CalibEnable"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 650
+w 101
+h 21
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "BpTimingInt"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 680
+w 67
+h 21
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "CntDiag"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 450
+y 680
+w 160
+h 21
+controlPv "$(carrier_prefix):CntDiag"
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 5
+nullColor index 0
+newPos
+objType "monitors"
+id "CalibEnable"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 710
+w 97
+h 21
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "CntDiagMin"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 450
+y 710
+w 160
+h 21
+controlPv "$(carrier_prefix):CntDiagMin"
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 5
+nullColor index 0
+newPos
+objType "monitors"
+id "CalibEnable"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 740
+w 102
+h 21
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "CntDiagMax"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 450
+y 740
+w 160
+h 21
+controlPv "$(carrier_prefix):CntDiagMax"
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 5
+nullColor index 0
+newPos
+objType "monitors"
+id "CalibEnable"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 30
+y 770
+w 133
+h 21
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "DiagnosticDelay"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 450
+y 770
+w 160
+h 21
+controlPv "$(carrier_prefix):DiagnosticDelayRBV"
+format "hex"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
+precision 5
+nullColor index 0
+newPos
+objType "monitors"
+id "CalibEnable"
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 630
+y 10
+w 48
+h 24
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+label "Exit"
+font "helvetica-medium-r-12.0"
+3d
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 460
+y 92
+w 80
+h 20
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Sync Status:"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 536
+y 88
+w 16
+h 24
+controlPv "$(carrier_prefix):StatusOfBsa1"
+lineColor index 14
+onColor index 20
+offColor index 18
+numBits 1
+shift 13
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 564
+y 88
+w 72
+h 24
+controlPv "$(carrier_prefix):BPMS_SYNC"
+format "string"
+font "helvetica-medium-r-12.0"
+fgColor index 16
+bgColor index 12
 precision 0
 nullColor index 0
 newPos
 objType "monitors"
-id "LclTimeLow"
+id "A"
 endObjectProperties
 
