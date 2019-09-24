@@ -1,0 +1,21 @@
+# ============
+# for iocAdmin
+# ============
+file bcmIOC.tpl-arch
+{
+pattern   { IOC }
+          { SIOC:LI21:IM02 }
+}
+
+file bcm.tpl-arch
+{
+pattern   { P }
+          { TORO:LI21:206 }
+          { TORO:LI21:278 }
+}
+
+file tpr.tpl-arch
+{
+pattern   { R,         NUM }
+          { LI21:IM02,  2 }
+}
