@@ -20,3 +20,4 @@ tags
 startup/
 etc/scanner.xml
 ethercat.pyc
+archive/
