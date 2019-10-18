@@ -13,6 +13,19 @@
 #include AppTop.yaml
 #include AmcCarrierDRAM.yaml
 
+# It is important to use the same parameters
+# for shared protocol modules (e.g., all RSSI
+# on the same port is in fact one single, shared
+# module)
+#
+connectionParameters:
+  udpPri:     &udpPri      80
+  udpThreads: &udpThreads   1
+  rssi: &rssiParams
+    retransmissionTimeoutUS: 100000
+    cumulativeAckTimeoutUS:   50000
+    threadPriority:             82
+
 #MMIO range, will be attached to FPGA
 mmio: &mmio
   size: 0x100000000 # 4GB of address space
