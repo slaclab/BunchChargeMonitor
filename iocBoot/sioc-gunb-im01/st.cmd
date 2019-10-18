@@ -127,9 +127,6 @@ addBsa("CHRGNOTMIT", "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
-# Disabling bsaDriver on boot until BSA crashes are fixed
-bsaAsynDriverDisable()
-
 # **********************************************************************
 # **** Setup MPS Driver ************************************************
 # LCLS2MPSCPASYNConfig(
@@ -388,6 +385,11 @@ dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
 dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
 dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
 dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
+
+# Temporary local modification by Sonya!
+# This sets the BCM TMIT diff to use data from the correct BPM
+dbpf AMCC:GUNB:360:SelBpm 1
+# End temporary local modification by Sonya
 
 # Reactivate trigger to restart unsolicited messages from Bergoz
 epicsThreadSleep 1
