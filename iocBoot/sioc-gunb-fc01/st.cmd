@@ -127,9 +127,6 @@ addBsa("FCSTATUS",   "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
-# Disabling bsaDriver on boot until BSA crashes are fixed
-bsaAsynDriverDisable()
-
 # *********************************************************************
 # **** MPS Driver setup ***********************************************
 # LCLS2MPSCPASYNConfig(
