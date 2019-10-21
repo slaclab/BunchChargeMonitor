@@ -10,6 +10,12 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.5.1    Marcio Donadio (marcio) - 10/21/2019
+            - Removed the temporary disabling of bsaDriver on boot.
+            - Upgraded a bunch of modules to fix crashes that were happening in
+              the IOCs.
+            - Upgraded yaml files.
+
 R3.5.0    Marcio Donadio (marcio) - 9/19/2019
             - Temporarily disabling bsaDriver on boot until BSA crashes are
               fixed.
