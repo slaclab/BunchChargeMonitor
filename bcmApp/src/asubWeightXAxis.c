@@ -6,7 +6,7 @@
 
 static long calcTimeArray(aSubRecord *pasub) {
     long i, *clkFreq;
-    double sum = 0, timeNs;
+    double sum, timeNs;
     //double xAxis[1024];
 
     pasub->pact = 1;
@@ -16,6 +16,7 @@ static long calcTimeArray(aSubRecord *pasub) {
     // Calculate the time in ns between each sample, giving the clock
     // frequency in Hertz
     timeNs = 1000000000 / (2.0 * *clkFreq);
+    sum = 28 * timeNs;
 
     // Build array with the relative time for each sample since the first one
     for (i=0; i < pasub->nova; ++i) {
