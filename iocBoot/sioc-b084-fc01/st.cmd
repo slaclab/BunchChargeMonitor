@@ -161,7 +161,7 @@ YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "yaml/bcm_01_20170313140632.dict")
 # *********************************************************************
 # **** Driver setup for Keithley **************************************
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
-drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
+#drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
 
 # *********************************************************************
 # **** Driver setup for Temperature Chassis on Ethercat ***************
@@ -209,6 +209,11 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
 # ...only one BCM-FC per board is anticipated
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+# Databases for visually adjusting weight functions in charts on the GUI
+dbLoadRecords("db/weightFunctionXAxis.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/calculatedWF.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/streamControl.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/processRawWFHeader.db", "P=${AMC0_PREFIX}")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
@@ -222,8 +227,8 @@ epicsThreadSleep(1.0)
 
 # **********************************************************************
 # **** Load Keithley db ************************************************
-dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
-dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
+#dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
+#dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
 
 # **********************************************************************

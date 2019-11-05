@@ -199,6 +199,12 @@ dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
 # ...only one BCM-FC per board is anticipated
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
+# Databases for visually adjusting weight functions in charts on the GUI
+dbLoadRecords("db/weightFunctionXAxis.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/calculatedWF.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/streamControl.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/processRawWFHeader.db", "P=${AMC0_PREFIX}")
+
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
 dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=SrvRemotePortSwap")
