@@ -97,6 +97,10 @@ DB += Filter.db
 DB += bcm.db
 DB += carrier.db
 DB += ipAddr.db
+DB += calculatedWF.db
+DB += weightFunctionXAxis.db
+DB += streamControl.db
+DB += processRawWFHeader.db
 
 # For BCM specific diagnostics
 DB += msgStatus.db
