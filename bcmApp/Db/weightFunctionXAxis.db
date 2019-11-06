@@ -101,7 +101,7 @@ record (calc, "$(P):TIME_POSC") {
   field(DESC, "Duration of pos-edge in ns")
   field(INPA, "$(P):TIME_MIDC CP")
   field(INPB, "$(P):TIME_POS CP")
-  field(CALC, "A+B>1000 ? 1000-A : B")
+  field(CALC, "A*2+B>1000 ? 1000-A*2 : B")
 }
 
 # Calculate the number of samples of the pos-edge of the weight function 
