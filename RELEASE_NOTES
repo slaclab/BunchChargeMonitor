@@ -10,7 +10,7 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
-R3.5.1-0.1.0    Marcio Donadio (marcio) - 11/06/2019
+R3.5.1-1.0.0    Marcio Donadio (marcio) - 11/06/2019
                 - This is a release based on a branch to bring PyDM screens and
                   associated databases to allow an user to control the weight
                   windows visually with coefficients automatically changing
