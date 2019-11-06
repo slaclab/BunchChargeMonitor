@@ -10,6 +10,14 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.5.1-0.1.0    Marcio Donadio (marcio) - 11/06/2019
+                - This is a release based on a branch to bring PyDM screens and
+                  associated databases to allow an user to control the weight
+                  windows visually with coefficients automatically changing
+                  in proportion. Some work is still necessary before merging
+                  with master as changes done here will brake the Mission
+                  Readiness IOCs.
+
 R3.5.1    Marcio Donadio (marcio) - 10/21/2019
             - Removed the temporary disabling of bsaDriver on boot.
             - Upgraded a bunch of modules to fix crashes that were happening in
