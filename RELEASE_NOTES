@@ -9,6 +9,8 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.6.0    Carolina Bianchini (carolina) - 3/19/2020
+	    - Upgraded the App to EPICS 7.0.3
 
 R3.5.1    Marcio Donadio (marcio) - 10/21/2019
             - Removed the temporary disabling of bsaDriver on boot.
