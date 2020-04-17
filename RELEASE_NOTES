@@ -15,6 +15,12 @@ R3.6.1    Carolina Bianchini (carolina) - 3/30/2020
 R3.6.0    Carolina Bianchini (carolina) - 3/19/2020
 	    - Upgraded the App to EPICS 7.0.3
 
+R3.5.2    Ryan Reno (rreno) - 04/17/2020
+          - Changed version of bsaDriver to 1.6.1 to fix PV names overlapping with Cu LINAC.
+            sioc-gunb-fc01 and sioc-gunb-im01 run on cpu-gunb-sp01 which is not yet ready to
+            move to buildroot2019 and epics 7.0.3 (3.6 release series). This release is a stopgap to
+            fix the PV name conflict until the IOCs can be updated to R3.6.x
+
 R3.5.1    Marcio Donadio (marcio) - 10/21/2019
             - Removed the temporary disabling of bsaDriver on boot.
             - Upgraded a bunch of modules to fix crashes that were happening in
