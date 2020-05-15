@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.6.2    Ryan Reno (rreno) - 5/15/2020
+          - Rolled back l2Mps to R2.4.0 to work with l2MpsAsyn R2.6.0
+
 R3.6.1    Carolina Bianchini (carolina) - 3/30/2020
 	    - Adding SIOCs sioc-col1-im01, sioc-emit2-im01, sioc-spd-im01
 
