@@ -1,0 +1,13 @@
+record (mbbo, "$(P):ACCESS") {
+  field(DESC, "Stream from ATCA Control")
+  field(DTYP, "Raw Soft Channel")
+  field(ZRVL, "1")
+  field(ZRST, "Running")
+  field(ZRSV, "NO_ALARM")
+  field(ONVL, "1")
+  field(ONST, "OFFLINE")
+  field(ONSV, "MAJOR")
+  field(PINI, "YES")
+  field(OUT, "$(P):AutoRearm PP")
+  info(autosaveFields, "VAL")
+}
