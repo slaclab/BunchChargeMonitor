@@ -214,6 +214,11 @@ epicsThreadSleep(1.0)
 dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
 dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
+# **********************************************************************
+# **** Load Waveforms db ***********************************************
+dbLoadRecords("db/waveformXAxis.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/streamControl.db", "P=${AMC0_PREFIX}")
+
 
 # **********************************************************************
 # **** Load BSA driver DB **********************************************
