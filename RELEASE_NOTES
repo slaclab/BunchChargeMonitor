@@ -9,6 +9,11 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+
+R3.7.0    Ryan Reno (rreno) - 6/15/2020
+          - Added support for waveform display via Stream0.
+          - Added database support to control AutoRearm for stream
+
 R3.6.2    Ryan Reno (rreno) - 5/15/2020
           - Rolled back l2Mps to R2.4.0 to work with l2MpsAsyn R2.6.0
 
