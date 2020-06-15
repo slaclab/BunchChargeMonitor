@@ -93,9 +93,9 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 # **********************************************************************
 # **** Environment variables for IOC Admin *****************************
 # Production area
-epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
+#epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
 # Dev Area
-#epicsEnvSet(IOC_NAME,"SIOC:B084:FC01")
+epicsEnvSet(IOC_NAME,"SIOC:B084:FC01")
 
 # Start up enviroment variable
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
@@ -216,6 +216,10 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 
 # Automatic initialization
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
+
+# waveforms
+dbLoadRecords("db/waveformXAxis.db", "P=FARC:${AREA}:${UNIT}")
+dbLoadRecords("db/streamControl.db", "P=FARC:${AREA}:${UNIT}")
 
 # Allow time for Keithley driver to connect
 epicsThreadSleep(1.0)
