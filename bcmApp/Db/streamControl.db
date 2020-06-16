@@ -4,7 +4,7 @@ record (mbbo, "$(P):ACCESS") {
   field(ZRVL, "1")
   field(ZRST, "Running")
   field(ZRSV, "NO_ALARM")
-  field(ONVL, "1")
+  field(ONVL, "0")
   field(ONST, "OFFLINE")
   field(ONSV, "MAJOR")
   field(PINI, "YES")
