@@ -1,0 +1,19 @@
+# Clock frequency converted into time in nanoseconds
+record (aSub, "$(P):SAMP_TIME") {
+  field(SNAM, "calcTimeArray")
+  field(FTA, "LONG")
+  field(FTVA, "DOUBLE")
+  field(NOA, "2020")
+  field(NOVA, "2020")
+  field(INPA, "$(P):AmcClkFreq CP")
+}
+
+# Raw Waveform converted into 16 bit unsigned values
+record (asub "$(P):RWF_U16") {
+  field(SNAM, "calcRWF16")
+  field(FTA, "LONG")
+  field(FTVA, "USHORT")
+  field(NOA, "512")
+  field(NOVA, "1024")
+  field(INPA, "$(P):Stream0")
+}

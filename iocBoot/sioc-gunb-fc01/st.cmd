@@ -216,7 +216,7 @@ dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),
 
 # **********************************************************************
 # **** Load Waveforms db ***********************************************
-dbLoadRecords("db/waveformXAxis.db", "P=${AMC0_PREFIX}")
+dbLoadRecords("db/waveform.db", "P=${AMC0_PREFIX}")
 dbLoadRecords("db/streamControl.db", "P=${AMC0_PREFIX}")
 
 

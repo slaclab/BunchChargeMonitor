@@ -98,7 +98,7 @@ DB += bcm.db
 DB += carrier.db
 DB += ipAddr.db
 DB += streamControl.db
-DB += waveformXAxis.db
+DB += waveform.db
 
 # For BCM specific diagnostics
 DB += msgStatus.db

@@ -1,2 +1,3 @@
 registrar(BcmIOCFunctionsRegistrar)
 function(calcTimeArray)
+function(calcRWF16)

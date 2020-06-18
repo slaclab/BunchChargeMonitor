@@ -218,7 +218,7 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 # waveforms
-dbLoadRecords("db/waveformXAxis.db", "P=FARC:${AREA}:${UNIT}")
+dbLoadRecords("db/waveform.db", "P=FARC:${AREA}:${UNIT}")
 dbLoadRecords("db/streamControl.db", "P=FARC:${AREA}:${UNIT}")
 
 # Allow time for Keithley driver to connect

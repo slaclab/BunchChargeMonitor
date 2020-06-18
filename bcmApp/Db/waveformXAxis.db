@@ -1,9 +1,0 @@
-# Quick and dirty X axis calc to turn clock frequency into time in nanoseconds
-record (aSub, "$(P):SAMP_TIME") {
-  field(SNAM, "calcTimeArray")
-  field(FTA, "LONG")
-  field(FTVA, "DOUBLE")
-  field(NOA, "2020")
-  field(NOVA, "2020")
-  field(INPA, "$(P):AmcClkFreq CP")
-}

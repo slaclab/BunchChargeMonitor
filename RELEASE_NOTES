@@ -10,6 +10,10 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.7.1    Ryan Reno (rreno) - (In Progress)
+          - Fixed bug where stream control would always set AutoRearm to 1 (enabled)
+          - Added Stream processing routines - translate Stream values into 16 bit unsigned values
+
 R3.7.0    Ryan Reno (rreno) - 6/15/2020
           - Added support for waveform display via Stream0.
           - Added database support to control AutoRearm for stream

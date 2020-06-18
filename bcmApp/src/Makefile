@@ -152,6 +152,7 @@ bcm_SRCS += bcmBSA.cpp
 bcm_SRCS += bcmIOCFunctions.cpp
 bcm_SRCS += cpswStreamBSA.cpp
 bcm_SRCS += asubWeightXAxis.c
+bcm_SRCS += asubRWF.c
 
 # =====================================================
 # Link in the libraries from other EPICS modules
