@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdint.h>
+
 #include <registryFunction.h>
 #include <epicsExport.h>
 #include <aSubRecord.h>
@@ -9,11 +12,12 @@ static long calcRWF16(aSubRecord *pasub) {
      * The lower 2 bytes come first. ex:
      * 0xcdcdabab should become (0xabab, 0xcdcd) in that order.
      */
+    int i, j;
     pasub->pact = 1;
 
-    for (int i = 0; i < pasub->nova; i += 2) {
-        pasub->vala[i] = pasub->a[i] & 0xffff; 
-        pasub->vala[i+1] = pasub->a[i] >> 16;  
+    for (i = 0, j = 0; i < pasub->nova-1 && j < pasub->noa; i += 2, j++) {
+        ((uint16_t *)pasub->vala)[i] = ((long *)pasub->a)[j] & 0xffff; 
+        ((uint16_t *)pasub->vala)[i+1] = ((long *)pasub->a)[j] >> 16;  
     }
 
     pasub->pact = 0;

@@ -210,8 +210,8 @@ file "RegisterCommand.template" { pattern
 
 file "RegisterStream.template" {pattern
 { P,            R,          DESC,               NELM,       PINI,   PORT,   PARAM       }
-{ $(P),   Stream0,    "Stream channel 0",       1024,    "NO",   $(PORT),     AMC$(AMC):Stream0  }
-{ $(P),   Stream1,    "Stream channel 1",       1024,    "NO",   $(PORT),     AMC$(AMC):Stream1  }
+{ $(P),   Stream0,    "Stream channel 0",       512,    "NO",   $(PORT),     AMC$(AMC):Stream0  }
+{ $(P),   Stream1,    "Stream channel 1",       512,    "NO",   $(PORT),     AMC$(AMC):Stream1  }
 }
 
 # For Stream interfaces, an additional parameter is automatically created
@@ -221,8 +221,8 @@ file "RegisterStream.template" {pattern
 
 file "RegisterStream16.template" {pattern
 { P,            R,          DESC,                    NELM,     PINI,  PORT,  PARAM         }
-{ $(P),     Stream0_16, "Stream channel 0 (16-bit)",  2048,    "NO",  $(PORT),    AMC$(AMC):Stream0:16 }
-{ $(P),     Stream1_16, "Stream channel 1 (16-bit)",  2048,    "NO",  $(PORT),    AMC$(AMC):Stream1:16 }
+{ $(P),     Stream0_16, "Stream channel 0 (16-bit)",  1024,    "NO",  $(PORT),    AMC$(AMC):Stream0:16 }
+{ $(P),     Stream1_16, "Stream channel 1 (16-bit)",  1024,    "NO",  $(PORT),    AMC$(AMC):Stream1:16 }
 }
 
 #======================================
