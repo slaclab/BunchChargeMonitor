@@ -12,12 +12,11 @@ static long calcRWF16(aSubRecord *pasub) {
      * The lower 2 bytes come first. ex:
      * 0xcdcdabab should become (0xabab, 0xcdcd) in that order.
      */
-    int i, j;
+    int i;
     pasub->pact = 1;
 
-    for (i = 0, j = 0; i < pasub->nova-1 && j < pasub->noa; i += 2, j++) {
-        ((uint16_t *)pasub->vala)[i] = ((long *)pasub->a)[j] & 0xffff; 
-        ((uint16_t *)pasub->vala)[i+1] = ((long *)pasub->a)[j] >> 16;  
+    for (i = 0; i < pasub->noa; i++) {
+        ((short *)pasub->vala)[i] = (short)(((unsigned short *)pasub->a)[i] >> 1);
     }
 
     pasub->pact = 0;
