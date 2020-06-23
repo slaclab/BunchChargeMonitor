@@ -75,6 +75,7 @@ file "RegisterOut.template" { pattern
 { $(P), NumSamp0,       "Number of samples 0"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):NumSamp0 }
 { $(P), NumSamp1,       "Number of samples 1"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):NumSamp1 }
 { $(P), TrigDelay1,     "Trigger delay 1"                         "NO",   "Passive",  $(PORT),    AMC$(AMC):TrigDelay1 }
+{ $(P), DacSrs,         "Simulated or Real DAC Source"            "YES",  "Passive",  $(PORT),    AMC$(AMC):DacSrs }
 # Trigger to Bergoz (TLR0)
 { $(P), TLR0:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SelSrc }
 { $(P), TLR0:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SftTrig }
@@ -107,6 +108,7 @@ file "RegisterOutRBV.template" { pattern
 { $(P), NumSamp0RBV,       "Number of samples 0"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):NumSamp0 }
 { $(P), NumSamp1RBV,       "Number of samples 1"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):NumSamp1 }
 { $(P), TrigDelay1RBV,     "Trigger delay 1"                         "YES",  "1 second",  $(PORT),    AMC$(AMC):TrigDelay1 }
+{ $(P), DacSrsRBV,         "Simulated or Real DAC Source"            "YES",  "1 second",  $(PORT),    AMC$(AMC):DacSrs }
 # Trigger to Bergoz (TLR0)
 { $(P), TLR0:SelSrcRBV,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:SelSrc }
 { $(P), TLR0:SftTrigRBV,   "used field to only mask bit of interest","YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:SftTrig }

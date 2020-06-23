@@ -50,6 +50,8 @@
 /mmio/AppTop/AppCore/CmnConfig/CntDiagMin								  CntDiagMin
 /mmio/AppTop/AppCore/CmnConfig/CntDiagMax								  CntDiagMax	
 /mmio/AppTop/AppCore/CmnConfig/DiagnosticDelay								  DiagnosticDelay
+/mmio/AppTop/AppCore/SysGen[0]/DacSrs                                                                     AMC0:DacSrs
+/mmio/AppTop/AppCore/SysGen[1]/DacSrs                                                                     AMC1:DacSrs
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreRes/Mult2                                                           AMC0:CHRG
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreRes/Mult2                                                           AMC1:CHRG
 /mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/TriggerRate                                            AMC0:RATE
