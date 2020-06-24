@@ -10,6 +10,10 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.7.2    Ryan Reno (rreno) - (In Progress)
+          - Fixed bugs in asubWeightXAxis and asubRWF to now display waveforms properly 
+          - Added PV for DacSrs register to set loopback or ADC signal input
+
 R3.7.1    Ryan Reno (rreno) - 6/19/2020
           - Fixed bug where stream control would always set AutoRearm to 1 (enabled)
           - Added Stream processing routines - translate Stream values into 16 bit unsigned values
