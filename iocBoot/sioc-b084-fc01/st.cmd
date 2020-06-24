@@ -63,7 +63,7 @@ epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):$(UNIT)"
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(UNIT)")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
+epicsEnvSet("DICT_FILE", "yaml/bcmLCLS2.dict")
 
 # ***********************************************************************
 # **** Environment variables for MPS ************************************
@@ -156,7 +156,7 @@ bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcC
 #    Record name Prefix,        # Record name prefix
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
-YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "yaml/bcm_01_20170313140632.dict")
+YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "${DICT_FILE}")
 
 # *********************************************************************
 # **** Driver setup for Keithley **************************************

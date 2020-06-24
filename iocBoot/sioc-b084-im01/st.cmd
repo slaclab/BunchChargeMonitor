@@ -58,7 +58,7 @@ epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(UNIT)")
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(UNIT)")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
+epicsEnvSet("DICT_FILE", "yaml/bcmLCLS2.dict")
 
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
@@ -154,7 +154,7 @@ L2MPSASYNSetManagerHost("lcls-dev3", 0)
 #    Record name Prefix,        # Record name prefix
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
-YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
+YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
 
 
 # ===========================================
