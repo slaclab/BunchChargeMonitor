@@ -99,6 +99,7 @@ DB += carrier.db
 DB += ipAddr.db
 DB += streamControl.db
 DB += waveform.db
+DB += iocMeta.db
 
 # For BCM specific diagnostics
 DB += msgStatus.db
