@@ -36,7 +36,7 @@ class StreamHandler:
 
             self.count += 1
 
-class TriggerHanlder:
+class TriggerHandler:
 
     def __init__(self, root):
         self.triggerCmd            = Command.create(root.findByName("/AppTop/DaqMuxV2[0]/TriggerDaq"))
@@ -59,7 +59,7 @@ class TriggerHanlder:
     def resetHwAutoream(self):
         self.triggerHwAutoRearmVal.setVal([0, 0])
 
-class BufferHanlder:
+class BufferHandler:
 
     def __init__(self, root):
         self.endAddr       = ScalVal.create(root.findByName("/AmcCarrierCore/AmcCarrierBsa/BsaWaveformEngine/WaveformEngineBuffers/EndAddr"))
@@ -184,8 +184,8 @@ def main(argv):
 
     # Create handlers
     print("Creating hanlders...")
-    bh = BufferHanlder(mmio)
-    th = TriggerHanlder(mmio)
+    bh = BufferHandler(mmio)
+    th = TriggerHandler(mmio)
     sh = []
     #for i in range(streamBegin, streamEnd):
     for i in (streamBegin, streamEnd-1):
