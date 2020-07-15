@@ -1,0 +1,10 @@
+# Calculate TMIT by multiplying charge by a constant
+
+record (calc, "$(P):TMIT") {
+  field (INPA, "$(INP)")
+  field (DESC, "$(DESC)")
+  field (EGU,  "$(EGU)")
+  field (SCAN, "$(SCAN)")
+  field (PINI, "YES")
+  field (CALC, "A*6241509.13")
+}

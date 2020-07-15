@@ -14,6 +14,11 @@
 #   AMC: The AMC hardware slot (0 or 1)
 ########################################################################################################################
 
+file "tmit.template" { pattern
+{  P,                   DESC,                   SCAN,     EGU,       INP }
+{ $(P), "Calculated TMIT from measured CHRG", "1 second", "Nel", "$(P):CHRG" }
+}
+
 #======================================
 # Registers with ScalVal_RO interfaces
 #======================================
