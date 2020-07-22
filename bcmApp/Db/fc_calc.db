@@ -1,0 +1,11 @@
+# fc_calc.db
+# calc records for the FARC installation
+
+
+record(calc, "$(P):IPerRate") {
+    field(DESC, "Calculate Current/Rate")
+    field(INPA, "1000000000")
+    field(INPB, "$(P):I")
+    field(INPC, "$(P):RATE")
+    field(CALC, "C ? A * B / C : 0")
+}

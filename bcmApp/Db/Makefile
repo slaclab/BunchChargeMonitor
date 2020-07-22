@@ -100,6 +100,7 @@ DB += ipAddr.db
 DB += streamControl.db
 DB += waveform.db
 DB += iocMeta.db
+DB += fc_calc.db
 
 # For BCM specific diagnostics
 DB += msgStatus.db
