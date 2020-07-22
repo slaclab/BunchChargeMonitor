@@ -81,7 +81,7 @@ strm: &strm
             offset: 0x00000000
             
 NetIODev:
-  ipAddr: 10.0.0.100
+  ipAddr: 10.0.1.105
   class: NetIODev
   configPrio: 1
   children:
