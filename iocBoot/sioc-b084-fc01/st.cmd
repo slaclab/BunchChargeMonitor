@@ -209,6 +209,9 @@ dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT
 dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
 # ...only one BCM-FC per board is anticipated
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+dbLoadRecords("db/fc_calc.db", "P=${AMC0_PREFIX}")
+
+dbLoadRecords("db/iocMeta.db", "AREA=GUNB, IOC_UNIT=FC01") 
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
