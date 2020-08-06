@@ -31,7 +31,9 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 epicsEnvSet("CPSW_PORT","Atca7")
 
 # Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
+epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml")
+epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.105")
@@ -105,6 +107,9 @@ bcm_registerRecordDeviceDriver(pdbbase)
 # ===========================================
 #              DRIVER SETUP
 # ===========================================
+
+DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
+
 # ***********************************************************************
 # **** Driver setup for YCPSWAsyn ***************************************
 
@@ -115,8 +120,8 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile("yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml", "mmio")
+cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
+cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
