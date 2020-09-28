@@ -10,10 +10,12 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
-R3.7.2    Ryan Reno (rreno) - (In Progress)
+R3.8.0    Ryan Reno (rreno) - (9/28/2020)
           - Fixed bugs in asubWeightXAxis and asubRWF to now display waveforms properly 
           - Added PV for DacSrs register to set loopback or ADC signal input
           - Added PVs for CPU, SHM, and ATCA Slot
+          - Implemented IN10 toroid IOC
+          - implemented YAMLDownload for EMIT2 and IN10 IOCS
 
 R3.7.1    Ryan Reno (rreno) - 6/19/2020
           - Fixed bug where stream control would always set AutoRearm to 1 (enabled)
