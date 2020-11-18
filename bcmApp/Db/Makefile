@@ -95,6 +95,7 @@ DB += stream_size.template
 DB += TempMonitoring_TORO.db
 DB += Filter.db
 DB += bcm.db
+DB += bcmFACET2.db
 DB += carrier.db
 DB += ipAddr.db
 DB += streamControl.db
