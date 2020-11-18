@@ -20,7 +20,7 @@ epicsEnvSet("CPSW_PORT","Atca7")
 # Yaml File
 epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
-epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaults.yaml")
 
 # FPGA IP address
 # From crate ID = 0x0101, slot = 5
@@ -50,34 +50,11 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # BPM used for BPM Sync
 epicsEnvSet("BPM_LOCA", 314)
 
-# ***********************************************************************
-# **** Environment variables for Temperature Chassis on Ethercat ********
-
-# System Location:
-epicsEnvSet("TEMP_IOC_NAME","$(AMC0_PREFIX)")
 
 # ***********************************************************************
 # **** Environment variables for IOC Admin ******************************
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):$(IOC_UNIT)")
 
-# ***********************************************************************
-# **** Environment variables for bergoz detection  **********************
-# Serial number for bergoz
-epicsEnvSet("IM01","2C")
-
-# **********************************************************************
-# **** Environment variables for Toroid on  Bergoz *********************
-
-epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
-epicsEnvSet("BERGOZ0_R","")
-epicsEnvSet("BERGOZ0_IN_PORT","L0")
-epicsEnvSet("BERGOZ0_OUT_PORT","L1")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","40")
-epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
-
-# Temperature xfer: ESLO, EOFF
-epicsEnvSet("ESLO","$(ESLO=0.01)")
-epicsEnvSet("EOFF","$(EOFF=273.15)")
 
 cd ${TOP}
 
@@ -105,66 +82,25 @@ DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
 cpswLoadYamlFile("$(TOP_YAML)", "NetIODev", "", "$(FPGA_IP)")
 cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
 
-# **********************************************************************
-# **** Setup BSA Driver*************************************************
-# add BSA PVs
-addBsa("CHRG",       "uint32")
-addBsa("CHRGUNC",    "uint32")
-addBsa("RAWSUM",     "uint32")
-addBsa("CHRGFLOAT",  "float32")
-addBsa("TOROSTATUS", "uint32")
-addBsa("CHRGNOTMIT", "uint32")
-# BSA driver for yaml
-bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
-
 ## Configure asyn port driver
 # YCPSWASYNConfig(
 #    Port Name,                 # the name given to this port driver
 #    Root Path                  # OPTIONAL: Root path to start the generation. If empty, the Yaml root will be used
-#    Record name Prefix,        # Record name prefix
+#    Record name Prefix,
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 YCPSWASYNConfig("$(CPSW_PORT)", "", "", "$(AUTO_GEN)", "${DICT_FILE}")
 
 
-# ===========================================
-#	        IDENTIFY Bergoz 
-# ===========================================
-cd(${TOP}/bcmApp/scripts/)
-system("./getBergozLocation.sh ")
-< /tmp/im01_path
-cd(${TOP})
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
-
-
-# ***********************************************************************
-# **** Driver setup for Bergoz ******************************************
-# Set up ASYN ports
-# drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
-drvAsynSerialPortConfigure("$(BERGOZ0_IN_PORT)","$(BERGOZ0_TTY)",0,0,0)
-drvAsynSerialPortConfigure("$(BERGOZ0_OUT_PORT)","$(BERGOZ0_TTY)",0,0,0)
-
-# ***********************************************************************
-# **** Driver setup for Temperature Chassis on Ethercat *****************
-# Init EtherCAT: To support Real Time fieldbus
-# EtherCAT AsynDriver must be initialized in the IOC startup script before iocInit
-# ecAsynInit("<unix_socket>", <max_message>)
-# unix_socket = path to the unix socket created by the scanner
-# max_message = maximum size of messages between scanner and ioc
-#ecAsynInit("/tmp/sock1", 1000000)
-
 # ***********************************************************************
 # **** Setup TprTrigger Driver ******************************************
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
-# ***********************************************************************
-# **** Setup Crossbar Control Driver ************************************
-# crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 
 # ***********************************************************************
 # **** Setup TprPattern driver ******************************************
 #This driver needs to be loaded only for LCLS1 devices
-tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStream")
+tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "tstream")
 
 
 # ===========================================
@@ -174,14 +110,6 @@ tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStre
 # ***********************************************************************
 # **** Asyn Masks for YCPSWAsyn *****************************************
 #asynSetTraceMask(${PORT},, -1, 9)
-
-
-# ***********************************************************************
-# **** Asyn Masks for Bergoz ********************************************
-#asynSetTraceIOMask("$(BERGOZ0_IN_PORT)",-1,0x2)
-#asynSetTraceMask("$(BERGOZ0_IN_PORT)",-1,0x9)
-#asynSetTraceIOMask("$(BERGOZ0_OUT_PORT)",-1,0x2)
-#asynSetTraceMask("$(BERGOZ0_OUT_PORT)",-1,0x9)
 
 
 # ===========================================
@@ -195,7 +123,7 @@ tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "Lcls1TimingStre
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Manually create records
-dbLoadRecords("db/bcm.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmFACET2.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
 dbLoadRecords("db/carrier.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
 dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)")
@@ -231,27 +159,18 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,
 
 # ***********************************************************************
 # **** Load Bergoz db ***************************************************
-dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_IN_PORT),PORT_OUT=$(BERGOZ0_OUT_PORT),A=-1")
-dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),ADDR=-1,OMAX=0,IMAX=0")
-dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
+#dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_IN_PORT),PORT_OUT=$(BERGOZ0_OUT_PORT),A=-1")
+#dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
-# ***********************************************************************
-# **** Load db for Temperature Chassis on Ethercat **********************
-# Load the database templates for the EtherCAT components
-# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
-#dbLoadRecords("db/EK1101.template", "DEVICE=${AMC0_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
-#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
-#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
 
 
 # ************************************************************************
@@ -313,9 +232,6 @@ set_pass1_restoreFile("info_settings.sav")
 # ===========================================
 iocInit()
 
-# Deactivate trigger in order to stop unsolicited messages from Bergoz
-dbpf TPR:${AREA}:IM01:0:CH01_SYS2_TCTL 0
-
 # Turn on caPutLogging:
 # Log values only on change to the iocLogServer:
 caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
@@ -338,30 +254,17 @@ create_monitor_set("info_settings.req" , 30 )
 
 cd ${TOP}
 
-# *********************
-# **** Bergoz dbpf ****
-
-# Save the TTY device name
-dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
-
-# Save the expected BERGOZ serial number
-dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
-
 # Start loading configuration file
 dbpf AMCC:${AREA}:${UNIT}:saveConfigFile "/tmp/configDump.yaml"
 dbpf AMCC:${AREA}:${UNIT}:saveConfigRoot "mmio"
 dbpf AMCC:${AREA}:${UNIT}:saveConfig 1
-dbpf AMCC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
+dbpf AMCC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaults.yaml"
 dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
 # We should never load the configuration file after autosave already changed
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
 #dbpf AMCC:${AREA}:${UNIT}:loadConfig 1
-dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
-dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
-dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
-dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
-
-# Reactivate trigger to restart unsolicited messages from Bergoz
-epicsThreadSleep 1
-dbpf TPR:${AREA}:IM01:0:CH01_SYS2_TCTL 1
+#dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
+#dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
+#dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
+#dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
