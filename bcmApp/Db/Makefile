@@ -97,6 +97,7 @@ DB += Filter.db
 DB += bcm.db
 DB += bcmFACET2.db
 DB += carrier.db
+DB += carrierFACET2.db
 DB += ipAddr.db
 DB += streamControl.db
 DB += waveform.db
