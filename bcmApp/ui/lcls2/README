@@ -1,0 +1,18 @@
+bcmApp/ui
+This directory houses PyDM UI software.
+
+
+bcm_summary.py
+    The default screen. Shows a summary of the most important information for the instrument and provides
+    a link to the expert screen
+
+bcm_expert.ui
+bcm_expert.py
+    The expert screen. Shows all the summary information as well as the BPM link status and gives links to
+    other specific expert screens.
+
+fpga_config.ui
+fpga_config.py
+    The Expert Expert screen.
+    Screen for uploading/saving YAML config files, launching the TreeGUI for direct register access,
+    and displaying FW build information.
