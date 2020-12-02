@@ -50,11 +50,8 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # BPM used for BPM Sync
 epicsEnvSet("BPM_LOCA", 314)
 
-
-# ***********************************************************************
-# **** Environment variables for IOC Admin ******************************
+# IOC Admin
 epicsEnvSet(IOC_NAME,"SIOC:$(AREA):$(IOC_UNIT)")
-
 
 cd ${TOP}
 
@@ -92,39 +89,24 @@ cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
 YCPSWASYNConfig("$(CPSW_PORT)", "", "", "$(AUTO_GEN)", "${DICT_FILE}")
 
 
-# ***********************************************************************
-# **** Setup TprTrigger Driver ******************************************
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
-
-# ***********************************************************************
-# **** Setup TprPattern driver ******************************************
 #This driver needs to be loaded only for LCLS1 devices
 tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "tstream")
-
-
-# ===========================================
-#               ASYN MASKS
-# ===========================================
-
-# ***********************************************************************
-# **** Asyn Masks for YCPSWAsyn *****************************************
-#asynSetTraceMask(${PORT},, -1, 9)
 
 
 # ===========================================
 #               DB LOADING
 # ===========================================
 
-# ************************************************************************
-# **** Load YCPSWAsyn db *************************************************
-
 #Save/Load configuration related records
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Manually create records
-dbLoadRecords("db/bcmFACET2.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
-dbLoadRecords("db/carrier.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
+dbLoadRecords("db/bcmFACET2.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/carrierFACET2.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 
 dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)")
 
@@ -132,13 +114,8 @@ dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)")
 dbLoadRecords("db/ipAddr.db", "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemoteIp")
 dbLoadRecords("db/swap.db",   "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemotePort, DEST=SrvRemotePortSwap")
 
-# *******************************
-# **** Load message status   ****
-dbLoadRecords("db/msgStatus.db","carrier_prefix=$(AMC_CARRIER_PREFIX),DESC=Communications Diagnostics,BPM_LOCA=$(BPM_LOCA),LOCA=$(UNIT),AREA=$(AREA)")
 dbLoadRecords("db/monitorFPGAReboot.db", "P=$(AMC_CARRIER_PREFIX), KEY=-66686157")
 
-# ***********************************************************************
-# **** Load TPR Triggers db *********************************************
 dbLoadRecords("db/tprTrig.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC0_PREFIX):TRG00:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC0_PREFIX):TRG01:,PORT=trig")
@@ -156,12 +133,6 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=13,DEV_PREFIX=$(AMC0_PREFIX):TRG13:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=14,DEV_PREFIX=$(AMC0_PREFIX):TRG14:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=15,DEV_PREFIX=$(AMC0_PREFIX):TRG15:,PORT=trig")
-
-# ***********************************************************************
-# **** Load Bergoz db ***************************************************
-#dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_IN_PORT),PORT_OUT=$(BERGOZ0_OUT_PORT),A=-1")
-#dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),ADDR=-1,OMAX=0,IMAX=0")
-
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
@@ -237,11 +208,6 @@ iocInit()
 caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 caPutLogShow(2)
 
-
-# Start autosave routines to save our data
-# optional, needed if the IOC takes a very long time to boot.
-#epicsThreadSleep( 1.0)
-
 cd("/data/${IOC}/autosave-req")
 iocshCmd("makeAutosaveFiles")
 
@@ -253,18 +219,3 @@ create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
 
 cd ${TOP}
-
-# Start loading configuration file
-dbpf AMCC:${AREA}:${UNIT}:saveConfigFile "/tmp/configDump.yaml"
-dbpf AMCC:${AREA}:${UNIT}:saveConfigRoot "mmio"
-dbpf AMCC:${AREA}:${UNIT}:saveConfig 1
-dbpf AMCC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaults.yaml"
-dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
-# We should never load the configuration file after autosave already changed
-# the parameters. Uncomment the line below only if you are sure about what you
-# are doing.
-#dbpf AMCC:${AREA}:${UNIT}:loadConfig 1
-#dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
-#dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
-#dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
-#dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
