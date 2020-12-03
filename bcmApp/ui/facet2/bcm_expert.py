@@ -12,10 +12,6 @@ class BCMExpert(Display):
         left="ADC counts",
         bottom="nanoseconds")
 
-        self.ui.wfpRawTimesWeight.plotItem.setLabels(
-        left="ADC counts",
-        bottom="nanoseconds")
-
     def ui_filename(self):
         return "bcm_expert.ui"
 
