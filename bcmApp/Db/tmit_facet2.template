@@ -1,0 +1,9 @@
+
+record(calc, "$(P):$(CHAN):TMIT_NEL") {
+  field(DESC, "$(DESC)")
+  field(PINI, "$(PINI)")
+  field(SCAN, "$(SCAN)")
+  field(INPA, "$(P):$(CHAN):TMIT_PC")
+  field(CALC, "A*6241509.13")
+  field(EGU, "Nel")
+}
