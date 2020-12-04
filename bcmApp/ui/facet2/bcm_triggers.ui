@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>669</width>
+    <width>846</width>
     <height>665</height>
    </rect>
   </property>
@@ -89,123 +89,6 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Trigger event code</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMLineEdit" name="PyDMLineEdit">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:CH00_EVCODE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Current rate (Hz)</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMLabel" name="PyDMLabel">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:CH00_RATE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_17">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:CH00_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_17">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:CH00_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -214,710 +97,17 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_3">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG00_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QLabel" name="label_13">
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_30">
        <property name="text">
-        <string>Dout0 LEMO of the AMC1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_20">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG01_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="14" column="1">
-      <widget class="QLabel" name="label_20">
-       <property name="text">
-        <string>Acquisition for ADC2 on AMC0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>SMA of the AMC0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_8">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG10_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_9">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG09_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_13">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG03_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_25">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG06_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="15" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_32">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG13_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="6">
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>Width (ns)</string>
+        <string>5</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="15" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_3">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG13_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="1">
-      <widget class="QLabel" name="label_19">
-       <property name="text">
-        <string>Acquisition for ADC1 on AMC0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="17" column="1">
-      <widget class="QLabel" name="label_23">
-       <property name="text">
-        <string>Acquisition for ADC2 on AMC1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_27">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG08_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_23">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG04_SYS0_TWID</string>
        </property>
       </widget>
      </item>
      <item row="2" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_4">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG00_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_29">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG10_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_9">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG07_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_14">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG02_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_10">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG08_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_12">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG06_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_5">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG11_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_12">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG04_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="1">
-      <widget class="QLabel" name="label_14">
-       <property name="text">
-        <string>BSA stream from ATCA to CPU</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="1">
-      <widget class="QLabel" name="label_15">
-       <property name="text">
-        <string>Playback of simulated output waveform</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_12">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG04_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="15" column="1">
-      <widget class="QLabel" name="label_21">
-       <property name="text">
-        <string>Acquisition for ADC0 on AMC1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_24">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG05_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="17" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_19">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG15_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_21">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG02_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>Dout1 LEMO of the AMC0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_26">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG07_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="16" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_2">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG14_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="5">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Delay (ns)</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_13">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG03_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>Dout1 LEMO of the AMC1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_22">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG03_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="1">
-      <widget class="QLabel" name="label_16">
-       <property name="text">
-        <string>Playback of trigger for DaqMux</string>
-       </property>
-      </widget>
-     </item>
-     <item row="17" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_16">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG15_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="16" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_2">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG14_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="17" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_16">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG15_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Dout0 LEMO of the AMC0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="15" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_3">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG13_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
       <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox">
        <property name="toolTip">
         <string/>
@@ -951,588 +141,7 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_14">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG04_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="14" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_31">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG12_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_10">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG06_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_8">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG08_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_14">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG02_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_15">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG01_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_7">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG09_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG00_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_11">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG05_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Desc</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_28">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG09_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="14" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_6">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG12_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_7">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG09_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="14" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_4">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG12_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="16" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_33">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG14_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="17" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_34">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG15_SYS0_TWID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_15">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG01_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_15">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG03_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_9">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG07_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="14" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_4">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    Widget for graphical representation of bits from an integer number
-    with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG12_SYS0_TCTL</string>
-       </property>
-       <property name="showLabels" stdset="0">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_10">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG06_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_5">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG11_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_7">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG11_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="2">
-      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_6">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string>
-    A QComboBox with support for Channels and more from PyDM
-
-    Parameters
-    ----------
-    parent : QWidget
-        The parent widget for the Label
-    init_channel : str, optional
-        The channel to be used by the widget.
-
-    Signals
-    -------
-    send_value_signal : int, float, str, bool or np.ndarray
-        Emitted when the user changes the value.
-    activated : int, str
-        Emitted when the user chooses an item in the combobox.
-    currentIndexChanged : int, str
-        Emitted when the index is changed in the combobox.
-    highlighted : int, str
-        Emitted when an item in the combobox popup list is highlighted
-        by the user.
-    </string>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG10_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_11">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG07_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="2">
+     <item row="10" column="6">
       <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_8">
        <property name="toolTip">
         <string/>
@@ -1566,15 +175,8 @@
        </property>
       </widget>
      </item>
-     <item row="16" column="1">
-      <widget class="QLabel" name="label_22">
-       <property name="text">
-        <string>Acquisition for ADC1 on AMC1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="6">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_30">
+     <item row="4" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_16">
        <property name="toolTip">
         <string/>
        </property>
@@ -1582,32 +184,12 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG11_SYS0_TWID</string>
+        <string>TPR:${PREFIX}:TRG02_SYS0_TDES</string>
        </property>
       </widget>
      </item>
-     <item row="11" column="1">
-      <widget class="QLabel" name="label_17">
-       <property name="text">
-        <string>Playback of freeze trigger for DaqMux</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_13">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG05_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="3">
-      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_6">
+     <item row="8" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_10">
        <property name="toolTip">
         <string/>
        </property>
@@ -1625,14 +207,856 @@
     </string>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG10_SYS0_TCTL</string>
+        <string>TPR:${PREFIX}:TRG06_SYS0_TCTL</string>
        </property>
        <property name="showLabels" stdset="0">
         <bool>false</bool>
        </property>
       </widget>
      </item>
-     <item row="7" column="2">
+     <item row="2" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG00_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="6">
+      <widget class="QLabel" name="label_41">
+       <property name="text">
+        <string>Trigger TCTL</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_10">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH07_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH07_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_6">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG12_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_29">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH11_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1">
+      <widget class="QLabel" name="label_20">
+       <property name="text">
+        <string>Acquisition for ADC2 on AMC0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_30">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG11_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_32">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH14_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_19">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH01_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_27">
+       <property name="text">
+        <string>2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Dout1 LEMO of the AMC1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_25">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH07_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_7">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG09_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_23">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH05_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_7">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG11_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_7">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH04_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH04_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_4">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG00_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_2">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG14_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_25">
+       <property name="text">
+        <string>Trigger/Ch #</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QLabel" name="label_43">
+       <property name="text">
+        <string>Event Code</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_20">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH02_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_5">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG11_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_24">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH06_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Desc</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_27">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG08_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="label_36">
+       <property name="text">
+        <string>11</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="1">
+      <widget class="QLabel" name="label_22">
+       <property name="text">
+        <string>Acquisition for ADC1 on AMC1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_14">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH11_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH11_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_22">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH04_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="0">
+      <widget class="QLabel" name="label_39">
+       <property name="text">
+        <string>14</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>Playback of trigger for DaqMux</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_29">
+       <property name="text">
+        <string>4</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_27">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH09_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_12">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH09_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH09_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_33">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH15_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="1">
+      <widget class="QLabel" name="label_21">
+       <property name="text">
+        <string>Acquisition for ADC0 on AMC1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_33">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH15_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_4">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH01_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH01_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_3">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH00_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH00_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_8">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG10_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_26">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG07_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_28">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG09_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_21">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG02_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_30">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH12_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_28">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH10_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="6">
       <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_11">
        <property name="toolTip">
         <string/>
@@ -1666,8 +1090,90 @@
        </property>
       </widget>
      </item>
-     <item row="15" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_5">
+     <item row="17" column="1">
+      <widget class="QLabel" name="label_23">
+       <property name="text">
+        <string>Acquisition for ADC2 on AMC1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_9">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG07_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_26">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH08_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string>Acquisition for ADC0 on AMC0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_32">
        <property name="toolTip">
         <string/>
        </property>
@@ -1675,11 +1181,370 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG13_SYS0_TDES</string>
+        <string>TPR:${PREFIX}:TRG13_SYS0_TWID</string>
        </property>
       </widget>
      </item>
-     <item row="16" column="5">
+     <item row="17" column="0">
+      <widget class="QLabel" name="label_40">
+       <property name="text">
+        <string>15</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_16">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH13_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH13_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_8">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG08_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_23">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH05_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_9">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG09_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_26">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH08_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_18">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH00_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_3">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG13_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_15">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH12_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH12_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_35">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH01_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_3">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG13_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_18">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH00_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_13">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG03_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_29">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH11_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_19">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG15_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>Playback of freeze trigger for DaqMux</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_36">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH02_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="9">
       <widget class="PyDMLineEdit" name="PyDMLineEdit_18">
        <property name="toolTip">
         <string/>
@@ -1692,15 +1557,74 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>SMA of the AMC1</string>
+     <item row="17" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_16">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG15_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
-     <item row="4" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_16">
+     <item row="1" column="2">
+      <widget class="QLabel" name="label_42">
+       <property name="text">
+        <string>Channel TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_9">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH06_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH06_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>Playback of simulated output waveform</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_34">
+       <property name="text">
+        <string>9</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_14">
        <property name="toolTip">
         <string/>
        </property>
@@ -1708,12 +1632,12 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG02_SYS0_TDES</string>
+        <string>TPR:${PREFIX}:TRG04_SYS0_TDES</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="5">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_17">
+     <item row="5" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_15">
        <property name="toolTip">
         <string/>
        </property>
@@ -1721,14 +1645,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:TRG01_SYS0_TDES</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="1">
-      <widget class="QLabel" name="label_18">
-       <property name="text">
-        <string>Acquisition for ADC0 on AMC0</string>
+        <string>TPR:${PREFIX}:TRG03_SYS0_TDES</string>
        </property>
       </widget>
      </item>
@@ -1736,36 +1653,6 @@
       <widget class="QLabel" name="label_24">
        <property name="text">
         <string>0</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_25">
-       <property name="text">
-        <string>Trigger #</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_26">
-       <property name="text">
-        <string>1</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_27">
-       <property name="text">
-        <string>2</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1782,33 +1669,293 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="label_29">
+     <item row="16" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_33">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG14_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_13">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG05_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_3">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG00_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_9">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG07_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_21">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH03_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>4</string>
+        <string>Dout1 LEMO of the AMC0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_28">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH10_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_5">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG11_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_12">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG06_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="9">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Delay (ns)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_30">
-       <property name="text">
-        <string>5</string>
+     <item row="14" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_30">
+       <property name="toolTip">
+        <string/>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH12_SYS0_TCTL</string>
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_31">
-       <property name="text">
-        <string>6</string>
+     <item row="3" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_15">
+       <property name="toolTip">
+        <string/>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG01_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_6">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG10_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>SMA of the AMC1</string>
        </property>
       </widget>
      </item>
@@ -1822,23 +1969,86 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="0">
-      <widget class="QLabel" name="label_33">
+     <item row="10" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_10">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG08_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_23">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG04_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_11">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG07_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_26">
        <property name="text">
-        <string>8</string>
+        <string>1</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
-     <item row="11" column="0">
-      <widget class="QLabel" name="label_34">
-       <property name="text">
-        <string>9</string>
+     <item row="17" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_16">
+       <property name="toolTip">
+        <string/>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG15_SYS0_TCTL</string>
        </property>
       </widget>
      </item>
@@ -1852,23 +2062,151 @@
        </property>
       </widget>
      </item>
-     <item row="13" column="0">
-      <widget class="QLabel" name="label_36">
-       <property name="text">
-        <string>11</string>
+     <item row="7" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_11">
+       <property name="toolTip">
+        <string/>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG05_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
-     <item row="14" column="0">
-      <widget class="QLabel" name="label_37">
-       <property name="text">
-        <string>12</string>
+     <item row="3" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_20">
+       <property name="toolTip">
+        <string/>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG01_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_24">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH06_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>SMA of the AMC0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_34">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG15_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_22">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG03_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_18">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH15_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH15_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_21">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH03_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -1882,23 +2220,1032 @@
        </property>
       </widget>
      </item>
-     <item row="16" column="0">
-      <widget class="QLabel" name="label_39">
+     <item row="8" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_25">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG06_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH00_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_45">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH11_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="0">
+      <widget class="QLabel" name="label_37">
        <property name="text">
-        <string>14</string>
+        <string>12</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
-     <item row="17" column="0">
-      <widget class="QLabel" name="label_40">
+     <item row="15" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_31">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH13_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_10">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG06_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_17">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG01_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_31">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG12_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="9">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_5">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG13_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_12">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG04_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_8">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
        <property name="text">
-        <string>15</string>
+        <string>CH05_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH05_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_6">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH03_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH03_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_13">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG03_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="10">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Width (ns)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_48">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH14_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_12">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG04_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_49">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH15_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_15">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG01_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_29">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG10_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>BSA stream from ATCA to CPU</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_6">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG10_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_2">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG14_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_4">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG12_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_4">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG12_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Dout0 LEMO of the AMC1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_22">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH04_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_40">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH06_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="5">
+      <widget class="QLabel" name="label_44">
+       <property name="text">
+        <string>Rate (Hz)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_39">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH05_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_25">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH07_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_14">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG02_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>Acquisition for ADC1 on AMC0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_37">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH03_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_19">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH01_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="7">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_14">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG02_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_32">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH14_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="3">
+      <widget class="PyDMByteIndicator" name="PyDMByteIndicator_27">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    Widget for graphical representation of bits from an integer number
+    with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH09_SYS0_TCTL</string>
+       </property>
+       <property name="showLabels" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_20">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH02_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_46">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH12_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Dout0 LEMO of the AMC0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QWidget" name="widget" native="true"/>
+     </item>
+     <item row="11" column="6">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_7">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG09_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_11">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH08_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH08_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_31">
+       <property name="text">
+        <string>6</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="2">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_31">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string>
+    A QComboBox with support for Channels and more from PyDM
+
+    Parameters
+    ----------
+    parent : QWidget
+        The parent widget for the Label
+    init_channel : str, optional
+        The channel to be used by the widget.
+
+    Signals
+    -------
+    send_value_signal : int, float, str, bool or np.ndarray
+        Emitted when the user changes the value.
+    activated : int, str
+        Emitted when the user chooses an item in the combobox.
+    currentIndexChanged : int, str
+        Emitted when the index is changed in the combobox.
+    highlighted : int, str
+        Emitted when an item in the combobox popup list is highlighted
+        by the user.
+    </string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH13_SYS0_TCTL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_42">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH08_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_38">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH04_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="10">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_24">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:TRG05_SYS0_TWID</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_44">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH10_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_13">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH10_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH10_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_41">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH07_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_17">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH14_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH14_RATE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_33">
+       <property name="text">
+        <string>8</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_47">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH13_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="4">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_43">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH09_EVCODE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="5">
+      <widget class="PyDMLabel" name="PyDMLabel_5">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string>CH02_RATE</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${PREFIX}:CH02_RATE</string>
        </property>
       </widget>
      </item>
