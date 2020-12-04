@@ -119,10 +119,15 @@ file "RegisterEnumBOutRBV.template" { pattern
 #======================================
 
 file "RegisterDoubleIn.template" { pattern
-{ P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
-{ $(P), TMIT_PC,        "Calculated TMIT in PC", "YES",  ".5 second",  $(PORT),     "pC",     AMC$(AMC):CHAN$(CHAN):TMIT         }
-{ $(P), MultResultA0,   "A0 * Sum0",             "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA0 }
-{ $(P), MultResultA1,   "A1 * Sum1",             "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA1 }
+{ P,    R,                             DESC,             PINI,      SCAN,       PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
+{ $(P), $(CHAN):TMIT_PC,        "Calculated TMIT in PC", "YES",  ".5 second",  $(PORT),     "pC",     AMC$(AMC):CHAN$(CHAN):TMIT         }
+{ $(P), MultResultA0,           "",                      "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA0 }
+{ $(P), MultResultA1,           "",                      "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA1 }
+}
+
+file "tmit_facet2.template" { pattern
+{ P,    CHAN,                 DESC,                 PINI,    SCAN        }
+{ $(P), $(CHAN), "Calculated Number of Electrons",  "YES",   ".5 second" }
 }
 
 file "RegisterDoubleInLimits.template" { pattern
