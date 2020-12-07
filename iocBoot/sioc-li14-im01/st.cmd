@@ -15,7 +15,7 @@
 #            ENVIRONMENT VARIABLES
 # ===========================================
 
-epicsEnvSet("CPSW_PORT","ATCA5")
+epicsEnvSet("CPSW_PORT","ATCA7")
 
 # Yaml File
 epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
