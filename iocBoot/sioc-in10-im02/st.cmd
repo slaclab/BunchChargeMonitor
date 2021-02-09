@@ -31,20 +31,22 @@ epicsEnvSet("FPGA_IP", "10.1.1.106")
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
-epicsEnvSet("AREA", "IN10")
-epicsEnvSet("AMC0_POS","791")
+# AMC1 is connected to the toroid upstream and AMC0 is downstream
+epicsEnvSet("AMC1_AREA", "IN10")
+epicsEnvSet("AMC1_POS", "791")
 
-epicsEnvSet("AMC1_AREA","LI11")
-epicsEnvSet("AMC1_POS", "360")
+epicsEnvSet("AMC0_AREA", "LI11")
+epicsEnvSet("AMC0_POS", "360")
+
 epicsEnvSet("IOC_UNIT", "IM02")
 
-# BCM-TORO in crate 2, slot 6, AMC 0 (IM10791)
-epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(AMC0_POS)")
-# BCM-TORO in crate 2, slot 6, AMC 1 (IM11360)
+# BCM-TORO in crate 2, slot 6, AMC 1 (IM10791)
 epicsEnvSet("AMC1_PREFIX", "TORO:$(AMC1_AREA):$(AMC1_POS)")
+# BCM-TORO in crate 2, slot 6, AMC 0 (IM11360)
+epicsEnvSet("AMC0_PREFIX", "TORO:$(AMC0_AREA):$(AMC0_POS)")
 
 # AMCC in crate 2, slot 5
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(IOC_UNIT)")
+epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AMC1_AREA):$(IOC_UNIT)")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcmMR.dict")
@@ -53,7 +55,7 @@ epicsEnvSet("DICT_FILE", "yaml/bcmMR.dict")
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/$(IOC_NAME)")
 
 # IOC Admin
-epicsEnvSet(IOC_NAME,"SIOC:$(AREA):$(IOC_UNIT)")
+epicsEnvSet(IOC_NAME,"SIOC:$(AMC1_AREA):$(IOC_UNIT)")
 
 cd $(TOP)
 
@@ -116,7 +118,7 @@ dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
 
-dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)")
+dbLoadRecords("db/iocMeta.db", "AREA=$(AMC1_AREA), IOC_UNIT=$(IOC_UNIT)")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemoteIp")
@@ -124,23 +126,23 @@ dbLoadRecords("db/swap.db",   "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemotePort, DEST=
 
 dbLoadRecords("db/monitorFPGAReboot.db", "P=$(AMC_CARRIER_PREFIX), KEY=-66686157")
 
-dbLoadRecords("db/tprTrig.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC0_PREFIX):TRG00:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC0_PREFIX):TRG01:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=02,DEV_PREFIX=$(AMC0_PREFIX):TRG02:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=03,DEV_PREFIX=$(AMC0_PREFIX):TRG03:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=04,DEV_PREFIX=$(AMC0_PREFIX):TRG04:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=05,DEV_PREFIX=$(AMC0_PREFIX):TRG05:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=06,DEV_PREFIX=$(AMC0_PREFIX):TRG06:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=07,DEV_PREFIX=$(AMC0_PREFIX):TRG07:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=08,DEV_PREFIX=$(AMC0_PREFIX):TRG08:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=09,DEV_PREFIX=$(AMC0_PREFIX):TRG09:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=10,DEV_PREFIX=$(AMC0_PREFIX):TRG10:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=11,DEV_PREFIX=$(AMC0_PREFIX):TRG11:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=12,DEV_PREFIX=$(AMC0_PREFIX):TRG12:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=13,DEV_PREFIX=$(AMC0_PREFIX):TRG13:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=14,DEV_PREFIX=$(AMC0_PREFIX):TRG14:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=15,DEV_PREFIX=$(AMC0_PREFIX):TRG15:,PORT=trig")
+dbLoadRecords("db/tprTrig.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC0_PREFIX):TRG00:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC0_PREFIX):TRG01:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=02,DEV_PREFIX=$(AMC0_PREFIX):TRG02:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=03,DEV_PREFIX=$(AMC0_PREFIX):TRG03:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=04,DEV_PREFIX=$(AMC0_PREFIX):TRG04:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=05,DEV_PREFIX=$(AMC0_PREFIX):TRG05:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=06,DEV_PREFIX=$(AMC0_PREFIX):TRG06:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=07,DEV_PREFIX=$(AMC0_PREFIX):TRG07:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=08,DEV_PREFIX=$(AMC0_PREFIX):TRG08:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=09,DEV_PREFIX=$(AMC0_PREFIX):TRG09:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=10,DEV_PREFIX=$(AMC0_PREFIX):TRG10:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=11,DEV_PREFIX=$(AMC0_PREFIX):TRG11:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=12,DEV_PREFIX=$(AMC0_PREFIX):TRG12:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=13,DEV_PREFIX=$(AMC0_PREFIX):TRG13:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=14,DEV_PREFIX=$(AMC0_PREFIX):TRG14:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AMC1_AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=15,DEV_PREFIX=$(AMC0_PREFIX):TRG15:,PORT=trig")
 
 # ************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ******

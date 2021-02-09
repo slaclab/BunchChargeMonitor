@@ -31,15 +31,16 @@ epicsEnvSet("FPGA_IP", "10.1.1.105")
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
-epicsEnvSet("AREA","IN10")
-epicsEnvSet("AMC0_POS","362")
-epicsEnvSet("AMC1_POS", "591")
+epicsEnvSet("AREA", "IN10")
+# AMC1 is connected to the toroid closer to gun and AMC0 is downstream
+epicsEnvSet("AMC1_POS", "362")
+epicsEnvSet("AMC0_POS", "591")
 epicsEnvSet("IOC_UNIT", "IM01")
 
-# BCM-TORO in crate 2, slot 5, AMC 0 (IM10431)
-epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(AMC0_POS)")
-# BCM-TORO in crate 2, slot 5, AMC 1 (IM10591)
+# BCM-TORO in crate 2, slot 5, AMC 1 (IM10431)
 epicsEnvSet("AMC1_PREFIX", "TORO:$(AREA):$(AMC1_POS)")
+# BCM-TORO in crate 2, slot 5, AMC 0 (IM10591)
+epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(AMC0_POS)")
 
 # AMCC in crate 2, slot 5
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(IOC_UNIT)")
