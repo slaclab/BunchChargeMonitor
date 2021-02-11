@@ -10,6 +10,10 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.9.0    Marcio Donadio (marcio) - (2/11/2021)
+          - All AMC0 and AMC1 references in st.cmd for FACET were inverted.
+          - Added a new IOC to test FACET in B084 test stand.
+
 R3.8.0    Ryan Reno (rreno) - (9/28/2020)
           - Fixed bugs in asubWeightXAxis and asubRWF to now display waveforms properly 
           - Added PV for DacSrs register to set loopback or ADC signal input
