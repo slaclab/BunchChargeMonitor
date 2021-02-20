@@ -103,6 +103,9 @@ DB += streamControl.db
 DB += waveform.db
 DB += iocMeta.db
 DB += fc_calc.db
+DB += weightFunctionXAxis.db
+DB += calculatedWF.db
+DB += processRawWFHeader.db
 
 # For BCM specific diagnostics
 DB += msgStatus.db

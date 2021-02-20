@@ -112,6 +112,10 @@ dbLoadRecords("db/carrierFACET2.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)
 #dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
 
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX)")
+
 #dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
 
