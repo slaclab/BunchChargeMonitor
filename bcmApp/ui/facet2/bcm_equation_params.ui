@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bunch Charge ${SENS_NAME} Equation Parameters</string>
+   <string>Bunch Charge ${INST} Equation Parameters</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -25,7 +25,7 @@
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="text">
-      <string>${SENS_NAME}</string>
+      <string>${INST}</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -104,7 +104,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:Coef_offset</string>
+        <string>ca://TORO:${AREA}:${POS}:CoefOffset</string>
        </property>
       </widget>
      </item>
@@ -131,7 +131,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:Coef_offset_RBV</string>
+        <string>ca://TORO:${AREA}:${POS}:CoefOffsetRBV</string>
        </property>
       </widget>
      </item>
@@ -150,14 +150,14 @@
        <property name="whatsThis">
         <string/>
        </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
        <property name="precision" stdset="0">
         <number>7</number>
        </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA1_RBV</string>
+        <string>ca://TORO:${AREA}:${POS}:CoefA1RBV</string>
        </property>
       </widget>
      </item>
@@ -169,14 +169,14 @@
        <property name="whatsThis">
         <string/>
        </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
        <property name="precision" stdset="0">
         <number>7</number>
        </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA0_RBV</string>
+        <string>ca://TORO:${AREA}:${POS}:CoefA0RBV</string>
        </property>
       </widget>
      </item>
