@@ -395,7 +395,7 @@ class BCMExpert(Display):
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
                                     border-color: rgb(0, 255, 0);")
-        tmit_nel_lbl.DisplayFormat = DisplayFormat.Exponential 
+        tmit_nel_lbl.displayFormat = DisplayFormat.Exponential 
         tmit_nel_lbl.setMinimumWidth(100)
         tmit_nel_lbl.setMaximumWidth(100)
  
