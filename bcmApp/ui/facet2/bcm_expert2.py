@@ -311,7 +311,7 @@ class BCMExpert(Display):
     def __init__(self, parent=None, args=None, macros=None):
         super(BCMExpert, self).__init__(parent=parent, args=args, macros=macros)
         self.setWindowTitle("Bunch Charge {} Calibration".format(
-            self.macros()["INST"][:-1]))
+            self.macros()["INST"]))
 
         """
         We appended the A or B AMC card to the end of the INST macro in
@@ -449,11 +449,19 @@ class BCMExpert(Display):
                 self.mad,
                 self.sensor)
 
+        trig_btn = PyDMRelatedDisplayButton(filename="bcm_triggers.ui")
+        trig_btn.setText("Triggers...")
+        trig_btn.openInNewWindow = True
+        trig_btn.macros = "PREFIX={}:{}:0".format(
+                self.macros()["AREA"],
+                self.macros()["UNIT"])
+
         help_btn = QPushButton("Help...")
         help_btn.clicked.connect(self.open_help)
 
         self.btn_layout.addStretch(10)
         self.btn_layout.addWidget(coef_btn)
+        self.btn_layout.addWidget(trig_btn)
         self.btn_layout.addWidget(help_btn)
         self.main_layout.addLayout(self.btn_layout)
 

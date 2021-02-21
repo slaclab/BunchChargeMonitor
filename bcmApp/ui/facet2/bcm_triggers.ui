@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bunch Charge ${SENS_NAME} Triggers</string>
+   <string>Bunch Charge ${INST} Triggers</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
