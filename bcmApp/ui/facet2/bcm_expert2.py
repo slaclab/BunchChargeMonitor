@@ -476,13 +476,51 @@ class BCMExpert(Display):
         dlg = QDialog(self)
         lo  = QVBoxLayout()
 
-        lbl = QLabel("<b>Explanation of Pre, Mid, and Pos Edges</b>")
-        lbl.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        lbl1 = QLabel("<b>Explanation of Pre, Middle, and Post Edges</b>")
+        lbl1.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+        lbl2 = QLabel("You use the pre and post regions to select the region "\
+                      "where the signal is and the region where the background "\
+                      "noise is. The reason for this is to subtract the noise "\
+                      "from the signal. It is up to you to choose if you want "\
+                      "to place the signal in the post or pre regions. The "\
+                      "middle region provides a void area between the other regions. "\
+                      "This area is ignored by the system. Use it if you need a "\
+                      "distinct separation between the pre and post regions.")
+        lbl2.setWordWrap(True)
+
+        lbl3 = QLabel("The idea with the edges and coefficients is summarized by "\
+                      "this formula:<br><br>"\
+                      "sum(pre region) * CoefA0 + sum(post region) * CoefA1 + Offset<br>")
+        lbl3.setWordWrap(True)
+
+        lbl4 = QLabel("The pre and post regions selected using the sliders will "\
+                      "be integrated separately. Coefficient A0 will be "\
+                      "multiplied by the pre region and coefficient A1 will be "\
+                      "multiplied by the post region. Both regions are finnaly "\
+                      "summed up and the result is changed by an offset. You must "\
+                      "choose opposite signals for A0 and A1 to make the noise "\
+                      "be subtracted from the signal. Otherwise you will sum them up.")
+        lbl4.setWordWrap(True)
+
+        lbl5 = QLabel("Attention with the start of each region. The pre region "\
+                      "starts at time 0, as well as the middle region. So, the "\
+                      "pre and middle regions overlap with each other. If the "\
+                      "middle region is smaller than the pre region, the system "\
+                      "just ignores the middle region. The post region is"\
+                      "different. It starts where the pre or middle region stops,"\
+                      "whichever is bigger. This chart may make things more clear:")
+        lbl5.setWordWrap(True)
+
         svg = QSvgWidget("help.svg", parent=dlg)
-        lo.addWidget(lbl)
+        lo.addWidget(lbl1)
+        lo.addWidget(lbl2)
+        lo.addWidget(lbl3)
+        lo.addWidget(lbl4)
+        lo.addWidget(lbl5)
         lo.addWidget(svg)
 
-        dlg.setFixedSize(500, 375)
+        dlg.setMinimumSize(600, 600)
         dlg.setLayout(lo)
         dlg.setWindowTitle("BCM Calibration Help")
         dlg.setModal(False)
