@@ -15,11 +15,10 @@ record (calc, "$(P):NumSamp1_H") {
 }
 
 # Trigger delay 1 is doubled from the point of view of the number of samples.
-# We should subtract 14 to discount the size of the header, but during tests
-# we noticed that 15 is a better number, maybe due to rounding factors.
+# We should subtract 14 to discount the size of the header
 record (calc, "$(P):TrigDelay1_H") {
   field(DESC, "Corrected trigDelay1")
-  field(CALC, "A<15 ? 0 : A-15")
+  field(CALC, "A<14 ? 0 : A-14")
   field(INPA, "$(P):TrigDelay1 CP")
 }
 

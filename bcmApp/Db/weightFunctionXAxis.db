@@ -4,11 +4,18 @@
 # Remember to subtract 28 from the number of samples, because the first 28
 # words are used by the header.
 
+# Giving the frequency in Hz, calculate the time in ns between each sample
+record (calc, "$(P):CLK_PERIOD") {
+  field(DESC, "Time between samples in ns")
+  field(INPA, "$(P):AmcClkFreq CP")
+  field(CALC, "1000000000/(2 * A)")
+}
+
 # Calculate the time correspondent to the number of samples of the pre-edge
 # of the weight function.
 record (calc, "$(P):TIME_PRE_RBV") {
   field(DESC, "Duration of pre-edge in ns")
-  field(INPA, "$(P):SAMP_TIME CP")
+  field(INPA, "$(P):CLK_PERIOD CP")
   field(INPB, "$(P):NumSamp0 CP")
   field(CALC, "A*B")
 }
@@ -18,7 +25,7 @@ record (calc, "$(P):TIME_PRE_RBV") {
 # The TrigDelay is half the size of NumSamp0 and NumSamp1.
 record (calc, "$(P):TIME_MID_RBV") {
   field(DESC, "Duration between edges in ns")
-  field(INPA, "$(P):SAMP_TIME CP")
+  field(INPA, "$(P):CLK_PERIOD CP")
   field(INPB, "$(P):TrigDelay1 CP")
   field(INPC, "$(P):NumSamp0 CP")
   field(CALC, "B*2<C ? C*2*A : B*2*A")
@@ -30,7 +37,7 @@ record (calc, "$(P):TIME_MID_RBV") {
 # delay, which was already discounted.
 record (calc, "$(P):TIME_POS_RBV") {
   field(DESC, "Duration of pos-edge in ns")
-  field(INPA, "$(P):SAMP_TIME CP")
+  field(INPA, "$(P):CLK_PERIOD CP")
   field(INPB, "$(P):NumSamp1 CP")
   field(CALC, "B * A")
 }
