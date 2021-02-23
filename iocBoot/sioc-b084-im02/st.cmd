@@ -89,7 +89,7 @@ cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 YCPSWASYNConfig("$(CPSW_PORT)", "", "", "$(AUTO_GEN)", "$(DICT_FILE)")
 
-
+crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
 #This driver needs to be loaded only for LCLS1 devices
@@ -127,6 +127,7 @@ dbLoadRecords("db/swap.db",   "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemotePort, DEST=
 
 dbLoadRecords("db/monitorFPGAReboot.db", "P=$(AMC_CARRIER_PREFIX), KEY=-66686157")
 
+dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC1_PREFIX),PORT=crossbar")
 dbLoadRecords("db/tprTrig.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC1_PREFIX):TRG00:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC1_PREFIX):TRG01:,PORT=trig")

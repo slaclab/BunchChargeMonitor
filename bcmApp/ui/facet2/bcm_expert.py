@@ -452,9 +452,11 @@ class BCMExpert(Display):
         trig_btn = PyDMRelatedDisplayButton(filename="bcm_triggers.ui")
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
-        trig_btn.macros = "PREFIX={}:{}:0".format(
+        trig_btn.macros = "PREFIX={}:{}:0,P=TORO:{}:{}".format(
                 self.macros()["AREA"],
-                self.macros()["UNIT"])
+                self.macros()["UNIT"],
+                self.macros()["AREA"],
+                self.macros()["POS"])
 
         help_btn = QPushButton("Help...")
         help_btn.clicked.connect(self.open_help)
