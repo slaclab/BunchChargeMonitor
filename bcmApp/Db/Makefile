@@ -106,7 +106,7 @@ DB += fc_calc.db
 DB += weightFunctionXAxis.db
 DB += calculatedWF.db
 DB += processRawWFHeader.db
-
+DB += autoAdjustCoef.db
 # For BCM specific diagnostics
 DB += msgStatus.db
 # For byte swapping

@@ -1,0 +1,74 @@
+# This database is deprecated. The records were extracted from the file
+# calculatedWF.db after a firmware upgrade. The new firmware does exactly
+# what this database does. It is here for compatibility with IOCs
+# working with the old firmware.
+
+# NumberSamples0 follows a linear proportionality with the coefficient A0.
+# We need to maintain the ratio A0 = ConstantA0/NumberSamples0.
+record (calcout, "$(P):A0_NS0") {
+  field(DESC, "Change A0, when NumSamp0 changes")
+  field(INPA, "$(P):NumSamp0 CP")
+  field(INPB, "$(P):A0_CONST CP")
+  field(CALC, "A=0? B : B/A")
+  field(DOPT, "Use CALC")
+  field(OUT, "$(P):CoefA0 PP")
+}
+
+# NumberSamples1 follows a linear proportionality with the coefficient A1.
+# We need to maintain the ratio A1 = ConstantA1/NumberSamples1.
+record (calcout, "$(P):A1_NS1") {
+  field(DESC, "Change A1, when NumSamp1 changes")
+  field(INPA, "$(P):NumSamp1 CP")
+  field(INPB, "$(P):A1_CONST CP")
+  field(CALC, "A=0? B : B/A")
+  field(DOPT, "Use CALC")
+  field(OUT, "$(P):CoefA1 PP")
+}
+
+# Constant A0, used by A0_NS0, can be changed in runtime, if needed.
+record (ao, "$(P):A0_CONST") {
+  field(DESC, "Constant A0, used by A0_NS0")
+  info(autosaveFields, "VAL")
+}
+
+# Constant A1, used by A1_NS1, can be changed in runtime, if needed.
+record (ao, "$(P):A1_CONST") {
+  field(DESC, "Constant A1, used by A1_NS1")
+  info(autosaveFields, "VAL")
+}
+
+# New A0 target, desired by the user
+record (ao, "$(P):Reset_A0") {
+  field(DESC, "New A0 target, desired by the user")
+  field(PREC, "7")
+}
+
+# New A1 target, desired by the user
+record (ao, "$(P):Reset_A1") {
+  field(DESC, "New A1 target, desired by the user")
+  field(PREC, "7")
+}
+
+# When A0 target changes, A0 constant also changes, based on the value of
+# Number Samples 0, in a way that the coefficient A0 hits the desired target.
+record (calcout, "$(P):CALC_Const_A0") {
+  field(DESC, "Change Const A0, when target A0 changes")
+  field(INPA, "$(P):NumSamp0")
+  field(INPB, "$(P):Reset_A0 CP")
+  field(CALC, "A * B")
+  field(DOPT, "Use CALC")
+  field(OOPT, "On Change")
+  field(OUT, "$(P):A0_CONST PP")
+}
+
+# When A1 target changes, A1 constant also changes, based on the value of
+# Number Samples 1, in a way that the coefficient A1 hits the desired target.
+record (calcout, "$(P):CALC_Const_A1") {
+  field(DESC, "Change Cons A1, when target A1 changes")
+  field(INPA, "$(P):NumSamp1")
+  field(INPB, "$(P):Reset_A1 CP")
+  field(CALC, "A * B")
+  field(DOPT, "Use CALC")
+  field(OOPT, "On Change")
+  field(OUT, "$(P):A1_CONST PP")
+}

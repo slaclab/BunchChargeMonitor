@@ -57,10 +57,14 @@ dbLoadRecords("db/stream.db", "AREA=IN20, POS=215, PORT=cpsw, AMC=1, CHN=2")
 
 # Calculated waveforms to work with weight function. Each ADC has its own
 # position definition, AMC card number, and channel inside AMC.
-dbLoadRecords("db/calculatedWF.db", "AREA=IN20, POS=431")
-dbLoadRecords("db/calculatedWF.db", "AREA=IN20, POS=791")
-dbLoadRecords("db/calculatedWF.db", "AREA=IN20, POS=971")
-dbLoadRecords("db/calculatedWF.db", "AREA=IN20, POS=215")
+dbLoadRecords("db/calculatedWF.db", "P=TORO:IN20:431")
+dbLoadRecords("db/calculatedWF.db", "P=TORO:IN20:791")
+dbLoadRecords("db/calculatedWF.db", "P=TORO:IN20:971")
+dbLoadRecords("db/calculatedWF.db", "P=TORO:IN20:215")
+dbLoadRecords("db/autoAdjustCoef.db", "P=TORO:IN20:431")
+dbLoadRecords("db/autoAdjustCoef.db", "P=TORO:IN20:791")
+dbLoadRecords("db/autoAdjustCoef.db", "P=TORO:IN20:971")
+dbLoadRecords("db/autoAdjustCoef.db", "P=TORO:IN20:215")
 dbLoadRecords("db/weightFunction.db", "AREA=IN20, POS=431, PORT=cpsw, AMC=0, CHN=0")
 dbLoadRecords("db/weightFunction.db", "AREA=IN20, POS=791, PORT=cpsw, AMC=0, CHN=1")
 dbLoadRecords("db/weightFunction.db", "AREA=IN20, POS=971, PORT=cpsw, AMC=0, CHN=2")
