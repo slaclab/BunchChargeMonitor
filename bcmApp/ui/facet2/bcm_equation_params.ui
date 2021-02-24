@@ -45,8 +45,14 @@
        <property name="whatsThis">
         <string/>
        </property>
-       <property name="alarmSensitiveBorder" stdset="0">
+       <property name="precision" stdset="0">
+        <number>5</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
         <bool>false</bool>
+       </property>
+       <property name="alarmSensitiveBorder" stdset="0">
+        <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
         <string>ca://TORO:${AREA}:${POS}:CoefA1</string>
@@ -126,8 +132,14 @@
        <property name="whatsThis">
         <string/>
        </property>
-       <property name="alarmSensitiveBorder" stdset="0">
+       <property name="precision" stdset="0">
+        <number>5</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
         <bool>false</bool>
+       </property>
+       <property name="alarmSensitiveBorder" stdset="0">
+        <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
         <string>ca://TORO:${AREA}:${POS}:CoefA0</string>
@@ -141,6 +153,12 @@
        </property>
        <property name="whatsThis">
         <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>5</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
         <string>ca://TORO:${AREA}:${POS}:CoefOffset</string>

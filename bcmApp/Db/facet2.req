@@ -1,0 +1,3 @@
+TORO:${AREA}:${POS}:CoefA0
+TORO:${AREA}:${POS}:CoefA1
+TORO:${AREA}:${POS}:CoefOffset

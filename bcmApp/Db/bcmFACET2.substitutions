@@ -140,10 +140,10 @@ file "RegisterDoubleInLimits.template" { pattern
 
 file "RegisterDoubleOut.template" { pattern
 { P,              R,            DESC,                   PINI,    SCAN,        PORT,     EGU,                PARAM                  }
-{ $(P),     CoefA0,       "Coef A0 for 1st group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
-{ $(P),     CoefA1,       "Coef A1 for 2nd group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
-{ $(P),     CoefA2,       "Coef A2 for 3rd group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
-{ $(P),     CoefOffset,   "Coef Offset",                "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
+{ $(P),     CoefA0,       "Coef A0 for 1st group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
+{ $(P),     CoefA1,       "Coef A1 for 2nd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
+{ $(P),     CoefA2,       "Coef A2 for 3rd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
+{ $(P),     CoefOffset,   "Coef Offset",                "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
 }
 
 file "RegisterDoubleOutRBV.template" { pattern
