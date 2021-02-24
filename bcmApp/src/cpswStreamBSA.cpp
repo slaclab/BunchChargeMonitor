@@ -82,7 +82,7 @@ void CpswStreamBSA::streamTask() {
         // Receive stream from the firmware and write it in buf
         count = stream->read(buf, sizeof(buf), 50000);
         //epicsTime before = epicsTime::getCurrent();
-        
+    
         if (count != STREAM_LENGTH) {
             // Do something?
         } else {

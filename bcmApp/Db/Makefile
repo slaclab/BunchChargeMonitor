@@ -122,7 +122,7 @@ DB += swap.db
 #DB_INSTALLS += $(EVENT)/db/PMC-trig.db
 #DB_INSTALLS += $(EVENT)/db/VME-trig.db
 #DB_INSTALLS += $(EVENT)/db/VME-TTB-trig.db
-#DB_INSTALLS += $(EVENT)/db/Bsa.db
+DB_INSTALLS += $(EVENT)/db/Bsa.db
 #
 # For event module BSA Test
 #DB += bsaSimulator.db

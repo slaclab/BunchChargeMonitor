@@ -116,6 +116,12 @@ dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX)")
 dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX)")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX)")
 
+# BSA. Configure the PV name for BSA, the AMC number and the ADC number
+# inside the AMC. Numbers start from zero.
+# bcmBsaConfigure <PV name> <AMC number> <ADC number>
+dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC1_PREFIX),ATRB=TMIT_PC,LNK=$(AMC1_PREFIX):EF_TMIT_PC,SINK_SIZE=1")
+bcmBsaConfigure "$(AMC1_PREFIX):TMIT_PC" 1 0
+
 #dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
 
@@ -129,6 +135,7 @@ dbLoadRecords("db/monitorFPGAReboot.db", "P=$(AMC_CARRIER_PREFIX), KEY=-66686157
 
 dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC1_PREFIX),PORT=crossbar")
 dbLoadRecords("db/tprTrig.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
+dbLoadRecords("db/tprPattern.db","LOCA=${AREA}, IOC_UNIT=${IOC_UNIT}, INST=0, PORT=pattern")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC1_PREFIX):TRG00:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC1_PREFIX):TRG01:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=02,DEV_PREFIX=$(AMC1_PREFIX):TRG02:,PORT=trig")
@@ -209,6 +216,8 @@ iocInit()
 # Log values only on change to the iocLogServer:
 caPutLogInit("$(EPICS_CA_PUT_LOG_ADDR)")
 caPutLogShow(2)
+
+bcmConfigure "MrBcmBsaStream"
 
 cd("/data/$(IOC)/autosave-req")
 iocshCmd("makeAutosaveFiles")
