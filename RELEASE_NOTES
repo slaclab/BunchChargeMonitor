@@ -10,6 +10,18 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R3.10.0   Marcio Donadio (marcio) - (2/24/2021)
+          - Brought databases from the Mission Readiness version and adapted
+            them with newer changes. These databases allow to control the
+            integration window and show the result on the main chart of the
+            screen.
+          - Completely refactored the FACET 2 main screen to allow the control
+            of the integration window in a user friendly way. It is now a Python
+            screen based on the LCLS2 BLEN screen, instead of using a pure
+            ui file.
+          - Added crossbar control to FACET 2 IOCs and screens.
+          - Added support to autosave PVs that are not using the infoFields.
+
 R3.9.0    Marcio Donadio (marcio) - (2/11/2021)
           - All AMC0 and AMC1 references in st.cmd for FACET were inverted.
           - Added a new IOC to test FACET in B084 test stand.
