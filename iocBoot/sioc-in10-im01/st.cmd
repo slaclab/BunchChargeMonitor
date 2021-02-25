@@ -89,7 +89,7 @@ cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
 YCPSWASYNConfig("$(CPSW_PORT)", "", "", "$(AUTO_GEN)", "$(DICT_FILE)")
 
-
+crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 
 #This driver needs to be loaded only for LCLS1 devices
@@ -112,6 +112,13 @@ dbLoadRecords("db/carrierFACET2.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)
 dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
 
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX)")
+
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
 
@@ -123,7 +130,10 @@ dbLoadRecords("db/swap.db",   "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemotePort, DEST=
 
 dbLoadRecords("db/monitorFPGAReboot.db", "P=$(AMC_CARRIER_PREFIX), KEY=-66686157")
 
+dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC0_PREFIX),PORT=crossbar")
+dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC1_PREFIX),PORT=crossbar")
 dbLoadRecords("db/tprTrig.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
+dbLoadRecords("db/tprPattern.db","LOCA=${AREA}, IOC_UNIT=${IOC_UNIT}, INST=0, PORT=pattern")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC0_PREFIX):TRG00:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC0_PREFIX):TRG01:,PORT=trig")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=02,DEV_PREFIX=$(AMC0_PREFIX):TRG02:,PORT=trig")
@@ -172,6 +182,8 @@ save_restoreSet_DatedBackupFiles(1)
 # Where "/data" is an NFS mount point setup when linuxRT target
 # boots up.
 set_requestfile_path("/data/$(IOC)/autosave-req")
+set_requestfile_path("${TOP}/autosave", "")
+set_requestfile_path("${TOP}/iocBoot/${IOC}", "")
 
 # Where to write the save files that will be used to restore
 set_savefile_path("/data/$(IOC)/autosave")
@@ -183,8 +195,9 @@ save_restoreSet_status_prefix("$(IOC_NAME):")
 
 ## Restore datasets
 set_pass0_restoreFile("info_settings.sav")
+set_pass0_restoreFile("info_positions.sav")
 set_pass1_restoreFile("info_settings.sav")
-
+set_pass1_restoreFile("$(IOC).sav")
 
 # ===========================================
 #          CHANNEL ACESS SECURITY
@@ -214,5 +227,6 @@ iocshCmd("makeAutosaveFiles")
 # Note: the last arg cannot be set to 0
 create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
+create_monitor_set("$(IOC).req", 60, "")
 
 cd $(TOP)
