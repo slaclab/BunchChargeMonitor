@@ -9,6 +9,14 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R3.11.0   Marcio Donadio (marcio) - (3/3/2021)
+          - For IOCs connecting to boards with a single AMC card, bay 0 must be
+            used. Otherwise the firmawre does not work properly. For the IOCs
+            in this situation the boards where exchanged in production and the
+            st.cmd fixed accordingly.
+          - Created 3 new IOCs for sector 20.
+          - Added BSA support for all IOCs.
+          - Fixed location for toroid IM10431.
 
 R3.10.0   Marcio Donadio (marcio) - (2/24/2021)
           - Brought databases from the Mission Readiness version and adapted
