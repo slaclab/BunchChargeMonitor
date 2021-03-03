@@ -33,7 +33,7 @@ epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA", "IN10")
 # AMC1 is connected to the toroid closer to gun and AMC0 is downstream
-epicsEnvSet("AMC1_POS", "362")
+epicsEnvSet("AMC1_POS", "431")
 epicsEnvSet("AMC0_POS", "591")
 epicsEnvSet("IOC_UNIT", "IM01")
 
