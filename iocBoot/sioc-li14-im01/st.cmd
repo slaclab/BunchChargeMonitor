@@ -110,6 +110,12 @@ dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
 
+# BSA. Configure the PV name for BSA, the AMC number and the ADC number
+# inside the AMC. Numbers start from zero.
+# bcmBsaConfigure <PV name> <AMC number> <ADC number>
+dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC0_PREFIX),ATRB=TMIT_PC,LNK=$(AMC0_PREFIX):EF_TMIT_PC,SINK_SIZE=1")
+bcmBsaConfigure "$(AMC0_PREFIX):TMIT_PC" 0 0
+
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 
 dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)")
@@ -206,6 +212,8 @@ iocInit()
 # Log values only on change to the iocLogServer:
 caPutLogInit("$(EPICS_CA_PUT_LOG_ADDR)")
 caPutLogShow(2)
+
+bcmConfigure "MrBcmBsaStream"
 
 cd("/data/$(IOC)/autosave-req")
 iocshCmd("makeAutosaveFiles")
