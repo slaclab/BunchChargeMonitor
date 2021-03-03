@@ -27,7 +27,7 @@
       <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox_17">
        <property name="minimumSize">
         <size>
-         <width>120</width>
+         <width>130</width>
          <height>0</height>
         </size>
        </property>
