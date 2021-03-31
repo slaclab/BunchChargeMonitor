@@ -34,8 +34,14 @@ epicsEnvSet("CPSW_PORT","Atca6")
 # Yaml File
 epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 
+###addition
+epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
+epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
+
 # FPGA IP address
-epicsEnvSet("FPGA_IP", "10.0.1.104")
+epicsEnvSet("FPGA_IP", "10.0.1.104")###original
+###epicsEnvSet("FPGA_IP", "10.0.1.105")###can inclue to swap what FPGA is used
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
@@ -57,7 +63,7 @@ epicsEnvSet("UNIT","999")
 ######################################
 
 # BCM-FC in crate 1, slot 4, AMC 0
-epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):$(UNIT)"
+epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):$(UNIT)")
 
 # AMCC in crate 1, slot 4
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(UNIT)")
@@ -85,9 +91,10 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 # **** Environment variables for Temperature Chassis on Ethercat ********
 
 # System Location:
-###epicsEnvSet(FAC,"SYS2")
-###epicsEnvSet("LOCA","GUNB")
-###epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
+### comented out previously
+##epicsEnvSet(FAC,"SYS2")
+##epicsEnvSet("LOCA","GUNB")
+##epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
 
 
 # **********************************************************************
@@ -125,8 +132,15 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-cpswLoadYamlFile("${YAML_FILE}","NetIODev","","${FPGA_IP}")
-cpswLoadConfigFile("yaml/AmcCarrierBcm_project.yaml/config/defaultsFC.yaml", "mmio")
+### changed to yaml downloader
+DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
+
+###to bring up to current standard importing from $IOC_DATA
+cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
+cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
+
+
+
 # *********************************************************************
 # **** BSA Driver setup ***********************************************
 # add BSA PVs
@@ -269,6 +283,7 @@ dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC0_PREFIX},DESC=Communicatio
 
 # *************************************************************************
 # **** Load MPS scale factor **********************************************
+###Verify that this is handled by the firmware and if so remove the lines 
 #dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 #dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 

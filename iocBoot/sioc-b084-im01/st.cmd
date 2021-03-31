@@ -5,6 +5,8 @@
 # for the Bunch Charge Monitor.
 #########################################
 
+###My changes are marked by ###
+
 
 ## You may have to change bcm to something else
 ## everywhere it appears in this file
@@ -33,8 +35,14 @@ epicsEnvSet("CPSW_PORT","Atca7")
 # Yaml File
 epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 
+###addition
+epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
+epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsFC.yaml")
+
 # FPGA IP address
-epicsEnvSet("FPGA_IP", "10.0.1.105")
+epicsEnvSet("FPGA_IP", "10.0.1.105")###original
+###epicsEnvSet("FPGA_IP", "10.0.1.104")### can be inclued to swap what FPGA is used
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
@@ -47,8 +55,8 @@ epicsEnvSet("AUTO_GEN", 0)
 epicsEnvSet("AREA","GUNB")
 epicsEnvSet("UNIT","360")
 # Dev area
-#epicsEnvSet("AREA","B084")
-#epicsEnvSet("UNIT","215")
+###epicsEnvSet("AREA","B084")
+###epicsEnvSet("UNIT","215")
 
 # BCM-TORO in crate 1, slot 5, AMC 0 - Since this prototype is in Lab 2 of B084
 # we use it as prefix.
@@ -119,8 +127,14 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile("yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml", "mmio")
+### changed to yaml downloader
+DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
+
+###to bring up to current standard importing from $IOC_DATA
+cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
+cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
+
+
 
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
