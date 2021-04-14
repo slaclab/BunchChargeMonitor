@@ -51,10 +51,10 @@ epicsEnvSet("FPGA_IP", "10.0.1.104")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Automatically generated record prefix
-#epicsEnvSet("PREFIX","SPD:IM01")
+#epicsEnvSet("PREFIX","SPH:IM01")
 
 AREA
-epicsEnvSet("AREA","SPD")
+epicsEnvSet("AREA","SPH")
 epicsEnvSet("UNIT","659")#need to chek how unit is found
 
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(UNIT)")
@@ -71,7 +71,7 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
 epicsEnvSet("MPS_APP_ID", "0xAF")
-epicsEnvSet("MPS_PREFIX", "MPLN:SPD:MP02:4")
+epicsEnvSet("MPS_PREFIX", "MPLN:SPH:MP02:4")
 
 # ***********************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ********
@@ -246,7 +246,7 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 # *******************************
 # **** Load message status   ****
 ###wrong in old_st.cmd need to ask someone
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=SPD")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=SPH")
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 ###*************************

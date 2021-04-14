@@ -41,7 +41,7 @@ epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
 epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 
 ###setting position so that the screen can connect
-###position has no meaning just nedds to exist
+###daughter card position
 epicsEnvSet("AMC0_POS", "0")
 epicsEnvSet("AMC1_POS", "1")
 epicsEnvSet("IOC_UNIT", "IM01")
