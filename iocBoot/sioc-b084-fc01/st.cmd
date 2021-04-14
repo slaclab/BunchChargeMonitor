@@ -37,7 +37,7 @@ epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 ###addition
 epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
-epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsFC.yaml")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.104")###original

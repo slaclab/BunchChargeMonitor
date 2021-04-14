@@ -38,7 +38,13 @@ epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 ###addition
 epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
-epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsFC.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
+
+###setting position so that the screen can connect
+###position has no meaning just nedds to exist
+epicsEnvSet("AMC0_POS", "0")
+epicsEnvSet("AMC1_POS", "1")
+epicsEnvSet("IOC_UNIT", "IM01")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.105")###original
@@ -253,6 +259,12 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
+###*************************
+###setting up the streem device
+dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
+###if both daughter cards were to be used
+###dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
+
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
 dbLoadRecords("db/tprTrig.db","LOCA=${AREA},IOC_UNIT=IM01,INST=0,PORT=trig")
@@ -283,10 +295,10 @@ dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ES
 # **** Load db for Temperature Chassis on Ethercat **********************
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
-#dbLoadRecords("db/EK1101.template", "DEVICE=${AMC0_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
-#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
-#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
+dbLoadRecords("db/EK1101.template", "DEVICE=${AMC0_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
+dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
