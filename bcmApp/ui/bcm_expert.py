@@ -32,6 +32,12 @@ class Sensor:
 bcm_pv = { "x": ":SAMP_TIME.VALA", WaveformType.RAW: ":RWF_U16.VALA", WaveformType.INT: ":IWF_U16.VALA",
         WaveformType.RAW_TIMES: ":S_P_WF", "window": ":SCL_WF"}
 
+# NC (Normal Conducting) and SC (Super Conducting) BCM IOCs have differences in
+# a few PV names. The differences are in the dictionaries below while the PV
+# names are not unified.
+scPVs = {"charge":"CHRG"}
+ncPVs = {"charge":"0:TMIT"}
+
 class CalPlotCtxBox(pg.ViewBox, QObject):
     """ Implements a custom right click menu for Calibration plots """
     y_src_changed = Signal(str, str)
@@ -323,6 +329,11 @@ class BCMExpert(Display):
             # is legacy in NC and more recent to SC.
 	    self.isSC = False
 
+        if self.isSC:
+            self.pvDict = scPVs
+        else:
+            self.pvDict = ncPVs
+
         """
         We appended the A or B AMC card to the end of the INST macro in
         the Qt Designer file.
@@ -414,10 +425,11 @@ class BCMExpert(Display):
         
         tmit_pc_lbl = PyDMLabel()
         tmit_pc_lbl.setText("TMIT_PC")
-        tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}:TMIT_PC".format(
+        tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
-                              self.macros()["CHAN"])
+                              #self.macros()["CHAN"],
+                              self.pvDict["charge"])
         tmit_pc_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
