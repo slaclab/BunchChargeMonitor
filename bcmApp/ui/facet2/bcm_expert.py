@@ -15,6 +15,7 @@ from pydm.widgets.display_format import DisplayFormat
 from pydm.widgets import (PyDMLineEdit, PyDMSlider, PyDMRelatedDisplayButton, 
                           PyDMByteIndicator, PyDMEnumComboBox, PyDMLabel)
 from pydm.widgets.waveformplot import WaveformCurveItem
+from edmbutton import PyDMEDMDisplayButton
 
 left_lbl = 'ADC Counts'
 btm_lbl = 'nanoseconds'
@@ -313,6 +314,15 @@ class BCMExpert(Display):
         self.setWindowTitle("Bunch Charge {} Calibration".format(
             self.macros()["INST"]))
 
+        try:
+            # Check if the code is running in NC (including FACET) 
+            # or SC accelerator.
+	    self.isSC = self.macros()["isSC"]
+        except KeyError:
+            # If the macro is not found, we assume NC accelerator as this code
+            # is legacy in NC and more recent to SC.
+	    self.isSC = False
+     
         """
         We appended the A or B AMC card to the end of the INST macro in
         the Qt Designer file.
@@ -458,12 +468,29 @@ class BCMExpert(Display):
                 self.macros()["AREA"],
                 self.macros()["POS"])
 
+        # Bergoz button is shown only if it is running in the SC accelerator
+        if self.isSC:
+            bergoz_btn = PyDMEDMDisplayButton(filename="bcmIMTop.edl")
+            bergoz_btn.setText("Bergoz and Temperature...")
+            bergoz_btn.openInNewWindow = True
+            bergoz_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(
+                    self.macros()["AREA"],
+                    self.macros()["POS"],
+                    self.macros()["AREA"],
+                    self.macros()["POS"],
+                    self.macros()["INST"],
+                    self.macros()["AREA"],
+                    self.macros()["UNIT"])
+
         help_btn = QPushButton("Help...")
         help_btn.clicked.connect(self.open_help)
 
         self.btn_layout.addStretch(10)
         self.btn_layout.addWidget(coef_btn)
         self.btn_layout.addWidget(trig_btn)
+        # Bergoz button is shown only if it is running in the SC accelerator
+        if self.isSC:
+            self.btn_layout.addWidget(bergoz_btn)
         self.btn_layout.addWidget(help_btn)
         self.main_layout.addLayout(self.btn_layout)
 
