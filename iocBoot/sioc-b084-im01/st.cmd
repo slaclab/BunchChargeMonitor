@@ -265,6 +265,13 @@ dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 ###if both daughter cards were to be used
 ###dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
 
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
+#dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
+
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
+
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
 dbLoadRecords("db/tprTrig.db","LOCA=${AREA},IOC_UNIT=IM01,INST=0,PORT=trig")

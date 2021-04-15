@@ -449,14 +449,16 @@ class BCMExpert(Display):
                 self.mad,
                 self.sensor)
 
-        trig_btn = PyDMRelatedDisplayButton(filename="bcm_triggers.ui")
+        trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiag.ui")
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
-        trig_btn.macros = "PREFIX={}:{}:0,P=TORO:{}:{}".format(
+        trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(
                 self.macros()["AREA"],
-                self.macros()["UNIT"],
-                self.macros()["AREA"],
-                self.macros()["POS"])
+                self.macros()["IOC_UNIT"],
+                self.macros()["INST"],
+                self.macros()["IOC"],
+                self.macros()["CPU"],
+                self.macros()["CRATE"])
 
         help_btn = QPushButton("Help...")
         help_btn.clicked.connect(self.open_help)
