@@ -35,8 +35,8 @@ bcm_pv = { "x": ":SAMP_TIME.VALA", WaveformType.RAW: ":RWF_U16.VALA", WaveformTy
 # NC (Normal Conducting) and SC (Super Conducting) BCM IOCs have differences in
 # a few PV names. The differences are in the dictionaries below while the PV
 # names are not unified.
-scPVs = {"charge":"CHRG"}
-ncPVs = {"charge":"0:TMIT"}
+scPVs = {"charge":"CHRG","nel":"TMIT"}
+ncPVs = {"charge":"0:TMIT","nel":"0:TMIT_NEL"}
 
 class CalPlotCtxBox(pg.ViewBox, QObject):
     """ Implements a custom right click menu for Calibration plots """
@@ -406,19 +406,19 @@ class BCMExpert(Display):
                              self.macros()["INST"]))
         charge_lbl1.setFont(font)
        
-        tmit_nel_lbl = PyDMLabel()
-        tmit_nel_lbl.setText("TMIT_NEL")
-        tmit_nel_lbl.channel = "ca://TORO:{}:{}:{}:TMIT_NEL".format(
+        nel_lbl = PyDMLabel()
+        nel_lbl.setText("NEL")
+        nel_lbl.channel = "ca://TORO:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
-                              self.macros()["CHAN"])
-        tmit_nel_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
+                              self.pvDict["nel"])
+        nel_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
                                     border-color: rgb(0, 255, 0);")
-        tmit_nel_lbl.displayFormat = DisplayFormat.Exponential 
-        tmit_nel_lbl.setMinimumWidth(100)
-        tmit_nel_lbl.setMaximumWidth(100)
+        nel_lbl.displayFormat = DisplayFormat.Exponential 
+        nel_lbl.setMinimumWidth(100)
+        nel_lbl.setMaximumWidth(100)
  
         charge_lbl2 = QLabel("Nel")
         charge_lbl2.setFont(font)
@@ -448,7 +448,7 @@ class BCMExpert(Display):
         self.charge_layout.addItem(spacer1)
         self.charge_layout.addWidget(charge_lbl1)
         self.charge_layout.addItem(spacer2)
-        self.charge_layout.addWidget(tmit_nel_lbl)
+        self.charge_layout.addWidget(nel_lbl)
         self.charge_layout.addWidget(charge_lbl2)
         self.charge_layout.addItem(spacer3)
         self.charge_layout.addWidget(tmit_pc_lbl)
