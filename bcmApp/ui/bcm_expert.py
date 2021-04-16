@@ -271,7 +271,7 @@ class BcmWeightFnSliders(QWidget):
 
     def __init__(self, macros, parent=None, sensor=None):
         super(BcmWeightFnSliders, self).__init__(parent)
-
+    
         self.macros = macros
         self.sensor = sensor
 
@@ -285,6 +285,47 @@ class BcmWeightFnSliders(QWidget):
 
         self.sliders = [self.pre_slider, self.mid_slider, self.pos_slider]
         self.labels = [self.pre_label, self.mid_label, self.pos_label]
+
+
+        self.setup_ui()
+
+    def setup_ui(self):
+        # set label fonts
+        lbl_font = self.pre_label.font()
+        lbl_font.setPointSize(11)
+
+        self.layout = QHBoxLayout()
+        slider_layouts = [QVBoxLayout() for i in range(3)]
+
+        for lo, label, slider in zip(slider_layouts, self.labels, self.sliders):
+            label.setFont(lbl_font)
+            label.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+            lo.addWidget(label)
+            lo.addWidget(slider)
+            self.layout.addLayout(lo)
+
+        self.setLayout(self.layout)
+
+
+    def plot_src_changed(self, wf, inst):
+        for slider in self.sliders:
+            slider.plot_src_changed(wf, inst)
+
+class BcmWeightFnSliderSC(QWidget):
+    """ A widget with single sliders to control the weight function for SC mode """
+
+    def __init__(self, macros, parent=None, sensor=None):
+        super(BcmWeightFnSliderSC, self).__init__(parent)
+    
+        self.macros = macros
+        self.sensor = sensor
+
+        self.pre_slider = BcmPyDMSlider(macros, self, ch="{}:TIME_PRE".format(self.sensor))
+
+        self.pre_label = QLabel("Average Window (ns)")
+
+        self.sliders = [self.pre_slider]
+        self.labels = [self.pre_label]
 
 
         self.setup_ui()
@@ -484,8 +525,8 @@ class BCMExpert(Display):
 
         # Bergoz button is shown only if it is running in the SC accelerator
         if self.isSC:
-            bergoz_btn = PyDMEDMDisplayButton(filename="bcmIMTop.edl")
-            bergoz_btn.setText("Bergoz and Temperature...")
+            bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
+            bergoz_btn.setText("Bergoz...")
             bergoz_btn.openInNewWindow = True
             bergoz_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(
                     self.macros()["AREA"],
@@ -512,9 +553,13 @@ class BCMExpert(Display):
         self.plot_layout = QHBoxLayout()
         self.weight_fn_layout = QHBoxLayout()
         self.wfp = BcmCalPlot(self.macros(), self.sensor, WaveformType.RAW)
+        if self.isSC:
+            self.wfp_sliders = BcmWeightFnSliderSC(macros=self.macros(),
+                    parent=self, sensor=self.sensor)        
+        else:
+            self.wfp_sliders = BcmWeightFnSliders(macros=self.macros(),
+                    parent=self, sensor=self.sensor)
 
-        self.wfp_sliders = BcmWeightFnSliders(macros=self.macros(),
-                parent=self, sensor=self.sensor)
         self.wfp.src_changed.connect(self.wfp_sliders.plot_src_changed)
 
         self.plot_layout.addWidget(self.wfp)

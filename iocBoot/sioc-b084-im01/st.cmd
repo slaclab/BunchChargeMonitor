@@ -260,7 +260,7 @@ dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Commu
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 ###*************************
-###setting up the streem device
+###setting up the stream device
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 ###if both daughter cards were to be used
 ###dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")

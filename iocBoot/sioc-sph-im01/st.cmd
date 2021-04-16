@@ -42,7 +42,6 @@ epicsEnvSet("AMC1_POS", "1")
 epicsEnvSet("IOC_UNIT", "IM01")
 
 # FPGA IP address
-#guess from picture this needs to be confirmed
 epicsEnvSet("FPGA_IP", "10.0.1.104")
 
 
@@ -55,7 +54,7 @@ epicsEnvSet("AUTO_GEN", 0)
 
 AREA
 epicsEnvSet("AREA","SPH")
-epicsEnvSet("UNIT","659")#need to chek how unit is found
+epicsEnvSet("UNIT","365")
 
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(UNIT)")
 
@@ -70,8 +69,8 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # ***********************************************************************
 # **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
-epicsEnvSet("MPS_APP_ID", "0xAF")
-epicsEnvSet("MPS_PREFIX", "MPLN:SPH:MP02:4")
+epicsEnvSet("MPS_APP_ID", "184")
+epicsEnvSet("MPS_PREFIX", "MPLN:SPH:MP03:4")
 
 # ***********************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ********
@@ -95,7 +94,7 @@ epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_IN_PORT","L0")
 epicsEnvSet("BERGOZ0_OUT_PORT","L1")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","44")
+epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","38")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # Temperature xfer: ESLO, EOFF
@@ -245,14 +244,21 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 
 # *******************************
 # **** Load message status   ****
-###wrong in old_st.cmd need to ask someone
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=SPH")
-dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
+#dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=SPH")
+#dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 ###*************************
-###setting up the streem device
+###setting up the stream device
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 ###need to check and see if slot 0 or 1 is used may have to change to AMC1_PREFIX
+
+#loads the waveform records
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
+#dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
+
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
 
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
