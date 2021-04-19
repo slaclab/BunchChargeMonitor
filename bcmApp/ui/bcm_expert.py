@@ -554,8 +554,10 @@ class BCMExpert(Display):
         self.weight_fn_layout = QHBoxLayout()
         self.wfp = BcmCalPlot(self.macros(), self.sensor, WaveformType.RAW)
         if self.isSC:
-            self.wfp_sliders = BcmWeightFnSliderSC(macros=self.macros(),
-                    parent=self, sensor=self.sensor)        
+            self.wfp_sliders = BcmWeightFnSliders(macros=self.macros(),
+                    parent=self, sensor=self.sensor)
+            #self.wfp_sliders = BcmWeightFnSliderSC(macros=self.macros(),
+                    #parent=self, sensor=self.sensor)        
         else:
             self.wfp_sliders = BcmWeightFnSliders(macros=self.macros(),
                     parent=self, sensor=self.sensor)
