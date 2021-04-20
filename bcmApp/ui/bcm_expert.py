@@ -8,7 +8,7 @@ from qtpy.QtGui import QColor, QFont
 from qtpy.QtSvg import QSvgWidget
 from qtpy.QtWidgets import (QAction, QDialog, QGridLayout, QHBoxLayout, QLabel,
                             QMenu, QPushButton, QRadioButton, QTextEdit,
-                            QVBoxLayout, QWidget, QSpacerItem, QSizePolicy)
+                            QVBoxLayout, QWidget, QSpacerItem, QSizePolicy, QGroupBox)
 
 from pydm import Display
 from pydm.widgets.display_format import DisplayFormat
@@ -326,8 +326,33 @@ class BcmWeightFnSliderSC(QWidget):
 
         self.sliders = [self.pre_slider]
         self.labels = [self.pre_label]
+        
+        self.temperature_table_heading_null = QLabel("")
+        self.temperature_table_heading = QLabel("Temperature (K)")
+  
+        
+        self.toro_text = QLabel("Toroid")
+        self.amp_text = QLabel("Amplifier")
+        self.elc_text = QLabel("Electronics")
 
+        self.toro_lbl = PyDMLabel()
+        self.toro_lbl.channel = "ca://TORO:{}:{}:Temp".format(
+                              self.macros["AREA"],
+                              self.macros["POS"])
+        self.amp_lbl = PyDMLabel()
+        self.amp_lbl.channel = "ca://TORO:{}:{}:TempAmp".format(
+                              self.macros["AREA"],
+                              self.macros["POS"])
+        self.elc_lbl = PyDMLabel()
+        self.elc_lbl.channel = "ca://TORO:{}:{}:TempElc".format(
+                              self.macros["AREA"],
+                              self.macros["POS"])
 
+        self.temperature_labels = [self.toro_text, self.amp_text, self.elc_text]
+        self.temperature_chan = [self.toro_lbl, self.amp_lbl, self.elc_lbl]
+        self.temperature_heading = [self.temperature_table_heading_null,self.temperature_table_heading ,self.temperature_table_heading_null]
+        
+        
         self.setup_ui()
 
     def setup_ui(self):
@@ -337,6 +362,9 @@ class BcmWeightFnSliderSC(QWidget):
 
         self.layout = QHBoxLayout()
         slider_layouts = [QVBoxLayout() for i in range(3)]
+        temperature_layout = QVBoxLayout()
+        temperature_element_layout = [QVBoxLayout() for i in range(3)]
+        
 
         for lo, label, slider in zip(slider_layouts, self.labels, self.sliders):
             label.setFont(lbl_font)
@@ -344,6 +372,17 @@ class BcmWeightFnSliderSC(QWidget):
             lo.addWidget(label)
             lo.addWidget(slider)
             self.layout.addLayout(lo)
+        
+        for tb, heading, label, channel in zip(temperature_element_layout,self.temperature_heading, self.temperature_labels, self.temperature_chan):
+            heading.setFont(lbl_font)
+            heading.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+            label.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+            channel.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+            tb.addWidget(heading)
+            tb.addWidget(label)
+            tb.addWidget(channel)
+            self.layout.addLayout(tb)
+            
 
         self.setLayout(self.layout)
 
@@ -554,10 +593,8 @@ class BCMExpert(Display):
         self.weight_fn_layout = QHBoxLayout()
         self.wfp = BcmCalPlot(self.macros(), self.sensor, WaveformType.RAW)
         if self.isSC:
-            self.wfp_sliders = BcmWeightFnSliders(macros=self.macros(),
-                    parent=self, sensor=self.sensor)
-            #self.wfp_sliders = BcmWeightFnSliderSC(macros=self.macros(),
-                    #parent=self, sensor=self.sensor)        
+            self.wfp_sliders = BcmWeightFnSliderSC(macros=self.macros(),
+                    parent=self, sensor=self.sensor)        
         else:
             self.wfp_sliders = BcmWeightFnSliders(macros=self.macros(),
                     parent=self, sensor=self.sensor)
