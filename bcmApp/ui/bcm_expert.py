@@ -397,8 +397,12 @@ class BCMExpert(Display):
     """ The main calibration display. """
     def __init__(self, parent=None, args=None, macros=None):
         super(BCMExpert, self).__init__(parent=parent, args=args, macros=macros)
-        self.setWindowTitle("Bunch Charge {} Calibration".format(
-            self.macros()["INST"]))
+        if self.macros()["isSC"]:
+            self.setWindowTitle("Bunch Charge {} Calibration".format(
+                self.macros()["CHAN"]))
+        else:
+            self.setWindowTitle("Bunch Charge {} Calibration".format(
+                self.macros()["INST"]))        
 
         try:
             # Check if the code is running in NC (including FACET) 
@@ -481,9 +485,12 @@ class BCMExpert(Display):
 
         font = self.font()
         font.setPointSize(11)
-
-        charge_lbl1 = QLabel("{} TMIT".format(
-                             self.macros()["INST"]))
+        if self.isSC:
+            charge_lbl1 = QLabel("{} TMIT".format(
+                                self.macros()["CHAN"]))
+        else:
+            charge_lbl1 = QLabel("{} TMIT".format(
+                                self.macros()["INST"]))                                
         charge_lbl1.setFont(font)
        
         nel_lbl = PyDMLabel()
@@ -496,6 +503,7 @@ class BCMExpert(Display):
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
                                     border-color: rgb(0, 255, 0);")
+        nel_lbl.precision = 3                          
         nel_lbl.displayFormat = DisplayFormat.Exponential 
         nel_lbl.setMinimumWidth(100)
         nel_lbl.setMaximumWidth(100)
