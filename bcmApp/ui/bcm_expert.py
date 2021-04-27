@@ -561,7 +561,7 @@ class BCMExpert(Display):
                 self.mad,
                 self.sensor)
 
-        trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiag.ui")
+        trig_btn = PyDMRelatedDisplayButton(filename="bcmtprDiag.ui")
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
         trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(
@@ -574,7 +574,7 @@ class BCMExpert(Display):
 
         # Bergoz button is shown only if it is running in the SC accelerator
         if self.isSC:
-            bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
+            bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
             bergoz_btn.setText("Bergoz...")
             bergoz_btn.openInNewWindow = True
             bergoz_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(

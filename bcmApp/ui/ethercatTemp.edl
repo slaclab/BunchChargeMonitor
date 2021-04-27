@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 464
-y 173
+x 707
+y 162
 w 778
 h 417
 font "helvetica-medium-r-18.0"
@@ -446,7 +446,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 endObjectProperties
@@ -491,7 +490,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 endObjectProperties
@@ -514,170 +512,8 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 170
-y 220
-w 220
-h 166
-
-beginGroup
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 170
-y 220
-w 220
-h 16
-controlPv "SIOC:SPD:IM02:3:INPUT1:VALUE"
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "Node 1 Channel 1"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 170
-y 250
-w 220
-h 16
-controlPv "SIOC:SPD:IM02:3:INPUT2:VALUE"
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "Node 1 Channel 1"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 170
-y 280
-w 220
-h 16
-controlPv "SIOC:SPD:IM02:4:INPUT1:VALUE"
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "Node 1 Channel 1"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 170
-y 310
-w 220
-h 16
-controlPv "SIOC:SPD:IM02:4:INPUT2:VALUE"
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "Node 1 Channel 1"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 170
-y 340
-w 220
-h 16
-controlPv "SIOC:SPD:IM02:5:INPUT1:VALUE"
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "Node 1 Channel 1"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 7
-release 0
-x 170
-y 370
-w 220
-h 16
-controlPv "SIOC:SPD:IM02:5:INPUT2:VALUE"
-font "helvetica-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-id "Node 1 Channel 1"
-endObjectProperties
-
-endGroup
-
 endObjectProperties
 
 # (Text Monitor)
@@ -698,7 +534,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 id "Node 1 Channel 1"
@@ -722,7 +557,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 id "Node 1 Channel 1"
@@ -746,7 +580,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 id "Node 1 Channel 1"
@@ -770,7 +603,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 id "Node 1 Channel 1"
@@ -794,7 +626,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 id "Node 1 Channel 1"
@@ -818,7 +649,6 @@ useDisplayBg
 autoHeight
 limitsFromDb
 nullColor index 0
-useHexPrefix
 newPos
 objType "monitors"
 id "Node 1 Channel 1"
@@ -1039,5 +869,143 @@ value {
   "1"
 }
 autoSize
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 170
+y 220
+w 220
+h 16
+controlPv "SIOC:SPD:IM02:3:INPUT1:VALUE"
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 0
+newPos
+objType "monitors"
+id "Node 1 Channel 1"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 170
+y 250
+w 220
+h 16
+controlPv "SIOC:SPD:IM02:3:INPUT2:VALUE"
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 0
+newPos
+objType "monitors"
+id "Node 1 Channel 1"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 170
+y 280
+w 220
+h 16
+controlPv "SIOC:SPD:IM02:4:INPUT1:VALUE"
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 0
+newPos
+objType "monitors"
+id "Node 1 Channel 1"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 170
+y 310
+w 220
+h 16
+controlPv "SIOC:SPD:IM02:4:INPUT2:VALUE"
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 0
+newPos
+objType "monitors"
+id "Node 1 Channel 1"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 170
+y 340
+w 220
+h 16
+controlPv "SIOC:SPD:IM02:5:INPUT1:VALUE"
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 0
+newPos
+objType "monitors"
+id "Node 1 Channel 1"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 170
+y 370
+w 220
+h 16
+controlPv "SIOC:SPD:IM02:5:INPUT2:VALUE"
+font "helvetica-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 0
+newPos
+objType "monitors"
+id "Node 1 Channel 1"
 endObjectProperties
 
