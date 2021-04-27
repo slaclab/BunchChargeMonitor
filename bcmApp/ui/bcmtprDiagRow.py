@@ -1,7 +1,8 @@
 from qtpy import QtCore
 from pydm import Display
+from qtpy.QtCore import Qt
 from qtpy.QtWidgets import QWidget, QHBoxLayout
-from pydm.widgets import PyDMLabel, PyDMEnumComboBox
+from pydm.widgets import PyDMLabel, PyDMEnumComboBox, PyDMLineEdit
 
 
 class test_widget(Display):
@@ -47,7 +48,6 @@ class test_widget(Display):
         self.name = PyDMLabel()
         self.name.channel = 'TPR:'+self.loca+':'+self.ioc_unit+':'+self.inst+':TPRTRIG'+self.trign
         self.name.alarmSensitiveContent = False
-        self.name.setStyleSheet('qproperty-alignment: AlignCenter')
 
         # Add the PV Desc widget
         self.desc = PyDMLabel()
@@ -55,16 +55,16 @@ class test_widget(Display):
         self.desc.alarmSensitiveContent = False
 
         # Add the TWID widget
-        self.twid = PyDMLabel()
+        self.twid = PyDMLineEdit()
         self.twid.channel = self.prefix+':TRG'+self.trign+'_SYS2_TWID'
         self.twid.alarmSensitiveContent = True
-        self.twid.setStyleSheet('qproperty-alignment: AlignCenter')
+        self.twid.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # Add the TDES widget (without defining a PV),
-        self.tdes = PyDMLabel()
+        self.tdes = PyDMLineEdit()
         self.tdes.channel = self.prefix+':TRG'+self.trign+'_SYS2_TDES'
         self.tdes.alarmSensitiveContent = True
-        self.tdes.setStyleSheet('qproperty-alignment: AlignCenter')
+        self.tdes.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # Create the combo box, and connect the value change action to 
         # the change_label function
