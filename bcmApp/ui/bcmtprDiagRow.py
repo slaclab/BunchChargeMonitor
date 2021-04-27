@@ -11,7 +11,6 @@ class test_widget(Display):
 
         # These macros are set for the whole page
         #self.prefix = macros['PREFIX']
-        # E.g. TPR:LI24:BL01:2:TRG00_SYS0_TWID
         self.prefix = 'TPR:'+macros['LOCA']+':'+macros['IOC_UNIT']+':'+macros['INST']
         #self.prefix = 'FARC:GUNB:999'
         self.loca = macros['LOCA']
@@ -61,9 +60,9 @@ class test_widget(Display):
         self.twid.alarmSensitiveContent = True
         self.twid.setStyleSheet('qproperty-alignment: AlignCenter')
 
-        # Add the TDES widget (without defining a PV),              e.g. TPR:LI24:BL01:2:TRG00_SYS0_TDES
+        # Add the TDES widget (without defining a PV),
         self.tdes = PyDMLabel()
-        self.tdes.channel = self.prefix+':TRG'+self.trign+'_SYS2_TDES' # TPR:LI24:BL01:2:TRG00_SYS0_TDES
+        self.tdes.channel = self.prefix+':TRG'+self.trign+'_SYS2_TDES'
         self.tdes.alarmSensitiveContent = True
         self.tdes.setStyleSheet('qproperty-alignment: AlignCenter')
 
@@ -78,6 +77,11 @@ class test_widget(Display):
         self.rate.alarmSensitiveContent = True
         self.rate.setStyleSheet('qproperty-alignment: AlignCenter')
 
+        # Add enable/disable trigger box
+        self.tctl = PyDMEnumComboBox()
+        self.tctl.channel = 'TPR:'+self.loca +':'+self.ioc_unit+':'+self.inst+':CH'+self.trign+'_SYS2_TCTL'
+        self.tctl.currentIndexChanged.connect(self.change_label)        
+
         row = QHBoxLayout()
         # Add the widgets to the grid, and set the relative stretch for each column
         row.addWidget(self.name,1)
@@ -86,6 +90,7 @@ class test_widget(Display):
         row.addWidget(self.tdes,1)
         row.addWidget(self.combo,1)
         row.addWidget(self.rate,1)
+        row.addWidget(self.tctl,1)
         # Set overall margins for the grid box
         row.setContentsMargins(6,1,6,0)
         
