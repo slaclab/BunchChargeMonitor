@@ -279,9 +279,9 @@ class BcmWeightFnSliders(QWidget):
         self.mid_slider = BcmPyDMSlider(macros, self, ch="{}:TIME_MID".format(self.sensor))
         self.pos_slider = BcmPyDMSlider(macros, self, ch="{}:TIME_POS".format(self.sensor))
 
-        self.pre_label = QLabel("Duration Pre-Edge (ns)")
-        self.mid_label = QLabel("Duration Inter-Edge (ns)")
-        self.pos_label = QLabel("Duration Pos-Edge (ns)")
+        self.pre_label = QLabel("End of Pedestal (ns)")
+        self.mid_label = QLabel("End of Transition Region (ns)")
+        self.pos_label = QLabel("End of Beam Pulse (ns)")
 
         self.sliders = [self.pre_slider, self.mid_slider, self.pos_slider]
         self.labels = [self.pre_label, self.mid_label, self.pos_label]
@@ -397,13 +397,6 @@ class BCMExpert(Display):
     """ The main calibration display. """
     def __init__(self, parent=None, args=None, macros=None):
         super(BCMExpert, self).__init__(parent=parent, args=args, macros=macros)
-        if self.macros()["isSC"]:
-            self.setWindowTitle("Bunch Charge {} Calibration".format(
-                self.macros()["CHAN"]))
-        else:
-            self.setWindowTitle("Bunch Charge {} Calibration".format(
-                self.macros()["INST"]))        
-
         try:
             # Check if the code is running in NC (including FACET) 
             # or SC accelerator.
@@ -412,6 +405,14 @@ class BCMExpert(Display):
             # If the macro is not found, we assume NC accelerator as this code
             # is legacy in NC and more recent to SC.
 	    self.isSC = False
+	    
+        if self.isSC:
+            self.setWindowTitle("Bunch Charge {} Calibration".format(
+                self.macros()["CHAN"]))
+        else:
+            self.setWindowTitle("Bunch Charge {} Calibration".format(
+                self.macros()["INST"]))        
+
 
         if self.isSC:
             self.pvDict = scPVs
