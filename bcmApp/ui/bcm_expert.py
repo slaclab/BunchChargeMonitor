@@ -562,8 +562,8 @@ class BCMExpert(Display):
                 self.mad,
                 self.sensor)
 
-        trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/bcmtprDiag.ui")       
-        #trig_btn = PyDMRelatedDisplayButton(filename="bcmtprDiag.ui")#used to test without having to push the screen
+        #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/bcmtprDiag.ui")       
+        trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
         trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(

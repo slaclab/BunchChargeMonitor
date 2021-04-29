@@ -403,7 +403,7 @@
    </property>
    <property name="filenames" stdset="0">
     <stringlist>
-     <string>bcmtprDiagExp.ui</string>
+     <string>tprDiagExpSC.ui</string>
     </stringlist>
    </property>
    <property name="openInNewWindow" stdset="0">
@@ -586,7 +586,7 @@
         <string>TRIGN=00</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -614,7 +614,7 @@
         <string>TRIGN=01</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -642,7 +642,7 @@
         <string>TRIGN=02</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -670,7 +670,7 @@
         <string>TRIGN=03</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -698,7 +698,7 @@
         <string>TRIGN=04</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -726,7 +726,7 @@
         <string>TRIGN=05</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -754,7 +754,7 @@
         <string>TRIGN=06</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -782,7 +782,7 @@
         <string>TRIGN=07</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -810,7 +810,7 @@
         <string>TRIGN=08</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -838,7 +838,7 @@
         <string>TRIGN=09</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -866,7 +866,7 @@
         <string>TRIGN=10</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -894,7 +894,7 @@
         <string>TRIGN=11</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -922,7 +922,7 @@
         <string>TRIGN=12</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -950,7 +950,7 @@
         <string>TRIGN=13</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -978,7 +978,7 @@
         <string>TRIGN=14</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
@@ -1006,7 +1006,7 @@
         <string>TRIGN=15</string>
        </property>
        <property name="filename" stdset="0">
-        <string>bcmtprDiagRow.py</string>
+        <string>tprDiagRowSC.py</string>
        </property>
       </widget>
      </item>
