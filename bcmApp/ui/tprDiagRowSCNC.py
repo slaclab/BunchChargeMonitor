@@ -20,6 +20,7 @@ class test_widget(Display):
         #self.ioc_unit = 'FC01'
         self.inst = macros['INST']
         #self.inst = '0'
+        self.isSC = macros['isSC']
 
         # This macro is set on each row 
         self.trign = macros['TRIGN']
@@ -56,13 +57,19 @@ class test_widget(Display):
 
         # Add the TWID widget
         self.twid = PyDMLineEdit()
-        self.twid.channel = self.prefix+':TRG'+self.trign+'_SYS2_TWID'
+        if self.isSC:
+            self.twid.channel = self.prefix+':TRG'+self.trign+'_SYS2_TWID'
+        else:
+            self.twid.channel = self.prefix+':TRG'+self.trign+'_SYS0_TWID'    
         self.twid.alarmSensitiveContent = True
         self.twid.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         # Add the TDES widget (without defining a PV),
         self.tdes = PyDMLineEdit()
-        self.tdes.channel = self.prefix+':TRG'+self.trign+'_SYS2_TDES'
+        if self.isSC:
+            self.tdes.channel = self.prefix+':TRG'+self.trign+'_SYS2_TDES'
+        else:
+            self.tdes.channel = self.prefix+':TRG'+self.trign+'_SYS0_TDES'        
         self.tdes.alarmSensitiveContent = True
         self.tdes.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
@@ -79,7 +86,10 @@ class test_widget(Display):
 
         # Add enable/disable trigger box
         self.tctl = PyDMEnumComboBox()
-        self.tctl.channel = 'TPR:'+self.loca +':'+self.ioc_unit+':'+self.inst+':CH'+self.trign+'_SYS2_TCTL'
+        if self.isSC:
+            self.tctl.channel = 'TPR:'+self.loca +':'+self.ioc_unit+':'+self.inst+':CH'+self.trign+'_SYS2_TCTL'
+        else:
+            self.tctl.channel = 'TPR:'+self.loca +':'+self.ioc_unit+':'+self.inst+':CH'+self.trign+'_SYS0_TCTL'
         self.tctl.currentIndexChanged.connect(self.change_label)        
 
         row = QHBoxLayout()
