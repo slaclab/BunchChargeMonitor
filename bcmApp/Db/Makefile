@@ -110,6 +110,7 @@ DB += processRawWFHeader.db
 DB += autoAdjustCoef.db
 DB += xferca.db
 DB += spdTempMonitoring.db
+DB += multTempMonitoring.db
 # For BCM specific diagnostics
 DB += msgStatus.db
 # For byte swapping

@@ -296,16 +296,16 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=IM01,INST=0,SYS=SYS
 # **** Load Bergoz db ***************************************************
 dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_IN_PORT),PORT_OUT=$(BERGOZ0_OUT_PORT),A=-1")
 dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),ADDR=-1,OMAX=0,IMAX=0")
-dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
+#dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
 
 # ***********************************************************************
 # **** Load db for Temperature Chassis on Ethercat **********************
 # Load the database templates for the EtherCAT components
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
-dbLoadRecords("db/EK1101.template", "DEVICE=${AMC0_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
+#dbLoadRecords("db/EK1101.template", "DEVICE=${AMC0_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
+#dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC0_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
@@ -424,9 +424,9 @@ dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
 #dbpf AMCC:${AREA}:${UNIT}:loadConfig 1
-dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
-dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
-dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
+#dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
+#dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
+#dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
 dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
 
 # Reactivate trigger to restart unsolicited messages from Bergoz
