@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
+    <width>784</width>
     <height>25</height>
    </rect>
   </property>
@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="TPR_Row" stretch="1,2,2,2,2,2,2,0,0,0,0">
+    <layout class="QHBoxLayout" name="TPR_Row" stretch="1,2,2,2,2,2,2,2">
      <property name="leftMargin">
       <number>6</number>
      </property>
@@ -174,33 +174,6 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="PyDMEnumComboBox" name="ChanenableNC">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMLineEdit" name="evrNC">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${PREFIX}:CH00_EVCODE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Place holder</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
   </layout>
@@ -210,11 +183,6 @@
    <class>PyDMLabel</class>
    <extends>QLabel</extends>
    <header>pydm.widgets.label</header>
-  </customwidget>
-  <customwidget>
-   <class>PyDMLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>pydm.widgets.line_edit</header>
   </customwidget>
   <customwidget>
    <class>PyDMEnumComboBox</class>
