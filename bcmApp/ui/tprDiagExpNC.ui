@@ -158,22 +158,6 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="PyDMLabel" name="PyDMLabel_8">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="alarmSensitiveContent" stdset="0">
-        <bool>true</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:MODE </string>
-       </property>
-       <property name="displayFormat" stdset="0">
-        <enum>PyDMLabel::Default</enum>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="2">
       <widget class="QLabel" name="label_8">
        <property name="text">
@@ -194,6 +178,16 @@
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLabel::Default</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:MODE </string>
        </property>
       </widget>
      </item>
@@ -847,6 +841,11 @@
    <class>PyDMEmbeddedDisplay</class>
    <extends>QFrame</extends>
    <header>pydm.widgets.embedded_display</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMEnumComboBox</class>
+   <extends>QComboBox</extends>
+   <header>pydm.widgets.enum_combo_box</header>
   </customwidget>
  </customwidgets>
  <resources/>
