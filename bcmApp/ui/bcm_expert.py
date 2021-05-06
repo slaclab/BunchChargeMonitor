@@ -16,6 +16,7 @@ from pydm.widgets import (PyDMLineEdit, PyDMSlider, PyDMRelatedDisplayButton,
                           PyDMByteIndicator, PyDMEnumComboBox, PyDMLabel)
 from pydm.widgets.waveformplot import WaveformCurveItem
 from edmbutton import PyDMEDMDisplayButton
+from epics import caget
 
 left_lbl = 'ADC Counts'
 btm_lbl = 'nanoseconds'
@@ -561,9 +562,20 @@ class BCMExpert(Display):
                 self.macros()["INST"],
                 self.mad,
                 self.sensor)
-
-        #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/bcmtprDiag.ui")       
-        trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
+        
+        rate_mode_pv = "TPR:{}:{}:{}:MODE".format(
+            self.macros()["AREA"],
+            self.macros()["IOC_UNIT"],
+            self.macros()["INST"])
+        print(rate_mode_pv)
+        rate_mode = caget(rate_mode_pv)
+        print(rate_mode)
+        if rate_mode == 1:
+            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/bcmtprDiag.ui")       
+            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
+        else:
+            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagExpNC.ui")       
+            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagExpNC.ui")#used to test without having to push the screen        
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
         trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(
