@@ -9,12 +9,12 @@ record (aSub, "$(P):SAMP_TIME") {
 
 
 # Raw Waveform converted into 16 bit unsigned values
-record (aSub, "$(P):RWF_U16") {
+record (aSub, "$(P):$(CHAN):RWF_U16") {
   field(SNAM, "calcRWF16")
   field(FTA, "SHORT")
   field(FTVA, "SHORT")
   field(NOA, "1024")
   field(NOVA, "1024")
-  field(INPA, "$(P):Stream0_16")
+  field(INPA, "$(P):Stream$(CHAN)_16")
   field(SCAN, "1 second")
 }

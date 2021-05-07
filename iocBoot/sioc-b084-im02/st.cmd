@@ -25,21 +25,21 @@ epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaults.yaml")
 # FPGA IP address
 # From crate ID = 0x0002, slot = 3
 # see the ATCA 101 training on Confluence for IP addr encoding in crateID + slot
-epicsEnvSet("FPGA_IP", "10.0.2.103")
+epicsEnvSet("FPGA_IP", "10.1.1.103")
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA","IN10")
-epicsEnvSet("AMC0_POS","791")
-#epicsEnvSet("AMC1_POS", "791")
+epicsEnvSet("AMC0_POS","431")
+epicsEnvSet("AMC1_POS", "591")
 epicsEnvSet("IOC_UNIT", "IM03")
 
 # BCM-TORO in crate 2, slot 3, AMC 0 (IM10431)
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(AMC0_POS)")
 # BCM-TORO in crate 2, slot 3, AMC 1 (IM10791)
-#epicsEnvSet("AMC1_PREFIX", "TORO:$(AREA):$(AMC1_POS)")
+epicsEnvSet("AMC1_PREFIX", "TORO:$(AREA):$(AMC1_POS)")
 
 # AMCC in crate 2, slot 3
 epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(IOC_UNIT)")
@@ -103,26 +103,46 @@ tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "tstream")
 dbLoadRecords("db/saveLoadConfig.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
 # Manually create records
-dbLoadRecords("db/bcmFACET2.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0, CHAN=0")
-#dbLoadRecords("db/bcmFACET2.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1, CHAN=0")
+dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1")
+
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1, CHAN=0")
+#calibration
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0, CHAN=1")
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1, CHAN=1")
 
 dbLoadRecords("db/carrierFACET2.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
-dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
-#dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX),CHAN=0")
+#calibration
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX),CHAN=1")
 
-dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX),CHAN=0")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX),CHAN=1")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX),CHAN=0")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX),CHAN=1")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX),CHAN=0")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX),CHAN=1")
 
 # BSA. Configure the PV name for BSA, the AMC number and the ADC number
 # inside the AMC. Numbers start from zero.
 # bcmBsaConfigure <PV name> <AMC number> <ADC number>
 dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC0_PREFIX),ATRB=TMIT_PC,LNK=$(AMC0_PREFIX):EF_TMIT_PC,SINK_SIZE=1")
+dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC1_PREFIX),ATRB=TMIT_PC,LNK=$(AMC1_PREFIX):EF_TMIT_PC,SINK_SIZE=1")
 bcmBsaConfigure "$(AMC0_PREFIX):TMIT_PC" 0 0
+bcmBsaConfigure "$(AMC1_PREFIX):TMIT_PC" 1 0
 
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
-#dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
 
 dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)")
 
@@ -133,6 +153,7 @@ dbLoadRecords("db/swap.db",   "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemotePort, DEST=
 dbLoadRecords("db/monitorFPGAReboot.db", "P=$(AMC_CARRIER_PREFIX), KEY=-66686157")
 
 dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC0_PREFIX),PORT=crossbar")
+dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC1_PREFIX),PORT=crossbar")
 dbLoadRecords("db/tprTrig.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
 dbLoadRecords("db/tprPattern.db","LOCA=${AREA}, IOC_UNIT=${IOC_UNIT}, INST=0, PORT=pattern")
 dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC0_PREFIX):TRG00:,PORT=trig")

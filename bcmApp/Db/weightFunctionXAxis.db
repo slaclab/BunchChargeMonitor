@@ -5,29 +5,29 @@
 # words are used by the header.
 
 # Giving the frequency in Hz, calculate the time in ns between each sample
-record (calc, "$(P):CLK_PERIOD") {
+record (calc, "$(P):$(CHAN):CLK_PERIOD") {
   field(DESC, "Time between samples in ns")
-  field(INPA, "$(P):AmcClkFreq CP")
+  field(INPA, "$(P):$(CHAN):AmcClkFreq CP")
   field(CALC, "1000000000/(2 * A)")
 }
 
 # Calculate the time correspondent to the number of samples of the pre-edge
 # of the weight function.
-record (calc, "$(P):TIME_PRE_RBV") {
+record (calc, "$(P):$(CHAN):TIME_PRE_RBV") {
   field(DESC, "Duration of pre-edge in ns")
-  field(INPA, "$(P):CLK_PERIOD CP")
-  field(INPB, "$(P):NumSamp0 CP")
+  field(INPA, "$(P):$(CHAN):CLK_PERIOD CP")
+  field(INPB, "$(P):$(CHAN):NumSamp0 CP")
   field(CALC, "A*B")
 }
 
 # Calculate the time correspondent to the number of samples of between edges
 # of the weight function.
 # The TrigDelay is half the size of NumSamp0 and NumSamp1.
-record (calc, "$(P):TIME_MID_RBV") {
+record (calc, "$(P):$(CHAN):TIME_MID_RBV") {
   field(DESC, "Duration between edges in ns")
-  field(INPA, "$(P):CLK_PERIOD CP")
-  field(INPB, "$(P):TrigDelay1 CP")
-  field(INPC, "$(P):NumSamp0 CP")
+  field(INPA, "$(P):$(CHAN):CLK_PERIOD CP")
+  field(INPB, "$(P):$(CHAN):TrigDelay1 CP")
+  field(INPC, "$(P):$(CHAN):NumSamp0 CP")
   field(CALC, "B*2<C ? C*2*A : B*2*A")
 }
 
@@ -35,15 +35,15 @@ record (calc, "$(P):TIME_MID_RBV") {
 # of the weight function. The 28 words from the header should not be discounted
 # in this case because the starting time of the post-edge is related to trigger
 # delay, which was already discounted.
-record (calc, "$(P):TIME_POS_RBV") {
+record (calc, "$(P):$(CHAN):TIME_POS_RBV") {
   field(DESC, "Duration of pos-edge in ns")
-  field(INPA, "$(P):CLK_PERIOD CP")
-  field(INPB, "$(P):NumSamp1 CP")
+  field(INPA, "$(P):$(CHAN):CLK_PERIOD CP")
+  field(INPB, "$(P):$(CHAN):NumSamp1 CP")
   field(CALC, "B * A")
 }
 
 # Desired time of the weight function pre-edge
-record (ai, "$(P):TIME_PRE") {
+record (ai, "$(P):$(CHAN):TIME_PRE") {
   field(DESC, "Duration of pre-edge in ns")
   field(PINI, "YES")
   info(autosaveFields, "VAL")
@@ -52,17 +52,17 @@ record (ai, "$(P):TIME_PRE") {
 # Calculate the number of samples of the pre-edge of the weight function 
 # giving the correspondent time and writes it to the firmware. Only even
 # numbers are allowed in the FPGA register (that is why we use ((~0)-1)&
-record (calcout, "$(P):NumSamp0_CLC") {
+record (calcout, "$(P):$(CHAN):NumSamp0_CLC") {
   field(DESC, "Number samples of pre-edge")
-  field(INPA, "$(P):TIME_PRE CP")
-  field(INPB, "$(P):AmcClkFreq CP")
+  field(INPA, "$(P):$(CHAN):TIME_PRE CP")
+  field(INPB, "$(P):$(CHAN):AmcClkFreq CP")
   field(CALC, "((~0)-1)&FLOOR((2*A*B)/1000000000)")
-  field(OUT, "$(P):NumSamp0 PP")
+  field(OUT, "$(P):$(CHAN):NumSamp0 PP")
   field(DOPT, "Use CALC")
 }
 
 # Desired time of the weight function between edges
-record (ai, "$(P):TIME_MID") {
+record (ai, "$(P):$(CHAN):TIME_MID") {
   field(DESC, "Duration of between edge in ns")
   field(PINI, "YES")
   info(autosaveFields, "VAL")
@@ -71,10 +71,10 @@ record (ai, "$(P):TIME_MID") {
 # Time between edges is doubled related to the edges. Also, timing zero for
 # this time is exactly timing zero for the pre-edge. So, we must not allow
 # that the between edges time keeps greater than the pre-edge.
-record (calc, "$(P):TIME_MIDC") {
+record (calc, "$(P):$(CHAN):TIME_MIDC") {
   field(DESC, "Duration of between edge in ns")
-  field(INPA, "$(P):TIME_PRE CP")
-  field(INPB, "$(P):TIME_MID CP")
+  field(INPA, "$(P):$(CHAN):TIME_PRE CP")
+  field(INPB, "$(P):$(CHAN):TIME_MID CP")
   field(CALC, "A<B? B/2 : A/2")
 }
 
@@ -82,17 +82,17 @@ record (calc, "$(P):TIME_MIDC") {
 # giving the correspondent time and writes it to the firmware. The time
 # here is twice the time in pre and post edges. Only even numbers are allowed
 # in the FPGA register (that is why we use ((~0)-1)&).
-record (calcout, "$(P):TrigDelay1_CLC") {
+record (calcout, "$(P):$(CHAN):TrigDelay1_CLC") {
   field(DESC, "Number samples of between edges")
-  field(INPA, "$(P):TIME_MIDC CP")
-  field(INPB, "$(P):AmcClkFreq CP")
+  field(INPA, "$(P):$(CHAN):TIME_MIDC CP")
+  field(INPB, "$(P):$(CHAN):AmcClkFreq CP")
   field(CALC, "((~0)-1)&FLOOR((2*A*B)/1000000000)")
-  field(OUT, "$(P):TrigDelay1 PP")
+  field(OUT, "$(P):$(CHAN):TrigDelay1 PP")
   field(DOPT, "Use CALC")
 }
 
 # Desired time of the weight function pos-edge
-record (ai, "$(P):TIME_POS") {
+record (ai, "$(P):$(CHAN):TIME_POS") {
   field(DESC, "Duration of pos-edge in ns")
   field(PINI, "YES")
   info(autosaveFields, "VAL")
@@ -100,32 +100,32 @@ record (ai, "$(P):TIME_POS") {
 
 # As per requirement, The maximum time of all windows summed up must not exceed
 # 1000 ns, or 1 us.
-record (calc, "$(P):TIME_POSC") {
+record (calc, "$(P):$(CHAN):TIME_POSC") {
   field(DESC, "Duration of pos-edge in ns")
-  field(INPA, "$(P):TIME_MIDC CP")
-  field(INPB, "$(P):TIME_POS CP")
+  field(INPA, "$(P):$(CHAN):TIME_MIDC CP")
+  field(INPB, "$(P):$(CHAN):TIME_POS CP")
   field(CALC, "A*2+B>1000 ? 1000-A*2 : B")
 }
 
 # Calculate the number of samples of the pos-edge of the weight function 
 # giving the correspondent time and writes it to the firmware. Only even
 # numbers are allowed in the FPGA register (that is why we use ((~0)-1)&).
-record (calcout, "$(P):NumSamp1_CLC") {
+record (calcout, "$(P):$(CHAN):NumSamp1_CLC") {
   field(DESC, "Number samples of pos-edge")
-  field(INPA, "$(P):TIME_POSC CP")
-  field(INPB, "$(P):AmcClkFreq CP")
+  field(INPA, "$(P):$(CHAN):TIME_POSC CP")
+  field(INPB, "$(P):$(CHAN):AmcClkFreq CP")
   field(CALC, "((~0)-1)&FLOOR((2*A*B)/1e9)")
-  field(OUT, "$(P):NumSamp1 PP")
+  field(OUT, "$(P):$(CHAN):NumSamp1 PP")
   field(DOPT, "Use CALC")
 }
 
 # Create a waveform with the sampling time. This will be the X axis of the
 # waveform.
-record (aSub, "$(P):WF_TIME") {
+record (aSub, "$(P):$(CHAN):WF_TIME") {
   field(SNAM, "calcTimeArray")
   field(FTA, "LONG")
   field(FTVA, "DOUBLE")
   field(NOA, "2020")
   field(NOVA, "2020")
-  field(INPA, "$(P):AmcClkFreq CP")
+  field(INPA, "$(P):$(CHAN):AmcClkFreq CP")
 }

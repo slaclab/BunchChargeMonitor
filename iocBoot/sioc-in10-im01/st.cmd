@@ -104,13 +104,19 @@ tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "tstream")
 dbLoadRecords("db/saveLoadConfig.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
 # Manually create records
-dbLoadRecords("db/bcmFACET2.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0, CHAN=0")
-dbLoadRecords("db/bcmFACET2.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1, CHAN=0")
+dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1")
+#calibration
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0, CHAN=1")
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1, CHAN=1")
 
 dbLoadRecords("db/carrierFACET2.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
-dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),STREAM_NUM=0")
+dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX),STREAM_NUM=0")
+#calibration
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),STREAM_NUM=1")
+dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX),STREAM_NUM=1")
 
 dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX)")
