@@ -12,9 +12,7 @@
 #   PARAM: The asyn paramter name. It must be defined in the dictionary file and assigned to a register
 #   AMC: The AMC hardware slot (0 or 1)
 #   CHAN: Which channel the TORO is connected to on the AMC card.
-########################################################################################################################
-
-
+#######################################################################################################################
 
 #======================================
 # Register with ScalVal interfaces
@@ -22,17 +20,17 @@
 
 file "RegisterOut.template" { pattern
 { P,        R,              DESC,                                       PINI,   SCAN,       PORT,  PARAM       }
-{ $(P):$(CHAN), NumSamp0,       "Number of samples 0"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp0 }
-{ $(P):$(CHAN), NumSamp1,       "Number of samples 1"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp1 }
-{ $(P):$(CHAN), TrigDelay1,     "Trigger delay 1"                         "NO",   "Passive",  $(PORT),    AMC$(AMC):CHAN$(CHAN):TrigDelay1 }
+{ $(P), NumSamp0,       "Number of samples 0"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp0 }
+{ $(P), NumSamp1,       "Number of samples 1"                     "NO",   "Passive",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp1 }
+{ $(P), TrigDelay1,     "Trigger delay 1"                         "NO",   "Passive",  $(PORT),    AMC$(AMC):CHAN$(CHAN):TrigDelay1 }
 }
 
 
 file "RegisterOutRBV.template" { pattern
 { P,           R,                DESC,                                     PINI,   SCAN,        PORT,  PARAM       }
-{ $(P):$(CHAN), NumSamp0RBV,       "Number of samples 0"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp0 }
-{ $(P):$(CHAN), NumSamp1RBV,       "Number of samples 1"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp1 }
-{ $(P):$(CHAN), TrigDelay1RBV,     "Trigger delay 1"                         "YES",  "1 second",  $(PORT),    AMC$(AMC):CHAN$(CHAN):TrigDelay1 }
+{ $(P), NumSamp0RBV,       "Number of samples 0"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp0 }
+{ $(P), NumSamp1RBV,       "Number of samples 1"                     "YES",  "1 second",  $(PORT),    AMC$(AMC):CHAN$(CHAN):NumSamp1 }
+{ $(P), TrigDelay1RBV,     "Trigger delay 1"                         "YES",  "1 second",  $(PORT),    AMC$(AMC):CHAN$(CHAN):TrigDelay1 }
 }
 
 #======================================
@@ -41,14 +39,14 @@ file "RegisterOutRBV.template" { pattern
 
 file "RegisterDoubleIn.template" { pattern
 { P,    R,                             DESC,             PINI,      SCAN,       PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
-{ $(P):$(CHAN), $(CHAN):TMIT_PC,        "Calculated TMIT in PC", "YES",  ".5 second",  $(PORT),     "pC",     AMC$(AMC):CHAN$(CHAN):TMIT         }
-{ $(P):$(CHAN), MultResultA0,           "",                      "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA0 }
-{ $(P):$(CHAN), MultResultA1,           "",                      "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA1 }
+{ $(P), TMIT_PC,        "Calculated TMIT in PC", "YES",  ".5 second",  $(PORT),     "pC",     AMC$(AMC):CHAN$(CHAN):TMIT         }
+{ $(P), MultResultA0,           "",                      "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA0 }
+{ $(P), MultResultA1,           "",                      "YES",  ".5 second",  $(PORT),     "",       AMC$(AMC):CHAN$(CHAN):MultResultA1 }
 }
 
 file "tmit_facet2.template" { pattern
 { P,    CHAN,                 DESC,                 PINI,    SCAN        }
-{ $(P):$(CHAN), $(CHAN), "Calculated Number of Electrons",  "YES",   ".5 second" }
+{ $(P), $(CHAN), "Calculated Number of Electrons",  "YES",   ".5 second" }
 }
 
 #======================================
@@ -57,18 +55,18 @@ file "tmit_facet2.template" { pattern
 
 file "RegisterDoubleOut.template" { pattern
 { P,              R,            DESC,                   PINI,    SCAN,        PORT,     EGU,                PARAM                  }
-{ $(P):$(CHAN),     CoefA0,       "Coef A0 for 1st group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
-{ $(P):$(CHAN),     CoefA1,       "Coef A1 for 2nd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
-{ $(P):$(CHAN),     CoefA2,       "Coef A2 for 3rd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
-{ $(P):$(CHAN),     CoefOffset,   "Coef Offset",                "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
+{ $(P),     CoefA0,       "Coef A0 for 1st group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
+{ $(P),     CoefA1,       "Coef A1 for 2nd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
+{ $(P),     CoefA2,       "Coef A2 for 3rd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
+{ $(P),     CoefOffset,   "Coef Offset",                "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
 }
 
 file "RegisterDoubleOutRBV.template" { pattern
 { P,           R,               DESC,                    PINI,   SCAN,       PORT,       EGU,               PARAM                  }
-{ $(P):$(CHAN),     CoefA0RBV,    "Coef A0 for 1st group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
-{ $(P):$(CHAN),     CoefA1RBV,    "Coef A1 for 2nd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
-{ $(P):$(CHAN),     CoefA2RBV,    "Coef A2 for 3rd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
-{ $(P):$(CHAN),     CoefOffsetRBV,"Coef Offset",                "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
+{ $(P),     CoefA0RBV,    "Coef A0 for 1st group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
+{ $(P),     CoefA1RBV,    "Coef A1 for 2nd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
+{ $(P),     CoefA2RBV,    "Coef A2 for 3rd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
+{ $(P),     CoefOffsetRBV,"Coef Offset",                "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
 }
 
 

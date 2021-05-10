@@ -37,7 +37,7 @@ bcm_pv = { "x": ":SAMP_TIME.VALA", WaveformType.RAW: ":RWF_U16.VALA", WaveformTy
 # a few PV names. The differences are in the dictionaries below while the PV
 # names are not unified.
 scPVs = {"charge":"CHRG","nel":"TMIT"}
-ncPVs = {"charge":"0:TMIT","nel":"0:TMIT_NEL"}
+ncPVs = {"charge":"TMIT_PC","nel":"0:TMIT_NEL"}
 
 class CalPlotCtxBox(pg.ViewBox, QObject):
     """ Implements a custom right click menu for Calibration plots """
@@ -181,7 +181,7 @@ class BcmCalPlot(pg.PlotWidget):
                 left = left_lbl,
                 bottom = btm_lbl)
         self.plotItem1.setTitle(
-                "{} {}".format(self.macros["INST"],
+                "{} {}".format(self.macros["CHAN"],
                                  self.wf))
 
     def _set_data_src(self):
@@ -190,8 +190,9 @@ class BcmCalPlot(pg.PlotWidget):
                 self.macros["POS"])
 
         x_pv = "{}{}".format(src_pv_prefix, bcm_pv["x"])
-        y_pv = "{}{}".format(src_pv_prefix, bcm_pv[self.wf])
-        window_pv = "{}{}".format(src_pv_prefix, bcm_pv["window"])
+        y_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv[self.wf])
+        window_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv["window"])
+        
 
         for curve_ch, window_ch in (self.curve.channels(), self.window_curve.channels()):
             try:
@@ -231,9 +232,10 @@ class BcmPyDMSlider(PyDMSlider):
         self.macros = macros
         self.sensor = ch.split(":")[0]
         self.window_edge = ch.split(":")[-1]
-        self.pv = "TORO:{}:{}:{}".format(\
+        self.pv = "TORO:{}:{}:{}:{}".format(\
                 self.macros["AREA"],
                 self.macros["POS"],
+                self.macros["INST"],
                 self.window_edge)
 
         self.value_label = PyDMLineEdit(self)
@@ -407,13 +409,9 @@ class BCMExpert(Display):
             # is legacy in NC and more recent to SC.
 	    self.isSC = False
 	    
-        if self.isSC:
-            self.setWindowTitle("Bunch Charge {} Calibration".format(
-                self.macros()["CHAN"]))
-        else:
-            self.setWindowTitle("Bunch Charge {} Calibration".format(
-                self.macros()["INST"]))        
 
+        self.setWindowTitle("Bunch Charge {}".format(
+            self.macros()["CHAN"]))   
 
         if self.isSC:
             self.pvDict = scPVs
@@ -487,12 +485,8 @@ class BCMExpert(Display):
 
         font = self.font()
         font.setPointSize(11)
-        if self.isSC:
-            charge_lbl1 = QLabel("{} TMIT".format(
-                                self.macros()["CHAN"]))
-        else:
-            charge_lbl1 = QLabel("{} TMIT".format(
-                                self.macros()["INST"]))                                
+        charge_lbl1 = QLabel("{} TMIT".format(
+                            self.macros()["CHAN"]))                                
         charge_lbl1.setFont(font)
        
         nel_lbl = PyDMLabel()
@@ -515,10 +509,10 @@ class BCMExpert(Display):
         
         tmit_pc_lbl = PyDMLabel()
         tmit_pc_lbl.setText("TMIT_PC")
-        tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}".format(
+        tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
-                              #self.macros()["CHAN"],
+                              self.macros()["INST"],
                               self.pvDict["charge"])
         tmit_pc_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
@@ -562,20 +556,24 @@ class BCMExpert(Display):
                 self.macros()["INST"],
                 self.mad,
                 self.sensor)
-        
-        rate_mode_pv = "TPR:{}:{}:{}:MODE".format(
-            self.macros()["AREA"],
-            self.macros()["IOC_UNIT"],
-            self.macros()["INST"])
-        print(rate_mode_pv)
-        rate_mode = caget(rate_mode_pv)
-        print(rate_mode)
+                
+        if self.isSC:
+            rate_mode_pv = "TPR:{}:{}:{}:MODE".format(
+                self.macros()["AREA"],
+                self.macros()["IOC_UNIT"],
+                self.macros()["INST"])
+            rate_mode = caget(rate_mode_pv)
+        else:
+            rate_mode = 0
+            
+
         if rate_mode == 1:
             #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/bcmtprDiag.ui")       
             trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
         else:
             #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagExpNC.ui")       
-            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagExpNC.ui")#used to test without having to push the screen        
+            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagExpNC.ui")#used to test without having to push the screen    
+                
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
         trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(
