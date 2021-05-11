@@ -394,7 +394,7 @@
    </property>
    <property name="filenames" stdset="0">
     <stringlist>
-     <string>tprDiagExpNew.ui</string>
+     <string>tprDiagExpSC.ui</string>
     </stringlist>
    </property>
    <property name="openInNewWindow" stdset="0">
