@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="TPR_Row" stretch="1,2,2,2,2,2,0,2,2">
+    <layout class="QHBoxLayout" name="TPR_Row" stretch="1,4,1,2,2,1,1">
      <property name="leftMargin">
       <number>6</number>
      </property>
@@ -35,7 +35,7 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="PyDMLabel" name="Name_2">
+      <widget class="PyDMLabel" name="ChanNum">
        <property name="toolTip">
         <string/>
        </property>
@@ -57,50 +57,25 @@
       </widget>
      </item>
      <item>
-      <widget class="PyDMEnumComboBox" name="Rate_Mode">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="PyDMLabel" name="TrigDesc">
        <property name="toolTip">
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_RATEMODE</string>
+        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:TPRTRIG${CHN}.DESC</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="PyDMEnumComboBox" name="Fixed_Rate">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="PyDMLineEdit" name="EventCode">
        <property name="toolTip">
         <string/>
        </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_FIXEDRATE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMEnumComboBox" name="AC_Rate">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string/>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_ACRATE</string>
+        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_EVCODE</string>
        </property>
       </widget>
      </item>
@@ -112,75 +87,44 @@
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <property name="alarmSensitiveContent" stdset="0">
-        <bool>true</bool>
-       </property>
        <property name="channel" stdset="0">
         <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_RATE</string>
        </property>
-       <property name="displayFormat" stdset="0">
-        <enum>PyDMLabel::Decimal</enum>
-       </property>
       </widget>
      </item>
      <item>
-      <widget class="PyDMEnumComboBox" name="SCDestination">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="PyDMEnumComboBox" name="TriggerTCTL">
        <property name="toolTip">
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_DESTMODE</string>
+        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:TRG${CHN}_SYS0_TCTL</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="PyDMLineEdit" name="SCDestMask">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_DESTMASK</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMEnumComboBox" name="ChanEnableNC">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_SYS0_TCTL</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PyDMLabel" name="EventCounts">
+      <widget class="PyDMLineEdit" name="Delay">
        <property name="toolTip">
         <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <property name="alarmSensitiveContent" stdset="0">
-        <bool>true</bool>
+       <property name="channel" stdset="0">
+        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:TRG${CHN}_SYS0_TDES</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMLineEdit" name="Width">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
        <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_CNT</string>
-       </property>
-       <property name="displayFormat" stdset="0">
-        <enum>PyDMLabel::Decimal</enum>
+        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:TRG${CHN}_SYS0_TWID</string>
        </property>
       </widget>
      </item>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
+    <width>1110</width>
     <height>729</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>${LOCA} TPR NC Expert Display</string>
+   <string>${LOCA} TPR NC Display</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -158,22 +158,6 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="PyDMLabel" name="PyDMLabel_8">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="alarmSensitiveContent" stdset="0">
-        <bool>true</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:MODE </string>
-       </property>
-       <property name="displayFormat" stdset="0">
-        <enum>PyDMLabel::Default</enum>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="2">
       <widget class="QLabel" name="label_8">
        <property name="text">
@@ -197,6 +181,16 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:MODE </string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -206,7 +200,7 @@
      <x>520</x>
      <y>10</y>
      <width>416</width>
-     <height>101</height>
+     <height>151</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -268,7 +262,7 @@
         <string>CHN=00</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -296,7 +290,7 @@
         <string>CHN=01</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -324,7 +318,7 @@
         <string>CHN=02</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -352,7 +346,7 @@
         <string>CHN=03</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -380,7 +374,7 @@
         <string>CHN=04</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -408,7 +402,7 @@
         <string>CHN=05</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -436,7 +430,7 @@
         <string>CHN=06</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -464,7 +458,7 @@
         <string>CHN=07</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -492,7 +486,7 @@
         <string>CHN=08</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -520,7 +514,7 @@
         <string>CHN=09</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -548,7 +542,7 @@
         <string>CHN=10</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -576,7 +570,7 @@
         <string>CHN=11</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -604,7 +598,7 @@
         <string>CHN=12</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -632,7 +626,7 @@
         <string>CHN=13</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -660,7 +654,7 @@
         <string>CHN=14</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -688,7 +682,7 @@
         <string>CHN=15</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNC.ui</string>
+        <string>tprDiagRowNC.ui</string>
        </property>
       </widget>
      </item>
@@ -703,15 +697,18 @@
       <height>27</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="Column_headers" stretch="1,2,2,2,2,2,2,2,2">
+    <layout class="QHBoxLayout" name="Column_headers" stretch="1,4,1,2,2,1,1">
+     <property name="spacing">
+      <number>0</number>
+     </property>
      <property name="leftMargin">
-      <number>6</number>
+      <number>0</number>
      </property>
      <property name="topMargin">
       <number>0</number>
      </property>
      <property name="rightMargin">
-      <number>6</number>
+      <number>0</number>
      </property>
      <property name="bottomMargin">
       <number>0</number>
@@ -733,7 +730,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Rate_Mode">
+      <widget class="QLabel" name="TrigDesc">
        <property name="maximumSize">
         <size>
          <width>16777215</width>
@@ -741,39 +738,17 @@
         </size>
        </property>
        <property name="text">
-        <string>Rate Mode</string>
+        <string>Trigger Description</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Fixed_Rate">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
+      <widget class="QLabel" name="Event_Code">
        <property name="text">
-        <string>Fixed Rate</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="AC_Rate">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>AC Rate</string>
+        <string>Event Code</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -797,15 +772,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Dest_Mode">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
+      <widget class="QLabel" name="Trigger_TCTL">
        <property name="text">
-        <string>Dest Mode</string>
+        <string>NC Trigger TCTL</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -813,22 +782,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="DestMask">
+      <widget class="QLabel" name="Delay">
        <property name="text">
-        <string>Dest Mask</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="Ch_Enable">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>NC Ch Enable</string>
+        <string>Delay(ns)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -836,15 +792,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Event_Couts">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>25</height>
-        </size>
-       </property>
+      <widget class="QLabel" name="Width">
        <property name="text">
-        <string>NC Event Counts</string>
+        <string>Width (ns)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -854,6 +804,54 @@
     </layout>
    </widget>
   </widget>
+  <widget class="PyDMRelatedDisplayButton" name="SCTriggers">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>110</y>
+     <width>125</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="text">
+    <string>SC Triggers</string>
+   </property>
+   <property name="filenames" stdset="0">
+    <stringlist>
+     <string>tprDiagSC.ui</string>
+    </stringlist>
+   </property>
+   <property name="openInNewWindow" stdset="0">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="PyDMRelatedDisplayButton" name="NCChan">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>140</y>
+     <width>125</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="text">
+    <string>NC Channels</string>
+   </property>
+   <property name="filenames" stdset="0">
+    <stringlist>
+     <string>tprDiagExpNC.ui</string>
+    </stringlist>
+   </property>
+   <property name="openInNewWindow" stdset="0">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -862,9 +860,19 @@
    <header>pydm.widgets.label</header>
   </customwidget>
   <customwidget>
+   <class>PyDMRelatedDisplayButton</class>
+   <extends>QPushButton</extends>
+   <header>pydm.widgets.related_display_button</header>
+  </customwidget>
+  <customwidget>
    <class>PyDMEmbeddedDisplay</class>
    <extends>QFrame</extends>
    <header>pydm.widgets.embedded_display</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMEnumComboBox</class>
+   <extends>QComboBox</extends>
+   <header>pydm.widgets.enum_combo_box</header>
   </customwidget>
  </customwidgets>
  <resources/>

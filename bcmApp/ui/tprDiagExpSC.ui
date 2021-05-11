@@ -268,7 +268,7 @@
         <string>CHN=00</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -296,7 +296,7 @@
         <string>CHN=01</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -324,7 +324,7 @@
         <string>CHN=02</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -352,7 +352,7 @@
         <string>CHN=03</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -380,7 +380,7 @@
         <string>CHN=04</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -408,7 +408,7 @@
         <string>CHN=05</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -436,7 +436,7 @@
         <string>CHN=06</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -464,7 +464,7 @@
         <string>CHN=07</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -492,7 +492,7 @@
         <string>CHN=08</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -520,7 +520,7 @@
         <string>CHN=09</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -548,7 +548,7 @@
         <string>CHN=10</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -576,7 +576,7 @@
         <string>CHN=11</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -604,7 +604,7 @@
         <string>CHN=12</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -632,7 +632,7 @@
         <string>CHN=13</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -660,7 +660,7 @@
         <string>CHN=14</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>
@@ -688,7 +688,7 @@
         <string>CHN=15</string>
        </property>
        <property name="filename" stdset="0">
-        <string>tprDiagExpRowNew.ui</string>
+        <string>tprDiagExpRowSC.ui</string>
        </property>
       </widget>
      </item>

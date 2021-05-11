@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bunch Charge ${INST} Equation Parameters</string>
+   <string>Bunch Charge ${CHAN} Equation Parameters</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -25,7 +25,7 @@
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="text">
-      <string>${INST}</string>
+      <string>${CHAN}</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -55,7 +55,7 @@
         <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA1</string>
+        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA1</string>
        </property>
       </widget>
      </item>
@@ -68,7 +68,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefOffsetRBV</string>
+        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefOffsetRBV</string>
        </property>
       </widget>
      </item>
@@ -87,7 +87,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA1RBV</string>
+        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA1RBV</string>
        </property>
       </widget>
      </item>
@@ -106,7 +106,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA0RBV</string>
+        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA0RBV</string>
        </property>
       </widget>
      </item>
@@ -142,7 +142,7 @@
         <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA0</string>
+        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA0</string>
        </property>
       </widget>
      </item>
@@ -161,7 +161,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefOffset</string>
+        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefOffset</string>
        </property>
       </widget>
      </item>

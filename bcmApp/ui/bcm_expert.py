@@ -37,7 +37,7 @@ bcm_pv = { "x": ":SAMP_TIME.VALA", WaveformType.RAW: ":RWF_U16.VALA", WaveformTy
 # a few PV names. The differences are in the dictionaries below while the PV
 # names are not unified.
 scPVs = {"charge":"CHRG","nel":"TMIT"}
-ncPVs = {"charge":"TMIT_PC","nel":"0:TMIT_NEL"}
+ncPVs = {"charge":"TMIT_PC","nel":"TMIT_NEL"}
 
 class CalPlotCtxBox(pg.ViewBox, QObject):
     """ Implements a custom right click menu for Calibration plots """
@@ -491,9 +491,10 @@ class BCMExpert(Display):
        
         nel_lbl = PyDMLabel()
         nel_lbl.setText("NEL")
-        nel_lbl.channel = "ca://TORO:{}:{}:{}".format(
+        nel_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
+                              self.macros()["INST"],
                               self.pvDict["nel"])
         nel_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
@@ -571,18 +572,32 @@ class BCMExpert(Display):
             #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/bcmtprDiag.ui")       
             trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
         else:
-            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagExpNC.ui")       
-            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagExpNC.ui")#used to test without having to push the screen    
+            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
+            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen    
                 
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
-        trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(
+        trig_btn.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
                 self.macros()["AREA"],
                 self.macros()["IOC_UNIT"],
-                self.macros()["INST"],
+                #self.macros()["INST"],
                 self.macros()["IOC"],
                 self.macros()["CPU"],
                 self.macros()["CRATE"])
+        #there are only one set of triggers per slot and they are only mapped to one set of PVs with INST=0
+        
+        if not(self.isSC):
+            calb_btn = PyDMRelatedDisplayButton(filename="bcm_expert.py")
+            calb_btn.setText("Calibration...")
+            calb_btn.openInNewWindow = True
+            calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
+                    self.macros()["AREA"],
+                    self.macros()["POS"],
+                    self.macros()["CHAN"],
+                    self.macros()["IOC_UNIT"],
+                    self.macros()["IOC"],
+                    self.macros()["CPU"],
+                    self.macros()["CRATE"])
 
         # Bergoz button is shown only if it is running in the SC accelerator
         if self.isSC:
@@ -610,6 +625,8 @@ class BCMExpert(Display):
         # Bergoz button is shown only if it is running in the SC accelerator
         if self.isSC:
             self.btn_layout.addWidget(bergoz_btn)
+        else:
+            self.btn_layout.addWidget(calb_btn)
         self.btn_layout.addWidget(help_btn)
         self.main_layout.addLayout(self.btn_layout)
 
