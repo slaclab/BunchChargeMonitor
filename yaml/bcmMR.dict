@@ -34,8 +34,8 @@
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxLinkUp                   RxLinkUp
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/ClkSel                     ClkSel
 /mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxPolarity                 RxPolarity
-/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/DacSrs                  DacSrs_0
-/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/DacSrs                  DacSrs_1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/DacSrs                  DacSrs
+#/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/DacSrs                  DacSrs_1
 /mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/BoardHealthMps          HealthMPS
 /mmio/AmcCarrierCore/BpUdpServer/ServerRemotePort                              ServerRemotePort
 /mmio/AmcCarrierCore/BpUdpServer/ServerRemoteIp                                ServerRemoteIp

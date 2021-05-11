@@ -284,7 +284,7 @@ class BcmWeightFnSliders(QWidget):
 
         self.pre_label = QLabel("End of Pedestal (ns)")
         self.mid_label = QLabel("End of Transition Region (ns)")
-        self.pos_label = QLabel("End of Beam Pulse (ns)")
+        self.pos_label = QLabel("Duration of Beam Pulse (ns)")
 
         self.sliders = [self.pre_slider, self.mid_slider, self.pos_slider]
         self.labels = [self.pre_label, self.mid_label, self.pos_label]

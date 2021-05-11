@@ -3,7 +3,10 @@ record(calc, "$(P):TMIT_NEL") {
   field(DESC, "$(DESC)")
   field(PINI, "$(PINI)")
   field(SCAN, "$(SCAN)")
-  field(INPA, "$(P):$(CHAN):TMIT_PC")
+  #field(INPA, "$(P):$(CHAN):TMIT_PC")
+  #$(P) is being passed with the channel at the moment 
+  #once this is updated we should revert to the top version
+  field(INPA, "$(P):TMIT_PC")
   field(CALC, "A*6241509.13")
   field(EGU, "Nel")
 }

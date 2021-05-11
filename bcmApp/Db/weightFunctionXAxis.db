@@ -7,7 +7,7 @@
 # Giving the frequency in Hz, calculate the time in ns between each sample
 record (calc, "$(P):$(CHAN):CLK_PERIOD") {
   field(DESC, "Time between samples in ns")
-  field(INPA, "$(P):$(CHAN):AmcClkFreq CP")
+  field(INPA, "$(P):AmcClkFreq CP")
   field(CALC, "1000000000/(2 * A)")
 }
 
@@ -55,7 +55,7 @@ record (ai, "$(P):$(CHAN):TIME_PRE") {
 record (calcout, "$(P):$(CHAN):NumSamp0_CLC") {
   field(DESC, "Number samples of pre-edge")
   field(INPA, "$(P):$(CHAN):TIME_PRE CP")
-  field(INPB, "$(P):$(CHAN):AmcClkFreq CP")
+  field(INPB, "$(P):AmcClkFreq CP")
   field(CALC, "((~0)-1)&FLOOR((2*A*B)/1000000000)")
   field(OUT, "$(P):$(CHAN):NumSamp0 PP")
   field(DOPT, "Use CALC")
@@ -85,7 +85,7 @@ record (calc, "$(P):$(CHAN):TIME_MIDC") {
 record (calcout, "$(P):$(CHAN):TrigDelay1_CLC") {
   field(DESC, "Number samples of between edges")
   field(INPA, "$(P):$(CHAN):TIME_MIDC CP")
-  field(INPB, "$(P):$(CHAN):AmcClkFreq CP")
+  field(INPB, "$(P):AmcClkFreq CP")
   field(CALC, "((~0)-1)&FLOOR((2*A*B)/1000000000)")
   field(OUT, "$(P):$(CHAN):TrigDelay1 PP")
   field(DOPT, "Use CALC")
@@ -113,7 +113,7 @@ record (calc, "$(P):$(CHAN):TIME_POSC") {
 record (calcout, "$(P):$(CHAN):NumSamp1_CLC") {
   field(DESC, "Number samples of pos-edge")
   field(INPA, "$(P):$(CHAN):TIME_POSC CP")
-  field(INPB, "$(P):$(CHAN):AmcClkFreq CP")
+  field(INPB, "$(P):AmcClkFreq CP")
   field(CALC, "((~0)-1)&FLOOR((2*A*B)/1e9)")
   field(OUT, "$(P):$(CHAN):NumSamp1 PP")
   field(DOPT, "Use CALC")
@@ -127,5 +127,5 @@ record (aSub, "$(P):$(CHAN):WF_TIME") {
   field(FTVA, "DOUBLE")
   field(NOA, "2020")
   field(NOVA, "2020")
-  field(INPA, "$(P):$(CHAN):AmcClkFreq CP")
+  field(INPA, "$(P):AmcClkFreq CP")
 }
