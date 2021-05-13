@@ -36,7 +36,7 @@ epicsEnvSet("CPSW_PORT","Atca7")
 #epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
 
 ###addition
-epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
+epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml")
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
 epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 
@@ -265,12 +265,12 @@ dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 ###if both daughter cards were to be used
 ###dbLoadRecords("db/streamControl.db", "P=$(AMC1_PREFIX)")
 
-dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=0")
 #dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
 
-dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
 
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************

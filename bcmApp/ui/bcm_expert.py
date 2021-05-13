@@ -188,10 +188,13 @@ class BcmCalPlot(pg.PlotWidget):
         src_pv_prefix = "ca://TORO:{}:{}".format(
                 self.macros["AREA"],
                 self.macros["POS"])
-
-        x_pv = "{}{}".format(src_pv_prefix, bcm_pv["x"])
+        x_pv = "{}{}".format(src_pv_prefix, bcm_pv["x"])                
         y_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv[self.wf])
         window_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv["window"])
+        
+        print(x_pv)
+        print(y_pv)
+        print(window_pv)
         
 
         for curve_ch, window_ch in (self.curve.channels(), self.window_curve.channels()):
@@ -491,7 +494,13 @@ class BCMExpert(Display):
        
         nel_lbl = PyDMLabel()
         nel_lbl.setText("NEL")
-        nel_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
+        if self.isSC:
+            nel_lbl.channel = "ca://TORO:{}:{}:{}".format(
+                              self.macros()["AREA"],
+                              self.macros()["POS"],
+                              self.pvDict["nel"])
+        else:
+            nel_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
@@ -509,8 +518,14 @@ class BCMExpert(Display):
         charge_lbl2.setFont(font)
         
         tmit_pc_lbl = PyDMLabel()
-        tmit_pc_lbl.setText("TMIT_PC")
-        tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
+        tmit_pc_lbl.setText("charge")
+        if self.isSC:
+            tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}".format(
+                              self.macros()["AREA"],
+                              self.macros()["POS"],
+                              self.pvDict["charge"])            
+        else:
+            tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
