@@ -131,8 +131,8 @@ dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=1")
 # BSA. Configure the PV name for BSA, the AMC number and the ADC number
 # inside the AMC. Numbers start from zero.
 # bcmBsaConfigure <PV name> <AMC number> <ADC number>
-dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC0_PREFIX),ATRB=TMIT_PC,LNK=$(AMC0_PREFIX):EF_TMIT_PC,SINK_SIZE=1")
-bcmBsaConfigure "$(AMC0_PREFIX):TMIT_PC" 0 0
+dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC0_PREFIX):0,ATRB=TMIT_PC,LNK=$(AMC0_PREFIX):EF_TMIT_PC,SINK_SIZE=1")
+bcmBsaConfigure "$(AMC0_PREFIX):0:TMIT_PC" 0 0
 
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 

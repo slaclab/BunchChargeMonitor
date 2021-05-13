@@ -190,12 +190,7 @@ class BcmCalPlot(pg.PlotWidget):
                 self.macros["POS"])
         x_pv = "{}{}".format(src_pv_prefix, bcm_pv["x"])                
         y_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv[self.wf])
-        window_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv["window"])
-        
-        print(x_pv)
-        print(y_pv)
-        print(window_pv)
-        
+        window_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv["window"])      
 
         for curve_ch, window_ch in (self.curve.channels(), self.window_curve.channels()):
             try:
