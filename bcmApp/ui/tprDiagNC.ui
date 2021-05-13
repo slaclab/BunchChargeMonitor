@@ -186,6 +186,9 @@
        <property name="toolTip">
         <string/>
        </property>
+       <property name="alarmSensitiveBorder" stdset="0">
+        <bool>false</bool>
+       </property>
        <property name="channel" stdset="0">
         <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:MODE </string>
        </property>
@@ -200,7 +203,7 @@
      <x>520</x>
      <y>10</y>
      <width>416</width>
-     <height>151</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -697,7 +700,7 @@
       <height>27</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="Column_headers" stretch="1,4,1,2,2,1,1">
+    <layout class="QHBoxLayout" name="Column_headers" stretch="1,4,1,1,2,2,2,1,1">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -714,7 +717,7 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="Ch_Num">
+      <widget class="QLabel" name="Num">
        <property name="maximumSize">
         <size>
          <width>16777215</width>
@@ -722,7 +725,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Ch #</string>
+        <string>Num</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -746,6 +749,56 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="Width">
+       <property name="text">
+        <string>Width (ns)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="Delay">
+       <property name="text">
+        <string>Delay(ns)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="Trigger_TCTL">
+       <property name="text">
+        <string>Trigger TCTL</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="TrigSrc">
+       <property name="text">
+        <string>Trig Source</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="ChanTCTL">
+       <property name="text">
+        <string>Channel TCTL</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="Event_Code">
        <property name="text">
         <string>Event Code</string>
@@ -765,36 +818,6 @@
        </property>
        <property name="text">
         <string>Rate</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="Trigger_TCTL">
-       <property name="text">
-        <string>NC Trigger TCTL</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="Delay">
-       <property name="text">
-        <string>Delay(ns)</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="Width">
-       <property name="text">
-        <string>Width (ns)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -852,6 +875,41 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="PyDMLineEdit" name="Master_Delay">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>140</y>
+     <width>125</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="channel" stdset="0">
+    <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:TREF</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="MasterDelayLbl">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>110</y>
+     <width>125</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Master Delay</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -868,6 +926,11 @@
    <class>PyDMEmbeddedDisplay</class>
    <extends>QFrame</extends>
    <header>pydm.widgets.embedded_display</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>pydm.widgets.line_edit</header>
   </customwidget>
   <customwidget>
    <class>PyDMEnumComboBox</class>

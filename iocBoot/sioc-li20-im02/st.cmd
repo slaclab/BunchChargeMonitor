@@ -103,20 +103,35 @@ tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "tstream")
 dbLoadRecords("db/saveLoadConfig.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
 # Manually create records
-dbLoadRecords("db/bcmFACET2.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0, CHAN=0")
-dbLoadRecords("db/bcmFACET2.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1, CHAN=0")
+dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1")
+
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX):0, PORT=$(CPSW_PORT), AMC=1, CHAN=0")
+#calibration
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX):1, PORT=$(CPSW_PORT), AMC=0, CHAN=1")
+dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX):1, PORT=$(CPSW_PORT), AMC=1, CHAN=1")
 
 dbLoadRecords("db/carrierFACET2.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
-dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX),CHAN=0")
+#calibration
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX),CHAN=1")
 
-dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX)")
-dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX)")
-dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX),CHAN=0")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC1_PREFIX),CHAN=1")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX),CHAN=0")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC1_PREFIX),CHAN=1")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX),CHAN=0")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=1")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC1_PREFIX),CHAN=1")
 
 # BSA. Configure the PV name for BSA, the AMC number and the ADC number
 # inside the AMC. Numbers start from zero.
@@ -138,25 +153,25 @@ dbLoadRecords("db/swap.db",   "P=$(AMC_CARRIER_PREFIX), SRC=SrvRemotePort, DEST=
 dbLoadRecords("db/monitorFPGAReboot.db", "P=$(AMC_CARRIER_PREFIX), KEY=-66686157")
 
 dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC0_PREFIX),PORT=crossbar")
-dbLoadRecords("db/crossbarCtrl.db","DEV=$(AMC1_PREFIX),PORT=crossbar")
+
 dbLoadRecords("db/tprTrig.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,PORT=trig")
 dbLoadRecords("db/tprPattern.db","LOCA=${AREA}, IOC_UNIT=${IOC_UNIT}, INST=0, PORT=pattern")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC0_PREFIX):TRG00:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC0_PREFIX):TRG01:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=02,DEV_PREFIX=$(AMC0_PREFIX):TRG02:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=03,DEV_PREFIX=$(AMC0_PREFIX):TRG03:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=04,DEV_PREFIX=$(AMC0_PREFIX):TRG04:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=05,DEV_PREFIX=$(AMC0_PREFIX):TRG05:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=06,DEV_PREFIX=$(AMC0_PREFIX):TRG06:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=07,DEV_PREFIX=$(AMC0_PREFIX):TRG07:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=08,DEV_PREFIX=$(AMC0_PREFIX):TRG08:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=09,DEV_PREFIX=$(AMC0_PREFIX):TRG09:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=10,DEV_PREFIX=$(AMC0_PREFIX):TRG10:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=11,DEV_PREFIX=$(AMC0_PREFIX):TRG11:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=12,DEV_PREFIX=$(AMC0_PREFIX):TRG12:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=13,DEV_PREFIX=$(AMC0_PREFIX):TRG13:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=14,DEV_PREFIX=$(AMC0_PREFIX):TRG14:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=15,DEV_PREFIX=$(AMC0_PREFIX):TRG15:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=00,DEV_PREFIX=$(AMC0_PREFIX):TRG00:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=01,DEV_PREFIX=$(AMC0_PREFIX):TRG01:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=02,DEV_PREFIX=$(AMC0_PREFIX):TRG02:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=03,DEV_PREFIX=$(AMC0_PREFIX):TRG03:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=04,DEV_PREFIX=$(AMC0_PREFIX):TRG04:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=05,DEV_PREFIX=$(AMC0_PREFIX):TRG05:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=06,DEV_PREFIX=$(AMC0_PREFIX):TRG06:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=07,DEV_PREFIX=$(AMC0_PREFIX):TRG07:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=08,DEV_PREFIX=$(AMC0_PREFIX):TRG08:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=09,DEV_PREFIX=$(AMC0_PREFIX):TRG09:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=10,DEV_PREFIX=$(AMC0_PREFIX):TRG10:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=11,DEV_PREFIX=$(AMC0_PREFIX):TRG11:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=12,DEV_PREFIX=$(AMC0_PREFIX):TRG12:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=13,DEV_PREFIX=$(AMC0_PREFIX):TRG13:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=14,DEV_PREFIX=$(AMC0_PREFIX):TRG14:,PORT=trig")
+#dbLoadRecords("db/tprDeviceNamePV.db","LOCA=$(AREA),IOC_UNIT=$(IOC_UNIT),INST=0,SYS=SYS0,NN=15,DEV_PREFIX=$(AMC0_PREFIX):TRG15:,PORT=trig")
 
 # ************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ******
