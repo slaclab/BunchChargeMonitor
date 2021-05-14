@@ -128,6 +128,9 @@ dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=1")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=1")
 
+dbLoadRecords("db/facet2Calibration.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/facet2Calibration.db", "P=$(AMC0_PREFIX),CHAN=1")
+
 # BSA. Configure the PV name for BSA, the AMC number and the ADC number
 # inside the AMC. Numbers start from zero.
 # bcmBsaConfigure <PV name> <AMC number> <ADC number>

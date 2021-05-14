@@ -8,5 +8,7 @@ record(calc, "$(P):TMIT_NEL") {
   #once this is updated we should revert to the top version
   field(INPA, "$(P):TMIT_PC")
   field(CALC, "A*6241509.13")
+  field(FLNK, "$(P):Calib_mV")
+  #field(FLNK, "$(P):$(CHAN):Calib_mV")
   field(EGU, "Nel")
 }

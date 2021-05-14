@@ -1,0 +1,24 @@
+#For these to provide usable data the coefficients A0 and A1 must be set 1
+
+record(calc, "$(P):$(CHAN):Calib_Charge")
+{
+     field(DESC, "ADC counts converted to mV not coefficients A0 and A1 must be 1")
+     field(EGU, "pC")
+     field(SCAN, "Passive")
+     field(INPA, "$(P):$(CHAN):Calib_mV")
+     field(INPB, "$(P):$(CHAN):NumSamp1_H")
+     field(INPC, "$(P):$(CHAN):CLK_PERIOD")
+     field(CALC, "A*B*C")
+}
+
+record(ai, "$(P):$(CHAN):Calib_mV")
+{
+  field(DESC, "Measured voltage")
+  field(EGU, "mV")
+  field(SCAN, "Passive")
+  field(INP, "$(P):$(CHAN):TMIT_PC")
+  field(DTYP, "Raw Soft Channel")
+  field(FLNK, "$(P):$(CHAN):Calib_Charge")
+  info(autosaveFields, "AOFF")
+  info(autosaveFields, "ASLO")
+}
