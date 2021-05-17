@@ -1,0 +1,32 @@
+########################################################################################################################
+# Summary:             BCM substitutions file to generate PVs for CPSW registers
+# Author:              T. Eriksen <taine@slac.stanford.edu>
+# Date:                17-may-2021
+# YAML config version: 
+########################################################################################################################
+
+########################################################################################################################
+# Macros:
+#   P,R: The PV name as $(P):$(R)
+#   DESC, PINI, SCAN, NELM, etc.: The same fields on the records
+#   PORT: The asyn port name. It must match the port name given when calling "YCPSWASYNConfig" on st.cmd
+#   PARAM: The asyn paramter name. It must be defined in the dictionary file and assigned to a register
+#   AMC: The AMC hardware slot (0 or 1)
+########################################################################################################################
+
+file "tmit.template" { pattern
+{  P,                   DESC,                   SCAN,     EGU,       INP }
+{ $(P), "Calculated TMIT from measured CHRG", "1 second", "Nel", "$(P):CHRG" }
+#{ $(P):$(CHAN), "Calculated TMIT from measured CHRG", "1 second", "Nel", "$(P):$(CHAN):CHRG" }
+}
+
+
+#======================================
+# Register with DoubleVal_RO interfaces
+#======================================
+
+file "RegisterDoubleIn.template" { pattern
+{ P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
+{ $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
+#{ $(P):$(CHAN),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
+}

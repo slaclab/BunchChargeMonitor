@@ -1,0 +1,145 @@
+########################################################################################################################
+# Summary:             BCM substitutions file to generate PVs for CPSW registers
+# Author:              T. Eriksen <taine@slac.stanford.edu>
+# Date:                17-may-2021
+# YAML config version: AmcCarrierBcm_00000018
+########################################################################################################################
+
+########################################################################################################################
+# Macros:
+#   P,R: The PV name as $(P):$(R)
+#   DESC, PINI, SCAN, NELM, etc.: The same fields on the records
+#   PORT: The asyn port name. It must match the port name given when calling "YCPSWASYNConfig" on st.cmd
+#   PARAM: The asyn paramter name. It must be defined in the dictionary file and assigned to a register
+#   AMC: The AMC hardware slot (0 or 1)
+########################################################################################################################
+
+#======================================
+# Registers with ScalVal_RO interfaces
+#======================================
+# Single register
+file "RegisterIn.template" { pattern
+{ P,          R,              DESC,                      PINI,   SCAN,       PORT,      EGU,  PARAM}
+{ $(P), WEBBurstSz,     "Burst size",                   "YES",  "1 second", $(PORT),   "",   AMC$(AMC):WEBBurstSz    }
+}
+
+# Array of register
+file "RegisterArrayIn.template" { pattern
+{ P,          R,             DESC,                          NELM,   PINI,   SCAN,       PORT,  PARAM       }
+{ $(P), WEBDone        "",                            4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBDone     }
+{ $(P), WEBEmpty       "",                            4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBEmpty    }
+{ $(P), WEBError       "",                            4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBError    }
+{ $(P), WEBFSTrig      "Frames since trigger",        4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBFSTrig   }
+{ $(P), WEBFull        "",                            4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBFull     }
+{ $(P), WEBTrigAddr    "",                            4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBTrigAddr }
+{ $(P), WEBTrigd       "Triggered",                   4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBTrigd    }
+{ $(P), WEBWrAddr      "",                            4,     "YES",   "1 second", $(PORT),    AMC$(AMC):WEBWrAddr   }
+}
+
+#======================================
+# Register with ScalVal interfaces
+#======================================
+
+file "RegisterOut.template" { pattern
+{ P,        R,              DESC,                                       PINI,   SCAN,       PORT,  PARAM       }
+{ $(P), DacSrs,         "Simulated or Real DAC Source"            "NO",  "Passive",  $(PORT),    AMC$(AMC):DacSrs }
+}
+
+file "RegisterOutRBV.template" { pattern
+{ P,           R,                DESC,                                     PINI,   SCAN,        PORT,  PARAM       }
+{ $(P), DacSrsRBV,         "Simulated or Real DAC Source"            "YES",  "1 second",  $(PORT),    AMC$(AMC):DacSrs }
+# Trigger to Bergoz (TLR0)
+{ $(P), TLR0:SelSrcRBV,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:SelSrc }
+{ $(P), TLR0:SftTrigRBV,   "used field to only mask bit of interest","YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:SftTrig }
+{ $(P), TLR0:OutPolRBV,    "trigger invert: normal b0, inverted b1", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:OutPol }
+{ $(P), TLR0:TrigDlyRBV,   "trigger delay in clock cycles",          "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:TrigDly }
+{ $(P), TLR0:TrigStrRBV,   "trigger stretch in clock cycles",        "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR0:TrigStr }
+# Trigger to Calibration (TLR3)
+{ $(P), TLR3:SelSrcRBV,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR3:SelSrc }
+{ $(P), TLR3:SftTrigRBV,   "used field to only mask bit of interest","YES",  "1 second",  $(PORT),    AMC$(AMC):TLR3:SftTrig }
+{ $(P), TLR3:OutPolRBV,    "trigger invert: normal b0, inverted b1", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR3:OutPol }
+{ $(P), TLR3:TrigDlyRBV,   "trigger delay in clock cycles",          "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR3:TrigDly }
+{ $(P), TLR3:TrigStrRBV,   "trigger stretch in clock cycles",        "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR3:TrigStr }
+# Trigger to Waveforms (TLR4)
+{ $(P), TLR4:SelSrcRBV,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR4:SelSrc }
+{ $(P), TLR4:SftTrigRBV,   "used field to only mask bit of interest","YES",  "1 second",  $(PORT),    AMC$(AMC):TLR4:SftTrig }
+{ $(P), TLR4:OutPolRBV,    "trigger invert: normal b0, inverted b1", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR4:OutPol }
+{ $(P), TLR4:TrigDlyRBV,   "trigger delay in clock cycles",          "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR4:TrigDly }
+{ $(P), TLR4:TrigStrRBV,   "trigger stretch in clock cycles",        "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR4:TrigStr }
+# Trigger to Calculations (TLR6)
+{ $(P), TLR6:SelSrcRBV,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:SelSrc }
+{ $(P), TLR6:SftTrigRBV,   "used field to only mask bit of interest","YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:SftTrig }
+{ $(P), TLR6:OutPolRBV,    "trigger invert: normal b0, inverted b1", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:OutPol }
+{ $(P), TLR6:TrigDlyRBV,   "trigger delay in clock cycles",          "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:TrigDly }
+{ $(P), TLR6:TrigStrRBV,   "trigger stretch in clock cycles",        "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:TrigStr }
+}
+
+#======================================
+# Register with DoubleVal_RO interfaces
+#======================================
+
+file "RegisterDoubleIn.template" { pattern
+{ P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
+{ $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
+#{ $(P):$(CHAN),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
+}
+
+#======================================
+# Register with DoubleVal interfaces
+#======================================
+
+file "RegisterDoubleOut.template" { pattern
+{ P,              R,            DESC,                         PINI,  SCAN,        PORT,   EGU,    PARAM   }
+{ $(P),     TempRef,      "Temperature of toroid",      "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempRef }
+{ $(P),     TempAmpRef,   "Temperature of amp",         "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempAmpRef }
+{ $(P),     TempElcRef,   "Temperature of electronics", "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempElcRef }
+#
+{ $(P),     CoefT0,       "Temp coef of toroid",        "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT0 }
+{ $(P),     CoefT1,       "Temp coef of amp",           "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT1 }
+{ $(P),     CoefT2,       "Temp coef of electronics",   "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT2 }
+{ $(P),     CoefTCal,     "Calib temperature",          "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):CoefTCal }
+{ $(P),     CoefLnQ,      "Natural log of Qcal value",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefLnQ }
+{ $(P),     CoefA0,       "Coef A0 for 1st group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefA0 }
+{ $(P),     CoefA1,       "Coef A1 for 2nd group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefA1 }
+{ $(P),     CoefA2,       "Coef A2 for 3rd group",      "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefA2 }
+{ $(P),     TmitCoef,     "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
+}
+
+file "RegisterDoubleOutRBV.template" { pattern
+{ P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM   }
+{ $(P),     Temp,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempRef }
+{ $(P),     TempAmp,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmpRef }
+{ $(P),     TempElc,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElcRef }
+{ $(P),     CoefT0RBV,    "Temp coef of toroid",        "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT0 }
+{ $(P),     CoefT1RBV,    "Temp coef of amp",           "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT1 }
+{ $(P),     CoefT2RBV,    "Temp coef of electronics",   "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT2 }
+{ $(P),     CoefTCalRBV,  "Calib temperature",          "YES", "1 second",  $(PORT),     "K",    AMC$(AMC):CoefTCal }
+{ $(P),     CoefLnQRBV,   "Natural log of Qcal value",  "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefLnQ }
+{ $(P),     CoefA0RBV,    "Coef A0 for 1st group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefA0 }
+{ $(P),     CoefA1RBV,    "Coef A1 for 2nd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefA1 }
+{ $(P),     CoefA2RBV,    "Coef A2 for 3rd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefA2 }
+{ $(P),     TmitCoefRBV,  "Coef Tmit readback value from BPMS",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TmitCoef }
+}
+
+#======================================
+# Register with Command interfaces
+#======================================
+file "RegisterCommand.template" { pattern
+{ P,            R,            DESC,                            PINI,   SCAN,       PORT,   PARAM   }
+{ $(P),   WEBInit,      "Waveform engine buf init",      "NO",  "Passive",   $(PORT),     AMC$(AMC):WEBInit }
+{ $(P),   InitAmcCard,  "Init JESD modules",             "NO",  "Passive",   $(PORT),     AMC$(AMC):InitAmcCard }
+}
+
+
+
+#======================================
+# Register with Calc interfaces
+#======================================
+file "RegisterCalc.template" { pattern
+{ P,          R,              DESC,                           	SCAN,		EGU,  		PARAM 				}
+#{ $(P),     Temp,         "Temperature of toroid",         	"1 second",		"K",    $(P):TEMP3:INPUT1:VALUE }
+{ $(P),     TempFarc,     "Temperature of faraday cup",		"1 second",		"K",    $(P):TEMP2:INPUT1:VALUE }
+#{ $(P),     TempAmp,      "Temperature of amp",                 "1 second",		"K",    $(P):TEMP3:INPUT2:VALUE }
+#{ $(P),     TempElc,      "Temperature of electronics",         "1 second",		"K",    $(P):TEMP1:INPUT1:VALUE }
+#Those PVs are now reading directly from the FPGA registers instead of the ethercat module RTDs, request from Leonid (2/28/2019)
+}

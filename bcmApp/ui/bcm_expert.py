@@ -489,13 +489,7 @@ class BCMExpert(Display):
        
         nel_lbl = PyDMLabel()
         nel_lbl.setText("NEL")
-        if self.isSC:
-            nel_lbl.channel = "ca://TORO:{}:{}:{}".format(
-                              self.macros()["AREA"],
-                              self.macros()["POS"],
-                              self.pvDict["nel"])
-        else:
-            nel_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
+        nel_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
@@ -514,13 +508,7 @@ class BCMExpert(Display):
         
         tmit_pc_lbl = PyDMLabel()
         tmit_pc_lbl.setText("charge")
-        if self.isSC:
-            tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}".format(
-                              self.macros()["AREA"],
-                              self.macros()["POS"],
-                              self.pvDict["charge"])            
-        else:
-            tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
+        tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
@@ -611,7 +599,9 @@ class BCMExpert(Display):
 
         # Bergoz button is shown only if it is running in the SC accelerator
         if self.isSC:
-            bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
+            #bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
+            #for dev
+            bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
             bergoz_btn.setText("Bergoz...")
             bergoz_btn.openInNewWindow = True
             bergoz_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(

@@ -20,30 +20,6 @@
 
 file "RegisterOut.template" { pattern
 { P,        R,              DESC,                                       PINI,   SCAN,       PORT,  PARAM       }
-# Trigger to Bergoz (TLR0)
-{ $(P), TLR0:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SelSrc }
-{ $(P), TLR0:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SftTrig }
-{ $(P), TLR0:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:OutPol }
-{ $(P), TLR0:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:TrigDly }
-{ $(P), TLR0:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:TrigStr }
-# Trigger to Calibration (TLR3)
-{ $(P), TLR3:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:SelSrc }
-{ $(P), TLR3:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:SftTrig }
-{ $(P), TLR3:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:OutPol }
-{ $(P), TLR3:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:TrigDly }
-{ $(P), TLR3:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:TrigStr }
-# Trigger to Waveforms (TLR4)
-{ $(P), TLR4:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:SelSrc }
-{ $(P), TLR4:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:SftTrig }
-{ $(P), TLR4:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:OutPol }
-{ $(P), TLR4:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:TrigDly }
-{ $(P), TLR4:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:TrigStr }
-# Trigger to Calculations (TLR6)
-{ $(P), TLR6:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:SelSrc }
-{ $(P), TLR6:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:SftTrig }
-{ $(P), TLR6:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:OutPol }
-{ $(P), TLR6:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:TrigDly }
-{ $(P), TLR6:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:TrigStr }
 }
 
 
@@ -56,42 +32,9 @@ file "RegisterOut.template" { pattern
 
 file "RegisterOutRBV.template" { pattern
 { P,           R,                DESC,                                     PINI,   SCAN,        PORT,  PARAM       }
-{ $(P), ModeRBV,           "BCM mode"                                "YES",  "1 second",  $(PORT),    AMC$(AMC):Mode }
 { $(P), DacSrsRBV,         "Simulated or Real DAC Source"            "YES",  "1 second",  $(PORT),    DacSrs }
 }
 
-
-#======================================
-# Registers with ScalVal_RO interfaces
-#======================================
-# Single register
-file "RegisterIn.template" { pattern
-{ P,          R,              DESC,                      PINI,   SCAN,       PORT,      EGU,  PARAM                  }
-{ $(P), AmcClkFreq,     "AMC Clock frequency",          "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):AmcClkFreq    }
-{ $(P), MuxTrigCnt,     "Valid DAQ triggers",           "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigCnt    }
-{ $(P), MuxFrzStat,     "Freeze buf status",            "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxFrzStat    }
-{ $(P), MuxCascStat,    "Cascade trigger status",       "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxCascStat   }
-{ $(P), MuxTrigHwArm,   "HW trigger armed status",      "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigHwArm  }
-{ $(P), MuxTrigHwStat,  "HW trigger status",            "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigHwStat }
-{ $(P), MuxTrigStat,    "Combined trigger status",      "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigStat   }
-{ $(P), MuxTrigSwStat,  "SW trigger status",            "YES",  "1 second", $(PORT),   "",   AMC$(AMC):MuxTrigSwStat }
-{ $(P), DSPVers,        "System generator core vers",   "YES",  "1 second", $(PORT),   "",   AMC$(AMC):DSPVers       }
-{ $(P), RATE,           "Trigger rate over 1 sec",      "YES",  "1 second", $(PORT),   "Hz", AMC$(AMC):RATE          }
-}
-
-# Array of register
-file "RegisterArrayIn.template" { pattern
-{ P,          R,             DESC,                          NELM,   PINI,   SCAN,   PORT,           PARAM           }
-{ $(P), AdcData,       "ADC Data[3:0]",               4,     "YES",   "1 second", $(PORT),    AMC$(AMC):AdcData     }
-{ $(P), MuxInDatVal,   "Incoming data valid",         4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxInDatVal }
-{ $(P), MuxStrmEna,    "Output stream enabled",       4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxStrmEna  }
-{ $(P), MuxStrmErr,    "Error during last acq",       4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxStrmErr  }
-{ $(P), MuxStrmOflw,   "Raw diag stream ctrl oflw",   4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxStrmOflw }
-{ $(P), MuxStrmPs,     "Raw diag stream ctrl pause",  4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxStrmPs   }
-{ $(P), MuxStrmRdy,    "Raw diag stream ctrl ready",  4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxStrmRdy  }
-{ $(P), MuxFrameCnt,   "4096 byte frames sent",       4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxFrameCnt }
-{ $(P), MuxTmstmp,     "Timestamp 63:0",              2,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxTmstmp   }
-}
 
 # Array of 8-bit register as a string
 file "RegisterArrayChar.template" { pattern
@@ -101,21 +44,6 @@ file "RegisterArrayChar.template" { pattern
 # ENUM register
 file "RegisterEnumBIn.template" { pattern
 { P,        R,              DESC,                    PINI,   ZNAM,       ONAM,       SCAN,      PORT, PARAM     }
-}
-
-#======================================
-# Register with ScalVal interfaces
-#======================================
-
-# ENUM register
-file "RegisterEnumBOut.template" { pattern
-{ P,        R,              DESC,        PINI   ZNAM,        ONAM,     SCAN,       PORT, PARAM     }
-{ $(P), AutoRearm,   "Auto rearm", "NO",  "Disabled", "Enabled", "Passive",  $(PORT),   AMC$(AMC):AutoRearm }
-}
-
-file "RegisterEnumBOutRBV.template" { pattern
-{ P,        R,              DESC,         PINI    ZNAM,        ONAM,     SCAN,        PORT, PARAM     }
-{ $(P), AutoRearmRBV, "Auto rearm", "YES",  "Disabled", "Enabled", ".5 second",  $(PORT),   AMC$(AMC):AutoRearm }
 }
 
 #======================================
@@ -133,28 +61,6 @@ file "RegisterDoubleInLimits.template" { pattern
 #======================================
 file "RegisterCommand.template" { pattern
 { P,            R,            DESC,                            PINI,   SCAN,       PORT,   PARAM   }
-}
-
-
-#======================================
-# Register with Stream interfaces
-#======================================
-
-file "RegisterStream.template" {pattern
-{ P,            R,          DESC,               NELM,       PINI,   PORT,   PARAM       }
-{ $(P),   Stream0,    "Stream channel 0",       512,    "NO",   $(PORT),     AMC$(AMC):Stream0  }
-{ $(P),   Stream1,    "Stream channel 1",       512,    "NO",   $(PORT),     AMC$(AMC):Stream1  }
-}
-
-# For Stream interfaces, an additional parameter is automatically created
-# and the name is generated adding ":16" to the original parameter name
-# This gives access to the same stream data, but as 16-bit words which
-# is the case for ADC samples for example. Note that the NELM is 2x
-
-file "RegisterStream16.template" {pattern
-{ P,            R,          DESC,                    NELM,     PINI,  PORT,  PARAM         }
-{ $(P),     Stream0_16, "Stream channel 0 (16-bit)",  1024,    "NO",  $(PORT),    AMC$(AMC):Stream0:16 }
-{ $(P),     Stream1_16, "Stream channel 1 (16-bit)",  1024,    "NO",  $(PORT),    AMC$(AMC):Stream1:16 }
 }
 
 #======================================
