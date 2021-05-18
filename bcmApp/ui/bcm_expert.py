@@ -597,7 +597,7 @@ class BCMExpert(Display):
                     self.macros()["CPU"],
                     self.macros()["CRATE"])
 
-        # Bergoz button is shown only if it is running in the SC accelerator
+        # Buttons only shown only if it is running in the SC accelerator
         if self.isSC:
             #bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
             #for dev
@@ -612,6 +612,17 @@ class BCMExpert(Display):
                     self.macros()["INST"],
                     self.macros()["AREA"],
                     self.macros()["UNIT"])
+                    
+            fpga_btn =  PyDMRelatedDisplayButton(filename="fpga_config.py")
+            fpga_btn.setText("FPGA Config...")
+            fpga_btn.openInNewWindow = True
+            fpga_btn.macros = "AREA={},IOC_UNIT={},POS={},TYPE={},BOARD_INFO_PREFIX={}".format(
+                    self.macros()["AREA"],
+                    self.macros()["IOC_UNIT"],
+                    self.macros()["POS"],
+                    "TORO",
+                    "AMCC"
+                    )
 
         help_btn = QPushButton("Help...")
         if self.isSC:
@@ -622,9 +633,10 @@ class BCMExpert(Display):
         self.btn_layout.addStretch(10)
         self.btn_layout.addWidget(coef_btn)
         self.btn_layout.addWidget(trig_btn)
-        # Bergoz button is shown only if it is running in the SC accelerator
+        # Button are only shown only if it is running in the SC accelerator
         if self.isSC:
             self.btn_layout.addWidget(bergoz_btn)
+            self.btn_layout.addWidget(fpga_btn)
         else:
             self.btn_layout.addWidget(calb_btn)
         self.btn_layout.addWidget(help_btn)

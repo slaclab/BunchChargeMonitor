@@ -72,6 +72,8 @@ file "RegisterOutRBV.template" { pattern
 { $(P), TLR6:OutPolRBV,    "trigger invert: normal b0, inverted b1", "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:OutPol }
 { $(P), TLR6:TrigDlyRBV,   "trigger delay in clock cycles",          "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:TrigDly }
 { $(P), TLR6:TrigStrRBV,   "trigger stretch in clock cycles",        "YES",  "1 second",  $(PORT),    AMC$(AMC):TLR6:TrigStr }
+# For the IOC
+{ $(P), AppTypeRBV,     "App type 0=Bergoz Toroid, 1=FC",            "YES",  "1 second",  $(PORT),    CONF:AppType     }
 }
 
 #======================================
