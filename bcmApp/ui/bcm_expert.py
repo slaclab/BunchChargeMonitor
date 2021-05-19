@@ -571,38 +571,24 @@ class BCMExpert(Display):
             
 
         if rate_mode == 1:
-            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/bcmtprDiag.ui")       
-            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
+            trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagSC.ui")       
+            #trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
         else:
-            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
-            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen    
+            trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
+            #trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen    
                 
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
-        trig_btn.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
+        if not(self.macros()["POS"] == "LI11"):
+            trig_btn.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
                 self.macros()["AREA"],
                 self.macros()["IOC_UNIT"],
                 #self.macros()["INST"],
                 self.macros()["IOC"],
                 self.macros()["CPU"],
                 self.macros()["CRATE"])
-        #there are only one set of triggers per slot and they are only mapped to one set of PVs with INST=0
-        
-        if not(self.isSC):
-            calb_btn = PyDMRelatedDisplayButton(filename="bcm_expert.py")
-            calb_btn.setText("Calibration...")
-            calb_btn.openInNewWindow = True
-            if not(self.macros()["POS"] == "LI11"):
-               calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
-                    self.macros()["AREA"],
-                    self.macros()["POS"],
-                    self.macros()["CHAN"],
-                    self.macros()["IOC_UNIT"],
-                    self.macros()["IOC"],
-                    self.macros()["CPU"],
-                    self.macros()["CRATE"])
-            else:
-               calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
+        else:
+            trig_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
                     self.macros()["AREA"],
                     "IN10",
                     self.macros()["CHAN"],
@@ -610,12 +596,27 @@ class BCMExpert(Display):
                     self.macros()["IOC"],
                     self.macros()["CPU"],
                     self.macros()["CRATE"])
+        #there are only one set of triggers per slot and they are only mapped to one set of PVs with INST=0
+        
+        if not(self.isSC):
+            calb_btn = PyDMRelatedDisplayButton(filename="bcm_expert.py")
+            calb_btn.setText("Calibration...")
+            calb_btn.openInNewWindow = True
+            calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
+                    self.macros()["AREA"],
+                    self.macros()["POS"],
+                    self.macros()["CHAN"],
+                    self.macros()["IOC_UNIT"],
+                    self.macros()["IOC"],
+                    self.macros()["CPU"],
+                    self.macros()["CRATE"])
+               
 
         # Buttons only shown only if it is running in the SC accelerator
         if self.isSC:
-            #bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
+            bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
             #for dev
-            bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
+            #bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
             bergoz_btn.setText("Bergoz...")
             bergoz_btn.openInNewWindow = True
             bergoz_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(

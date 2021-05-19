@@ -40,8 +40,7 @@ epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
 epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsFC.yaml")
 
 # FPGA IP address
-epicsEnvSet("FPGA_IP", "10.0.1.104")###original
-###epicsEnvSet("FPGA_IP", "10.0.1.105")###can inclue to swap what FPGA is used
+epicsEnvSet("FPGA_IP", "10.0.1.104")
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
