@@ -1010,9 +1010,9 @@
   <widget class="PyDMRelatedDisplayButton" name="NCctrls">
    <property name="geometry">
     <rect>
-     <x>660</x>
+     <x>665</x>
      <y>125</y>
-     <width>121</width>
+     <width>120</width>
      <height>24</height>
     </rect>
    </property>
@@ -1031,6 +1031,41 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="PyDMLineEdit" name="Master_Delay">
+   <property name="geometry">
+    <rect>
+     <x>595</x>
+     <y>125</y>
+     <width>60</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="channel" stdset="0">
+    <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:TREF</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="MasterDelayLbl">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>125</y>
+     <width>81</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Master Delay</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -1047,6 +1082,11 @@
    <class>PyDMEmbeddedDisplay</class>
    <extends>QFrame</extends>
    <header>pydm.widgets.embedded_display</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>pydm.widgets.line_edit</header>
   </customwidget>
   <customwidget>
    <class>PyDMEnumComboBox</class>
