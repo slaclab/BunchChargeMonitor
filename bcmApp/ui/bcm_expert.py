@@ -498,7 +498,8 @@ class BCMExpert(Display):
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
                                     border-color: rgb(0, 255, 0);")
-        nel_lbl.precision = 3                          
+        nel_lbl.precisionFromPV = False                            
+        nel_lbl.precision = 2                          
         nel_lbl.displayFormat = DisplayFormat.Exponential 
         nel_lbl.setMinimumWidth(100)
         nel_lbl.setMaximumWidth(100)
@@ -517,6 +518,9 @@ class BCMExpert(Display):
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
                                     border-color: rgb(0, 255, 0);")
+        tmit_pc_lbl.precisionFromPV = False
+        tmit_pc_lbl.precision = 2
+        tmit_pc_lbl.displayFormat = DisplayFormat.Exponential
         tmit_pc_lbl.setMinimumWidth(100)
         tmit_pc_lbl.setMaximumWidth(100)
  
@@ -588,9 +592,19 @@ class BCMExpert(Display):
             calb_btn = PyDMRelatedDisplayButton(filename="bcm_expert.py")
             calb_btn.setText("Calibration...")
             calb_btn.openInNewWindow = True
-            calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
+            if not(self.macros()["POS"] == "LI11"):
+               calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
                     self.macros()["AREA"],
                     self.macros()["POS"],
+                    self.macros()["CHAN"],
+                    self.macros()["IOC_UNIT"],
+                    self.macros()["IOC"],
+                    self.macros()["CPU"],
+                    self.macros()["CRATE"])
+            else:
+               calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
+                    self.macros()["AREA"],
+                    "IN10",
                     self.macros()["CHAN"],
                     self.macros()["IOC_UNIT"],
                     self.macros()["IOC"],
