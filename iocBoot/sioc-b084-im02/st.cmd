@@ -121,7 +121,6 @@ dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX):0, PORT=$(CPSW_PORT), AMC
 dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX):1, PORT=$(CPSW_PORT), AMC=0, CHAN=1")
 dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX):1, PORT=$(CPSW_PORT), AMC=1, CHAN=1")
 
-
 dbLoadRecords("db/carrierFACET2.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
 dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=0")

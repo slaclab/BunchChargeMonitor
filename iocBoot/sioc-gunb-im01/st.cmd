@@ -5,7 +5,6 @@
 # for the Bunch Charge Monitor.
 #########################################
 
-
 ## You may have to change bcm to something else
 ## everywhere it appears in this file
 
@@ -30,8 +29,10 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
 epicsEnvSet("CPSW_PORT","Atca7")
 
-# Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
+###variables for using yaml downloader
+epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml")
+epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.107")
@@ -113,8 +114,14 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile("yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml", "mmio")
+### changed to yaml downloader
+DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
+
+###to bring up to current standard importing from $IOC_DATA
+cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
+cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
+
+
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
@@ -217,8 +224,13 @@ crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Manually create records
-dbLoadRecords("db/bcm.db", "P=${AMC1_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
+dbLoadRecords("db/bcmAmc.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmChan.db", "P=$(AMC1_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/bcmLCLS2amc.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmLCLS2chan.db", "P=$(AMC1_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+dbLoadRecords("db/iocMeta.db", "AREA=GUNB, IOC_UNIT=IM01")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
@@ -253,16 +265,7 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=IM01,INST=0,SYS=SYS
 # **** Load Bergoz db ***************************************************
 dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_IN_PORT),PORT_OUT=$(BERGOZ0_OUT_PORT),A=-1")
 dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),ADDR=-1,OMAX=0,IMAX=0")
-dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
 
-# ***********************************************************************
-# **** Load db for Temperature Chassis on Ethercat **********************
-# Load the database templates for the EtherCAT components
-# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
-dbLoadRecords("db/EK1101.template", "DEVICE=${AMC1_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************

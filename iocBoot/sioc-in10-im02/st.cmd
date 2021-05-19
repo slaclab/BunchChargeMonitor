@@ -105,12 +105,21 @@ tprPatternAsynDriverConfigure("pattern", "mmio/AmcCarrierCore", "tstream")
 dbLoadRecords("db/saveLoadConfig.db", "P=$(AMC_CARRIER_PREFIX), PORT=$(CPSW_PORT)")
 
 # Manually create records
+dbLoadRecords("db/bcmAmc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmAmc.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1")
+
+dbLoadRecords("db/bcmChan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/bcmChan.db", "P=$(AMC1_PREFIX):0, PORT=$(CPSW_PORT), AMC=1, CHAN=0")
+
+dbLoadRecords("db/bcmChan.db", "P=$(AMC0_PREFIX):1, PORT=$(CPSW_PORT), AMC=0, CHAN=1")
+dbLoadRecords("db/bcmChan.db", "P=$(AMC1_PREFIX):1, PORT=$(CPSW_PORT), AMC=1, CHAN=1")
+
 dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
 dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC1_PREFIX), PORT=$(CPSW_PORT), AMC=1")
 
 dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
 dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX):0, PORT=$(CPSW_PORT), AMC=1, CHAN=0")
-#calibration
+
 dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX):1, PORT=$(CPSW_PORT), AMC=0, CHAN=1")
 dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC1_PREFIX):1, PORT=$(CPSW_PORT), AMC=1, CHAN=1")
 

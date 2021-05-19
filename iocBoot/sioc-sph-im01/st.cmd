@@ -5,8 +5,6 @@
 # for the Bunch Charge Monitor.
 #########################################
 
-###My changes are marked by ###
-
 
 ## You may have to change bcm to something else
 ## everywhere it appears in this file
@@ -224,9 +222,12 @@ crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Manually create records
-dbLoadRecords("db/bcm.db", "P=${AMC0_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
-dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+dbLoadRecords("db/bcmAmc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmChan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/bcmLCLS2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmLCLS2chan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
 
+dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 dbLoadRecords("db/iocMeta.db", "AREA=GUNB, IOC_UNIT=IM01")
 
 # Parse IP address
@@ -241,15 +242,13 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 ###*************************
 ###setting up the stream device
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
-###need to check and see if slot 0 or 1 is used may have to change to AMC1_PREFIX
 
 #loads the waveform records
 dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
-#dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
 
-dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
-dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
 
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************

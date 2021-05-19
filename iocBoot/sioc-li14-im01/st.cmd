@@ -111,6 +111,11 @@ dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX)")
 
 # Manually create records
+dbLoadRecords("db/bcmAmc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+
+dbLoadRecords("db/bcmChan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/bcmChan.db", "P=$(AMC0_PREFIX):1, PORT=$(CPSW_PORT), AMC=0, CHAN=1")
+
 dbLoadRecords("db/bcmFACET2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
 
 dbLoadRecords("db/bcmFACET2chan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
