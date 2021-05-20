@@ -571,11 +571,11 @@ class BCMExpert(Display):
             
 
         if rate_mode == 1:
-            trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagSC.ui")       
-            #trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
+            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagSC.ui")       
+            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
         else:
-            trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
-            #trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen    
+            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
+            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen    
                 
         trig_btn.setText("Triggers...")
         trig_btn.openInNewWindow = True
@@ -614,9 +614,9 @@ class BCMExpert(Display):
 
         # Buttons only shown only if it is running in the SC accelerator
         if self.isSC:
-            bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
+            #bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
             #for dev
-            #bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
+            bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
             bergoz_btn.setText("Bergoz...")
             bergoz_btn.openInNewWindow = True
             bergoz_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(

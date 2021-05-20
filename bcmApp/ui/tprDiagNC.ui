@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1110</width>
-    <height>729</height>
+    <width>1234</width>
+    <height>765</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -218,7 +218,7 @@
     <rect>
      <x>10</x>
      <y>170</y>
-     <width>1100</width>
+     <width>1200</width>
      <height>546</height>
     </rect>
    </property>
@@ -236,11 +236,17 @@
      <rect>
       <x>10</x>
       <y>45</y>
-      <width>1031</width>
+      <width>1181</width>
       <height>492</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="Data_rows_2">
+     <property name="leftMargin">
+      <number>6</number>
+     </property>
+     <property name="rightMargin">
+      <number>6</number>
+     </property>
      <item>
       <widget class="PyDMEmbeddedDisplay" name="Row_00">
        <property name="minimumSize">
@@ -696,28 +702,31 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>1031</width>
+      <width>1181</width>
       <height>27</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="Column_headers" stretch="1,4,1,1,2,2,2,1,1">
+    <layout class="QHBoxLayout" name="Column_headers" stretch="1,5,1,1,2,2,0,1,0,1,2,1,1">
      <property name="spacing">
-      <number>0</number>
+      <number>6</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <property name="leftMargin">
-      <number>0</number>
+      <number>6</number>
      </property>
      <property name="topMargin">
       <number>0</number>
      </property>
      <property name="rightMargin">
-      <number>0</number>
+      <number>6</number>
      </property>
      <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="Num">
+      <widget class="QLabel" name="TrigNum">
        <property name="maximumSize">
         <size>
          <width>16777215</width>
@@ -725,7 +734,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Num</string>
+        <string>Trig Num</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -741,7 +750,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Trigger Description</string>
+        <string>Trig Description</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -782,6 +791,61 @@
       <widget class="QLabel" name="TrigSrc">
        <property name="text">
         <string>Trig Source</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="Line" name="TrigChanDiv">
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>10</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="ChanNum">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Chan Num</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -830,8 +894,8 @@
   <widget class="PyDMRelatedDisplayButton" name="SCTriggers">
    <property name="geometry">
     <rect>
-     <x>950</x>
-     <y>110</y>
+     <x>940</x>
+     <y>140</y>
      <width>125</width>
      <height>24</height>
     </rect>
@@ -845,30 +909,6 @@
    <property name="filenames" stdset="0">
     <stringlist>
      <string>tprDiagSC.ui</string>
-    </stringlist>
-   </property>
-   <property name="openInNewWindow" stdset="0">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="PyDMRelatedDisplayButton" name="NCChan">
-   <property name="geometry">
-    <rect>
-     <x>950</x>
-     <y>140</y>
-     <width>125</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string/>
-   </property>
-   <property name="text">
-    <string>NC Channels</string>
-   </property>
-   <property name="filenames" stdset="0">
-    <stringlist>
-     <string>tprDiagExpNC.ui</string>
     </stringlist>
    </property>
    <property name="openInNewWindow" stdset="0">

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>784</width>
+    <width>1200</width>
     <height>25</height>
    </rect>
   </property>
@@ -27,7 +27,10 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="TPR_Row" stretch="1,4,1,1,2,2,2,1,1">
+    <layout class="QHBoxLayout" name="TPR_Row" stretch="1,5,1,1,2,2,0,1,0,1,2,1,1">
+     <property name="spacing">
+      <number>6</number>
+     </property>
      <property name="leftMargin">
       <number>6</number>
      </property>
@@ -35,7 +38,7 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="PyDMLabel" name="ChanNum">
+      <widget class="PyDMLabel" name="TrigNum">
        <property name="toolTip">
         <string/>
        </property>
@@ -109,6 +112,52 @@
        </property>
        <property name="channel" stdset="0">
         <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:TRG${CHN}_SOURCE</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="Line" name="TrigChanDiv">
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>10</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="ChanNum">
+       <property name="text">
+        <string>${CHN}</string>
        </property>
       </widget>
      </item>

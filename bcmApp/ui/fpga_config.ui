@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bunch Length ${INST} - FPGA Configuration</string>
+   <string>${TYPE} ${CHAN} - FPGA Configuration</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
