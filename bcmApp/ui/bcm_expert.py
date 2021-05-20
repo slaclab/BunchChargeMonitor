@@ -518,9 +518,6 @@ class BCMExpert(Display):
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
                                     border-color: rgb(0, 255, 0);")
-        tmit_pc_lbl.precisionFromPV = False
-        tmit_pc_lbl.precision = 2
-        tmit_pc_lbl.displayFormat = DisplayFormat.Exponential
         tmit_pc_lbl.setMinimumWidth(100)
         tmit_pc_lbl.setMaximumWidth(100)
  
