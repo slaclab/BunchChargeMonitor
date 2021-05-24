@@ -18,34 +18,6 @@
 # Register with ScalVal interfaces
 #======================================
 
-file "RegisterOut.template" { pattern
-{ P,        R,              DESC,                                       PINI,   SCAN,       PORT,  PARAM       }
-# Trigger to Bergoz (TLR0)
-{ $(P), TLR0:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SelSrc }
-{ $(P), TLR0:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:SftTrig }
-{ $(P), TLR0:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:OutPol }
-{ $(P), TLR0:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:TrigDly }
-{ $(P), TLR0:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR0:TrigStr }
-# Trigger to Calibration (TLR3)
-{ $(P), TLR3:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:SelSrc }
-{ $(P), TLR3:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:SftTrig }
-{ $(P), TLR3:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:OutPol }
-{ $(P), TLR3:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:TrigDly }
-{ $(P), TLR3:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR3:TrigStr }
-# Trigger to Waveforms (TLR4)
-{ $(P), TLR4:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:SelSrc }
-{ $(P), TLR4:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:SftTrig }
-{ $(P), TLR4:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:OutPol }
-{ $(P), TLR4:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:TrigDly }
-{ $(P), TLR4:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:TrigStr }
-# Trigger to Calculations (TLR6)
-{ $(P), TLR6:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:SelSrc }
-{ $(P), TLR6:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:SftTrig }
-{ $(P), TLR6:OutPol,    "trigger invert: normal b0, inverted b1", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:OutPol }
-{ $(P), TLR6:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:TrigDly }
-{ $(P), TLR6:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:TrigStr }
-}
-
 
 file "RegisterOut.template" { pattern
 { P,        R,              DESC,                                       PINI,   SCAN,       PORT,  PARAM       }

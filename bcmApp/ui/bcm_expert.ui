@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="1" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="Coef">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Coefficients...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist/>
+       </property>
+       <property name="macros" stdset="0">
+        <stringlist/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="Trig">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Triggers...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="Bergoz">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Bergoz...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>bergozMain.ui</string>
+        </stringlist>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="FPGAConfig">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>FPGA Configuration...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Bunch Charge Monitor Expert Interfaces</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PyDMRelatedDisplayButton</class>
+   <extends>QPushButton</extends>
+   <header>pydm.widgets.related_display_button</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bunch Charge ${INST} Equation Parameters</string>
+   <string>Bunch Charge ${CHAN} Equation Parameters</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -25,7 +25,7 @@
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="text">
-      <string>${INST}</string>
+      <string>${CHAN}</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -37,29 +37,7 @@
      <property name="horizontalSpacing">
       <number>15</number>
      </property>
-     <item row="2" column="1">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_2">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="precision" stdset="0">
-        <number>5</number>
-       </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
-       <property name="alarmSensitiveBorder" stdset="0">
-        <bool>true</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
+     <item row="2" column="2">
       <widget class="PyDMLabel" name="PyDMLabel_9">
        <property name="toolTip">
         <string/>
@@ -69,25 +47,6 @@
        </property>
        <property name="channel" stdset="0">
         <string>ca://TORO:${AREA}:${POS}:CoefOffsetRBV</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="PyDMLabel" name="PyDMLabel_2">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="precision" stdset="0">
-        <number>7</number>
-       </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA1RBV</string>
        </property>
       </widget>
      </item>
@@ -146,7 +105,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="2" column="1">
       <widget class="PyDMLineEdit" name="PyDMLineEdit_4">
        <property name="toolTip">
         <string/>
@@ -165,13 +124,6 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Coef A1</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
@@ -179,7 +131,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Offset</string>

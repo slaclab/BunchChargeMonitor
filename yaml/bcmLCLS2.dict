@@ -153,6 +153,7 @@
 /mmio/AppTop/AppCore/TimingProc[1]/TriggerLaneReg[4]/trigDelay                                            AMC1:TLR4:TrigDly
 /mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[4]/trigStretch                                          AMC0:TLR4:TrigStr
 /mmio/AppTop/AppCore/TimingProc[1]/TriggerLaneReg[4]/trigStretch                                          AMC1:TLR4:TrigStr
+/mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[5]/SelectSource                                         AMC0:TLR5:SelSrc
 /mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[6]/SelectSource                                         AMC0:TLR6:SelSrc
 /mmio/AppTop/AppCore/TimingProc[1]/TriggerLaneReg[6]/SelectSource                                         AMC1:TLR6:SelSrc
 /mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[6]/SoftTrig                                             AMC0:TLR6:SftTrig
@@ -163,6 +164,7 @@
 /mmio/AppTop/AppCore/TimingProc[1]/TriggerLaneReg[6]/trigDelay                                            AMC1:TLR6:TrigDly
 /mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[6]/trigStretch                                          AMC0:TLR6:TrigStr
 /mmio/AppTop/AppCore/TimingProc[1]/TriggerLaneReg[6]/trigStretch                                          AMC1:TLR6:TrigStr
+/mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[7]/SelectSource                                         AMC0:TLR7:SelSrc
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/Version                                                      AMC0:DSPVers
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/Version                                                      AMC1:DSPVers
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef0                                                    AMC0:CoefT0
