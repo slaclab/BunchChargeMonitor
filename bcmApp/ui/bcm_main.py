@@ -15,7 +15,6 @@ from pydm.widgets.display_format import DisplayFormat
 from pydm.widgets import (PyDMLineEdit, PyDMSlider, PyDMRelatedDisplayButton, 
                           PyDMByteIndicator, PyDMEnumComboBox, PyDMLabel)
 from pydm.widgets.waveformplot import WaveformCurveItem
-from edmbutton import PyDMEDMDisplayButton
 from epics import caget
 
 left_lbl = 'ADC Counts'
@@ -544,56 +543,6 @@ class BCMExpert(Display):
 
     def setup_buttons(self):
         self.btn_layout = QHBoxLayout()
-        if self.isSC:
-            coef_btn = PyDMRelatedDisplayButton(filename="bcm_equation_params_SC.ui")
-        else:
-            coef_btn = PyDMRelatedDisplayButton(filename="bcm_equation_params.ui")
-        coef_btn.setText("Coefficients...")
-        coef_btn.openInNewWindow = True
-        coef_btn.macros = "PREFIX=TORO:{}:{}:{}{}".format(
-                self.macros()["AREA"],
-                self.macros()["POS"],
-                self.macros()["INST"],
-                self.mad,
-                self.sensor)
-                
-        if self.isSC:
-            rate_mode_pv = "TPR:{}:{}:{}:MODE".format(
-                self.macros()["AREA"],
-                self.macros()["IOC_UNIT"],
-                self.macros()["INST"])
-            rate_mode = caget(rate_mode_pv)
-        else:
-            rate_mode = 0
-            
-
-        if rate_mode == 1:
-            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagSC.ui")       
-            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagSC.ui")#used to test without having to push the screen
-        else:
-            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
-            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen    
-                
-        trig_btn.setText("Triggers...")
-        trig_btn.openInNewWindow = True
-        if not(self.macros()["POS"] == "LI11"):
-            trig_btn.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
-                self.macros()["AREA"],
-                self.macros()["IOC_UNIT"],
-                #self.macros()["INST"],
-                self.macros()["IOC"],
-                self.macros()["CPU"],
-                self.macros()["CRATE"])
-        else:
-            trig_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
-                    self.macros()["AREA"],
-                    "IN10",
-                    self.macros()["CHAN"],
-                    self.macros()["IOC_UNIT"],
-                    self.macros()["IOC"],
-                    self.macros()["CPU"],
-                    self.macros()["CRATE"])
-        #there are only one set of triggers per slot and they are only mapped to one set of PVs with INST=0
         
         if not(self.isSC):
             calb_btn = PyDMRelatedDisplayButton(filename="bcm_main.py")
@@ -606,46 +555,46 @@ class BCMExpert(Display):
                     self.macros()["IOC_UNIT"],
                     self.macros()["IOC"],
                     self.macros()["CPU"],
-                    self.macros()["CRATE"])
-               
+                    self.macros()["CRATE"]) 
+            
+            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
+            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen
+            trig_btn.setText("Triggers...")
+            trig_btn.openInNewWindow = True
+            trig_btn.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
+                self.macros()["AREA"],
+                self.macros()["IOC_UNIT"],
+                self.macros()["IOC"],
+                self.macros()["CPU"],
+                self.macros()["CRATE"])
+           
+            coef_btn = PyDMRelatedDisplayButton(filename="bcm_equation_params.ui")
+            coef_btn.setText("Coefficients...")
+            coef_btn.openInNewWindow = True
+            coef_btn.macros = "PREFIX=TORO:{}:{}:{}{}".format(
+                self.macros()["AREA"],
+                self.macros()["POS"],
+                self.macros()["INST"],
+                self.mad,
+                self.sensor)            
 
         # Buttons only shown only if it is running in the SC accelerator
         if self.isSC:
-            #bergoz_btn = PyDMEDMDisplayButton(filename="$PYDM/evnt/bergozExpert.edl")
-            #for dev
-            bergoz_btn = PyDMEDMDisplayButton(filename="bergozExpert.edl")
-            bergoz_btn.setText("Bergoz...")
-            bergoz_btn.openInNewWindow = True
-            bergoz_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(
-                    self.macros()["AREA"],
-                    self.macros()["POS"],
-                    self.macros()["AREA"],
-                    self.macros()["POS"],
-                    self.macros()["INST"],
-                    self.macros()["AREA"],
-                    self.macros()["UNIT"])
-                    
-            fpga_btn =  PyDMRelatedDisplayButton(filename="fpga_config.py")
-            fpga_btn.setText("FPGA Config...")
-            fpga_btn.openInNewWindow = True
-            fpga_btn.macros = "AREA={},IOC_UNIT={},POS={},TYPE={},BOARD_INFO_PREFIX={}".format(
-                    self.macros()["AREA"],
-                    self.macros()["IOC_UNIT"],
-                    self.macros()["POS"],
-                    "TORO",
-                    "AMCC"
-                    )
-            expert_btn = PyDMEDMDisplayButton(filename="bcm_expert.ui")
+            expert_btn = PyDMRelatedDisplayButton(filename="bcm_expert.py")
             expert_btn.setText("Expert...")
             expert_btn.openInNewWindow = True
-            expert_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={}".format(
+            expert_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={},IOC_UNIT{},IOC={},CPU,{},CRATE={}".format(
                     self.macros()["AREA"],
                     self.macros()["POS"],
                     self.macros()["AREA"],
                     self.macros()["POS"],
                     self.macros()["INST"],
                     self.macros()["AREA"],
-                    self.macros()["UNIT"])
+                    self.macros()["UNIT"],
+                    self.macros()["IOC_UNIT"],
+                    self.macros()["IOC"],
+                    self.macros()["CPU"],
+                    self.macros()["CRATE"])
 
         help_btn = QPushButton("Help...")
         if self.isSC:
@@ -654,15 +603,14 @@ class BCMExpert(Display):
             help_btn.clicked.connect(self.open_help)
 
         self.btn_layout.addStretch(10)
-        self.btn_layout.addWidget(coef_btn)
-        self.btn_layout.addWidget(trig_btn)
+
         # Button are only shown only if it is running in the SC accelerator
         if self.isSC:
-            self.btn_layout.addWidget(bergoz_btn)
-            self.btn_layout.addWidget(fpga_btn)
             self.btn_layout.addWidget(expert_btn)
         else:
             self.btn_layout.addWidget(calb_btn)
+            self.btn_layout.addWidget(coef_btn)
+            self.btn_layout.addWidget(trig_btn)
         self.btn_layout.addWidget(help_btn)
         self.main_layout.addLayout(self.btn_layout)
 

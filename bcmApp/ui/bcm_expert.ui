@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Bunch Charge Expert ${CHAN} </string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="1" column="0">
@@ -25,7 +25,9 @@
         <string>Coefficients...</string>
        </property>
        <property name="filenames" stdset="0">
-        <stringlist/>
+        <stringlist>
+         <string>bcm_equation_params_SC.ui</string>
+        </stringlist>
        </property>
        <property name="macros" stdset="0">
         <stringlist/>
@@ -41,7 +43,9 @@
         <string>Triggers...</string>
        </property>
        <property name="filenames" stdset="0">
-        <stringlist/>
+        <stringlist>
+         <string>tprDiagSC.ui</string>
+        </stringlist>
        </property>
       </widget>
      </item>
@@ -67,6 +71,11 @@
        </property>
        <property name="text">
         <string>FPGA Configuration...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>fpga_config.py</string>
+        </stringlist>
        </property>
       </widget>
      </item>

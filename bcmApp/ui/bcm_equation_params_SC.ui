@@ -45,8 +45,11 @@
        <property name="whatsThis">
         <string/>
        </property>
+       <property name="precision" stdset="0">
+        <number>0</number>
+       </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefOffsetRBV</string>
+        <string>ca://TORO:${AREA}:${POS}:0:CoefOffsetRBV</string>
        </property>
       </widget>
      </item>
@@ -59,13 +62,13 @@
         <string/>
        </property>
        <property name="precision" stdset="0">
-        <number>7</number>
+        <number>0</number>
        </property>
        <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA0RBV</string>
+        <string>ca://TORO:${AREA}:${POS}:0:CoefA0RBV</string>
        </property>
       </widget>
      </item>
@@ -101,7 +104,7 @@
         <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefA0</string>
+        <string>ca://TORO:${AREA}:${POS}:0:CoefA0</string>
        </property>
       </widget>
      </item>
@@ -120,7 +123,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefOffset</string>
+        <string>ca://TORO:${AREA}:${POS}:0:CoefOffset</string>
        </property>
       </widget>
      </item>
