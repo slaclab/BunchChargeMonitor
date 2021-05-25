@@ -34,12 +34,11 @@ class BCMexpert(Display):
                 
     def setup_FPGAConfig(self):
         self.ui.FPGAConfig.openInNewWindow = True
-        self.ui.FPGAConfig.macros = "AREA={},IOC_UNIT={},POS={},TYPE={},BOARD_INFO_PREFIX={}".format(
+        self.ui.FPGAConfig.macros = "AREA={},IOC_UNIT={},POS={},TYPE={}".format(
                     self.macros()["AREA"],
                     self.macros()["IOC_UNIT"],
-                    self.macros()["POS"],
-                    "TORO",
-                    "AMCC"
+                    self.macros()["IOC_UNIT"],
+                    "TORO"
                     )
     
     def setup_trig(self):
@@ -74,17 +73,7 @@ class BCMexpert(Display):
                     self.macros()["CPU"],
                     self.macros()["CRATE"])
         #there are only one set of triggers per slot and they are only mapped to one set of PVs with INST=0
-        
-    def setup_FPGAConfig(self):
-        self.ui.FPGAConfig.filename = "fpga_config.py"
-        self.ui.FPGAConfig.openInNewWindow = True
-        self.ui.FPGAConfig.macros = "AREA={},IOC_UNIT={},POS={},TYPE={},BOARD_INFO_PREFIX={}".format(
-                    self.macros()["AREA"],
-                    self.macros()["IOC_UNIT"],
-                    self.macros()["POS"],
-                    "TORO",
-                    "AMCC"
-                    )        
+             
         
     def ui_filename(self):
         return "bcm_expert.ui"

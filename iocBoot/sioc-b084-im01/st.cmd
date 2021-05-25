@@ -62,7 +62,7 @@ epicsEnvSet("UNIT","360")
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(UNIT)")
 
 # AMCC in crate 1, slot 7
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(UNIT)")
+epicsEnvSet("AMC_CARRIER_PREFIX","TORO:$(AREA):$(IOC_UNIT)")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcmLCLS2.dict")
@@ -392,15 +392,15 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
 # Start loading configuration file
-dbpf AMCC:${AREA}:${UNIT}:saveConfigFile "/tmp/configDump.yaml"
-dbpf AMCC:${AREA}:${UNIT}:saveConfigRoot "mmio"
-dbpf AMCC:${AREA}:${UNIT}:saveConfig 1
-dbpf AMCC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
-dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigFile "/tmp/configDump.yaml"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigRoot "mmio"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfig 1
+dbpf TORO:${AREA}:${IOC_UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
+dbpf TORO:${AREA}:${IOC_UNIT}:loadConfigRoot "mmio"
 # We should never load the configuration file after autosave already changed
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
-#dbpf AMCC:${AREA}:${UNIT}:loadConfig 1
+#dbpf TORO:${AREA}:${IOC_UNIT}:loadConfig 1
 #dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
 #dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
 #dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K

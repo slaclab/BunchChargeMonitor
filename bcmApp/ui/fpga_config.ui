@@ -147,7 +147,7 @@
           <string>FPGAVersion</string>
          </property>
          <property name="channel" stdset="0">
-          <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:FpgaVersion</string>
+          <string>ca://${TYPE}:${AREA}:${POS}:FpgaVersion</string>
          </property>
          <property name="displayFormat" stdset="0">
           <enum>PyDMLabel::Hex</enum>
@@ -186,7 +186,7 @@
         <string>FPGA Build String</string>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:BuildStamp</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:BuildStamp</string>
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLabel::String</enum>
@@ -242,7 +242,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:loadConfigFile</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:loadConfigFile</string>
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLineEdit::String</enum>
@@ -291,7 +291,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:loadConfigRoot</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:loadConfigRoot</string>
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLineEdit::String</enum>
@@ -311,7 +311,7 @@
         <string>Upload</string>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:loadConfig</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:loadConfig</string>
        </property>
        <property name="showConfirmDialog" stdset="0">
         <bool>true</bool>
@@ -336,7 +336,7 @@
         <string>LoadConfigStatus</string>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:loadConfigStatus</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:loadConfigStatus</string>
        </property>
       </widget>
      </item>
@@ -389,7 +389,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:saveConfigFile</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:saveConfigFile</string>
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLineEdit::String</enum>
@@ -438,7 +438,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:saveConfigRoot</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:saveConfigRoot</string>
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLineEdit::String</enum>
@@ -458,7 +458,7 @@
         <string>Save</string>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:saveConfig</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:saveConfig</string>
        </property>
        <property name="pressValue" stdset="0">
         <string>1</string>
@@ -477,7 +477,7 @@
         <string>SaveConfigStatus</string>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://${BOARD_INFO_PREFIX}:${AREA}:${POS}:saveConfigStatus</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:saveConfigStatus</string>
        </property>
       </widget>
      </item>
