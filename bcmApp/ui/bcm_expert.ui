@@ -14,8 +14,23 @@
    <string>Bunch Charge Expert ${CHAN} </string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="1" column="0">
+   <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Bunch Charge Monitor Expert Interfaces</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="PyDMRelatedDisplayButton" name="Coef">
        <property name="toolTip">
@@ -76,20 +91,6 @@
         <stringlist>
          <string>fpga_config.py</string>
         </stringlist>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout_5">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Bunch Charge Monitor Expert Interfaces</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

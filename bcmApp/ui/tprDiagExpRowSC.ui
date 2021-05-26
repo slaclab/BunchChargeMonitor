@@ -147,6 +147,9 @@
        <property name="channel" stdset="0">
         <string>TPR:${LOCA}:${IOC_UNIT}:${INST}:CH${CHN}_DESTMASK</string>
        </property>
+       <property name="displayFormat" stdset="0">
+        <enum>PyDMLineEdit::Hex</enum>
+       </property>
       </widget>
      </item>
      <item>
