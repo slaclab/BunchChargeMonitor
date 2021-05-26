@@ -55,7 +55,7 @@ class test_widget(Display):
 
         # Add enable/disable trigger box
         self.tctl = PyDMEnumComboBox()
-        self.tctl.channel = 'TPR:'+self.loca +':'+self.ioc_unit+':'+self.inst+':CH'+self.trign+'_SYS2_TCTL'   
+        self.tctl.channel = 'TPR:'+self.loca +':'+self.ioc_unit+':'+self.inst+':TRG'+self.trign+'_SYS2_TCTL'   
 
         row = QHBoxLayout()
         # Add the widgets to the grid, and set the relative stretch for each column

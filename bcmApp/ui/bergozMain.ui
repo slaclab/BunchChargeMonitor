@@ -279,17 +279,12 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="PyDMRelatedDisplayButton" name="PyDMRelatedDisplayButton">
+      <widget class="PyDMShellCommand" name="PyDMShellCommand">
        <property name="toolTip">
         <string/>
        </property>
        <property name="text">
-        <string>Bergoz Calibration...</string>
-       </property>
-       <property name="filenames" stdset="0">
-        <stringlist>
-         <string>bergozCalibration.ui</string>
-        </stringlist>
+        <string>Calibrate Bergoz</string>
        </property>
       </widget>
      </item>
@@ -304,9 +299,9 @@
    <header>pydm.widgets.label</header>
   </customwidget>
   <customwidget>
-   <class>PyDMRelatedDisplayButton</class>
+   <class>PyDMShellCommand</class>
    <extends>QPushButton</extends>
-   <header>pydm.widgets.related_display_button</header>
+   <header>pydm.widgets.shell_command</header>
   </customwidget>
   <customwidget>
    <class>PyDMLineEdit</class>

@@ -524,7 +524,7 @@
      <item>
       <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>Channel TCTL</string>
+        <string>Trigger TCTL</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
