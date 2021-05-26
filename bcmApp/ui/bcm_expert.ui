@@ -59,7 +59,7 @@
        </property>
        <property name="filenames" stdset="0">
         <stringlist>
-         <string>tprDiagSC.ui</string>
+         <string>$PYDM/evnt/tprDiagSC.ui</string>
         </stringlist>
        </property>
       </widget>
@@ -89,7 +89,7 @@
        </property>
        <property name="filenames" stdset="0">
         <stringlist>
-         <string>fpga_config.py</string>
+         <string>$PYDM/gadc/general/fpga_config.py</string>
         </stringlist>
        </property>
       </widget>

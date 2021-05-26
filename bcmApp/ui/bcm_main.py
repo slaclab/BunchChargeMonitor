@@ -557,8 +557,7 @@ class BCMExpert(Display):
                     self.macros()["CPU"],
                     self.macros()["CRATE"]) 
             
-            #trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")       
-            trig_btn = PyDMRelatedDisplayButton(filename="tprDiagNC.ui")#used to test without having to push the screen
+            trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")
             trig_btn.setText("Triggers...")
             trig_btn.openInNewWindow = True
             trig_btn.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
