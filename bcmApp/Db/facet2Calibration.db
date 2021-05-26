@@ -2,7 +2,7 @@
 
 record(calcout, "$(P):$(CHAN):Calib_Charge")
 {
-     field(DESC, "Integration of the beam pulse coefficients A0 = 1 and A1 = -1")
+     field(DESC, "Integration of the beam pulse")
      field(EGU, "mV*ns")
      field(SCAN, "Passive")
      field(INPA, "$(P):$(CHAN):Calib_mV")
@@ -14,7 +14,7 @@ record(calcout, "$(P):$(CHAN):Calib_Charge")
 
 record(ai, "$(P):$(CHAN):Calib_mV")
 {
-    field(DESC, "Measured voltage coefficients A0 = 1 and A1 = -1")
+    field(DESC, "Measured voltage")
     field(EGU, "mV")
     field(SCAN, "Passive")
     field(INP, "$(P):$(CHAN):TMIT_PC")
@@ -25,18 +25,18 @@ record(ai, "$(P):$(CHAN):Calib_mV")
 
 record(calc, "$(P):$(CHAN):Calib_Coef_Maginitude")
 {
-     field(DESC, "Converts Calib_charge to the needed coefficient magnitude")
+     field(DESC, "Converts Calib_charge to coef magnitude")
      field(EGU, "N/A")
      field(SCAN, "Passive")
      field(INPA, "$(P):$(CHAN):Calib_Charge")
-     field(INPB, "$(P):$(CHAN):ACD_count_to_mV"
+     field(INPB, "$(P):$(CHAN):ACD_count_to_mV")
      field(CALC, "A/(50*B)")
 }
 
 record(ao, "$(P):$(CHAN):Calib_ratio")
 {
-    field(DESC, "Ratio of charge sent to the toroid that returns")
+    field(DESC, "Toroid Response Ratio")
     field(EGU, "N/A")
-    field(RVAL, 0.0754)
+    field(VAL, "0.0754")
     field(SCAN, "Passive")
 }
