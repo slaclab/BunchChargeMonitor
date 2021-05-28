@@ -30,6 +30,7 @@ epicsEnvSet("FPGA_IP", "10.1.1.106")
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
+epicsEnvSet("AREA", "IN10")
 # AMC1 is connected to the toroid upstream and AMC0 is downstream
 epicsEnvSet("AMC1_AREA", "IN10")
 epicsEnvSet("AMC1_POS", "791")
