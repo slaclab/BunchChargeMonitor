@@ -1,4 +1,5 @@
 import os
+import socket
 import subprocess
 
 from enum import Enum
@@ -97,7 +98,19 @@ class FPGAConfig(Display):
         p_top = self._get_package_top()
 
         tree_gui = os.path.join('.', p_top, "cpsw/cpswTreeGUI/current/start.sh")
-        backdoor = os.path.join(self.path, "../../yaml/backdoor.tar.gz")
+        if(socket.gethostname()=='lcls-dev3'):
+            iocData = os.path.join('.', "/nfs/slac/g/lcls/epics/ioc/data")
+            print(iocData)
+        else:
+            iocData = os.path.join('.', "/u1/lcls/epics/ioc/data")
+        
+        backdoorLoc = os.path.join(iocData, "{}/yaml/config".format(self.macros()['IOC']))
+        
+        for file in os.listdir(backdoorLoc):
+            if file.endswith("backdoor.cpsw.tar.gz"):
+                backdoor = os.path.join(backdoorLoc, file)
+                break
+             
 
         command.append(tree_gui)
         command.extend(['-c', cpu])
