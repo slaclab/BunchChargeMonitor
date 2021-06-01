@@ -32,7 +32,7 @@ record(ai, "$(P):$(CHAN):Calib_mV")
     field(INP, "$(P):$(CHAN):TMIT_PC")
     field(DTYP, "Raw Soft Channel")
     field(FLNK, "$(P):$(CHAN):Calib_Charge")
-    info(autosaveFields, "AOFF, ASLO")
+    info(autosaveFields, "AOFF ASLO")
 }
 
 record(ao, "$(P):$(CHAN):Calib_Conversion")
