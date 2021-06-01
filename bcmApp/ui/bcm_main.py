@@ -569,14 +569,13 @@ class BCMExpert(Display):
                     self.macros()["CPU"],
                     self.macros()["CRATE"])
             else:
-                self.ui.Trig.macros = "AREA={},POS={},INST=0,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
-                        "IN10",
-                        self.macros()["POS"],
-                        self.macros()["CHAN"],
-                        self.macros()["IOC_UNIT"],
-                        self.macros()["IOC"],
-                        self.macros()["CPU"],
-                        self.macros()["CRATE"])
+                self.ui.Trig.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
+                    "IN10",
+                    self.macros()["IOC_UNIT"],
+                    #self.macros()["INST"],
+                    self.macros()["IOC"],
+                    self.macros()["CPU"],
+                    self.macros()["CRATE"])
            
             coef_btn = PyDMRelatedDisplayButton(filename="bcm_equation_params.ui")
             coef_btn.setText("Coefficients...")
