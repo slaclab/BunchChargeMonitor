@@ -244,8 +244,7 @@ dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 ###need to check and see if slot 0 or 1 is used may have to change to AMC1_PREFIX
 
 #loads the waveform records
-dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
-#dbLoadRecords("db/waveform.db", "P=$(AMC1_PREFIX)")
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=0")
 
 dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")

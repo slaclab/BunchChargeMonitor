@@ -244,7 +244,7 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
 
 #loads the waveform records
-dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=0")
 
 dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
