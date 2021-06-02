@@ -592,7 +592,7 @@ class BCMExpert(Display):
             expert_btn = PyDMRelatedDisplayButton(filename="bcm_expert.py")
             expert_btn.setText("Expert...")
             expert_btn.openInNewWindow = True
-            expert_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={},IOC_UNIT{},IOC={},CPU,{},CRATE={}".format(
+            expert_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={},IOC_UNIT{},IOC={},CPU,{},CRATE={},TYPE={}".format(
                     self.macros()["AREA"],
                     self.macros()["POS"],
                     self.macros()["AREA"],
@@ -603,7 +603,8 @@ class BCMExpert(Display):
                     self.macros()["IOC_UNIT"],
                     self.macros()["IOC"],
                     self.macros()["CPU"],
-                    self.macros()["CRATE"])
+                    self.macros()["CRATE"],
+                    "TORO")
 
         help_btn = QPushButton("Help...")
         if self.isSC:

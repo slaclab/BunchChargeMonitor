@@ -17,12 +17,13 @@ class BCMexpert(Display):
     
     def setup_bergoz(self):
         self.ui.Bergoz.openInNewWindow = True
-        self.ui.Bergoz.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
+        self.ui.Bergoz.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={},TYPE={}".format(
                 self.macros()["AREA"],
                 self.macros()["IOC_UNIT"],
                 self.macros()["IOC"],
                 self.macros()["CPU"],
-                self.macros()["CRATE"])       
+                self.macros()["CRATE"],
+                "TORO")       
     
     def setup_coef(self):
         self.ui.Coef.openInNewWindow = True
