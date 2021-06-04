@@ -30,8 +30,13 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
 epicsEnvSet("CPSW_PORT","Atca7")
 
-# Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
+###variables for using yaml downloader
+epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
+epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
+
+epicsEnvSet("AREA","COL1")
+epicsEnvSet("UNIT","125")
 
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.106")
@@ -43,8 +48,7 @@ epicsEnvSet("AUTO_GEN", 0)
 # Automatically generated record prefix
 #epicsEnvSet("PREFIX","COL1:IM01")
 
-epicsEnvSet("AREA","COL1")
-epicsEnvSet("UNIT","125")
+
 # BCM-TORO in crate 1, slot 6, AMC 0
 epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):$(UNIT)")
 

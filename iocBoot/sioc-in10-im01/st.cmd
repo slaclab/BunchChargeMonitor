@@ -20,7 +20,9 @@ epicsEnvSet("CPSW_PORT","ATCA5")
 # Yaml File
 epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
-epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaults.yaml")
+#epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaults.yaml")
+###software workaround
+epicsEnvSet("YAML_CONFIG_FILE", "yaml/defaults_work_around.yaml")
 
 # FPGA IP address
 # From crate ID = 0x0101, slot = 5
