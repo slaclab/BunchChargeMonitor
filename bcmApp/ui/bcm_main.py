@@ -560,19 +560,20 @@ class BCMExpert(Display):
             trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")
             trig_btn.setText("Triggers...")
             trig_btn.openInNewWindow = True
+            print(self.macros()["CRATE"])
             if not(self.macros()["AREA"] == "LI11"):
-                self.ui.Trig.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
+                trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(
                     self.macros()["AREA"],
                     self.macros()["IOC_UNIT"],
-                    #self.macros()["INST"],
+                    0,
                     self.macros()["IOC"],
                     self.macros()["CPU"],
                     self.macros()["CRATE"])
             else:
-                self.ui.Trig.macros = "LOCA={},IOC_UNIT={},INST=0,IOC={}, CPU={}, CRATE={}".format(
+                trig_btn.macros = "LOCA={},IOC_UNIT={},INST={},IOC={}, CPU={}, CRATE={}".format(
                     "IN10",
                     self.macros()["IOC_UNIT"],
-                    #self.macros()["INST"],
+                    0,
                     self.macros()["IOC"],
                     self.macros()["CPU"],
                     self.macros()["CRATE"])
