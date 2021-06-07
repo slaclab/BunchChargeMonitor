@@ -1,0 +1,4 @@
+PROJECT: AmcCarrierBcmMr
+FW_VERSION: 0x03060000
+BUILD_STRING: AmcCarrierBcmMr: Vivado v2019.1, rdsrv305 (x86_64), Built Mon 24 May 2021 03:35:07 PM PDT by leosap
+GIT_HASH: 1d985df61a3ac54a7c7cdd82930dd67140602a67
