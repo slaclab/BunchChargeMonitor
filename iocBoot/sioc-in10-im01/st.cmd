@@ -18,12 +18,9 @@
 epicsEnvSet("CPSW_PORT","ATCA5")
 
 # Yaml File
-#epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml")
-#epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
-#epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaults.yaml")
-
-#software workaround
-epicsEnvSet("YAML_FILE", "yaml/workaround/yaml/000TopLevel.yaml")
+epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml")
+epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
+epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaults.yaml")
 
 # FPGA IP address
 # From crate ID = 0x0101, slot = 5
@@ -79,13 +76,9 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-#DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
-#cpswLoadYamlFile("$(TOP_YAML)", "NetIODev", "", "$(FPGA_IP)")
-#cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
-
-###software workaround
-cpswLoadYamlFile("${YAML_FILE}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile("yaml/workaround/yaml/config/defaults.yaml", "mmio")
+DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
+cpswLoadYamlFile("$(TOP_YAML)", "NetIODev", "", "$(FPGA_IP)")
+cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
 
 ## Configure asyn port driver
 # YCPSWASYNConfig(
