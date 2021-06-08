@@ -44,7 +44,7 @@ record(ao, "$(P):$(CHAN):Calib_Conversion")
     info(autosaveFields, "VAL")   
 }
 
-record(calc, "$(P):$(CHAN):Calib_Coef_Maginitude")
+record(calc, "$(P):$(CHAN):Calib_Coef_Magnitude")
 {
      field(DESC, "Converts Calib_charge to coef magnitude")
      field(EGU, "N/A")
