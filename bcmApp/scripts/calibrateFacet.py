@@ -17,23 +17,27 @@ def process_args(argv):
      return parser
 
 def setCalibrationMode(prefix_info, log):
-    sig_coefA0 = PV("TORO:{}:{}:0:CoefA0".format(prefix_info.AREA, prefix_info.POS))
-    sig_coefA1 = PV("TORO:{}:{}:0:CoefA1".format(prefix_info.AREA, prefix_info.POS))
+    sig_coefA0 = PV("TORO:{}:{}:0:CoefA0".format(prefix_info.AREA, prefix_info.POS),auto_monitor = False)
+    sig_coefA1 = PV("TORO:{}:{}:0:CoefA1".format(prefix_info.AREA, prefix_info.POS),auto_monitor = False)
 
-    response_coefA0 = PV("TORO:{}:{}:1:CoefA0".format(prefix_info.AREA, prefix_info.POS))
-    response_coefA1 =PV("TORO:{}:{}:1:CoefA1".format(prefix_info.AREA, prefix_info.POS))
+    response_coefA0 = PV("TORO:{}:{}:1:CoefA0".format(prefix_info.AREA, prefix_info.POS),auto_monitor = False)
+    response_coefA1 =PV("TORO:{}:{}:1:CoefA1".format(prefix_info.AREA, prefix_info.POS),auto_monitor = False)
     
     coefA0_sav= sig_coefA0.get(timeout=None)
     coefA1_sav= sig_coefA1.get(timeout=None)
     
-    log = log + "\nOriginal CoefA0 = " + str(coefA0_sav)
-    log = log + "\nOriginal CoefA1 = " + str(coefA1_sav)
+    log = log + "\nPrevious CoefA0 = " + str(coefA0_sav)
+    log = log + "\nPrevious CoefA1 = " + str(coefA1_sav)
     
-    sig_coefA0.put(1)
-    sig_coefA1.put(-1)
+    sig_coefA0.put(1,wait = True)
+    sig_coefA1.put(-1,wait = True)
     
-    response_coefA0.put(-1)
-    response_coefA1.put(1)
+    
+    log = log + "\nFor Calibration CoefA0 = " + str(sig_coefA0.get(timeout=None))
+    log = log + "\nFor Calibration CoefA1 = " + str(sig_coefA1.get(timeout=None))
+    
+    response_coefA0.put(-1,wait = True)
+    response_coefA1.put(1,wait = True)
     return log
 
 def calibrateFacet(prefix_info, log):
@@ -47,7 +51,8 @@ def calibrateFacet(prefix_info, log):
     log = log + "\nToroid Responce Charge = " + str(responseChrg)
     log = log + "\nComputed Toroid Ratio = " + str(toroRatio)
     
-    PV("TORO:{}:{}:0:Calib_ratio".format(prefix_info.AREA, prefix_info.POS)).put(toroRatio)
+    calibRatioPV = PV("TORO:{}:{}:0:Calib_ratio".format(prefix_info.AREA, prefix_info.POS),auto_monitor = False)
+    calibRatioPV.put(toroRatio,wait = True)
     
     coeficentMag=PV("TORO:{}:{}:0:Calib_Coef_Magnitude".format(prefix_info.AREA, prefix_info.POS)).get(timeout=None)
     
@@ -56,13 +61,12 @@ def calibrateFacet(prefix_info, log):
     return coeficentMag, log
 
 def setCoeficents(prefix_info, magnitude, log):
-    sig_coefA0_PV = PV("TORO:{}:{}:0:CoefA0".format(prefix_info.AREA, prefix_info.POS))
-    sig_coefA1_PV = PV("TORO:{}:{}:0:CoefA1".format(prefix_info.AREA, prefix_info.POS))
+    sig_coefA0_PV = PV("TORO:{}:{}:0:CoefA0".format(prefix_info.AREA, prefix_info.POS), auto_monitor = False)
+    sig_coefA1_PV = PV("TORO:{}:{}:0:CoefA1".format(prefix_info.AREA, prefix_info.POS), auto_monitor = False)
     
-    sig_coefA0_PV.put(magnitude)
-    sig_coefA1_PV.put(magnitude)
+    sig_coefA0_PV.put(abs(magnitude),wait = True)
+    sig_coefA1_PV.put(-abs(magnitude),wait = True)
     
-    time.sleep(1)
     
     log = log + "\nSetting TORO:{}:{}:0:CoefA0 to {}".format(prefix_info.AREA, prefix_info.POS, sig_coefA0_PV.get(timeout=None))
     log = log + "\nSetting TORO:{}:{}:0:CoefA1 to {}\n".format(prefix_info.AREA, prefix_info.POS, sig_coefA1_PV.get(timeout=None))
