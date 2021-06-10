@@ -44,14 +44,26 @@ record(ao, "$(P):$(CHAN):Calib_Conversion")
     info(autosaveFields, "VAL")   
 }
 
-record(calc, "$(P):$(CHAN):Calib_Coef_Magnitude")
+record(calc, "$(P):$(CHAN):Calib_Coef_A0")
 {
      field(DESC, "Converts Calib_charge to coef magnitude")
      field(EGU, "N/A")
      field(SCAN, "1 second")
      field(INPA, "$(P):$(CHAN):INTEGRAL")
      field(INPB, "$(P):$(CHAN):Calib_ratio")
-     field(CALC, "A/(50*B)")
+     field(CALC, "ABS(A/(50*B))")
+     field(FLNK, "$(P):$(CHAN):CoefA0")
+}
+
+record(calc, "$(P):$(CHAN):Calib_Coef_A1")
+{
+     field(DESC, "Converts Calib_charge to coef magnitude")
+     field(EGU, "N/A")
+     field(SCAN, "1 second")
+     field(INPA, "$(P):$(CHAN):INTEGRAL")
+     field(INPB, "$(P):$(CHAN):Calib_ratio")
+     field(CALC, "-ABS(A/(50*B))")
+     field(FLNK, "$(P):$(CHAN):CoefA1")
 }
 
 record(ao, "$(P):$(CHAN):Calib_ratio")
