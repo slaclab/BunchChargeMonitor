@@ -66,7 +66,7 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # ***********************************************************************
 # **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
-epicsEnvSet("MPS_APP_ID", "0xAF")
+epicsEnvSet("MPS_APP_ID", "175")
 epicsEnvSet("MPS_PREFIX", "MPLN:SPD:MP02:3")
 
 # ***********************************************************************
@@ -165,12 +165,13 @@ YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
 # ===========================================
 #	        IDENTIFY Bergoz 
 # ===========================================
-cd(${TOP}/bcmApp/scripts/)
-system("./getBergozLocation.sh ")
-< /tmp/im01_path
-cd(${TOP})
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+#cd(${TOP}/bcmApp/scripts/)
+#system("./getBergozLocation.sh ")
+#< /tmp/im01_path
+#cd(${TOP})
+#epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 
+epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
 
 # ***********************************************************************
 # **** Driver setup for Bergoz ******************************************

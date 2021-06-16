@@ -166,11 +166,13 @@ YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
 # ===========================================
 #	        IDENTIFY Bergoz 
 # ===========================================
-cd(${TOP}/bcmApp/scripts/)
-system("./getBergozLocation.sh ")
-< /tmp/im01_path
-cd(${TOP})
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+#cd(${TOP}/bcmApp/scripts/)
+#system("./getBergozLocation.sh ")
+#< /tmp/im01_path
+#cd(${TOP})
+#epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+
+epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
 
 
 # ***********************************************************************

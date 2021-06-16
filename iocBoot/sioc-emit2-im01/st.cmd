@@ -35,6 +35,8 @@ epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml")
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
 epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 
+epicsEnvSet("IOC_UNIT", "IM01")
+
 # FPGA IP address
 epicsEnvSet("FPGA_IP", "10.0.1.105")
 
@@ -45,32 +47,31 @@ epicsEnvSet("AUTO_GEN", 0)
 # Automatically generated record prefix
 #epicsEnvSet("PREFIX","EMIT2:IM01")
 
+#AREA
 epicsEnvSet("AREA","EMIT2")
 epicsEnvSet("POS","170")
-epicsEnvSet("IOC_UNIT", "IM01")
-# BCM-TORO in crate 1, slot 5, AMC 0
-epicsEnvSet("AMC1_PREFIX","TORO:$(AREA):$(POS)")
-epicsEnvSet("ATCA_SLOT", 5)
+
+epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(POS)")
 
 # AMCC in crate 1, slot 5
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(POS)")
+epicsEnvSet("AMC_CARRIER_PREFIX","TORO:$(AREA):$(POS)")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "yaml/bcm_01_20170313140632.dict")
+epicsEnvSet("DICT_FILE", "yaml/bcmLCLS2.dict")
 
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # ***********************************************************************
 # **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
-epicsEnvSet("MPS_APP_ID", "0x45")
+epicsEnvSet("MPS_APP_ID", "69")
 epicsEnvSet("MPS_PREFIX", "MPLN:L2B:MP03:5")
 
 # ***********************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ********
 
 # System Location:
-epicsEnvSet("TEMP_IOC_NAME","$(AMC1_PREFIX)")
+epicsEnvSet("TEMP_IOC_NAME","$(AMC0_PREFIX)")
 
 # ***********************************************************************
 # **** Environment variables for IOC Admin ******************************
@@ -84,7 +85,7 @@ epicsEnvSet("IM01","2C")
 # **********************************************************************
 # **** Environment variables for Toroid on  Bergoz *********************
 
-epicsEnvSet("BERGOZ0_P","$(AMC1_PREFIX):")
+epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_IN_PORT","L0")
 epicsEnvSet("BERGOZ0_OUT_PORT","L1")
@@ -120,8 +121,11 @@ DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
+DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
 cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
-cpswLoadConfigFile("$(YAML_CONFIG_FILE)", "mmio", "")
+cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
+
+
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
@@ -143,7 +147,7 @@ bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcC
 #    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
 #    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
 #    MPS Root Path              # OPTIONAL: Root path to the MPS register area
-L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}", "", "")
+L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
 
 ## Configure asyn port driver
 # YCPSWASYNConfig(
@@ -152,17 +156,19 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC1_PREFIX}"
 #    Record name Prefix,        # Record name prefix
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
-YCPSWASYNConfig("Atca7", "", "", "0", "yaml/bcm_01_20170313140632.dict")
+YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
 
 
 # ===========================================
 #	        IDENTIFY Bergoz 
 # ===========================================
-cd(${TOP}/bcmApp/scripts/)
-system("./getBergozLocation.sh ")
-< /tmp/im01_path
-cd(${TOP})
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+#cd(${TOP}/bcmApp/scripts/)
+#system("./getBergozLocation.sh ")
+#< /tmp/im01_path
+#cd(${TOP})
+#epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+
+epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
 
 
 # ***********************************************************************
@@ -171,16 +177,6 @@ epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 # drvAsynIPPortConfigure port ipInfo priority noAutoconnect noProcessEos
 drvAsynSerialPortConfigure("$(BERGOZ0_IN_PORT)","$(BERGOZ0_TTY)",0,0,0)
 drvAsynSerialPortConfigure("$(BERGOZ0_OUT_PORT)","$(BERGOZ0_TTY)",0,0,0)
-
-
-# ***********************************************************************
-# **** Driver setup for Temperature Chassis on Ethercat *****************
-# Init EtherCAT: To support Real Time fieldbus
-# EtherCAT AsynDriver must be initialized in the IOC startup script before iocInit
-# ecAsynInit("<unix_socket>", <max_message>)
-# unix_socket = path to the unix socket created by the scanner
-# max_message = maximum size of messages between scanner and ioc
-ecAsynInit("/tmp/sock1", 1000000)
 
 # ***********************************************************************
 # **** Setup TprTrigger Driver ******************************************
@@ -224,10 +220,13 @@ crossbarControlAsynDriverConfigure("crossbar", "mmio/AmcCarrierCore/AxiSy56040")
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 # Manually create records
-dbLoadRecords("db/bcm.db", "P=${AMC1_PREFIX}, PORT=${CPSW_PORT}, AMC=0")
-dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+dbLoadRecords("db/bcmAmc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmChan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
+dbLoadRecords("db/bcmLCLS2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
+dbLoadRecords("db/bcmLCLS2chan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
 
-dbLoadRecords("db/iocMeta.db", "AREA=${AREA}, IOC_UNIT=${IOC_UNIT}")
+dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+dbLoadRecords("db/iocMeta.db", "AREA=SPS, IOC_UNIT=IM01")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
@@ -241,51 +240,41 @@ dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
 dbLoadRecords("db/tprTrig.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=00,DEV_PREFIX=${AMC1_PREFIX}:TRG00:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=01,DEV_PREFIX=${AMC1_PREFIX}:TRG01:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=02,DEV_PREFIX=${AMC1_PREFIX}:TRG02:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=03,DEV_PREFIX=${AMC1_PREFIX}:TRG03:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=04,DEV_PREFIX=${AMC1_PREFIX}:TRG04:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=05,DEV_PREFIX=${AMC1_PREFIX}:TRG05:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=06,DEV_PREFIX=${AMC1_PREFIX}:TRG06:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=07,DEV_PREFIX=${AMC1_PREFIX}:TRG07:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=08,DEV_PREFIX=${AMC1_PREFIX}:TRG08:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=09,DEV_PREFIX=${AMC1_PREFIX}:TRG09:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=10,DEV_PREFIX=${AMC1_PREFIX}:TRG10:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=11,DEV_PREFIX=${AMC1_PREFIX}:TRG11:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=12,DEV_PREFIX=${AMC1_PREFIX}:TRG12:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=13,DEV_PREFIX=${AMC1_PREFIX}:TRG13:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=14,DEV_PREFIX=${AMC1_PREFIX}:TRG14:,PORT=trig")
-dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=15,DEV_PREFIX=${AMC1_PREFIX}:TRG15:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=00,DEV_PREFIX=${AMC0_PREFIX}:TRG00:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=01,DEV_PREFIX=${AMC0_PREFIX}:TRG01:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=02,DEV_PREFIX=${AMC0_PREFIX}:TRG02:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=03,DEV_PREFIX=${AMC0_PREFIX}:TRG03:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=04,DEV_PREFIX=${AMC0_PREFIX}:TRG04:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=05,DEV_PREFIX=${AMC0_PREFIX}:TRG05:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=06,DEV_PREFIX=${AMC0_PREFIX}:TRG06:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=07,DEV_PREFIX=${AMC0_PREFIX}:TRG07:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=08,DEV_PREFIX=${AMC0_PREFIX}:TRG08:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=09,DEV_PREFIX=${AMC0_PREFIX}:TRG09:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=10,DEV_PREFIX=${AMC0_PREFIX}:TRG10:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=11,DEV_PREFIX=${AMC0_PREFIX}:TRG11:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=12,DEV_PREFIX=${AMC0_PREFIX}:TRG12:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=13,DEV_PREFIX=${AMC0_PREFIX}:TRG13:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=14,DEV_PREFIX=${AMC0_PREFIX}:TRG14:,PORT=trig")
+dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),SYS=SYS2,NN=15,DEV_PREFIX=${AMC0_PREFIX}:TRG15:,PORT=trig")
 
 # ***********************************************************************
 # **** Load Bergoz db ***************************************************
 dbLoadRecords("db/devBergozBCM.db" "P=$(BERGOZ0_P),R=$(BERGOZ0_R),PORT=$(BERGOZ0_IN_PORT),PORT_OUT=$(BERGOZ0_OUT_PORT),A=-1")
 dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),ADDR=-1,OMAX=0,IMAX=0")
-dbLoadRecords("db/TempMonitoring_TORO.db", "P=$(BERGOZ0_P)$(BERGOZ0_R),ESLO=$(ESLO),EOFF=$(EOFF), DEVICE=${TEMP_IOC_NAME}")
-
-# ***********************************************************************
-# **** Load db for Temperature Chassis on Ethercat **********************
-# Load the database templates for the EtherCAT components
-# dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
-dbLoadRecords("db/EK1101.template", "DEVICE=${AMC1_PREFIX}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP1,PORT=Node1,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP2,PORT=Node2,SCAN=1 second")
-dbLoadRecords("db/EL3202-0010.template", "DEVICE=${AMC1_PREFIX}:TEMP3,PORT=Node3,SCAN=1 second")
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
-dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC1_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
 
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC1_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 
 # ************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ******
@@ -390,15 +379,15 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
 # Start loading configuration file
-dbpf AMCC:${AREA}:${POS}:saveConfigFile "/tmp/configDump.yaml"
-dbpf AMCC:${AREA}:${POS}:saveConfigRoot "mmio"
-dbpf AMCC:${AREA}:${POS}:saveConfig 1
-dbpf AMCC:${AREA}:${POS}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
-dbpf AMCC:${AREA}:${POS}:loadConfigRoot "mmio"
+dbpf TORO:${AREA}:${POS}:saveConfigFile "/tmp/configDump.yaml"
+dbpf TORO:${AREA}:${POS}:saveConfigRoot "mmio"
+dbpf TORO:${AREA}:${POS}:saveConfig 1
+dbpf TORO:${AREA}:${POS}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
+dbpf TORO:${AREA}:${POS}:loadConfigRoot "mmio"
 # We should never load the configuration file after autosave already changed
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
-#dbpf AMCC:${AREA}:${POS}:loadConfig 1
+#dbpf TORO:${AREA}:${POS}:loadConfig 1
 dbpf TORO:${AREA}:${POS}:Temp.EGU K
 dbpf TORO:${AREA}:${POS}:TempAmp.EGU K
 dbpf TORO:${AREA}:${POS}:TempElc.EGU K

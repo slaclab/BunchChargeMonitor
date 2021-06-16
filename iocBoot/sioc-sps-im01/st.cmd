@@ -34,8 +34,6 @@ epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
 epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 
-###need to know which slot the daughter card is in 1 is temporary
-epicsEnvSet("AMC1_POS", "1")
 epicsEnvSet("IOC_UNIT", "IM01")
 
 # FPGA IP address
@@ -49,7 +47,7 @@ epicsEnvSet("AUTO_GEN", 0)
 # Automatically generated record prefix
 #epicsEnvSet("PREFIX","SPS:IM01")
 
-AREA
+#AREA
 epicsEnvSet("AREA","SPS")
 epicsEnvSet("UNIT","605")
 
@@ -66,7 +64,7 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # ***********************************************************************
 # **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
-epicsEnvSet("MPS_APP_ID", "175")
+epicsEnvSet("MPS_APP_ID", "181")
 epicsEnvSet("MPS_PREFIX", "MPLN:SPS:MP02:5")
 
 # ***********************************************************************
@@ -120,10 +118,7 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-### changed to yaml downloader
 DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
-
-###to bring up to current standard importing from $IOC_DATA
 cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
 cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
 
@@ -165,11 +160,13 @@ YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
 # ===========================================
 #	        IDENTIFY Bergoz 
 # ===========================================
-cd(${TOP}/bcmApp/scripts/)
-system("./getBergozLocation.sh ")
-< /tmp/im01_path
-cd(${TOP})
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+#cd(${TOP}/bcmApp/scripts/)
+#system("./getBergozLocation.sh ")
+#< /tmp/im01_path
+#cd(${TOP})
+#epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+
+epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
 
 
 # ***********************************************************************

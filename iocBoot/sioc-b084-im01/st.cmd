@@ -34,10 +34,6 @@ epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml")
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
 epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 
-###setting position so that the screen can connect
-###daughter card position
-epicsEnvSet("AMC0_POS", "0")
-epicsEnvSet("AMC1_POS", "1")
 epicsEnvSet("IOC_UNIT", "IM01")
 
 # FPGA IP address
@@ -138,14 +134,14 @@ cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
-addBsa("CHRG",       "uint32")
-addBsa("CHRGUNC",    "uint32")
-addBsa("RAWSUM",     "uint32")
-addBsa("CHRGFLOAT",  "float32")
-addBsa("TOROSTATUS", "uint32")
-addBsa("CHRGNOTMIT", "uint32")
+#addBsa("CHRG",       "uint32")
+#addBsa("CHRGUNC",    "uint32")
+#addBsa("RAWSUM",     "uint32")
+#addBsa("CHRGFLOAT",  "float32")
+#addBsa("TOROSTATUS", "uint32")
+#addBsa("CHRGNOTMIT", "uint32")
 # BSA driver for yaml
-bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
+#bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
 # **********************************************************************
 # **** Setup MPS Driver ************************************************
@@ -173,12 +169,13 @@ YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
 # ===========================================
 #	        IDENTIFY Bergoz 
 # ===========================================
-cd(${TOP}/bcmApp/scripts/)
-system("./getBergozLocation.sh ")
-< /tmp/im01_path
-cd(${TOP})
-epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
+#cd(${TOP}/bcmApp/scripts/)
+#system("./getBergozLocation.sh ")
+#< /tmp/im01_path
+#cd(${TOP})
+#epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 
+epicsEnvSet("BERGOZ0_TTY","0")
 
 # ***********************************************************************
 # **** Driver setup for Bergoz ******************************************
@@ -286,12 +283,12 @@ dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+#dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
 
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
