@@ -32,8 +32,8 @@ epicsEnvSet("FPGA_IP", "10.0.1.104")
 epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA", "LI20")
-epicsEnvSet("AMC1_POS", "452")
-epicsEnvSet("AMC0_POS", "163")
+epicsEnvSet("AMC1_POS", "2452")
+epicsEnvSet("AMC0_POS", "3163")
 epicsEnvSet("IOC_UNIT", "IM02")
 
 # BCM-TORO in crate 1, slot 4, AMC 1 (IM2452)

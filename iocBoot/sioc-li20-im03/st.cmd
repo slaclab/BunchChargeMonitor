@@ -32,7 +32,7 @@ epicsEnvSet("FPGA_IP", "10.0.1.105")
 epicsEnvSet("AUTO_GEN", 0)
 
 epicsEnvSet("AREA", "LI20")
-epicsEnvSet("AMC0_POS","255")
+epicsEnvSet("AMC0_POS","3255")
 epicsEnvSet("IOC_UNIT", "IM03")
 
 # BCM-TORO in crate 1, slot 5, AMC 0 (IM3255)
