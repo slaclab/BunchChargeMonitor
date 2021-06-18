@@ -36,7 +36,7 @@ bcm_pv = { "x": ":SAMP_TIME.VALA", WaveformType.RAW: ":RWF_U16.VALA", WaveformTy
 # a few PV names. The differences are in the dictionaries below while the PV
 # names are not unified.
 scPVs = {"charge":"CHRG","nel":"TMIT"}
-ncPVs = {"charge":"TMIT_PC","nel":"TMIT_NEL"}
+ncPVs = {"charge":"TMIT_PC","nel":"TMIT"}
 
 class CalPlotCtxBox(pg.ViewBox, QObject):
     """ Implements a custom right click menu for Calibration plots """

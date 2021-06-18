@@ -1,5 +1,5 @@
 
-record(calc, "$(P):TMIT_NEL") {
+record(calc, "$(P):TMIT") {
   field(DESC, "$(DESC)")
   field(PINI, "$(PINI)")
   field(SCAN, "$(SCAN)")
