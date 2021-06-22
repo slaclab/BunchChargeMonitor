@@ -237,6 +237,18 @@ dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(POS),AREA=GUNB")
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
+###*************************
+###setting up the stream device
+dbLoadRecords("db/streamControl.db", "P=$(AMC0_PREFIX)")
+###need to check and see if slot 0 or 1 is used may have to change to AMC1_PREFIX
+
+#loads the waveform records
+dbLoadRecords("db/waveform.db", "P=$(AMC0_PREFIX),CHAN=0")
+
+dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
+dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
+
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
 dbLoadRecords("db/tprTrig.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=$(ATCA_SLOT),PORT=trig")
