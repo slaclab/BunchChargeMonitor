@@ -2,3 +2,4 @@ TORO:${AREA}:${POS}:0:CoefA0
 TORO:${AREA}:${POS}:0:CoefA1
 TORO:${AREA}:${POS}:0:CoefOffset
 TORO:${AREA}:${POS}:0:Calib_ratio
+TORO:${AREA}:${POS}:1:Calib_ratio
