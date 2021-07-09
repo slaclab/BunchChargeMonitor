@@ -65,7 +65,7 @@
         <string/>
        </property>
        <property name="precision" stdset="0">
-        <number>5</number>
+        <number>9</number>
        </property>
        <property name="precisionFromPV" stdset="0">
         <bool>false</bool>
@@ -98,7 +98,7 @@
         <string/>
        </property>
        <property name="precision" stdset="0">
-        <number>5</number>
+        <number>9</number>
        </property>
        <property name="precisionFromPV" stdset="0">
         <bool>false</bool>

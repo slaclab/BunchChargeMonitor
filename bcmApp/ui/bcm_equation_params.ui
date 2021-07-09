@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>273</width>
-    <height>151</height>
+    <height>153</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,7 @@
         <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA1</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefA1</string>
        </property>
       </widget>
      </item>
@@ -68,7 +68,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefOffsetRBV</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefOffsetRBV</string>
        </property>
       </widget>
      </item>
@@ -87,7 +87,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA1RBV</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefA1RBV</string>
        </property>
       </widget>
      </item>
@@ -106,7 +106,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA0RBV</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefA0RBV</string>
        </property>
       </widget>
      </item>
@@ -142,7 +142,7 @@
         <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefA0</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefA0</string>
        </property>
       </widget>
      </item>
@@ -161,7 +161,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:${INST}:CoefOffset</string>
+        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefOffset</string>
        </property>
       </widget>
      </item>

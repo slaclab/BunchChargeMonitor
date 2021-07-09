@@ -184,7 +184,8 @@ class BcmCalPlot(pg.PlotWidget):
                                  self.wf))
 
     def _set_data_src(self):
-        src_pv_prefix = "ca://TORO:{}:{}".format(
+        src_pv_prefix = "ca://{}:{}:{}".format(
+                self.macros["TYPE"],
                 self.macros["AREA"],
                 self.macros["POS"])
         x_pv = "{}{}".format(src_pv_prefix, bcm_pv["x"])                
@@ -229,7 +230,8 @@ class BcmPyDMSlider(PyDMSlider):
         self.macros = macros
         self.sensor = ch.split(":")[0]
         self.window_edge = ch.split(":")[-1]
-        self.pv = "TORO:{}:{}:{}:{}".format(\
+        self.pv = "{}:{}:{}:{}:{}".format(\
+                self.macros["TYPE"],
                 self.macros["AREA"],
                 self.macros["POS"],
                 self.macros["INST"],
@@ -253,7 +255,8 @@ class BcmPyDMSlider(PyDMSlider):
 
     def plot_src_changed(self, wf, sensor):
         self.sensor = sensor
-        self.pv = "TORO:{}:{}:{}".format(\
+        self.pv = "{}:{}:{}:{}".format(\
+                self.macros()["TYPE"],
                 self.macros["AREA"],
                 self.macros["POS"],
                 self.window_edge)
@@ -453,14 +456,16 @@ class BCMExpert(Display):
         stream_lbl.setFont(font)
 
         stream_led = PyDMByteIndicator()
-        stream_led.channel = "ca://TORO:{}:{}:AutoRearmRBV".format(
+        stream_led.channel = "ca://{}:{}:{}:AutoRearmRBV".format(
+                              self.macros()["TYPE"],
                               self.macros()["AREA"],
                               self.macros()["POS"])
         stream_led.showLabels = False
         stream_led.setMaximumWidth(35)
 
         stream_combo = PyDMEnumComboBox()
-        stream_combo.channel = "ca://TORO:{}:{}:ACCESS".format(
+        stream_combo.channel = "ca://{}:{}:{}:ACCESS".format(
+                                self.macros()["TYPE"],
                                 self.macros()["AREA"],
                                 self.macros()["POS"])
         stream_combo.setFont(font)
@@ -488,7 +493,8 @@ class BCMExpert(Display):
        
         nel_lbl = PyDMLabel()
         nel_lbl.setText("NEL")
-        nel_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
+        nel_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
+                              self.macros()["TYPE"],
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
@@ -508,11 +514,20 @@ class BCMExpert(Display):
         
         tmit_pc_lbl = PyDMLabel()
         tmit_pc_lbl.setText("charge")
-        tmit_pc_lbl.channel = "ca://TORO:{}:{}:{}:{}".format(
+        if(self.macros()["TYPE"] == "TORO"):
+            tmit_pc_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
+                              self.macros()["TYPE"],
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
                               self.pvDict["charge"])
+        else:
+            tmit_pc_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
+                              self.macros()["TYPE"],
+                              self.macros()["AREA"],
+                              self.macros()["POS"],
+                              self.macros()["INST"],
+                              "CHRG")
         tmit_pc_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
                                     color: rgb(0, 255, 0);\
@@ -545,10 +560,11 @@ class BCMExpert(Display):
         self.btn_layout = QHBoxLayout()
         
         if not(self.isSC):
-            calb_btn = PyDMRelatedDisplayButton(filename="bcm_main.py")
-            calb_btn.setText("Calibration...")
-            calb_btn.openInNewWindow = True
-            calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
+            if(not(self.macros()["TYPE"] == "FARC")):
+                calb_btn = PyDMRelatedDisplayButton(filename="bcm_main.py")
+                calb_btn.setText("Calibration...")
+                calb_btn.openInNewWindow = True
+                calb_btn.macros = "AREA={},POS={},INST=1,CHAN={}_Calibration,IOC_UNIT={},IOC={}, CPU={}, CRATE={}".format(
                     self.macros()["AREA"],
                     self.macros()["POS"],
                     self.macros()["CHAN"],
@@ -581,7 +597,8 @@ class BCMExpert(Display):
             coef_btn = PyDMRelatedDisplayButton(filename="bcm_equation_params.ui")
             coef_btn.setText("Coefficients...")
             coef_btn.openInNewWindow = True
-            coef_btn.macros = "PREFIX=TORO:{}:{}:{}{}".format(
+            coef_btn.macros = "PREFIX={}:{}:{}:{}{}".format(
+                self.macros()["TYPE"],
                 self.macros()["AREA"],
                 self.macros()["POS"],
                 self.macros()["INST"],
@@ -593,7 +610,8 @@ class BCMExpert(Display):
             expert_btn = PyDMRelatedDisplayButton(filename="bcm_expert.py")
             expert_btn.setText("Expert...")
             expert_btn.openInNewWindow = True
-            expert_btn.macros = "prefix=TORO:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={},IOC_UNIT{},IOC={},CPU,{},CRATE={},TYPE={}".format(
+            expert_btn.macros = "prefix={}:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={},IOC_UNIT{},IOC={},CPU,{},CRATE={},TYPE={}".format(
+                    self.macros()["TYPE"],
                     self.macros()["AREA"],
                     self.macros()["POS"],
                     self.macros()["AREA"],
@@ -605,7 +623,7 @@ class BCMExpert(Display):
                     self.macros()["IOC"],
                     self.macros()["CPU"],
                     self.macros()["CRATE"],
-                    "TORO")
+                    self.macros()["TYPE"])
 
         help_btn = QPushButton("Help...")
         if self.isSC:
@@ -619,7 +637,8 @@ class BCMExpert(Display):
         if self.isSC:
             self.btn_layout.addWidget(expert_btn)
         else:
-            self.btn_layout.addWidget(calb_btn)
+            if(not(self.macros()["TYPE"] == "FARC")):
+                self.btn_layout.addWidget(calb_btn)
             self.btn_layout.addWidget(coef_btn)
             self.btn_layout.addWidget(trig_btn)
         self.btn_layout.addWidget(help_btn)
