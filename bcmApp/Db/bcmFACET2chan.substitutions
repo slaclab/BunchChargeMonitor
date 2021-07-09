@@ -30,20 +30,6 @@ file "tmit_facet2.template" { pattern
 { $(P), $(CHAN), "Calculated Number of Electrons",  "YES",   ".5 second" }
 }
 
-#======================================
-# Register with DoubleVal interfaces
-#======================================
-
-file "RegisterDoubleOutRBV.template" { pattern
-{ P,           R,               DESC,                    PINI,   SCAN,       PORT,       EGU,               PARAM                  }
-{ $(P),     CoefOffsetRBV,"Coef Offset",                "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
-}
-
-file "RegisterDoubleOut.template" { pattern
-{ P,              R,            DESC,                   PINI,    SCAN,        PORT,     EGU,                PARAM                   }
-{ $(P),     CoefOffset,   "Coef Offset",                "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
-}
-
 
 
 
