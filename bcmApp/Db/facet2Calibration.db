@@ -51,7 +51,8 @@ record(calcout, "$(P):$(CHAN):Calib_Coef_A0")
      field(SCAN, "1 second")
      field(INPA, "$(P):$(CHAN):INTEGRAL")
      field(INPB, "$(P):$(CHAN):Calib_ratio")
-     field(CALC, "ABS(A/(50*B))")
+     field(INPC, "$(P):$(CHAN):Invert_Coef")
+     field(CALC, "C*A/(50*B)")
      field(OUT, "$(P):$(CHAN):CoefA0")
      field(FLNK, "$(P):$(CHAN):CoefA0")
 }
@@ -63,7 +64,8 @@ record(calcout, "$(P):$(CHAN):Calib_Coef_A1")
      field(SCAN, "1 second")
      field(INPA, "$(P):$(CHAN):INTEGRAL")
      field(INPB, "$(P):$(CHAN):Calib_ratio")
-     field(CALC, "-ABS(A/(50*B))")
+     field(INPC, "$(P):$(CHAN):Invert_Coef")
+     field(CALC, "-C*A/(50*B)")
      field(OUT, "$(P):$(CHAN):CoefA1")
      field(FLNK, "$(P):$(CHAN):CoefA1")
 }
@@ -73,5 +75,13 @@ record(ao, "$(P):$(CHAN):Calib_ratio")
     field(DESC, "Toroid Response Ratio")
     field(EGU, "N/A")
     field(VAL, "0.0754")
+    field(SCAN, "Passive")
+}
+
+record(ao, "$(P):$(CHAN):Invert_Coef")
+{
+    field(DESC, "If coefA0 should be positive")
+    field(EGU, "N/A")
+    field(VAL, "1")
     field(SCAN, "Passive")
 }
