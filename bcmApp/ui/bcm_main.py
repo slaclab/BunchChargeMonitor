@@ -256,7 +256,7 @@ class BcmPyDMSlider(PyDMSlider):
     def plot_src_changed(self, wf, sensor):
         self.sensor = sensor
         self.pv = "{}:{}:{}:{}".format(\
-                self.macros()["TYPE"],
+                self.type,
                 self.macros["AREA"],
                 self.macros["POS"],
                 self.window_edge)
@@ -403,11 +403,18 @@ class BCMExpert(Display):
         try:
             # Check if the code is running in NC (including FACET) 
             # or SC accelerator.
-	    self.isSC = self.macros()["isSC"]
+	        self.isSC = self.macros()["isSC"]
+	    
         except KeyError:
             # If the macro is not found, we assume NC accelerator as this code
             # is legacy in NC and more recent to SC.
-	    self.isSC = False
+	        self.isSC = False
+	        
+        try:
+	        self.type = self.macros()["TYPE"]
+        except KeyError:
+	        self.type = "TORO"
+	        self.macros()["TYPE"] = "TORO"
 	    
 
         self.setWindowTitle("Bunch Charge {}".format(
@@ -457,7 +464,7 @@ class BCMExpert(Display):
 
         stream_led = PyDMByteIndicator()
         stream_led.channel = "ca://{}:{}:{}:AutoRearmRBV".format(
-                              self.macros()["TYPE"],
+                              self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"])
         stream_led.showLabels = False
@@ -465,7 +472,7 @@ class BCMExpert(Display):
 
         stream_combo = PyDMEnumComboBox()
         stream_combo.channel = "ca://{}:{}:{}:ACCESS".format(
-                                self.macros()["TYPE"],
+                                self.type,
                                 self.macros()["AREA"],
                                 self.macros()["POS"])
         stream_combo.setFont(font)
@@ -494,7 +501,7 @@ class BCMExpert(Display):
         nel_lbl = PyDMLabel()
         nel_lbl.setText("NEL")
         nel_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
-                              self.macros()["TYPE"],
+                              self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
@@ -514,16 +521,16 @@ class BCMExpert(Display):
         
         tmit_pc_lbl = PyDMLabel()
         tmit_pc_lbl.setText("charge")
-        if(self.macros()["TYPE"] == "TORO"):
+        if(self.type == "TORO"):
             tmit_pc_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
-                              self.macros()["TYPE"],
+                              self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
                               self.pvDict["charge"])
         else:
             tmit_pc_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
-                              self.macros()["TYPE"],
+                              self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"],
                               self.macros()["INST"],
@@ -560,7 +567,7 @@ class BCMExpert(Display):
         self.btn_layout = QHBoxLayout()
         
         if not(self.isSC):
-            if(not(self.macros()["TYPE"] == "FARC")):
+            if(not(self.type == "FARC")):
                 calb_btn = PyDMRelatedDisplayButton(filename="bcm_main.py")
                 calb_btn.setText("Calibration...")
                 calb_btn.openInNewWindow = True
@@ -598,7 +605,7 @@ class BCMExpert(Display):
             coef_btn.setText("Coefficients...")
             coef_btn.openInNewWindow = True
             coef_btn.macros = "PREFIX={}:{}:{}:{}{}".format(
-                self.macros()["TYPE"],
+                self.type,
                 self.macros()["AREA"],
                 self.macros()["POS"],
                 self.macros()["INST"],
@@ -611,7 +618,7 @@ class BCMExpert(Display):
             expert_btn.setText("Expert...")
             expert_btn.openInNewWindow = True
             expert_btn.macros = "prefix={}:{}:{},carrier_prefix=AMCC:{}:{},MAD={},AREA={},UNIT={},IOC_UNIT{},IOC={},CPU,{},CRATE={},TYPE={}".format(
-                    self.macros()["TYPE"],
+                    self.type,
                     self.macros()["AREA"],
                     self.macros()["POS"],
                     self.macros()["AREA"],
@@ -623,7 +630,7 @@ class BCMExpert(Display):
                     self.macros()["IOC"],
                     self.macros()["CPU"],
                     self.macros()["CRATE"],
-                    self.macros()["TYPE"])
+                    self.type)
 
         help_btn = QPushButton("Help...")
         if self.isSC:
@@ -637,7 +644,7 @@ class BCMExpert(Display):
         if self.isSC:
             self.btn_layout.addWidget(expert_btn)
         else:
-            if(not(self.macros()["TYPE"] == "FARC")):
+            if(not(self.type == "FARC")):
                 self.btn_layout.addWidget(calb_btn)
             self.btn_layout.addWidget(coef_btn)
             self.btn_layout.addWidget(trig_btn)
