@@ -37,29 +37,7 @@
      <property name="horizontalSpacing">
       <number>15</number>
      </property>
-     <item row="2" column="1">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_2">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="precision" stdset="0">
-        <number>5</number>
-       </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
-       <property name="alarmSensitiveBorder" stdset="0">
-        <bool>true</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefA1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
+     <item row="3" column="1">
       <widget class="PyDMLabel" name="PyDMLabel_9">
        <property name="toolTip">
         <string/>
@@ -67,12 +45,18 @@
        <property name="whatsThis">
         <string/>
        </property>
+       <property name="precision" stdset="0">
+        <number>7</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
        <property name="channel" stdset="0">
         <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefOffsetRBV</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="2">
+     <item row="2" column="1">
       <widget class="PyDMLabel" name="PyDMLabel_2">
        <property name="toolTip">
         <string/>
@@ -91,7 +75,7 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="2">
+     <item row="1" column="1">
       <widget class="PyDMLabel" name="PyDMLabel">
        <property name="toolTip">
         <string/>
@@ -111,57 +95,9 @@
       </widget>
      </item>
      <item row="0" column="1" alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_13">
-       <property name="text">
-        <string>Coefficient value</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2" alignment="Qt::AlignHCenter">
       <widget class="QLabel" name="label_14">
        <property name="text">
-        <string>Readback</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="precision" stdset="0">
-        <number>5</number>
-       </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
-       <property name="alarmSensitiveBorder" stdset="0">
-        <bool>true</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefA0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="PyDMLineEdit" name="PyDMLineEdit_4">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="precision" stdset="0">
-        <number>5</number>
-       </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:CoefOffset</string>
+        <string>Value</string>
        </property>
       </widget>
      </item>
@@ -183,6 +119,29 @@
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Offset</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Calibration Ratio</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="PyDMLabel" name="PyDMLabel_3">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>7</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://${TYPE}:${AREA}:${POS}:${INST}:Calib_ratio</string>
        </property>
       </widget>
      </item>
@@ -209,15 +168,7 @@
    <extends>QLabel</extends>
    <header>pydm.widgets.label</header>
   </customwidget>
-  <customwidget>
-   <class>PyDMLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>pydm.widgets.line_edit</header>
-  </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>PyDMLineEdit_4</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
