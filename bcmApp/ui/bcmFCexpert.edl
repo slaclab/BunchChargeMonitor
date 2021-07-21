@@ -1,0 +1,642 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 932
+y 246
+w 505
+h 473
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-medium-r-12.0"
+btnFont "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 7
+textColor index 14
+ctlFgColor1 index 16
+ctlFgColor2 index 14
+ctlBgColor1 index 4
+ctlBgColor2 index 12
+topShadowColor index 1
+botShadowColor index 11
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 500
+h 40
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 0
+y 2
+w 550
+h 21
+font "helvetica-bold-r-18.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "$(P)$(R)"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 0
+y 24
+w 368
+h 14
+controlPv "$(P)$(R)IDN"
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+autoHeight
+limitsFromDb
+nullColor index 7
+useHexPrefix
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 304
+y 144
+w 80
+h 18
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-bold-r-12.0"
+xPosOffset 20
+yPosOffset 20
+buttonLabel "More..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "../gadc/VoltageSource.edl"
+}
+menuLabel {
+  0 "More..."
+}
+setPosition {
+  0 "parentWindow"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 304
+y 168
+w 80
+h 18
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-10.0"
+xPosOffset 20
+yPosOffset 20
+buttonLabel "Stripchart"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "Stripchart.edl"
+}
+menuLabel {
+  0 "Strip Chart"
+}
+setPosition {
+  0 "parentWindow"
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 56
+w 90
+h 84
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 299
+y 54
+w 90
+h 84
+lineColor index 14
+fillColor index 19
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 357
+y 97
+w 26
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Auto"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 303
+y 114
+w 28
+h 18
+fgColor index 14
+onColor index 0
+offColor index 0
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(P)$(R)AutoRange"
+pressValue "0"
+onLabel "Off"
+offLabel "Off"
+3d
+useEnumNumeric
+font "helvetica-bold-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 335
+y 114
+w 28
+h 18
+fgColor index 14
+onColor index 0
+offColor index 0
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(P)$(R)AutoRange"
+pressValue "1"
+onLabel "On"
+offLabel "On"
+3d
+useEnumNumeric
+font "helvetica-bold-r-12.0"
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 367
+y 116
+w 14
+h 14
+lineColor index 14
+fillColor index 19
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 367
+y 116
+w 14
+h 14
+lineColor index 14
+fill
+fillColor index 15
+visPv "$(P)$(R)AutoRangeRBV"
+visMin "1"
+visMax "2"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 303
+y 68
+w 80
+h 26
+fgColor index 14
+bgColor index 4
+inconsistentColor index 12
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(P)$(R)Range"
+indicatorPv "$(P)$(R)RangeRBV"
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 320
+y 48
+w 41
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 3
+value {
+  "Range"
+}
+autoSize
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 136
+y 56
+w 130
+h 130
+lineColor index 14
+fillColor index 19
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 148
+y 100
+w 100
+h 26
+fgColor index 14
+bgColor index 4
+inconsistentColor index 12
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(P)$(R)I.SCAN"
+font "helvetica-bold-r-14.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 140
+y 64
+w 120
+h 34
+controlPv "$(P)$(R)I"
+displayMode "engineer"
+precision 4
+fgColor index 16
+fgAlarm
+bgColor index 12
+fill
+font "helvetica-medium-r-18.0"
+fontAlign "right"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 172
+y 48
+w 58
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 3
+value {
+  "Measure"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 140
+y 128
+w 120
+h 21
+fgColor index 14
+onColor index 0
+offColor index 0
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(P)$(R)RestoreTriggerSettings"
+pressValue "1"
+onLabel "Restore Trigger Settings"
+offLabel "Restore Trigger Settings"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 136
+y 204
+w 280
+h 260
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 134
+y 214
+w 280
+h 250
+lineColor index 14
+fillColor index 19
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 214
+y 204
+w 124
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 3
+value {
+  "Filtering/Integration"
+}
+autoSize
+endObjectProperties
+
+# (Slider)
+object activeSliderClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 144
+y 364
+w 264
+h 95
+fgColor index 14
+bgColor index 3
+2ndBgColor index 5
+controlColor index 14
+indicatorColor index 9
+font "helvetica-medium-r-12.0"
+controlPv "$(P)$(R)IntegrationTime"
+indicatorPv "$(P)$(R)IntegrationTimeRBV"
+controlLabel "ADC speed in NPLC"
+readLabel "Readback"
+increment 1
+incMultiplier 1
+limitsFromDb
+displayFormat "FFloat"
+endObjectProperties
+
+# (Slider)
+object activeSliderClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 144
+y 264
+w 264
+h 95
+fgColor index 14
+bgColor index 3
+2ndBgColor index 5
+controlColor index 14
+indicatorColor index 9
+font "helvetica-medium-r-12.0"
+controlPv "$(P)$(R)FilterCount"
+indicatorPv "$(P)$(R)FilterCountRBV"
+controlLabel "Moving average filter samples"
+readLabel "Readback"
+increment 1
+incMultiplier 1
+precision 0
+scaleMin 2
+scaleMax 60
+displayFormat "FFloat"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 224
+y 224
+w 50
+h 22
+fgColor index 14
+onColor index 0
+offColor index 0
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(P)$(R)FilterEnable"
+pressValue "0"
+onLabel "Disable"
+offLabel "Disable"
+3d
+useEnumNumeric
+font "helvetica-bold-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 284
+y 224
+w 50
+h 22
+fgColor index 14
+onColor index 0
+offColor index 0
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(P)$(R)FilterEnable"
+pressValue "1"
+onLabel "Enable"
+offLabel "Enable"
+3d
+useEnumNumeric
+font "helvetica-bold-r-12.0"
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 354
+y 224
+w 18
+h 18
+lineColor index 14
+fillColor index 19
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 354
+y 224
+w 16
+h 16
+lineColor index 15
+fill
+fillColor index 15
+visPv "$(P)$(R)FilterEnableRBV"
+visMin "1"
+visMax "2"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 184
+y 224
+w 35
+h 16
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 19
+useDisplayBg
+value {
+  "Filter:"
+}
+autoSize
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 440
+y 10
+w 48
+h 24
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+label "Exit"
+font "helvetica-medium-r-12.0"
+3d
+endObjectProperties
+
