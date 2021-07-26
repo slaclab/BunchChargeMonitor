@@ -29,7 +29,7 @@
 # Port name
 epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
-epicsEnvSet("CPSW_PORT","Atca6")
+epicsEnvSet("CPSW_PORT","Atca7")
 
 # Yaml File
 epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
