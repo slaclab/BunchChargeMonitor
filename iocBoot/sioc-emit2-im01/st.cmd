@@ -388,19 +388,32 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
 # Start loading configuration file
-dbpf TORO:${AREA}:${POS}:saveConfigFile "/tmp/configDump.yaml"
-dbpf TORO:${AREA}:${POS}:saveConfigRoot "mmio"
-dbpf TORO:${AREA}:${POS}:saveConfig 1
-dbpf TORO:${AREA}:${POS}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
-dbpf TORO:${AREA}:${POS}:loadConfigRoot "mmio"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigFile "/tmp/configDump.yaml"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigRoot "mmio"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfig 1
+dbpf TORO:${AREA}:${IOC_UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
+dbpf TORO:${AREA}:${IOC_UNIT}:loadConfigRoot "mmio"
 # We should never load the configuration file after autosave already changed
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
-#dbpf TORO:${AREA}:${POS}:loadConfig 1
-#dbpf TORO:${AREA}:${POS}:Temp.EGU K
-#dbpf TORO:${AREA}:${POS}:TempAmp.EGU K
-#dbpf TORO:${AREA}:${POS}:TempElc.EGU K
-dbpf TORO:${AREA}:${POS}:READ_PARMS 1
+#dbpf TORO:${AREA}:${IOC_UNIT}:loadConfig 1
+dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
+dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
+dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
+dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1# Start loading configuration file
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigFile "/tmp/configDump.yaml"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigRoot "mmio"
+dbpf TORO:${AREA}:${IOC_UNIT}:saveConfig 1
+dbpf TORO:${AREA}:${IOC_UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsToro.yaml"
+dbpf TORO:${AREA}:${IOC_UNIT}:loadConfigRoot "mmio"
+# We should never load the configuration file after autosave already changed
+# the parameters. Uncomment the line below only if you are sure about what you
+# are doing.
+#dbpf TORO:${AREA}:${IOC_UNIT}:loadConfig 1
+dbpf TORO:${AREA}:${UNIT}:Temp.EGU K
+dbpf TORO:${AREA}:${UNIT}:TempAmp.EGU K
+dbpf TORO:${AREA}:${UNIT}:TempElc.EGU K
+dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
 
 # Temporary local modification by Sonya!
 # This sets the BCM TMIT diff to use data from the correct BPM
