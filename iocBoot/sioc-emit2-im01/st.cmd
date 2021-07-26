@@ -108,9 +108,6 @@ bcm_registerRecordDeviceDriver(pdbbase)
 # ===========================================
 #              DRIVER SETUP
 # ===========================================
-
-DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
-
 # ***********************************************************************
 # **** Driver setup for YCPSWAsyn ***************************************
 
@@ -226,7 +223,7 @@ dbLoadRecords("db/bcmLCLS2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
 dbLoadRecords("db/bcmLCLS2chan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
 
 dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
-dbLoadRecords("db/iocMeta.db", "AREA=SPS, IOC_UNIT=IM01")
+dbLoadRecords("db/iocMeta.db", "AREA=${AREA}, IOC_UNIT=IM01")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
@@ -400,14 +397,14 @@ dbpf TORO:${AREA}:${POS}:loadConfigRoot "mmio"
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
 #dbpf TORO:${AREA}:${POS}:loadConfig 1
-dbpf TORO:${AREA}:${POS}:Temp.EGU K
-dbpf TORO:${AREA}:${POS}:TempAmp.EGU K
-dbpf TORO:${AREA}:${POS}:TempElc.EGU K
+#dbpf TORO:${AREA}:${POS}:Temp.EGU K
+#dbpf TORO:${AREA}:${POS}:TempAmp.EGU K
+#dbpf TORO:${AREA}:${POS}:TempElc.EGU K
 dbpf TORO:${AREA}:${POS}:READ_PARMS 1
 
 # Temporary local modification by Sonya!
 # This sets the BCM TMIT diff to use data from the correct BPM
-dbpf AMCC:GUNB:360:SelBpm 1
+#dbpf AMCC:GUNB:360:SelBpm 1
 # End temporary local modification by Sonya
 
 # Reactivate trigger to restart unsolicited messages from Bergoz
