@@ -56,7 +56,7 @@ epicsEnvSet("UNIT","125")
 epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(UNIT)")
 
 # AMCC in crate 1, slot 6
-epicsEnvSet("AMC_CARRIER_PREFIX","TORO:$(AREA):$(UNIT)")
+epicsEnvSet("AMC_CARRIER_PREFIX","TORO:$(AREA):$(IOC_UNIT)")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcmLCLS2.dict")
