@@ -12,7 +12,7 @@ file xferca.db
 pattern   {P, R, SRC, DEST, ESLO, EOFF, SCAN}
 
 # P is the PV prefix
-# R is the PV instance
+# R is the PV instance i.e. what number sensor is this device for
 # SRC is the source PV
 # DEST is the destination PV
 # ESLO is the slope
