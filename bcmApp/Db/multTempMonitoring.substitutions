@@ -1,7 +1,7 @@
 file EL3202-0010.template 
 {
 pattern   {DEVICE, PORT, SCAN}
-      {"${IOC}:${R}","Node${R}","1 second"}
+      {"${IOC}:${NODE}","Node${INP}","1 second"}
 #EX:
 #     {"SIOC:B084:IM03:1","Node1","1 second"}
 }
