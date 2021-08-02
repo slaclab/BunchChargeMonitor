@@ -3,7 +3,7 @@
 #- You may have to change bcm to something else
 #- everywhere it appears in this file
 
-#< envPaths
+< envPaths
 
 # Production area
 epicsEnvSet("AREA","EMIT2")
