@@ -44,14 +44,14 @@ ecAsynInit("/tmp/sock1", 1000000)
 # dbLoadRecords("db/<template_name_for slave_module>, <pass_in_macros>")
 dbLoadRecords("db/EK1101.template", "DEVICE=${IOC_NAME}:BCM_EK1101,PORT=COUPLER0,SCAN=1 second")
 
-dbLoadRecords("db/multTempMonitoring.db", "P=TORO:GUNB:360, R=1, IOC=${IOC_NAME},NODE=1,INP=1, TYPE=TempElc, ESLO=${ESLO}, EOFF=${EOFF}")
-dbLoadRecords("db/multTempMonitoring.db", "P=FARC:GUNB:999, R=1, IOC=${IOC_NAME},NODE=2,INP=1, TYPE=, ESLO=${ESLO}, EOFF=${EOFF}")
-dbLoadRecords("db/multTempMonitoring.db", "P=TORO:GUNB:360, R=2, IOC=${IOC_NAME},NODE=3,INP=1, TYPE=TempRef, ESLO=${ESLO}, EOFF=${EOFF}")
-dbLoadRecords("db/multTempMonitoring.db", "P=TORO:GUNB:360, R=3, IOC=${IOC_NAME},NODE=3,INP=2, TYPE=TempAmpRef, ESLO=${ESLO}, EOFF=${EOFF}")
-dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=1, IOC=${IOC_NAME},NODE=4,INP=1, TYPE=TempGapLeft, ESLO=${ESLO}, EOFF=${EOFF}")
-dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=2, IOC=${IOC_NAME},NODE=4,INP=2, TYPE=TempGapTop, ESLO=${ESLO}, EOFF=${EOFF}")
-dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=3, IOC=${IOC_NAME},NODE=5,INP=1, TYPE=TempGapRight, ESLO=${ESLO}, EOFF=${EOFF}")
-dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=4, IOC=${IOC_NAME},NODE=5,INP=2, TYPE=TempGapBtm, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=TORO:GUNB:360, R=1, IOC=${IOC_NAME},MODULE=1,NODE=1, TYPE=TempElc, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=FARC:GUNB:999, R=1, IOC=${IOC_NAME},MODULE=2,NODE=1, TYPE=, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=TORO:GUNB:360, R=2, IOC=${IOC_NAME},MODULE=3,NODE=1, TYPE=TempRef, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=TORO:GUNB:360, R=3, IOC=${IOC_NAME},MODULE=3,NODE=2, TYPE=TempAmpRef, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=1, IOC=${IOC_NAME},MODULE=4,NODE=1, TYPE=TempGapLeft, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=2, IOC=${IOC_NAME},MODULE=4,NODE=2, TYPE=TempGapTop, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=3, IOC=${IOC_NAME},MODULE=5,NODE=1, TYPE=TempGapRight, ESLO=${ESLO}, EOFF=${EOFF}")
+dbLoadRecords("db/multTempMonitoring.db", "P=BLEN:HTR:350, R=4, IOC=${IOC_NAME},MODULE=5,NODE=2, TYPE=TempGapBtm, ESLO=${ESLO}, EOFF=${EOFF}")
 
 # ************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ******
