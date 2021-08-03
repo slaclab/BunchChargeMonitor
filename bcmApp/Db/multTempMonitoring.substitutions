@@ -1,7 +1,7 @@
 file EL3202-0010.template 
 {
 pattern   {DEVICE, PORT, SCAN}
-      {"${IOC}:${NODE}","Node${INP}","1 second"}
+      {"${IOC}:${MODULE}","Node${MODULE}","1 second"}
 #EX:
 #     {"SIOC:B084:IM03:1","Node1","1 second"}
 }
@@ -22,6 +22,6 @@ pattern   {P, R, SRC, DEST, ESLO, EOFF, SCAN}
 #  EX:
 #  { "TORO:SPH:365", 1, SIOC:SPD:IM02:3:INPUT2:VALUE, TORO:SPH:365:TempAmpRef, $(ESLO), $(EOFF), "10 second"}
 
-   { $(P), $(R), $(IOC):$(NODE):INPUT$(INP):VALUE, $(P):$(TYPE)    , $(ESLO), $(EOFF), "10 second"}
+   { $(P), $(R), $(IOC):$(MODULE):INPUT$(NODE):VALUE, $(P):$(TYPE)    , $(ESLO), $(EOFF), "10 second"}
   
 }
