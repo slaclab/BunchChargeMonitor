@@ -88,7 +88,7 @@ epicsEnvSet("BERGOZ0_P","$(AMC0_PREFIX):")
 epicsEnvSet("BERGOZ0_R","")
 epicsEnvSet("BERGOZ0_IN_PORT","L0")
 epicsEnvSet("BERGOZ0_OUT_PORT","L1")
-epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","44")
+epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","36")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # Temperature xfer: ESLO, EOFF
