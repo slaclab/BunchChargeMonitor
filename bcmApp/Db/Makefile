@@ -116,6 +116,7 @@ DB += xferca.db
 DB += spdTempMonitoring.db
 DB += multTempMonitoring.db
 DB += facet2Calibration.db 
+DB += lcls2Calibration.db
 # For BCM specific diagnostics
 DB += msgStatus.db
 # For byte swapping

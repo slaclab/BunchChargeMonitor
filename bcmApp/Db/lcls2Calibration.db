@@ -1,0 +1,158 @@
+#This database contains the PV's nessecary to set the Bergoz 
+#system into calibration mode and reset to normal opertation
+
+#trigger 0 state backup
+#record(bi, "$(P):TRIG1BACKUP"){
+#    field(DESC, "Save of trig 1")
+#    field(ZNAM, "Disabled")
+#    field(ONAM, "Enabled")
+#    field(INP, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG00_SYS2_TCTL")
+#}
+
+#should figure out how to get the trigger source then pull that pv
+record(calcout, "$(P):SETTRIG6SRC"){
+    field(CALC, "6")
+    field(OUT, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SOURCE")
+    field(SCAN, "1 second")
+}
+
+#record(mbbi, "$(P):TRIG6RATEBACKUP"){
+#    field(INP, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
+#    field(ZRVL, "0")
+#    field(ONVL, "1")
+#    field(TWVL, "2")
+#    field(THVL, "3")
+#    field(FRVL, "4")
+#    field(FVVL, "5")
+#    field(SXVL, "6")
+#    field(ZRST, "1MHz")
+#    field(ONST, "71.5kHz")
+#    field(TWST, "10kHz")
+#    field(THST, "1kHz")
+#    field(FRST, "100Hz")
+#    field(FVST, "10Hz")
+#    field(SXST, "1Hz")
+#}
+
+#calc if in calib mode
+record(calc, "$(P):CalibCalcRBV"){
+    field(DESC, "Check if in calibration mode")
+    field(SCAN, "1 second")
+    field(INPA, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG00_SYS2_TCTL") 
+    field(INPB, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
+    field(INPC, "$(P):TLR3:SelSrcRBV")
+    field(INPD, "$(P):TLR4:SelSrcRBV")
+    field(INPE, "$(P):TLR5:SelSrcRBV")
+    field(INPF, "$(P):TLR7:SelSrcRBV")
+    field(CALC, "(A=0)&&(B=6)&&(C=2)&&(D=2)&&(E=2)&&(F=2) ? 1 : 0")
+}
+
+#calc if in normal operaoin 
+record(calc, "$(P):RunningCalcRBV"){
+    field(DESC, "Check if operational mode")
+    field(SCAN, "1 second")
+    field(INPC, "$(P):TLR3:SelSrcRBV")
+    field(INPD, "$(P):TLR4:SelSrcRBV")
+    field(INPE, "$(P):TLR5:SelSrcRBV")
+    field(INPF, "$(P):TLR7:SelSrcRBV")
+    field(CALC, "((C=1)&&(D=1)&&(E=1)&&(F=1)) ? 1 : 0")
+}
+
+#calc to see if the device is in calibration mode normal mode or broken
+record(calc, "$(P):BergozModeCalcRBV"){
+    field(DESC, "IOC bergoz mode")
+    field(SCAN, "1 second")
+    field(INPA, "$(P):RunningCalcRBV") 
+    field(INPB, "$(P):CalibCalcRBV")
+    field(CALC, "A ? 0 : B ? 1 : 2")
+}
+
+#MBBI to give name if in calib mode
+record(mbbi, "$(P):BergozModeRBV"){
+    field(DESC, "Device Mode")
+    field(SCAN, "1 second")
+    field(ZRST, "Running")
+    field(ONST, "Calibration")
+    field(TWST, "Broken")
+    field(INP, "$(P):BergozModeCalcRBV")
+}
+
+
+#set to move into calibration mode
+record(mbbi, "$(P):BergozMode"){
+    field(DESC, "Sets the IOC Bergoz mode")
+    field(ZRST, "Running")
+    field(ONST, "Calibration")
+    field(FLNK, "$(P):SetBergozMode")
+}
+
+record(fanout, "$(P):SetBergozMode"){
+    field(DESC, "Internal")
+    field(SCAN, "Passive")
+    field(LNK0, "$(P):SetTrig0")
+    field(LNK1, "$(P):SetChan6Rate")
+    field(LNK2, "$(P):SetTLR3SelSrc")
+    field(LNK3, "$(P):SetTLR4SelSrc")
+    field(LNK4, "$(P):SetTLR5SelSrc")
+    field(LNK5, "$(P):SetTLR7SelSrc")
+}
+
+record(calcout, "$(P):SetTrig0"){
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(CALC, "!A ? 1 : 0")
+    field(OUT, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG00_SYS2_TCTL")
+}
+
+record(calcout, "$(P):SetChan6Rate"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(CALC, "!A ? 1 : 6")
+    field(OUT, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
+}
+
+record(calcout, "$(P):SetTLR3SelSrc"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(CALC, "!A ? 1 : 2")
+    field(OUT, "$(P):TLR3:SelSrc")
+    field(FLNK, "$(P):TLR3:SelSrc")
+}
+
+record(calcout, "$(P):SetTLR4SelSrc"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(CALC, "!A ? 1 : 2")
+    field(OUT, "$(P):TLR4:SelSrc")
+    field(FLNK, "$(P):TLR4:SelSrc")    
+}
+
+record(calcout, "$(P):SetTLR5SelSrc"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(CALC, "!A ? 1 : 2")
+    field(OUT, "$(P):TLR5:SelSrc")
+    field(FLNK, "$(P):TLR5:SelSrc")    
+}
+
+record(calcout, "$(P):SetTLR7SelSrc"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(CALC, "!A ? 1 : 2")
+    field(OUT, "$(P):TLR7:SelSrc")
+    field(FLNK, "$(P):TLR7:SelSrc")    
+}
+
+
+
+
+
+
+
+
+
