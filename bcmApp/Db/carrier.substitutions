@@ -85,7 +85,7 @@ file "RegisterOut.template" { pattern
 { $(P), AppType,        "",                             "NO",  "Passive",  $(PORT),    AppType       }
 { $(P), SelBpm,         "",                             "NO",  "Passive",  $(PORT),    SelBpm        }
 { $(P), TreshTmit,      "",                             "NO",  "Passive",  $(PORT),    TreshTmit     }
-{ $(P), CalibEnable,    "",                             "NO",  "Passive",  $(PORT),    CalibEnable   } 
+{ $(P), CalibEnable,    "",                             "YES",  "Passive",  $(PORT),    CalibEnable   } 
 { $(P), DiagnosticDelay,"",                             "NO",  "Passive",  $(PORT),    DiagnosticDelay } 
 }
 

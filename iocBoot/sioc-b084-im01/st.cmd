@@ -256,7 +256,7 @@ dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
 
-dbLoadRecords("db/lcls2Calibration.db", "P=$(AMC0_PREFIX),LOCA=${AREA},IOC_UNIT=IM01,INST=0")
+dbLoadRecords("db/lcls2Calibration.db", "P=$(AMC0_PREFIX),LOCA=${AREA},IOC_UNIT=IM01,INST=0, AmcPrefix=${AMC_CARRIER_PREFIX}")
 
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
