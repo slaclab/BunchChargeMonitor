@@ -47,8 +47,8 @@ file "RegisterDoubleOutRBV.template" { pattern
 
 file "RegisterDoubleOut.template" { pattern
 { P,              R,            DESC,                   PINI,    SCAN,        PORT,     EGU,                PARAM                  }
-{ $(P),     CoefA0,       "Coef A0 for 1st group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
-{ $(P),     CoefA1,       "Coef A1 for 2nd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
+{ $(P),     CoefA0,       "Coef A0 for 1st group",      "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
+{ $(P),     CoefA1,       "Coef A1 for 2nd group",      "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
 { $(P),     CoefA2,       "Coef A2 for 3rd group",      "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
 { $(P),     CoefOffset,   "Coef Offset",                "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
 }

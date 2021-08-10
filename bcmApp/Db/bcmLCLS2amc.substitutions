@@ -136,7 +136,7 @@ file "RegisterDoubleOut.template" { pattern
 { $(P),     CoefT1,       "Temp coef of amp",           "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2,       "Temp coef of electronics",   "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT2 }
 { $(P),     CoefTCal,     "Calib temperature",          "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):CoefTCal }
-{ $(P),     CoefLnQ,      "Natural log of Qcal value",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefLnQ }
+{ $(P),     CoefLnQ,      "Natural log of Qcal value",  "NO",  "1 second",   $(PORT),     "",     AMC$(AMC):CoefLnQ }
 { $(P),     TmitCoef,     "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 }
 
