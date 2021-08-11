@@ -73,7 +73,7 @@ YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
 #cd(${TOP})
 #epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 
-epicsEnvSet("BERGOZ0_TTY","0")
+epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
 
 # ***********************************************************************
 # **** Driver setup for Bergoz ******************************************
