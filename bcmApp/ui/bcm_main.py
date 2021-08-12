@@ -11,6 +11,7 @@ from qtpy.QtWidgets import (QAction, QDialog, QGridLayout, QHBoxLayout, QLabel,
                             QVBoxLayout, QWidget, QSpacerItem, QSizePolicy, QGroupBox)
 
 from pydm import Display
+from edmbutton import PyDMEDMDisplayButton
 from pydm.widgets.display_format import DisplayFormat
 from pydm.widgets import (PyDMLineEdit, PyDMSlider, PyDMRelatedDisplayButton, 
                           PyDMByteIndicator, PyDMEnumComboBox, PyDMLabel)
@@ -579,7 +580,17 @@ class BCMExpert(Display):
                     self.macros()["IOC"],
                     self.macros()["CPU"],
                     self.macros()["CRATE"]) 
-            
+            else:
+                ammeter_btn = PyDMEDMDisplayButton(filename="bcmFCMain.edl")
+                ammeter_btn.setText("PicoAmeter...")
+                ammeter_btn.openInNewWindow = True
+                ammeter_btn.macros = "prefix=FARC:{}:{},carrier_prefix=FARC:{}:{},AREA={},UNIT={}".format(
+                    self.macros()["AREA"],
+                    self.macros()["POS"],
+                    self.macros()["AREA"],
+                    self.macros()["POS"],
+                    self.macros()["AREA"],
+                    self.macros()["IOC_UNIT"],)
             trig_btn = PyDMRelatedDisplayButton(filename="$PYDM/evnt/tprDiagNC.ui")
             trig_btn.setText("Triggers...")
             trig_btn.openInNewWindow = True
@@ -646,6 +657,8 @@ class BCMExpert(Display):
         else:
             if(not(self.type == "FARC")):
                 self.btn_layout.addWidget(calb_btn)
+            else:
+                self.btn_layout.addWidget(ammeter_btn)
             self.btn_layout.addWidget(coef_btn)
             self.btn_layout.addWidget(trig_btn)
         self.btn_layout.addWidget(help_btn)

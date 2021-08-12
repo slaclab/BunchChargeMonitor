@@ -31,10 +31,6 @@ epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES", "21000000")
 
 epicsEnvSet("CPSW_PORT","Atca7")
 
-# Yaml File
-epicsEnvSet("YAML_FILE", "yaml/AmcCarrierBcm_project.yaml/000TopLevel.yaml")
-
-###addition
 epicsEnvSet("YAML_DIR", "$(IOC_DATA)/$(IOC)/yaml"
 epicsEnvSet("TOP_YAML", "$(YAML_DIR)/000TopLevel.yaml")
 epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsFC.yaml")
@@ -62,7 +58,7 @@ epicsEnvSet("UNIT","999")
 epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):$(UNIT)")
 
 # AMCC in crate 1, slot 4
-epicsEnvSet("AMC_CARRIER_PREFIX","AMCC:$(AREA):$(UNIT)")
+epicsEnvSet("AMC_CARRIER_PREFIX","FARC:$(AREA):$(UNIT)")
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE", "yaml/bcmLCLS2.dict")
@@ -116,10 +112,8 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-### changed to yaml downloader
-DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
 
-###to bring up to current standard importing from $IOC_DATA
+DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
 cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
 cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
 
