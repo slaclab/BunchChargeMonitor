@@ -17,23 +17,23 @@ record(calcout, "$(P):SETTRIG6SRC"){
     field(SCAN, "1 second")
 }
 
-#record(mbbi, "$(P):TRIG6RATEBACKUP"){
-#    field(INP, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
-#    field(ZRVL, "0")
-#    field(ONVL, "1")
-#    field(TWVL, "2")
-#    field(THVL, "3")
-#    field(FRVL, "4")
-#    field(FVVL, "5")
-#    field(SXVL, "6")
-#    field(ZRST, "1MHz")
-#    field(ONST, "71.5kHz")
-#    field(TWST, "10kHz")
-#    field(THST, "1kHz")
-#    field(FRST, "100Hz")
-#    field(FVST, "10Hz")
-#    field(SXST, "1Hz")
-#}
+record(mbbi, "$(P):TRIG6RATEBACKUP"){
+    field(INP, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(ZRST, "1MHz")
+    field(ONST, "71.5kHz")
+    field(TWST, "10kHz")
+    field(THST, "1kHz")
+    field(FRST, "100Hz")
+    field(FVST, "10Hz")
+    field(SXST, "1Hz")
+}
 
 #calc if in calib mode
 record(calc, "$(P):CalibCalcRBV"){
@@ -45,7 +45,9 @@ record(calc, "$(P):CalibCalcRBV"){
     field(INPD, "$(P):TLR4:SelSrcRBV")
     field(INPE, "$(P):TLR5:SelSrcRBV")
     field(INPF, "$(P):TLR7:SelSrcRBV")
-    field(CALC, "(A=0)&&(B=6)&&(C=2)&&(D=2)&&(E=2)&&(F=2) ? 1 : 0")
+    field(INPG, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SYS2_TWID")
+    field(INPH, "$(P):SWITCHES_WR")
+    field(CALC, "(A=0)&&(B=6)&&(C=2)&&(D=2)&&(E=2)&&(F=2)&&(G=200)&&(H=7) ? 1 : 0")
 }
 
 #calc if in normal operaoin 
@@ -56,7 +58,8 @@ record(calc, "$(P):RunningCalcRBV"){
     field(INPD, "$(P):TLR4:SelSrcRBV")
     field(INPE, "$(P):TLR5:SelSrcRBV")
     field(INPF, "$(P):TLR7:SelSrcRBV")
-    field(CALC, "((C=1)&&(D=1)&&(E=1)&&(F=1)) ? 1 : 0")
+    field(INPG, "$(P):SWITCHES_WR")
+    field(CALC, "((C=1)&&(D=1)&&(E=1)&&(F=1)&&(G=6)) ? 1 : 0")
 }
 
 #calc to see if the device is in calibration mode normal mode or broken
@@ -91,12 +94,14 @@ record(fanout, "$(P):SetBergozMode"){
     field(DESC, "Internal")
     field(SCAN, "Passive")
     field(LNK0, "$(P):SetTrig0")
-    field(LNK1, "$(P):SetChan6Rate")
+    field(LNK1, "$(P):SaveChan6Rate")
     field(LNK2, "$(P):SetTLR3SelSrc")
     field(LNK3, "$(P):SetTLR4SelSrc")
     field(LNK4, "$(P):SetTLR5SelSrc")
     field(LNK5, "$(P):SetTLR7SelSrc")
     field(LNK6, "$(P):SetCalibEnable")
+    field(LNK7, "$(P):SetSWITCHES_WR")
+    field(LNK8, "$(P):SaveTrig6TWID")
 }
 
 record(calcout, "$(P):SetTrig0"){
@@ -107,13 +112,56 @@ record(calcout, "$(P):SetTrig0"){
     field(FLNK, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG00_SYS2_TCTL")
 }
 
+#save chan/trig 6 rate
+record(calcout, "$(P):SaveChan6Rate"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(INPB, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
+    field(INPC, "$(P):SaveChan6Rate")
+    field(CALC, "!A ? C : B")
+    field(FLNK, "$(P):SetChan6Rate")
+}
+
 record(calcout, "$(P):SetChan6Rate"){
     field(DESC, "")
     field(SCAN, "Passive")
     field(INPA, "$(P):BergozMode") 
-    field(CALC, "!A ? 1 : 6")
+    field(INPB, "$(P):SaveChan6Rate")
+    field(CALC, "!A ? B : 6")
     field(OUT, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
     field(FLNK, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
+}
+
+#save trig 6 width
+record(calcout, "$(P):SaveTrig6TWID"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(INPB, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SYS2_TWID")
+    field(INPC, "$(P):SaveTrig6TWID")
+    field(CALC, "!A ? C : B")
+    field(FLNK, "$(P):SetTrig6TWID")
+}
+
+#set trigger 6 width
+record(calcout, "$(P):SetTrig6TWID"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(INPB, "$(P):SaveTrig6TWID")
+    field(CALC, "!A ? B : 200")
+    field(OUT, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SYS2_TWID")
+    field(FLNK, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SYS2_TWID")
+}
+
+record(calcout, "$(P):SetSWITCHES_WR"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(CALC, "!A ? 6 : 7")
+    field(OUT, "$(P):SWITCHES_WR")
+    field(FLNK, "$(P):SWITCHES_WR")
 }
 
 record(calcout, "$(P):SetTLR3SelSrc"){
