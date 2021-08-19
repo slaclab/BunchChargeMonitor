@@ -52,6 +52,7 @@ def main(argv):
         e.caput("TORO:{}:{}:DELAY_WR".format(pv_data.AREA, pv_data.POS), average_PC.index(max(average_PC)),wait=True)
     else:
         print("To set the Bergoz delay to something else please use the screen")
+        print("Please now close this window")
     
 
 if __name__ == "__main__":

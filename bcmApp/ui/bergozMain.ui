@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>475</width>
-    <height>410</height>
+    <width>549</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,19 +38,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
@@ -175,19 +162,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,2,1">
@@ -318,19 +292,6 @@
     </layout>
    </item>
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
     <layout class="QGridLayout" name="gridLayout_3" columnstretch="1,2,1">
      <item row="1" column="1">
       <widget class="QLabel" name="label_17">
@@ -390,6 +351,52 @@
      </item>
     </layout>
    </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_20">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Scripts</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>Bergoz Timing Script</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="PyDMShellCommand" name="PyDMShellCommand">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="text">
+          <string>Launch Bergoz Timing Script</string>
+         </property>
+         <property name="commands" stdset="0">
+          <stringlist>
+           <string>$TOOLS_SITE_TOP/../package/anaconda/envs/python3.7env/bin/activate;export PYTHONPATH=$TOOLS/python/toolbox</string>
+           <string>python setBergozDelay.py ${AREA} ${POS} ${IOC_UNIT} 1</string>
+          </stringlist>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -397,6 +404,11 @@
    <class>PyDMLabel</class>
    <extends>QLabel</extends>
    <header>pydm.widgets.label</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMShellCommand</class>
+   <extends>QPushButton</extends>
+   <header>pydm.widgets.shell_command</header>
   </customwidget>
   <customwidget>
    <class>PyDMLineEdit</class>
