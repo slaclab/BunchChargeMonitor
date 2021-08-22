@@ -42,6 +42,11 @@ addBsa("CHRGNOTMIT", "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
+## Set MPS Configuration location
+# setMpsConfigurationPath(
+#   Path)                   # Path to the MPS configuraton TOP directory
+setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link_node_db")
+
 # **********************************************************************
 # **** Setup MPS Driver ************************************************
 # LCLS2MPSCPASYNConfig(
