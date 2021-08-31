@@ -370,26 +370,25 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout_5">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_21">
-         <property name="text">
-          <string>Bergoz Timing Script</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="1">
         <widget class="PyDMShellCommand" name="PyDMShellCommand">
          <property name="toolTip">
           <string/>
          </property>
          <property name="text">
-          <string>Launch Bergoz Timing Script</string>
+          <string>Bergoz Timing Script</string>
          </property>
          <property name="commands" stdset="0">
           <stringlist>
-           <string>$TOOLS_SITE_TOP/../package/anaconda/envs/python3.7env/bin/activate;export PYTHONPATH=$TOOLS/python/toolbox</string>
-           <string>python setBergozDelay.py ${AREA} ${POS} ${IOC_UNIT} 1</string>
+           <string> xterm -e '$TOOLS/script/launchBergozDelay.sh GUNB 360 IM01 10'</string>
           </stringlist>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="PyDMShellCommand" name="PyDMShellCommand_2">
+         <property name="toolTip">
+          <string/>
          </property>
         </widget>
        </item>
