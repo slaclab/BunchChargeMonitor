@@ -87,6 +87,7 @@ record(mbbi, "$(P):BergozMode"){
     field(DESC, "Sets the IOC Bergoz mode")
     field(ZRST, "Running")
     field(ONST, "Calibration")
+    field(PINI, "YES")
     field(FLNK, "$(P):SetBergozMode")
 }
 
