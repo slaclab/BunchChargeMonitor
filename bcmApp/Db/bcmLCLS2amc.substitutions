@@ -141,10 +141,10 @@ file "RegisterDoubleOut.template" { pattern
 }
 
 file "RegisterDoubleOutRBV.template" { pattern
-{ P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM   }
-{ $(P),     Temp,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempRef }
-{ $(P),     TempAmp,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmpRef }
-{ $(P),     TempElc,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElcRef }
+{ P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM, HIHI, HIGH, LOW, LOLO, HHSV, HSV, LSV, LLSV}
+{ $(P),     Temp,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempRef, "500", "310", "290", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
+{ $(P),     TempAmp,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmpRef, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
+{ $(P),     TempElc,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElcRef, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
 { $(P),     CoefT0RBV,    "Temp coef of toroid",        "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT0 }
 { $(P),     CoefT1RBV,    "Temp coef of amp",           "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2RBV,    "Temp coef of electronics",   "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT2 }

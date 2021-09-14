@@ -46,7 +46,8 @@ DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumMBBOut.template
 DB_INSTALLS += $(YCPSWASYN)/db/RegisterEnumMBBOutRBV.template
 DB_INSTALLS += $(YCPSWASYN)/db/RegisterDoubleIn.template
 DB_INSTALLS += $(YCPSWASYN)/db/RegisterDoubleOut.template
-DB_INSTALLS += $(YCPSWASYN)/db/RegisterDoubleOutRBV.template
+#DB_INSTALLS += $(YCPSWASYN)/db/RegisterDoubleOutRBV.template
+DB += RegisterDoubleOutRBV.template
 DB_INSTALLS += $(YCPSWASYN)/db/RegisterCommand.template
 DB_INSTALLS += $(YCPSWASYN)/db/RegisterStream.template
 DB_INSTALLS += $(YCPSWASYN)/db/RegisterStream16.template
@@ -94,7 +95,6 @@ IOCRELEASE_DB += iocRelease.db
 
 # User-defined functions
 DB += stream_size.template
-DB += TempMonitoring_TORO.db
 DB += Filter.db
 DB += bcmFACET2amc.db
 DB += bcmFACET2chan.db
@@ -113,11 +113,10 @@ DB += weightFunctionXAxis.db
 DB += calculatedWF.db
 DB += processRawWFHeader.db
 DB += autoAdjustCoef.db
-DB += xferca.db
-DB += spdTempMonitoring.db
-DB += multTempMonitoring.db
+DB += tempMonitor.db
 DB += facet2Calibration.db 
-DB += lcls2Calibration.db
+DB += lcls2BergozMode.db
+DB += lcls2BergozCalibration.db
 # For BCM specific diagnostics
 DB += msgStatus.db
 # For byte swapping
@@ -139,7 +138,7 @@ DB_INSTALLS += $(EVENT)/db/Bsa.db
 #DB += bsaSimulator.db
 
 # For temperature transfer
-DB += xfer.db
+DB += tempProcess.db
 
 # For statistics
 DB += acalcStats.db

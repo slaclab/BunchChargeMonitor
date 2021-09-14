@@ -1,0 +1,7 @@
+file EL3202-0010.template 
+{
+pattern   {DEVICE, PORT, SCAN}
+      {"${IOC}:${MODULE}","Node${MODULE}","10 second"}
+#EX:
+#     {"SIOC:B084:IM03:1","Node1","10 second"}
+}
