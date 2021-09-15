@@ -1,0 +1,9 @@
+#this database contains the records nessecary for the script calibrateBergoz.py 
+#to generate calibration coeficents
+#
+
+record(waveform, "$(P):BergozWaveformTest"){
+    field(FTVL, "FLOAT")
+    field(SCAN, "Passive")
+    field(NELM, "7")
+}
