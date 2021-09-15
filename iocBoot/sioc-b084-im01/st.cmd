@@ -96,6 +96,22 @@ epicsEnvSet("BERGOZ0_OUT_PORT","L1")
 epicsEnvSet("BERGOZ0_SERIALNUM_EXPECT","40")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
+# *********************
+# Temprature monitoring
+# *********************
+#epicsEnvSet("TEMP_IOC", "SIOC:${AREA}:IM03")
+epicsEnvSet("TEMP_IOC", "SIOC:B084:IM03")
+epicsEnvSet("TEMP_NODE", "1")
+epicsEnvSet("TEMP_MODULE", "1")
+epicsEnvSet("TEMP_ELEC_NODE", "1")
+epicsEnvSet("TEMP_ELEC_MODULE", "2")
+epicsEnvSet("TEMP_AMP_NODE", "2")
+epicsEnvSet("TEMP_AMP_MODULE", "1")
+
+epicsEnvSet("TEMP_SRC", "${TEMP_IOC}:${TEMP_NODE}:INPUT${TEMP_MODULE}:VALUE")
+epicsEnvSet("TEMP_ELEC_SRC", "${TEMP_IOC}:${TEMP_ELEC_NODE}:INPUT${TEMP_ELEC_MODULE}:VALUE")
+epicsEnvSet("TEMP_AMP_SRC", "${TEMP_IOC}:${TEMP_AMP_NODE}:INPUT${TEMP_AMP_MODULE}:VALUE")
+
 cd $(TOP)
 
 < iocBoot/common/bcmLCLS2Common.cmd
