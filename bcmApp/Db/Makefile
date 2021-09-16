@@ -117,6 +117,7 @@ DB += tempMonitor.db
 DB += facet2Calibration.db 
 DB += lcls2BergozMode.db
 DB += lcls2BergozCalibration.db
+DB += lcls2BergozDataPoint.db
 # For BCM specific diagnostics
 DB += msgStatus.db
 # For byte swapping

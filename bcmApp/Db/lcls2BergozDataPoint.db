@@ -1,0 +1,26 @@
+#records that hold the data point from the calibration 
+
+#PS set point
+record(ao, "$(P):PS_VOLTAGE$(POINT_NUM)"){
+    field(DESC, "Power suply set point")
+    field(EGU, "Volts")
+    field(VAL, "$(POINT_VAL)")
+}
+
+#DVM count
+record(ao, "$(P):DMM_READING$(POINT_NUM)"){
+    field(DESC, "Actual voltage from the PS")
+    field(EGU, "Volts")
+    field(FLNK, "$(P):ADC_COUNT$(POINT_NUM)")
+}
+
+#ADC count
+#compress record to average adc counts
+record(compress, "$(P):ADC_COUNT$(POINT_NUM)"){
+    field(DESC, "The adc count at this voltage level")
+    field(NSAM, "$(NUM_SAMP)")
+    field(PINI, "YES")
+    field(ALG, "compressALG_N_to_1_Average")
+    field(INP, "$(P):CHRG")
+    field(SCAN, "Passive")
+}
