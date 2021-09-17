@@ -19,7 +19,7 @@ record(ao, "$(P):DMM_READING$(POINT_NUM)"){
 record(compress, "$(P):ADC_COUNT$(POINT_NUM)"){
     field(DESC, "The adc count at this voltage level")
     field(NSAM, "$(NUM_SAMP)")
-    field(PINI, "YES")
+    field(PINI, "NO")
     field(ALG, "compressALG_N_to_1_Average")
     field(INP, "$(P):CHRG")
     field(SCAN, "Passive")

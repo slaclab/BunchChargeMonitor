@@ -158,6 +158,7 @@ dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
 
 dbLoadRecords("db/lcls2BergozMode.db", "P=$(AMC0_PREFIX),LOCA=${AREA},IOC_UNIT=IM01,INST=0, AmcPrefix=${AMC_CARRIER_PREFIX}")
 dbLoadRecords("db/lcls2BergozCalibration.db", "P=$(AMC0_PREFIX)")
+dbLoadRecords("db/lcls2BergozInfo.db","P=$(AMC0_PREFIX)")
 
 #Temprature monitoring
 

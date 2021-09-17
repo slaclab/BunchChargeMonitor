@@ -342,7 +342,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Calibration</string>
+        <string>Bergoz</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -361,7 +361,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Scripts</string>
+        <string>Calibration</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -376,19 +376,27 @@
           <string/>
          </property>
          <property name="text">
-          <string>Bergoz Timing Script</string>
+          <string>Bergoz Delay</string>
          </property>
          <property name="commands" stdset="0">
           <stringlist>
-           <string> xterm -e '$TOOLS/script/launchBergozDelay.sh GUNB 360 IM01 10'</string>
+           <string> xterm -e '$TOOLS/script/launchBergozDelay.sh ${AREA} ${POS} ${IOC_UNIT} 10'</string>
           </stringlist>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="PyDMShellCommand" name="PyDMShellCommand_2">
+        <widget class="PyDMRelatedDisplayButton" name="PyDMRelatedDisplayButton">
          <property name="toolTip">
           <string/>
+         </property>
+         <property name="text">
+          <string>Bergoz Calibration</string>
+         </property>
+         <property name="filenames" stdset="0">
+          <stringlist>
+           <string>bergozCalibration.ui</string>
+          </stringlist>
          </property>
         </widget>
        </item>
@@ -408,6 +416,11 @@
    <class>PyDMShellCommand</class>
    <extends>QPushButton</extends>
    <header>pydm.widgets.shell_command</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMRelatedDisplayButton</class>
+   <extends>QPushButton</extends>
+   <header>pydm.widgets.related_display_button</header>
   </customwidget>
   <customwidget>
    <class>PyDMLineEdit</class>

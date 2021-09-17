@@ -1,0 +1,33 @@
+
+record(ao, "$(P):Slot_Num"){
+    field(DESC, "Slot number the adc is in")
+}
+
+record(ao, "$(P):ADC_Num"){
+    field(DESC, "The ADC number")
+}
+
+record(stringin, "$(P):AMC_SN"){
+    field(DESC, "The serial number of the AMC card")
+}
+
+record(stringin, "$(P):CON_BOARD_SN"){
+    field(DESC, "Serial number of conditioning board")
+}
+
+record(ao, "$(P):UCAL"){
+    field(DESC, "UCAL from bergoz")
+}
+
+record(ao, "$(P):QCAL"){
+    field(DESC, "QCAL from bergoz")
+}
+
+record(ao, "$(P):BergozCableAttenuation"){
+    field(DESC, "Cable attenuation used bergoz")
+}
+
+record(ao, "$(P):ActualCableAttenuation"){
+    field(DESC, "UCAL from bergoz")
+}
+
