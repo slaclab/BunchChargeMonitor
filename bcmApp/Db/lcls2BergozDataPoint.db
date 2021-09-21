@@ -16,11 +16,21 @@ record(ao, "$(P):DMM_READING$(POINT_NUM)"){
 
 #ADC count
 #compress record to average adc counts
-record(compress, "$(P):ADC_COUNT$(POINT_NUM)"){
-    field(DESC, "The adc count at this voltage level")
+record(compress, "$(P):ADC_COUNT_LST$(POINT_NUM)"){
+    field(DESC, "The list of recorded adc counts")
     field(NSAM, "$(NUM_SAMP)")
     field(PINI, "NO")
     field(ALG, "compressALG_N_to_1_Average")
+    field(BALG, "LIFO Buffer")
     field(INP, "$(P):CHRG")
+    field(FLNK, "$(P):ADC_COUNT$(POINT_NUM)")
     field(SCAN, "Passive")
+}
+
+#subroutine that will select the last elemnet from the array
+record(acalcout, "$(P):ADC_COUNT$(POINT_NUM)"){
+    field(DESC, "The adc count of the last run")
+    field(SCAN, "Passive") 
+    field(INAA, "$(P):ADC_COUNT_LST$(POINT_NUM)") 
+    field(CALC, "aa[0,0]") 
 }
