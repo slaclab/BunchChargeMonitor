@@ -23,26 +23,10 @@ def process_args(argv):
      parser=parser.parse_args()
      
      return parser
-     
-def query_yes_no(question, bypass=False):
-
-    valid = {"yes": True, "y": True, "no": False, "n": False}
-    prompt = " [y/n] "
-
-    while True:
-        sys.stdout.write(question + prompt)
-        if(bypass):
-            sys.stdout.write('\n')
-            return True
-        choice = input().lower()
-        if choice in valid:
-            return valid[choice]
-        else:
-            sys.stdout.write("Please respond with 'yes' or 'no' " "(or 'y' or 'n').\n")
 
 
 #function to read pv's
-def read_voltage_data(prefix, dataPoints, dataType):
+def read_data(prefix, dataPoints, dataType):
     if(dataType == "adc"):
         postfix = "ADC_COUNT"
     elif(dataType == "voltage"):
@@ -56,21 +40,6 @@ def read_voltage_data(prefix, dataPoints, dataType):
         
     return np.array(data, dtype=float)  
 
-
-def read_adc_data(prefix, dataPoints, dataType):
-    if(dataType == "adc"):
-        postfix = "ADC_COUNT"
-    elif(dataType == "voltage"):
-        postfix = "DMM_READING"
-    else:
-        raise NameError
-    data = []
-    for i in range(dataPoints):
-        data_point = e.caget(prefix+":"+postfix+str(i+1))
-        data.append(data_point[-1])
-        
-    return np.array(data, dtype=float)
-
 def cable_convert(raw_cable_coef):
     return 10**(raw_cable_coef/20)
 
@@ -78,8 +47,8 @@ def cable_convert(raw_cable_coef):
 
 def main(argv):
     controls = process_args(argv)
-    voltage_data = read_voltage_data(controls.PV_Prefix, controls.Sample_Num, "voltage")
-    adc_data = read_adc_data(controls.PV_Prefix, controls.Sample_Num, "adc")
+    voltage_data = read_data(controls.PV_Prefix, controls.Sample_Num, "voltage")
+    adc_data = read_data(controls.PV_Prefix, controls.Sample_Num, "adc")
     
     log_str=""
     
@@ -128,10 +97,7 @@ def main(argv):
     log_str += "Calculated LnQCal = "+str(LnQCal) +"\n"
     
     print(log_str)
-    input("test")
-    if(query_yes_no("Would you like to set A0 and LnQCal to these values?")):
-        e.caput(prefix+":0:CoefA0", A0)
-        e.caput(prefix+":CoefLnQ", LnQCal)
+    print("If you would like to update the coeficents please use the coeficents screen")
     
     checkoutFile = open(os.path.join("$IOC_DATA", controls.IOC, "/calibration/", "Bergoz_"+str(BergozSN)+"_"+datetime.now().strftime("%d-%m-%Y--%H:%M:%S")), 'w')
     checkoutFile.write(logInfo)

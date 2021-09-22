@@ -11,26 +11,35 @@ record(ao, "$(P):PS_VOLTAGE$(POINT_NUM)"){
 record(ao, "$(P):DMM_READING$(POINT_NUM)"){
     field(DESC, "Actual voltage from the PS")
     field(EGU, "Volts")
-    field(FLNK, "$(P):ADC_COUNT$(POINT_NUM)")
 }
 
-#ADC count
-#compress record to average adc counts
-record(compress, "$(P):ADC_COUNT_LST$(POINT_NUM)"){
-    field(DESC, "The list of recorded adc counts")
-    field(NSAM, "$(NUM_SAMP)")
-    field(PINI, "NO")
-    field(ALG, "compressALG_N_to_1_Average")
-    field(BALG, "LIFO Buffer")
-    field(INP, "$(P):CHRG")
+record(mbbi, "$(P):PROCEED_AVG$(POINT_NUM)"){
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(ZRST, "Disable")
+    field(ONST, "Enable")
+    field(FLNK, "$(P):TRIG_AVG$(POINT_NUM)")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+}
+
+record(calcout, "$(P):TRIG_AVG$(POINT_NUM)"){
+    field(INPA, "$(P):PROCEED_AVG$(POINT_NUM)")
+    field(CALC, "A")
+    field(OUT, "$(P):ADC_COUNT$(POINT_NUM).DISV PP")
     field(FLNK, "$(P):ADC_COUNT$(POINT_NUM)")
     field(SCAN, "Passive")
 }
 
-#subroutine that will select the last elemnet from the array
-record(acalcout, "$(P):ADC_COUNT$(POINT_NUM)"){
-    field(DESC, "The adc count of the last run")
-    field(SCAN, "Passive") 
-    field(INAA, "$(P):ADC_COUNT_LST$(POINT_NUM)") 
-    field(CALC, "aa[0,0]") 
+#ADC count
+#compress record to average adc counts
+record(compress, "$(P):ADC_COUNT$(POINT_NUM)"){
+    field(DESC, "The list of recorded adc counts")
+    field(NSAM, "1")
+    field(N, "$(ADC_READING_NUM)")
+    field(PINI, "NO")
+    field(ALG, "N to 1 Average")
+    field(BALG, "LIFO Buffer")
+    field(INP, "$(P):0:CHRG NPP")
+    field(SCAN, ".1 second")
 }
