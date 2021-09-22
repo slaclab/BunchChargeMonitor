@@ -1,2 +1,8 @@
 TORO:${AREA}:${POS}:0:CoefA0
 TORO:${AREA}:${POS}:CoefLnQ
+TORO:${AREA}:${POS}:AMC_SN
+TORO:${AREA}:${POS}:CON_BOARD_SN
+TORO:${AREA}:${POS}:UCAL
+TORO:${AREA}:${POS}:QCAL
+TORO:${AREA}:${POS}:BergozCableAttenuation
+TORO:${AREA}:${POS}:ActualCableAttenuation
