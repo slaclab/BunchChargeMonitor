@@ -18,7 +18,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,0,1">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -64,6 +64,16 @@
       </widget>
      </item>
      <item>
+      <widget class="PyDMEnumComboBox" name="PyDMEnumComboBox">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://${TYPE}:${AREA}:${POS}:PROCEED_AVG${POINT_NUM}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="PyDMLabel" name="PyDMLabel_2">
        <property name="toolTip">
         <string/>
@@ -90,6 +100,11 @@
    <class>PyDMLineEdit</class>
    <extends>QLineEdit</extends>
    <header>pydm.widgets.line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMEnumComboBox</class>
+   <extends>QComboBox</extends>
+   <header>pydm.widgets.enum_combo_box</header>
   </customwidget>
  </customwidgets>
  <resources/>
