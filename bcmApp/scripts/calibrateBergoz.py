@@ -6,7 +6,8 @@
 import sys
 import os
 import argparse
-import datetime
+from datetime import datetime
+import socket
 
 import epics as e
 
@@ -99,8 +100,15 @@ def main(argv):
     print(log_str)
     print("If you would like to update the coeficents please use the coeficents screen")
     
-    checkoutFile = open(os.path.join("$IOC_DATA", controls.IOC, "/calibration/", "Bergoz_"+str(BergozSN)+"_"+datetime.now().strftime("%d-%m-%Y--%H:%M:%S")), 'w')
-    checkoutFile.write(logInfo)
+    host = socket.gethostname()
+    
+    if(host == 'lcls-dev3'):
+        iocData = "/nfs/slac/g/lcls/epics/ioc/data/"
+    else:
+        iocData == "/u1/lcls/epics/ioc/data/"
+    
+    checkoutFile = open(iocData+ controls.IOC+ "/calibration/"+ "Bergoz_"+str(BergozSN)+"_"+datetime.now().strftime("%d-%m-%Y--%H:%M:%S"), 'w')
+    checkoutFile.write(log_str)
     print("A log file has been written to $IOC_DATA/"+controls.IOC+"/calibration")
     print("This concludes the calibration")
     
