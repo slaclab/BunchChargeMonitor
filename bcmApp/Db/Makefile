@@ -112,7 +112,6 @@ DB += fc_calc.db
 DB += weightFunctionXAxis.db
 DB += calculatedWF.db
 DB += processRawWFHeader.db
-DB += autoAdjustCoef.db
 DB += tempMonitor.db
 DB += facet2Calibration.db 
 DB += lcls2BergozMode.db
