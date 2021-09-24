@@ -84,6 +84,9 @@
        <property name="channel" stdset="0">
         <string>ca://${TYPE}:${AREA}:${POS}:ADC_COUNT${POINT_NUM}</string>
        </property>
+       <property name="displayFormat" stdset="0">
+        <enum>PyDMLabel::Hex</enum>
+       </property>
       </widget>
      </item>
     </layout>

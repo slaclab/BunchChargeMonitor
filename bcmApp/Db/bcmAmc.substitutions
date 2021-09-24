@@ -52,7 +52,7 @@ file "RegisterIn.template" { pattern
 # Array of register
 file "RegisterArrayIn.template" { pattern
 { P,          R,             DESC,                          NELM,   PINI,   SCAN,   PORT,           PARAM           }
-{ $(P), AdcData,       "ADC Data[3:0]",               4,     "YES",   "1 second", $(PORT),    AMC$(AMC):AdcData     }
+{ $(P), AdcData,       "Raw ADC reading",               1,     "YES",   "1 second", $(PORT),    AMC$(AMC):AdcData     }
 { $(P), MuxInDatVal,   "Incoming data valid",         4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxInDatVal }
 { $(P), MuxStrmEna,    "Output stream enabled",       4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxStrmEna  }
 { $(P), MuxStrmErr,    "Error during last acq",       4,     "YES",   "1 second", $(PORT),    AMC$(AMC):MuxStrmErr  }

@@ -40,6 +40,6 @@ record(compress, "$(P):ADC_COUNT$(POINT_NUM)"){
     field(PINI, "NO")
     field(ALG, "N to 1 Average")
     field(BALG, "LIFO Buffer")
-    field(INP, "$(P):0:CHRG NPP")
+    field(INP, "$(P):AdcData NPP")
     field(SCAN, ".1 second")
 }
