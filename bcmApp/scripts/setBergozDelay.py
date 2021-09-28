@@ -1,7 +1,6 @@
 import sys
 import time
 import epics as e
-from statistics import mean
 
 from datetime import datetime
 
