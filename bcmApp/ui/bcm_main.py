@@ -545,6 +545,8 @@ class BCMExpert(Display):
                                     border-color: rgb(0, 255, 0);")
         tmit_pc_lbl.setMinimumWidth(100)
         tmit_pc_lbl.setMaximumWidth(100)
+        
+        tmit_pc_lbl.precisionFromPV = True
  
         charge_lbl3 = QLabel("pC")
         charge_lbl3.setFont(font)
