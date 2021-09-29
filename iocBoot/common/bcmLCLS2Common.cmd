@@ -301,6 +301,10 @@ dbpf $(BERGOZ0_P)$(BERGOZ0_R)TTY_RD $(BERGOZ0_TTY)
 # Save the expected BERGOZ serial number
 dbpf $(BERGOZ0_P)$(BERGOZ0_R)SERIALNUM_EXPECT $(BERGOZ0_SERIALNUM_EXPECT)
 
+#MPS workaround
+dbpf ${MPS_PREFIX}:THR_LOADED 1
+dbpf ${MPS_PREFIX}:MPS_EN 1
+
 # Start loading configuration file
 dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigFile "/tmp/configDump.yaml"
 dbpf TORO:${AREA}:${IOC_UNIT}:saveConfigRoot "mmio"
