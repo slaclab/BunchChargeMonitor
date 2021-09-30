@@ -59,6 +59,10 @@ setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link
 L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
 
 
+# Dictionary file for manual (empty string if none)
+epicsEnvSet("DICT_FILE1", "yaml/bcmLCLS2.dict")
+
+
 ## Configure asyn port driver
 # YCPSWASYNConfig(
 #    Port Name,                 # the name given to this port driver
@@ -66,7 +70,7 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}"
 #    Record name Prefix,        # Record name prefix
 #    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
 #    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
-YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE}")
+YCPSWASYNConfig("Atca7", "", "", "0", "${DICT_FILE1}")
 
 
 # ===========================================
@@ -134,7 +138,7 @@ dbLoadRecords("db/bcmChan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CH
 dbLoadRecords("db/bcmLCLS2amc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
 dbLoadRecords("db/bcmLCLS2chan.db", "P=$(AMC0_PREFIX):0, PORT=$(CPSW_PORT), AMC=0, CHAN=0")
 
-dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+dbLoadRecords("db/carrierLCLS2.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 dbLoadRecords("db/iocMeta.db", "AREA=${AREA}, IOC_UNIT=${IOC_UNIT}")
 
 # Parse IP address

@@ -32,6 +32,7 @@
 /mmio/AmcCarrierCore/BpUdpServer/ServerRemoteIp                                                           ServerRemoteIp
 /mmio/AppTop/AppCore/CmnConfig/CalibEnable                                                                CalibEnable
 /mmio/AppTop/AppCore/CmnConfig/AppType                                                                    AppType
+/mmio/AppTop/AppCore/CmnConfig/Eic                                                                        EicComparator
 /mmio/AppTop/AppCore/CmnConfig/SelBpm                                                                     SelBpm
 /mmio/AppTop/AppCore/CmnConfig/TreshTmit                                                                  TreshTmit
 /mmio/AppTop/AppCore/CmnConfig/TmitTimeUp                                                                 TmitTimeUp

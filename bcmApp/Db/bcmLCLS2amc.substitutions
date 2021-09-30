@@ -75,6 +75,8 @@ file "RegisterOut.template" { pattern
 { $(P), TLR6:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:TrigStr }
 #Trigger to Calibration (TLR7)
 { $(P), TLR7:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "YES",  "Passive",  $(PORT),    AMC$(AMC):TLR7:SelSrc }
+#EIC  pv to set up compartator
+{ $(P), EicComparator,    "EIC BPM comparason", "YES",  "Passive",  $(PORT),    EicComparator }
 }
 
 file "RegisterOutRBV.template" { pattern
