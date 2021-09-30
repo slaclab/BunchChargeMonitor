@@ -60,7 +60,7 @@ L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}"
 
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE1", "yaml/bcmLCLS2.dict")
+epicsEnvSet("DICT_FILE1", "firmware/bcmLCLS2.dict")
 
 
 ## Configure asyn port driver

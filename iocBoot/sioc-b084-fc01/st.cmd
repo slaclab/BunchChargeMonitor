@@ -61,7 +61,7 @@ epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):$(UNIT)")
 epicsEnvSet("AMC_CARRIER_PREFIX","FARC:$(AREA):$(UNIT)")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "yaml/bcmLCLS2.dict")
+epicsEnvSet("DICT_FILE", "firmware/bcmLCLS2.dict")
 
 # ***********************************************************************
 # **** Environment variables for MPS ************************************

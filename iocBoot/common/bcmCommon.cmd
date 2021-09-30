@@ -47,7 +47,7 @@ epicsEnvSet("BSA_STREAM_YAML_NAME", "MrBcmBsaStream")
 epicsEnvSet("AUTO_GEN", 0)
 
 # Dictionary file for manually defined records
-epicsEnvSet("DICT_FILE", "yaml/bcmMR.dict")
+epicsEnvSet("DICT_FILE", "firmware/bcmMR.dict")
 
 # ===========================================
 #               DBD LOADING

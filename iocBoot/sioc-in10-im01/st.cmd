@@ -46,7 +46,7 @@ epicsEnvSet("AMC0_PREFIX","TORO:$(AREA):$(AMC0_POS)")
 epicsEnvSet("AMC_CARRIER_PREFIX","TORO:$(AREA):$(IOC_UNIT)")
 
 # Dictionary file for manual (empty string if none)
-epicsEnvSet("DICT_FILE", "yaml/bcmMR.dict")
+epicsEnvSet("DICT_FILE", "firmware/bcmMR.dict")
 
 # Start up enviroment variable 
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/$(IOC_NAME)")
