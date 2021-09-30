@@ -6,16 +6,28 @@
 
 DEVICE_PATH=/dev/ttyACM*
 
-for SERIAL_DEVICE in $DEVICE_PATH ; do
-    if [ ! -w "$SERIAL_DEVICE" ]; then
-        echo "Permission issues on $SERIAL_DEVICE"
-        exit 2
-    fi
+DEVICE_NUM=$(ls $DEVICE_PATH | wc -l)
 
-    DEVICE=$SERIAL_DEVICE
+if [ $DEVICE_NUM -eq 1 ]
+then
+    echo "The bergoz chassis is connected to $DEVICE_PATH" 
+    DEVICE=$(ls $DEVICE_PATH)
+fi
 
-    echo 'Making environment Variable for path'
-    echo "epicsEnvSet(IM01_PATH,${DEVICE})"
-    echo "epicsEnvSet(IM01_PATH,${DEVICE})" > /tmp/im01_path
-done
-exit
+if [ $DEVICE_NUM -eq 0 ]
+then
+    echo Error no device connected on USB
+    DEVICE=ERROR_NO_DEVICE
+fi
+
+if [ $DEVICE_NUM -gt 2 ]
+then
+    echo "Error more than one device connected on USB"
+    DEVICE=ERROR_MULTIPLE
+fi
+
+
+echo 'Making environment Variable for path'
+echo "epicsEnvSet(IM01_PATH,${DEVICE})"
+echo "epicsEnvSet(IM01_PATH,${DEVICE})" > /tmp/im01_path
+
