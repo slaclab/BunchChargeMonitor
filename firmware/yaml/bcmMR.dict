@@ -1,0 +1,216 @@
+###################################################################################################
+# Summary:             Mapping from YAML register path to Asyn parameter name
+# Author:              J. Vasquez <jvasquez@slac.stanford.edu>
+# Date:                28-Aug-2017
+# YAML config version: 
+###################################################################################################
+
+###################################################################################################
+# Register path                                                                Asyn parameter name
+###################################################################################################
+
+##############
+# 1. Registers related to carrier board
+/mmio/AmcCarrierCore/AxiVersion/BuildStamp                                     BuildStamp
+/mmio/AmcCarrierCore/AxiVersion/FpgaVersion                                    FpgaVersion
+/mmio/AmcCarrierCore/AxiVersion/DeviceDna                                      DeviceDna
+/mmio/AmcCarrierCore/AxiVersion/ScratchPad                                     ScratchPad
+/mmio/AmcCarrierCore/AxiVersion/UpTimeCnt                                      UpTimeCnt
+/mmio/AmcCarrierCore/AxiVersion/DeviceId                                       DeviceId
+/mmio/AmcCarrierCore/AxiVersion/GitHash                                        GitHash
+/mmio/AmcCarrierCore/AxiSy56040/OutputConfig[0]                                TCB_OUT_0
+/mmio/AmcCarrierCore/AxiSy56040/OutputConfig[1]                                TCB_OUT_1
+/mmio/AmcCarrierCore/AxiSy56040/OutputConfig[2]                                TCB_OUT_2
+/mmio/AmcCarrierCore/AxiSy56040/OutputConfig[3]                                TCB_OUT_3
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/sofCount                   sofCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/eofCount                   eofCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/CrcErrCount                CrcErrCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxCountReset               RxCountReset
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/MsgDelay                   MsgDelay 
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxClkCount                 RxClkCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxRstCount                 RxRstCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxDecErrCount              RxDecErrCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxDspErrCount              RxDspErrCount
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxLinkUp                   RxLinkUp
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/ClkSel                     ClkSel
+/mmio/AmcCarrierCore/AmcCarrierTiming/TimingFrameRx/RxPolarity                 RxPolarity
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/DacSrs                  DacSrs
+#/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/DacSrs                  DacSrs_1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/BoardHealthMps          HealthMPS
+/mmio/AmcCarrierCore/BpUdpServer/ServerRemotePort                              ServerRemotePort
+/mmio/AmcCarrierCore/BpUdpServer/ServerRemoteIp                                ServerRemoteIp
+/mmio/AmcCarrierCore/AmcCarrierTiming/GthRxAlignCheck/PhaseTarget              PhaseTarget
+
+##############
+# 2. Registers related to daughter card
+/mmio/AppTop/AppCore/AmcGenericAdcDacCore[0]/AmcGenericAdcDacCtrl/AmcClkFreq   AMC0:AmcClkFreq
+/mmio/AppTop/AppCore/AmcGenericAdcDacCore[1]/AmcGenericAdcDacCtrl/AmcClkFreq   AMC1:AmcClkFreq
+/mmio/AppTop/AppCore/AmcGenericAdcDacCore[0]/AmcGenericAdcDacCtrl/AdcData      AMC0:AdcData
+/mmio/AppTop/AppCore/AmcGenericAdcDacCore[1]/AmcGenericAdcDacCtrl/AdcData      AMC1:AdcData
+/mmio/AppTop/DaqMuxV2[0]/TriggerHwAutoRearm                                    AMC0:AutoRearm
+/mmio/AppTop/DaqMuxV2[1]/TriggerHwAutoRearm                                    AMC1:AutoRearm
+/mmio/AppTop/DaqMuxV2[0]/TrigCount                                             AMC0:MuxTrigCnt
+/mmio/AppTop/DaqMuxV2[1]/TrigCount                                             AMC1:MuxTrigCnt
+/mmio/AppTop/DaqMuxV2[0]/FrameCnt                                              AMC0:MuxFrameCnt
+/mmio/AppTop/DaqMuxV2[1]/FrameCnt                                              AMC1:MuxFrameCnt
+/mmio/AppTop/DaqMuxV2[0]/FreezeStatus                                          AMC0:MuxFrzStat
+/mmio/AppTop/DaqMuxV2[1]/FreezeStatus                                          AMC1:MuxFrzStat
+/mmio/AppTop/DaqMuxV2[0]/InputDataValid                                        AMC0:MuxInDatVal
+/mmio/AppTop/DaqMuxV2[1]/InputDataValid                                        AMC1:MuxInDatVal
+/mmio/AppTop/DaqMuxV2[0]/StreamEnabled                                         AMC0:MuxStrmEna
+/mmio/AppTop/DaqMuxV2[1]/StreamEnabled                                         AMC1:MuxStrmEna
+/mmio/AppTop/DaqMuxV2[0]/StreamError                                           AMC0:MuxStrmErr
+/mmio/AppTop/DaqMuxV2[1]/StreamError                                           AMC1:MuxStrmErr
+/mmio/AppTop/DaqMuxV2[0]/StreamOverflow                                        AMC0:MuxStrmOflw
+/mmio/AppTop/DaqMuxV2[1]/StreamOverflow                                        AMC1:MuxStrmOflw
+/mmio/AppTop/DaqMuxV2[0]/StreamPause                                           AMC0:MuxStrmPs
+/mmio/AppTop/DaqMuxV2[1]/StreamPause                                           AMC1:MuxStrmPs
+/mmio/AppTop/DaqMuxV2[0]/StreamReady                                           AMC0:MuxStrmRdy
+/mmio/AppTop/DaqMuxV2[1]/StreamReady                                           AMC1:MuxStrmRdy
+/mmio/AppTop/DaqMuxV2[0]/Timestamp                                             AMC0:MuxTmstmp
+/mmio/AppTop/DaqMuxV2[1]/Timestamp                                             AMC1:MuxTmstmp
+/mmio/AppTop/DaqMuxV2[0]/TriggerCascStatus                                     AMC0:MuxCascStat
+/mmio/AppTop/DaqMuxV2[1]/TriggerCascStatus                                     AMC1:MuxCascStat
+/mmio/AppTop/DaqMuxV2[0]/TriggerHwArmed                                        AMC0:MuxTrigHwArm
+/mmio/AppTop/DaqMuxV2[1]/TriggerHwArmed                                        AMC1:MuxTrigHwArm
+/mmio/AppTop/DaqMuxV2[0]/TriggerHwStatus                                       AMC0:MuxTrigHwStat
+/mmio/AppTop/DaqMuxV2[1]/TriggerHwStatus                                       AMC1:MuxTrigHwStat
+/mmio/AppTop/DaqMuxV2[0]/TriggerStatus                                         AMC0:MuxTrigStat
+/mmio/AppTop/DaqMuxV2[1]/TriggerStatus                                         AMC1:MuxTrigStat
+/mmio/AppTop/DaqMuxV2[0]/TriggerSwStatus                                       AMC0:MuxTrigSwStat
+/mmio/AppTop/DaqMuxV2[1]/TriggerSwStatus                                       AMC1:MuxTrigSwStat
+/mmio/AppTop/DaqMuxV2[0]/PacketHeaderEn                                        AMC0:PacketHeaderEn
+/mmio/AppTop/DaqMuxV2[1]/PacketHeaderEn                                        AMC1:PacketHeaderEn
+
+##############
+# 3. Registers related to individual ADCs
+/Stream0                                                                       AMC0:Stream0
+/Stream1                                                                       AMC0:Stream1
+/Stream2                                                                       AMC0:Stream2
+/Stream3                                                                       AMC0:Stream3
+/Stream4                                                                       AMC1:Stream0
+/Stream5                                                                       AMC1:Stream1
+/Stream6                                                                       AMC1:Stream2
+/Stream7                                                                       AMC1:Stream3
+
+# Control of the weight function
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/NumberSamples0          AMC0:CHAN0:NumSamp0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[1]/NumberSamples0          AMC0:CHAN1:NumSamp0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[2]/NumberSamples0          AMC0:CHAN2:NumSamp0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/NumberSamples0          AMC1:CHAN0:NumSamp0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[1]/NumberSamples0          AMC1:CHAN1:NumSamp0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[2]/NumberSamples0          AMC1:CHAN2:NumSamp0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/NumberSamples1          AMC0:CHAN0:NumSamp1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[1]/NumberSamples1          AMC0:CHAN1:NumSamp1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[2]/NumberSamples1          AMC0:CHAN2:NumSamp1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/NumberSamples1          AMC1:CHAN0:NumSamp1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[1]/NumberSamples1          AMC1:CHAN1:NumSamp1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[2]/NumberSamples1          AMC1:CHAN2:NumSamp1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/TrigDelay1              AMC0:CHAN0:TrigDelay1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[1]/TrigDelay1              AMC0:CHAN1:TrigDelay1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[2]/TrigDelay1              AMC0:CHAN2:TrigDelay1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/TrigDelay1              AMC1:CHAN0:TrigDelay1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[1]/TrigDelay1              AMC1:CHAN1:TrigDelay1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[2]/TrigDelay1              AMC1:CHAN2:TrigDelay1
+
+# Coefficients of the equation
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp0CoefA0                    AMC0:CHAN0:CoefA0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp1CoefA0                    AMC0:CHAN1:CoefA0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp2CoefA0                    AMC0:CHAN2:CoefA0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp0CoefA0                    AMC1:CHAN0:CoefA0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp1CoefA0                    AMC1:CHAN1:CoefA0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp2CoefA0                    AMC1:CHAN2:CoefA0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp0CoefA1                    AMC0:CHAN0:CoefA1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp1CoefA1                    AMC0:CHAN1:CoefA1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp2CoefA1                    AMC0:CHAN2:CoefA1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp0CoefA1                    AMC1:CHAN0:CoefA1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp1CoefA1                    AMC1:CHAN1:CoefA1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp2CoefA1                    AMC1:CHAN2:CoefA1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp0CoefA2                    AMC0:CHAN0:CoefA2
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp1CoefA2                    AMC0:CHAN1:CoefA2
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp2CoefA2                    AMC0:CHAN2:CoefA2
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp0CoefA2                    AMC1:CHAN0:CoefA2
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp1CoefA2                    AMC1:CHAN1:CoefA2
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp2CoefA2                    AMC1:CHAN2:CoefA2
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp0Coef_offset               AMC0:CHAN0:Coef_offset
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp1Coef_offset               AMC0:CHAN1:Coef_offset
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Inp2Coef_offset               AMC0:CHAN2:Coef_offset
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp0Coef_offset               AMC1:CHAN0:Coef_offset
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp1Coef_offset               AMC1:CHAN1:Coef_offset
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Inp2Coef_offset               AMC1:CHAN2:Coef_offset
+
+# Results of the equation
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp0AddSums2                     AMC0:CHAN0:TMIT
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp1AddSums2                     AMC0:CHAN1:TMIT
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp2AddSums2                     AMC0:CHAN2:TMIT
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp0AddSums2                     AMC1:CHAN0:TMIT
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp1AddSums2                     AMC1:CHAN1:TMIT
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp2AddSums2                     AMC1:CHAN2:TMIT
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp0MultResultA0                 AMC0:CHAN0:MultResultA0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp1MultResultA0                 AMC0:CHAN1:MultResultA0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp2MultResultA0                 AMC0:CHAN2:MultResultA0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp0MultResultA0                 AMC1:CHAN0:MultResultA0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp1MultResultA0                 AMC1:CHAN1:MultResultA0
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp2MultResultA0                 AMC1:CHAN2:MultResultA0
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp0MultResultA1                 AMC0:CHAN0:MultResultA1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp1MultResultA1                 AMC0:CHAN1:MultResultA1
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreResMr/Inp2MultResultA1                 AMC0:CHAN2:MultResultA1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp0MultResultA1                 AMC1:CHAN0:MultResultA1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp1MultResultA1                 AMC1:CHAN1:MultResultA1
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreResMr/Inp2MultResultA1                 AMC1:CHAN2:MultResultA1
+
+# General registers
+/mmio/AppTop/AppCore/SysGenMr[0]/DspCoreConfigMr/Version                       AMC0:DSPVers
+/mmio/AppTop/AppCore/SysGenMr[1]/DspCoreConfigMr/Version                       AMC1:DSPVers
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/Mode                    AMC0:Mode
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/Mode                    AMC1:Mode
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/TriggerRate             AMC0:RATE
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/TriggerRate             AMC1:RATE
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[0]/NoBeamEn                AMC0:CHAN0:NoBeamEn
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[1]/NoBeamEn                AMC0:CHAN1:NoBeamEn
+/mmio/AppTop/AppCore/SysGenMr[0]/DspPreprocConfigMr[2]/NoBeamEn                AMC0:CHAN2:NoBeamEn
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[0]/NoBeamEn                AMC1:CHAN0:NoBeamEn
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[1]/NoBeamEn                AMC1:CHAN1:NoBeamEn
+/mmio/AppTop/AppCore/SysGenMr[1]/DspPreprocConfigMr[2]/NoBeamEn                AMC1:CHAN2:NoBeamEn
+
+# Timing
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[0]/SelectSource          AMC0:TLR0:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[0]/SelectSource          AMC1:TLR0:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[0]/SoftTrig              AMC0:TLR0:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[0]/SoftTrig              AMC1:TLR0:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[0]/outPolarity           AMC0:TLR0:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[0]/outPolarity           AMC1:TLR0:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[0]/trigDelay             AMC0:TLR0:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[0]/trigDelay             AMC1:TLR0:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[0]/trigStretch           AMC0:TLR0:TrigStr
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[0]/trigStretch           AMC1:TLR0:TrigStr
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[3]/SelectSource          AMC0:TLR3:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[3]/SelectSource          AMC1:TLR3:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[3]/SoftTrig              AMC0:TLR3:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[3]/SoftTrig              AMC1:TLR3:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[3]/outPolarity           AMC0:TLR3:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[3]/outPolarity           AMC1:TLR3:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[3]/trigDelay             AMC0:TLR3:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[3]/trigDelay             AMC1:TLR3:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[3]/trigStretch           AMC0:TLR3:TrigStr
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[3]/trigStretch           AMC1:TLR3:TrigStr
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[4]/SelectSource          AMC0:TLR4:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[4]/SelectSource          AMC1:TLR4:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[4]/SoftTrig              AMC0:TLR4:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[4]/SoftTrig              AMC1:TLR4:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[4]/outPolarity           AMC0:TLR4:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[4]/outPolarity           AMC1:TLR4:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[4]/trigDelay             AMC0:TLR4:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[4]/trigDelay             AMC1:TLR4:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[4]/trigStretch           AMC0:TLR4:TrigStr
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[4]/trigStretch           AMC1:TLR4:TrigStr
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[6]/SelectSource          AMC0:TLR6:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[6]/SelectSource          AMC1:TLR6:SelSrc
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[6]/SoftTrig              AMC0:TLR6:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[6]/SoftTrig              AMC1:TLR6:SftTrig
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[6]/outPolarity           AMC0:TLR6:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[6]/outPolarity           AMC1:TLR6:OutPol
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[6]/trigDelay             AMC0:TLR6:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[6]/trigDelay             AMC1:TLR6:TrigDly
+/mmio/AppTop/AppCore/TimingProcMr[0]/TriggerLaneRegMr[6]/trigStretch           AMC0:TLR6:TrigStr
+/mmio/AppTop/AppCore/TimingProcMr[1]/TriggerLaneRegMr[6]/trigStretch           AMC1:TLR6:TrigStr
