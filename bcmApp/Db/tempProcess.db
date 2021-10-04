@@ -6,8 +6,8 @@
 record(calcout, "$(P):$(R)")
 {
   field(INPA, "$(SRC)")
-  field(INPB, "$(ESLO)")
-  field(INPC, "$(EOFF)")
+  field(INPB, "0.01")
+  field(INPC, "273.15")
   field(CALC, "(A*B)+C")
   field(OUT, "$(DEST)")
   field(OOPT, "On Change")

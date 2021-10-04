@@ -166,9 +166,9 @@ dbLoadRecords("db/lcls2BergozInfo.db","P=$(AMC0_PREFIX)")
 
 #Temprature monitoring
 
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempCalc, SRC=${TEMP_SRC}, ESLO=0.01, EOFF=273.15, DEST=${AMC0_PREFIX}:TempRef")
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempAmpCalc, SRC=${TEMP_ELEC_SRC}, ESLO=0.01, EOFF=273.15, DEST=${AMC0_PREFIX}:TempAmpRef")
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempElcCalc, SRC=${TEMP_AMP_SRC}, ESLO=0.01, EOFF=273.15, DEST=${AMC0_PREFIX}:TempElcRef")
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempElecCalc, SRC=${TEMP_ELEC_SRC}, DEST=${AMC0_PREFIX}:TempRef")
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempCalc, SRC=${TEMP_SRC}, DEST=${AMC0_PREFIX}:TempAmpRef")
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempAmpCalc, SRC=${TEMP_AMP_SRC}, DEST=${AMC0_PREFIX}:TempElcRef")
 
 # ***********************************************************************
 # **** Load TPR Triggers db *********************************************
