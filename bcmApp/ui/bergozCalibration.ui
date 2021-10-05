@@ -451,7 +451,7 @@
        </property>
        <property name="commands" stdset="0">
         <stringlist>
-         <string> xterm -hold -e '$APP/BunchChargeMonitor/current/bcmApp/scripts/calibrateBergoz.sh  ${TYPE}:${AREA}:${POS} 7 ${IOC}'</string>
+         <string> xterm -hold -e '$APP/BunchChargeMonitor/current/bcmApp/script/calibrateBergoz.sh  ${TYPE}:${AREA}:${POS} 7 ${IOC}'</string>
         </stringlist>
        </property>
       </widget>
