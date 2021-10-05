@@ -36,14 +36,24 @@ def main(argv):
     average_PC = []
     
     print("Delay \t Meausured Charge")
-    for delay in range(256):
+    delay = 0
+    counter = 0
+    while(delay <256):
         data = 0
         e.caput("TORO:{}:{}:DELAY_WR".format(pv_data.AREA, pv_data.POS),delay,wait=True)
         for sample in range(pv_data.SAMP_SIZE):
             time.sleep(.1)
             data += int(e.caget("TORO:{}:{}:CHRG.VAL".format(pv_data.AREA, pv_data.POS),use_monitor=False))
-        average_PC.append(data/pv_data.SAMP_SIZE)
-        print(delay, "\t", average_PC[delay])
+        averaged_data = data/pv_data.SAMP_SIZE
+        if(averaged_data < 30):
+            delay += 10
+        elif(averaged_data < 40):
+            delay += 5
+        else:
+            delay += 1
+        counter += 1
+        average_PC.append(averaged_data)
+        print(delay, "\t", average_PC[counter])
     
     print("The max measured charge occured with delay: ", average_PC.index(max(average_PC)))
     
