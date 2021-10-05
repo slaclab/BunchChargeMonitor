@@ -38,30 +38,36 @@ def main(argv):
     print("Delay \t Meausured Charge")
     delay = 0
     counter = 0
-    while(delay <256):
-        data = 0
-        e.caput("TORO:{}:{}:DELAY_WR".format(pv_data.AREA, pv_data.POS),delay,wait=True)
-        for sample in range(pv_data.SAMP_SIZE):
-            time.sleep(.1)
-            data += int(e.caget("TORO:{}:{}:CHRG.VAL".format(pv_data.AREA, pv_data.POS),use_monitor=False))
-        averaged_data = data/pv_data.SAMP_SIZE
-        if(averaged_data < 30):
-            delay += 10
-        elif(averaged_data < 40):
-            delay += 5
-        else:
-            delay += 1
-        counter += 1
-        average_PC.append(averaged_data)
-        print(delay, "\t", average_PC[counter])
-    
+    try:
+        while(delay <256):
+            data = 0
+            e.caput("TORO:{}:{}:DELAY_WR".format(pv_data.AREA, pv_data.POS),delay,wait=True)
+            for sample in range(pv_data.SAMP_SIZE):
+                time.sleep(.1)
+                data += int(e.caget("TORO:{}:{}:CHRG.VAL".format(pv_data.AREA, pv_data.POS),use_monitor=False))
+            averaged_data = data/pv_data.SAMP_SIZE
+            if(averaged_data < 30):
+                delay += 10
+            elif(averaged_data < 40):
+                delay += 5
+            else:
+                delay += 1
+                
+            average_PC.append(averaged_data)
+            print(delay, "\t", average_PC[counter])
+            counter += 1
+            
+    except KeyboardInterrupt:
+        print("You have stoped program execution")
+        
     print("The max measured charge occured with delay: ", average_PC.index(max(average_PC)))
-    
+        
     if(query_yes_no("Would you like to set the Bergoz delay to "+ str(average_PC.index(max(average_PC)))+" y/n:")):
         e.caput("TORO:{}:{}:DELAY_WR".format(pv_data.AREA, pv_data.POS), average_PC.index(max(average_PC)),wait=True)
     else:
         print("To set the Bergoz delay to something else please use the screen")
         print("Please now close this window")
+
     
 
 if __name__ == "__main__":
