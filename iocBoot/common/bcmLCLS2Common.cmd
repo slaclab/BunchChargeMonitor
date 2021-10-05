@@ -82,8 +82,6 @@ system("./getBergozLocation.sh")
 cd(${TOP})
 epicsEnvSet("BERGOZ0_TTY","$(IM01_PATH)")
 
-#epicsEnvSet("BERGOZ0_TTY","/dev/ttyACM0")
-
 # ***********************************************************************
 # **** Driver setup for Bergoz ******************************************
 # Set up ASYN ports
@@ -327,3 +325,11 @@ dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
 # Reactivate trigger to restart unsolicited messages from Bergoz
 epicsThreadSleep 1
 dbpf TPR:${AREA}:IM01:0:CH01_SYS2_TCTL 1
+
+
+#////////////////////////////////////////#
+#Run script to generate archiver files   #
+#////////////////////////////////////////#
+cd(${TOP}/bcmApp/scripts/)
+system("./makeArchive.sh ${IOC} &")
+cd(${TOP})
