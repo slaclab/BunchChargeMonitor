@@ -105,7 +105,7 @@ def main(argv):
     if(host == 'lcls-dev3'):
         iocData = "/nfs/slac/g/lcls/epics/ioc/data/"
     else:
-        iocData == "/u1/lcls/epics/ioc/data/"
+        iocData = "/u1/lcls/epics/ioc/data/"
     
     checkoutFile = open(iocData+ controls.IOC+ "/calibration/"+ "Bergoz_"+str(BergozSN)+"_"+datetime.now().strftime("%d-%m-%Y--%H:%M:%S"), 'w')
     checkoutFile.write(log_str)
