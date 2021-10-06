@@ -326,7 +326,6 @@ dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
 epicsThreadSleep 1
 dbpf TPR:${AREA}:IM01:0:CH01_SYS2_TCTL 1
 
-
 #////////////////////////////////////////#
 #Run script to generate archiver files   #
 #////////////////////////////////////////#
