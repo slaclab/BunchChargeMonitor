@@ -9,4 +9,4 @@ then
 fi
 export PYTHONPATH=$TOOLS/python/toolbox
 
-python $TOOLS/scripts/calibrateBergoz.py -PV_Prefix=$1 -Sample_Num=$2 -IOC=$3
+python $TOOLS/script/calibrateBergoz.py -PV_Prefix=$1 -Sample_Num=$2 -IOC=$3

@@ -107,7 +107,7 @@ def main(argv):
     else:
         iocData = "/u1/lcls/epics/ioc/data/"
     
-    checkoutFile = open(iocData+ controls.IOC+ "/calibration/"+ "Bergoz_"+str(BergozSN)+"_"+datetime.now().strftime("%d-%m-%Y--%H:%M:%S"), 'w')
+    checkoutFile = open(iocData+ controls.IOC+ "/calibration/"+ "Bergoz"+str(BergozSN)+"_"+datetime.now().strftime("%d-%m-%Y__%H--%M--%S"), 'w')
     checkoutFile.write(log_str)
     print("A log file has been written to $IOC_DATA/"+controls.IOC+"/calibration")
     print("This concludes the calibration")
