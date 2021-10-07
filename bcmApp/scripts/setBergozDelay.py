@@ -34,6 +34,7 @@ def query_yes_no(question, bypass=False):
 def main(argv):
     pv_data = process_args(argv)
     average_PC = []
+    delay_list = []
     
     print("Delay \t Meausured Charge")
     delay = 0
@@ -54,16 +55,20 @@ def main(argv):
                 delay += 1
                 
             average_PC.append(averaged_data)
+            delay_list.append(delay)
             print(delay, "\t", average_PC[counter])
             counter += 1
             
     except KeyboardInterrupt:
         print("You have stoped program execution")
+    
+    max_index = average_PC.index(max(average_PC))
+    max_delay = delay_list[max_index]
         
-    print("The max measured charge occured with delay: ", average_PC.index(max(average_PC)))
+    print("The max measured charge occured with delay: ", max_delay)
         
-    if(query_yes_no("Would you like to set the Bergoz delay to "+ str(average_PC.index(max(average_PC)))+" y/n:")):
-        e.caput("TORO:{}:{}:DELAY_WR".format(pv_data.AREA, pv_data.POS), average_PC.index(max(average_PC)),wait=True)
+    if(query_yes_no("Would you like to set the Bergoz delay to "+ str(max_delay)+" y/n:")):
+        e.caput("TORO:{}:{}:DELAY_WR".format(pv_data.AREA, pv_data.POS), max_delay,wait=True)
     else:
         print("To set the Bergoz delay to something else please use the screen")
         print("Please now close this window")
