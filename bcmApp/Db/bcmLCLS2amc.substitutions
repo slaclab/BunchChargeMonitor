@@ -130,29 +130,35 @@ file "RegisterDoubleIn.template" { pattern
 
 file "RegisterDoubleOut.template" { pattern
 { P,              R,            DESC,                         PINI,  SCAN,        PORT,   EGU,    PARAM   }
-{ $(P),     TempRef,      "Temperature of toroid",      "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempRef }
-{ $(P),     TempAmpRef,   "Temperature of amp",         "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempAmpRef }
-{ $(P),     TempElcRef,   "Temperature of electronics", "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):TempElcRef }
+{ $(P),     TempToro,       "Temperature of toroid",            "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempRef }
+{ $(P),     TempAmp,        "Temperature of amp",               "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempAmpRef }
+{ $(P),     TempElc,        "Temperature of electronics",       "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempElcRef }
+{ $(P),     TempToroCoef,   "Toro temperature mitigation coef", "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef0 }
+{ $(P),     TempAmpCoef,    "Amp temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef1 }
+{ $(P),     TempElcCoef,    "Elc temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef2 }
 #
 { $(P),     CoefT0,       "Temp coef of toroid",        "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT0 }
 { $(P),     CoefT1,       "Temp coef of amp",           "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2,       "Temp coef of electronics",   "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT2 }
 { $(P),     CoefTCal,     "Calib temperature",          "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):CoefTCal }
-{ $(P),     CoefLnQ,      "Natural log of Qcal value",  "NO",  "1 second",   $(PORT),     "",     AMC$(AMC):CoefLnQ }
+{ $(P),     CoefLnQ,      "Natural log of Qcal value",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefLnQ }
 { $(P),     TmitCoef,     "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 }
 
 file "RegisterDoubleOutRBV.template" { pattern
 { P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM, HIHI, HIGH, LOW, LOLO, HHSV, HSV, LSV, LLSV}
-{ $(P),     Temp,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempRef, "500", "310", "290", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
-{ $(P),     TempAmp,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmpRef, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
-{ $(P),     TempElc,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElcRef, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
+{ $(P),     TempToroRBV,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempRef, "500", "310", "290", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
+{ $(P),     TempAmpRBV,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmpRef, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
+{ $(P),     TempElcRBV,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElcRef, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
 { $(P),     CoefT0RBV,    "Temp coef of toroid",        "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT0 }
 { $(P),     CoefT1RBV,    "Temp coef of amp",           "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2RBV,    "Temp coef of electronics",   "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT2 }
 { $(P),     CoefTCalRBV,  "Calib temperature",          "YES", "1 second",  $(PORT),     "K",    AMC$(AMC):CoefTCal }
 { $(P),     CoefLnQRBV,   "Natural log of Qcal value",  "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefLnQ }
 { $(P),     TmitCoefRBV,  "Coef Tmit readback value from BPMS",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TmitCoef }
+{ $(P),     TempToroCoefRBV,  "Toro temperature mitigation coef",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TempCoef0 }
+{ $(P),     TempAmpCoefRBV,  "Amp temperature mitigation coef",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TempCoef1 }
+{ $(P),     TempElcCoefRBV,  "Elc temperature mitigation coef",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TempCoef2 }
 }
 
 #======================================
@@ -165,15 +171,3 @@ file "RegisterCommand.template" { pattern
 }
 
 
-
-#======================================
-# Register with Calc interfaces
-#======================================
-file "RegisterCalc.template" { pattern
-{ P,          R,              DESC,                           	SCAN,		EGU,  		PARAM 				}
-#{ $(P),     Temp,         "Temperature of toroid",         	"1 second",		"K",    $(P):TEMP3:INPUT1:VALUE }
-#{ $(P),     TempFarc,     "Temperature of faraday cup",		"1 second",		"K",    $(P):TEMP2:INPUT1:VALUE }
-#{ $(P),     TempAmp,      "Temperature of amp",                 "1 second",		"K",    $(P):TEMP3:INPUT2:VALUE }
-#{ $(P),     TempElc,      "Temperature of electronics",         "1 second",		"K",    $(P):TEMP1:INPUT1:VALUE }
-#Those PVs are now reading directly from the FPGA registers instead of the ethercat module RTDs, request from Leonid (2/28/2019)
-}
