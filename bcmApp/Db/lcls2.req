@@ -6,3 +6,6 @@ TORO:${AREA}:${POS}:UCAL
 TORO:${AREA}:${POS}:QCAL
 TORO:${AREA}:${POS}:BergozCableAttenuation
 TORO:${AREA}:${POS}:ActualCableAttenuation
+TORO:${AREA}:${POS}:TempToroCoef
+TORO:${AREA}:${POS}:TempAmpCoef
+TORO:${AREA}:${POS}:TempElcCoef
