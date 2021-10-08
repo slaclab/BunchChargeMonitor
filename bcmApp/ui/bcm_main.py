@@ -342,7 +342,7 @@ class BcmWeightFnSliderSC(QWidget):
         self.toro_lbl = PyDMLabel()
         self.toro_lbl.alarmSensitiveBorder = True
         self.toro_lbl.alarmSeverityChanged(1)
-        self.toro_lbl.channel = "ca://TORO:{}:{}:Temp".format(
+        self.toro_lbl.channel = "ca://TORO:{}:{}:TempToro".format(
                               self.macros["AREA"],
                               self.macros["POS"])
                               

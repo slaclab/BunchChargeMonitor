@@ -115,6 +115,9 @@
          <property name="toolTip">
           <string/>
          </property>
+         <property name="precisionFromPV" stdset="0">
+          <bool>true</bool>
+         </property>
          <property name="channel" stdset="0">
           <string>ca://${TYPE}:${AREA}:${POS}:AMC_SN</string>
          </property>
@@ -136,7 +139,7 @@
           <string/>
          </property>
          <property name="precision" stdset="0">
-          <number>4</number>
+          <number>9</number>
          </property>
          <property name="precisionFromPV" stdset="0">
           <bool>false</bool>
@@ -152,7 +155,7 @@
           <string/>
          </property>
          <property name="precision" stdset="0">
-          <number>4</number>
+          <number>9</number>
          </property>
          <property name="precisionFromPV" stdset="0">
           <bool>false</bool>
@@ -168,7 +171,7 @@
           <string/>
          </property>
          <property name="precision" stdset="0">
-          <number>4</number>
+          <number>9</number>
          </property>
          <property name="precisionFromPV" stdset="0">
           <bool>false</bool>
@@ -184,7 +187,7 @@
           <string/>
          </property>
          <property name="precision" stdset="0">
-          <number>4</number>
+          <number>9</number>
          </property>
          <property name="precisionFromPV" stdset="0">
           <bool>false</bool>

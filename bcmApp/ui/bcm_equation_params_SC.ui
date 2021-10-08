@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>273</width>
-    <height>151</height>
+    <width>329</width>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,22 +37,10 @@
      <property name="horizontalSpacing">
       <number>15</number>
      </property>
-     <item row="2" column="2">
-      <widget class="PyDMLabel" name="PyDMLabel_9">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="precision" stdset="0">
-        <number>5</number>
-       </property>
-       <property name="precisionFromPV" stdset="0">
-        <bool>false</bool>
-       </property>
-       <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:CoefLnQRBV </string>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Temp Toro.</string>
        </property>
       </widget>
      </item>
@@ -72,6 +60,32 @@
        </property>
        <property name="channel" stdset="0">
         <string>ca://TORO:${AREA}:${POS}:0:CoefA0RBV</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Temp Amp.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="PyDMLabel" name="PyDMLabel_9">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>9</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://TORO:${AREA}:${POS}:CoefLnQRBV </string>
        </property>
       </widget>
      </item>
@@ -120,7 +134,7 @@
         <string/>
        </property>
        <property name="precision" stdset="0">
-        <number>5</number>
+        <number>9</number>
        </property>
        <property name="precisionFromPV" stdset="0">
         <bool>false</bool>
@@ -160,20 +174,110 @@
        </property>
       </widget>
      </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Temp Elec.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_2">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>9</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://TORO:${AREA}:${POS}:TempToroCoef</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_3">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>9</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://TORO:${AREA}:${POS}:TempAmpCoef</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="PyDMLineEdit" name="PyDMLineEdit_5">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>9</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://TORO:${AREA}:${POS}:TempElcCoef</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="PyDMLabel" name="PyDMLabel_2">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>9</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://TORO:${AREA}:${POS}:TempToroCoefRBV</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="PyDMLabel" name="PyDMLabel_3">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>9</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://TORO:${AREA}:${POS}:TempAmpCoefRBV</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="PyDMLabel" name="PyDMLabel_4">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="precision" stdset="0">
+        <number>9</number>
+       </property>
+       <property name="precisionFromPV" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="channel" stdset="0">
+        <string>ca://TORO:${AREA}:${POS}:TempElcCoefRBV</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>
