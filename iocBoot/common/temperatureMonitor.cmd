@@ -111,3 +111,10 @@ create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
 
 cd ${TOP}
+
+#////////////////////////////////////////#
+#Run script to generate archiver files   #
+#////////////////////////////////////////#
+cd(${TOP}/bcmApp/scripts/)
+system("./makeArchive.sh ${IOC} &")
+cd(${TOP})
