@@ -1,11 +1,9 @@
 record(calcout, "$(P):$(R)")
 {
   field(INPA, "$(SRC)")
-  field(INPB, "0.01")
-  field(INPC, "273.15")
-  field(CALC, "(A*B)+C")
-  field(OUT, "$(DEST)")
-  field(OOPT, "On Change")
+  field(CALC, "A*0.01+273.15")
+  field(OUT, "$(DEST) CPP")
+  field(OOPT, "Every Time")
   field(FLNK, "$(DEST)")
   field(SCAN, "1 second")
 }
