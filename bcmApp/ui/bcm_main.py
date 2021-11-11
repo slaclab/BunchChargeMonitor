@@ -546,7 +546,8 @@ class BCMExpert(Display):
         tmit_pc_lbl.setMinimumWidth(100)
         tmit_pc_lbl.setMaximumWidth(100)
         
-        tmit_pc_lbl.precisionFromPV = True
+        tmit_pc_lbl.precisionFromPV = False
+        tmit_pc_lbl.precision = 3
  
         charge_lbl3 = QLabel("pC")
         charge_lbl3.setFont(font)
