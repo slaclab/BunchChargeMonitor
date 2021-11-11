@@ -130,7 +130,7 @@ file "RegisterDoubleIn.template" { pattern
 
 file "RegisterDoubleOut.template" { pattern
 { P,              R,            DESC,                         PINI,  SCAN,        PORT,   EGU,    PARAM   }
-{ $(P),     TempToro,       "Temperature of toroid",            "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):Temp }
+{ $(P),     TempToro,       "Temperature of toroid",            "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempToro }
 { $(P),     TempAmp,        "Temperature of amp",               "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempAmp }
 { $(P),     TempElc,        "Temperature of electronics",       "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempElc }
 { $(P),     TempToroCoef,   "Toro temperature mitigation coef", "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef0 }
@@ -147,7 +147,7 @@ file "RegisterDoubleOut.template" { pattern
 
 file "RegisterDoubleOutRBV.template" { pattern
 { P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM, HIHI, HIGH, LOW, LOLO, HHSV, HSV, LSV, LLSV}
-{ $(P),     TempToroRBV,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):Temp, "500", "310", "290", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
+{ $(P),     TempToroRBV,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempToro, "500", "310", "290", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
 { $(P),     TempAmpRBV,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmp, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
 { $(P),     TempElcRBV,   "Temperature of electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElc, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
 { $(P),     CoefT0RBV,    "Temp coef of toroid",        "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT0 }
