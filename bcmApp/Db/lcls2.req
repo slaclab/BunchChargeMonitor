@@ -9,3 +9,4 @@ TORO:${AREA}:${POS}:ActualCableAttenuation
 TORO:${AREA}:${POS}:TempToroCoef
 TORO:${AREA}:${POS}:TempAmpCoef
 TORO:${AREA}:${POS}:TempElcCoef
+TORO:${AREA}:${POS}:BergozMode
