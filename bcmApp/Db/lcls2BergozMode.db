@@ -48,7 +48,7 @@ record(calc, "$(P):CalibCalcRBV"){
     field(CALC, "(A=0)&&(B=6)&&(E=2)&&(F=2)&&(G=200)&&(H=7) ? 1 : 0")
 }
 
-#calc if in normal operaoin 
+#calc if in normal operation 
 record(calc, "$(P):RunningCalcRBV"){
     field(DESC, "Check if operational mode")
     field(SCAN, "1 second")
@@ -123,7 +123,7 @@ record(calcout, "$(P):SetChan6Rate"){
     field(SCAN, "Passive")
     field(INPA, "$(P):BergozMode") 
     field(INPB, "$(P):SaveChan6Rate")
-    field(CALC, "!A ? B : 6")
+    field(CALC, "!A ? B : 0")
     field(OUT, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
     field(FLNK, "TPR:$(LOCA):$(IOC_UNIT):$(INST):CH06_FIXEDRATE")
 }
