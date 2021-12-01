@@ -45,7 +45,7 @@ record(calc, "$(P):CalibCalcRBV"){
     field(INPF, "$(P):TLR7:SelSrcRBV")
     field(INPG, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SYS2_TWID")
     field(INPH, "$(P):SWITCHES_WR")
-    field(CALC, "(A=0)&&(B=6)&&(E=2)&&(F=2)&&(G=200)&&(H=7) ? 1 : 0")
+    field(CALC, "(A=0)&&(B=0)&&(E=2)&&(F=2)&&(G=200)&&(H=7) ? 1 : 0")
 }
 
 #calc if in normal operation 
