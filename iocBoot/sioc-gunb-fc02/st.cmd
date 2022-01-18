@@ -22,13 +22,14 @@ epicsEnvSet("IOC_UNIT", "FC02")
 
 epicsEnvSet("AREA","GUNB")
 epicsEnvSet("UNIT","753")
+epicsEnvSet("IOC_PREFIX","FARC:$(AREA):$(UNIT)")
 
 
 # ***********************************************************************
 # **** Environment variables for Faraday Cup on Keithley ****************
 
 epicsEnvSet("K6482_PORT","L1")
-epicsEnvSet("K6482_P","$(AMC0_PREFIX):")
+epicsEnvSet("K6482_P","$(IOC_PREFIX):")
 epicsEnvSet("K6482_R","")
 epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-li00-nw02:2011)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
@@ -67,13 +68,13 @@ drvAsynIPPortConfigure("$(K6482_PORT)","$(K6482_ADDRESS)",0,0,0)
 # *********************************************************************
 # **** Load YCPSWAsyn db **********************************************
 #Save/Load configuration related records
-dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+dbLoadRecords("db/saveLoadConfig.db", "P=${IOC_PREFIX}, PORT=${CPSW_PORT}")
 
 dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)") 
 
 # Parse IP address
-dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
-dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=SrvRemotePortSwap")
+dbLoadRecords("db/ipAddr.db", "P=${IOC_PREFIX}, SRC=SrvRemoteIp")
+dbLoadRecords("db/swap.db",   "P=${IOC_PREFIX}, SRC=SrvRemotePort, DEST=SrvRemotePortSwap")
 
 # Allow time for Keithley driver to connect
 epicsThreadSleep(1.0)
@@ -87,7 +88,7 @@ dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),
 
 # *************************************************************************
 # **** Load message status   **********************************************
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
+dbLoadRecords("db/msgStatus.db","carrier_prefix=${IOC_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
 
 
 # *************************************************************************
@@ -170,18 +171,6 @@ create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
 
 cd ${TOP}
-
-
-# Start loading configuration file
-dbpf AMCC:${AREA}:${UNIT}:saveConfigFile "/tmp/configDump.yaml"
-dbpf AMCC:${AREA}:${UNIT}:saveConfigRoot "mmio"
-dbpf AMCC:${AREA}:${UNIT}:saveConfig 1
-dbpf AMCC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsFC.yaml"
-dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
-# We should never load the configuration file after autosave already changed
-# the parameters. Uncomment the line below only if you are sure about what you
-# are doing.
-#dbpf AMCC:${AREA}:${UNIT}:loadConfig 1
 
 
 #////////////////////////////////////////#
