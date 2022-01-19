@@ -48,7 +48,9 @@ cd ${TOP}
 # ===========================================
 #               DBD LOADING
 # ===========================================
-
+## Register all support components
+dbLoadDatabase("dbd/bcm.dbd",0,0)
+bcm_registerRecordDeviceDriver(pdbbase)
 
 # *********************************************************************
 # **** Driver setup for Keithley **************************************

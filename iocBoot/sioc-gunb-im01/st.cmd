@@ -103,6 +103,8 @@ epicsEnvSet("TEMP_SRC", "${TEMP_IOC}:${TEMP_NODE}:INPUT${TEMP_MODULE}:VALUE")
 epicsEnvSet("TEMP_ELEC_SRC", "${TEMP_IOC}:${TEMP_ELEC_NODE}:INPUT${TEMP_ELEC_MODULE}:VALUE")
 epicsEnvSet("TEMP_AMP_SRC", "${TEMP_IOC}:${TEMP_AMP_NODE}:INPUT${TEMP_AMP_MODULE}:VALUE")
 
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempElcCalc, SRC=CRAT:GUNB:SP01:1:FB7:TEMP1, DEST=${AMC0_PREFIX}:TempElc, SCALE=1")
+
 cd $(TOP)
 
 < iocBoot/common/bcmLCLS2Common.cmd

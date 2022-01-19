@@ -106,5 +106,5 @@ epicsEnvSet("TEMP_ELEC_SRC", "${TEMP_IOC}:${TEMP_ELEC_NODE}:INPUT${TEMP_ELEC_MOD
 epicsEnvSet("TEMP_AMP_SRC", "${TEMP_IOC}:${TEMP_AMP_NODE}:INPUT${TEMP_AMP_MODULE}:VALUE")
 
 cd $(TOP)
-
+< iocBoot/common/temporary.cmd
 < iocBoot/common/bcmLCLS2Common.cmd
