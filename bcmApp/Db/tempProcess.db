@@ -1,9 +1,9 @@
 record(calcout, "$(P):$(R)")
 {
   field(INPA, "$(SRC)")
-  field(INPB, "$(SCALE)=0.1")
-  field(INPC, "$(OFFSET)=273.15")
-  field(CALC, "A*0.01+273.15")
+  field(INPB, "$(SCALE=0.1)")
+  field(INPC, "$(OFFSET=273.15)")
+  field(CALC, "A*B+C")
   field(OUT, "$(DEST) CPP")
   field(OOPT, "Every Time")
   field(FLNK, "$(DEST)")
