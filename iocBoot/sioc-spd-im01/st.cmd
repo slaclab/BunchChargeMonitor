@@ -107,6 +107,16 @@ epicsEnvSet("TEMP_SRC", "${TEMP_IOC}:${TEMP_NODE}:INPUT${TEMP_MODULE}:VALUE")
 epicsEnvSet("TEMP_ELEC_SRC", "${TEMP_IOC}:${TEMP_ELEC_NODE}:INPUT${TEMP_ELEC_MODULE}:VALUE")
 epicsEnvSet("TEMP_AMP_SRC", "${TEMP_IOC}:${TEMP_AMP_NODE}:INPUT${TEMP_AMP_MODULE}:VALUE")
 
+epicsEnvSet("ETHER_CAT_SCALE", "0.01")
+epicsEnvSet("ETHER_CAT_OFFSET","273.15")
+
+epicsEnvSet("TEMP_ELEC_SCALE", "$(ETHER_CAT_SCALE)")
+epicsEnvSet("TEMP_ELEC_OFFSET", "$(ETHER_CAT_OFFSET)")
+epicsEnvSet("TEMP_TORO_SCALE", "$(ETHER_CAT_SCALE)")
+epicsEnvSet("TEMP_TORO_OFFSET", "$(ETHER_CAT_OFFSET)")
+epicsEnvSet("TEMP_AMP_SCALE", "$(ETHER_CAT_SCALE)")
+epicsEnvSet("TEMP_AMP_OFFSET", "$(ETHER_CAT_OFFSET)")
+
 cd $(TOP)
-< iocBoot/common/temporary.cmd
+
 < iocBoot/common/bcmLCLS2Common.cmd

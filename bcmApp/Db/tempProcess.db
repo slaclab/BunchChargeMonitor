@@ -1,7 +1,7 @@
 record(calcout, "$(P):$(R)")
 {
   field(INPA, "$(SRC)")
-  field(INPB, "$(SCALE=0.1)")
+  field(INPB, "$(SCALE=0.01)")
   field(INPC, "$(OFFSET=273.15)")
   field(CALC, "A*B+C")
   field(OUT, "$(DEST) CPP")
