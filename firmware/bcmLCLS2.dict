@@ -124,6 +124,7 @@
 /mmio/AmcCarrierCore/AmcCarrierBsa/BsaWaveformEngine[1]/WaveformEngineBuffers/Triggered                   AMC1:WEBTrigd
 /mmio/AmcCarrierCore/AmcCarrierBsa/BsaWaveformEngine[0]/WaveformEngineBuffers/WrAddr                      AMC0:WEBWrAddr
 /mmio/AmcCarrierCore/AmcCarrierBsa/BsaWaveformEngine[1]/WaveformEngineBuffers/WrAddr                      AMC1:WEBWrAddr
+/mmio/AmcCarrierCore/AxiSysMonUltraScale/Temperature                                                      FPGATemperature
 /mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[0]/SelectSource                                         AMC0:TLR0:SelSrc
 /mmio/AppTop/AppCore/TimingProc[1]/TriggerLaneReg[0]/SelectSource                                         AMC1:TLR0:SelSrc
 /mmio/AppTop/AppCore/TimingProc[0]/TriggerLaneReg[0]/SoftTrig                                             AMC0:TLR0:SftTrig

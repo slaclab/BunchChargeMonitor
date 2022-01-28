@@ -66,7 +66,7 @@ file "RegisterOut.template" { pattern
 { $(P), TLR4:TrigDly,   "trigger delay in clock cycles",          "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:TrigDly }
 { $(P), TLR4:TrigStr,   "trigger stretch in clock cycles",        "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR4:TrigStr }
 #Trigger to Calibration (TLR5)
-{ $(P), TLR5:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "No",  "Passive",  $(PORT),    AMC$(AMC):TLR5:SelSrc }
+{ $(P), TLR5:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",  "Passive",  $(PORT),    AMC$(AMC):TLR5:SelSrc }
 # Trigger to Calculations (TLR6)
 { $(P), TLR6:SelSrc,    "soft-b0, tmg-b01, trig0-b10, trig1-b11", "NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:SelSrc }
 { $(P), TLR6:SftTrig,   "used field to only mask bit of interest","NO",   "Passive",  $(PORT),    AMC$(AMC):TLR6:SftTrig }
@@ -121,6 +121,7 @@ file "RegisterOutRBV.template" { pattern
 file "RegisterDoubleIn.template" { pattern
 { P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
 { $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
+{ $(P), FPGATemperature,     "Temperature of FPGA",            "YES",  "1 second",  $(PORT), "raw" ,   FPGATemperature}
 #{ $(P):$(CHAN),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
 }
 
