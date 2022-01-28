@@ -21,6 +21,7 @@
 file "RegisterIn.template" { pattern
 { P,          R,              DESC,                      PINI,   SCAN,       PORT,      EGU,  PARAM}
 { $(P), WEBBurstSz,     "Burst size",                   "YES",  "1 second", $(PORT),   "",   AMC$(AMC):WEBBurstSz    }
+{ $(P), FPGATemperatureRaw   "Temperature of FPGA",            "YES",  "1 second",  $(PORT), "raw" ,   FPGATemperature}
 }
 
 # Array of register
@@ -121,7 +122,6 @@ file "RegisterOutRBV.template" { pattern
 file "RegisterDoubleIn.template" { pattern
 { P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
 { $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
-{ $(P), FPGATemperature,     "Temperature of FPGA",            "YES",  "1 second",  $(PORT), "raw" ,   FPGATemperature}
 #{ $(P):$(CHAN),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
 }
 
