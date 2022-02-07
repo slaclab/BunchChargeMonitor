@@ -163,7 +163,10 @@ dbLoadRecords("db/lcls2BergozCalibration.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/lcls2BergozInfo.db","P=$(AMC0_PREFIX)")
 
 #Temprature monitoring
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=FPGATemperature, SRC=$(AMC0_PREFIX):FPGATemperatureRaw, DEST=, SCALE=0.0625, OFFSET=0")#4 bit shift
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=FPGATemperatureBitShift, SRC=$(AMC0_PREFIX):FPGATemperatureRaw, DEST=, SCALE=0.0625, OFFSET=0")#4 bit shift
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=FPGATemperature, SRC=$(AMC0_PREFIX):FPGATemperatureBitShift, DEST=, SCALE=$(TEMP_FPGA_SCALE), OFFSET=$(TEMP_FPGA_OFFSET)")
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=BergozTemperature, SRC=$(TEMP_BERGOZ_SRC), DEST=, SCALE=$(TEMP_BERGOZ_SCALE), OFFSET=$(TEMP_BERGOZ_OFFSET)")
+
 dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempElcCalc, SRC=${TEMP_ELEC_SRC}, DEST=${AMC0_PREFIX}:TempElc, SCALE=$(TEMP_ELEC_SCALE), OFFSET=$(TEMP_ELEC_OFFSET)")
 dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempToroCalc, SRC=${TEMP_SRC}, DEST=${AMC0_PREFIX}:TempToro, SCALE=$(TEMP_TORO_SCALE), OFFSET=$(TEMP_TORO_OFFSET) ")
 dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempAmpCalc, SRC=${TEMP_AMP_SRC}, DEST=${AMC0_PREFIX}:TempAmp, SCALE=$(TEMP_AMP_SCALE), OFFSET=$(TEMP_AMP_OFFSET) ")
