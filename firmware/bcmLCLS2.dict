@@ -186,12 +186,14 @@
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/CoefA1                                                       AMC1:CHAN0:CoefA1
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/CoefA2                                                       AMC0:CHAN0:CoefA2
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/CoefA2                                                       AMC1:CHAN0:CoefA2
-/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef0                                                    AMC0:TempCoef0
-/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef0                                                    AMC1:TempCoef0
-/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef1                                                    AMC0:TempCoef1
-/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef1                                                    AMC1:TempCoef1
-/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef2                                                    AMC0:TempCoef2
-/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef2                                                    AMC1:TempCoef2
+/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef0                                                    AMC0:TempCoef0 #toroid
+/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef0                                                    AMC1:TempCoef0 #toroid
+/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef1                                                    AMC0:TempCoef1 #amplifier
+/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef1                                                    AMC1:TempCoef1 #amplifier
+/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef2                                                    AMC0:TempCoef2 #Bergoz electronics
+/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef2                                                    AMC1:TempCoef2 #Bergoz electronics
+/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCoef3                                                    AMC0:TempCoef3 #ATCA electronics
+/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef3                                                    AMC1:TempCoef3 #ATCA electronics
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TmitCoef							                          AMC0:TmitCoef
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TmitCoef                                                     AMC1:TmitCoef
 /mmio/AppTop/AppCore/SysGen[0]/DspPreprocConfig[0]/Mode                                                   AMC0:Mode

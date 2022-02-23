@@ -136,7 +136,8 @@ file "RegisterDoubleOut.template" { pattern
 { $(P),     TempElc,        "Temperature of electronics",       "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempElc }
 { $(P),     TempToroCoef,   "Toro temperature mitigation coef", "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef0 }
 { $(P),     TempAmpCoef,    "Amp temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef1 }
-{ $(P),     TempElcCoef,    "Elc temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef2 }
+{ $(P),     TempBergozElcCoef,    "Bergoz Elc temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef2 }
+{ $(P),     TempATCAElcCoef,    "ATCA Elc temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef3 }
 #
 { $(P),     CoefT0,       "Temp coef of toroid",        "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT0 }
 { $(P),     CoefT1,       "Temp coef of amp",           "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT1 }
@@ -159,7 +160,8 @@ file "RegisterDoubleOutRBV.template" { pattern
 { $(P),     TmitCoefRBV,  "Coef Tmit readback value from BPMS",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 { $(P),     TempToroCoefRBV,  "Toro temperature mitigation coef",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TempCoef0 }
 { $(P),     TempAmpCoefRBV,  "Amp temperature mitigation coef",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TempCoef1 }
-{ $(P),     TempElcCoefRBV,  "Elc temperature mitigation coef",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TempCoef2 }
+{ $(P),     TempBergozElcCoefRBV,    "Bergoz Elc temperature mitigation coef",  "YES",  "1 second", $(PORT),     "",     AMC$(AMC):TempCoef2 }
+{ $(P),     TempATCAElcCoefRBV,    "ATCA Elc temperature mitigation coef",  "YES",  "1 second", $(PORT),     "",     AMC$(AMC):TempCoef3 }
 }
 
 #======================================
