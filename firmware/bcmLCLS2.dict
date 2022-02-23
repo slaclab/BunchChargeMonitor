@@ -64,6 +64,8 @@
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempAmp                                                      AMC1:TempAmp
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempElc                                                      AMC0:TempElc
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempElc                                                      AMC1:TempElc
+/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempATCA                                                     AMC0:TempATCAElc
+/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempATCA                                                     AMC1:TempATCAElc
 /mmio/AppTop/AppCore/AmcGenericAdcDacCore[0]/InitAmcCard                                                  AMC0:InitAmcCard
 /mmio/AppTop/AppCore/AmcGenericAdcDacCore[1]/InitAmcCard                                                  AMC1:InitAmcCard
 /mmio/AmcCarrierCore/AmcCarrierBsa/BsaWaveformEngine[0]/WaveformEngineBuffers/Initialize                  AMC0:WEBInit

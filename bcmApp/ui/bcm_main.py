@@ -337,7 +337,8 @@ class BcmWeightFnSliderSC(QWidget):
         
         self.toro_text = QLabel("Toroid")
         self.amp_text = QLabel("Amplifier")
-        self.elc_text = QLabel("Electronics")
+        self.bergoz_elc_text = QLabel("Bergoz")
+        self.atca_elc_text = QLabel("ATCA")        
 
         self.toro_lbl = PyDMLabel()
         self.toro_lbl.alarmSensitiveBorder = True
@@ -350,14 +351,19 @@ class BcmWeightFnSliderSC(QWidget):
         self.amp_lbl.channel = "ca://TORO:{}:{}:TempAmp".format(
                               self.macros["AREA"],
                               self.macros["POS"])
-        self.elc_lbl = PyDMLabel()
-        self.elc_lbl.channel = "ca://TORO:{}:{}:TempElc".format(
+        self.bergoz_elc_lbl = PyDMLabel()
+        self.bergoz_elc_lbl.channel = "ca://TORO:{}:{}:TempBergozElc".format(
                               self.macros["AREA"],
                               self.macros["POS"])
+                              
+        self.atca_elc_lbl = PyDMLabel()
+        self.atca_elc_lbl.channel = "ca://TORO:{}:{}:TempATCAElc".format(
+                              self.macros["AREA"],
+                              self.macros["POS"])                              
 
-        self.temperature_labels = [self.toro_text, self.amp_text, self.elc_text]
-        self.temperature_chan = [self.toro_lbl, self.amp_lbl, self.elc_lbl]
-        self.temperature_heading = [self.temperature_table_heading_null,self.temperature_table_heading ,self.temperature_table_heading_null]
+        self.temperature_labels = [self.toro_text, self.amp_text, self.bergoz_elc_text, self.atca_elc_text]
+        self.temperature_chan = [self.toro_lbl, self.amp_lbl, self.bergoz_elc_lbl, self.atca_elc_lbl]
+        self.temperature_heading = [self.temperature_table_heading_null,self.temperature_table_heading ,self.temperature_table_heading_null, self.temperature_table_heading_null]
         
         
         self.setup_ui()
@@ -370,7 +376,7 @@ class BcmWeightFnSliderSC(QWidget):
         self.layout = QHBoxLayout()
         slider_layouts = [QVBoxLayout() for i in range(3)]
         temperature_layout = QVBoxLayout()
-        temperature_element_layout = [QVBoxLayout() for i in range(3)]
+        temperature_element_layout = [QVBoxLayout() for i in range(4)]
         
 
         for lo, label, slider in zip(slider_layouts, self.labels, self.sliders):

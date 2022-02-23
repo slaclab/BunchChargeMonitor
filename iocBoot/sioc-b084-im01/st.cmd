@@ -37,7 +37,7 @@ epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 epicsEnvSet("IOC_UNIT", "IM01")
 
 # FPGA IP address
-epicsEnvSet("FPGA_IP", "10.0.1.105")
+epicsEnvSet("FPGA_IP", "10.0.1.107")
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
@@ -105,25 +105,6 @@ epicsEnvSet("TEMP_BERGOZ_MODULE", "2")
 epicsEnvSet("TEMP_AMP_NODE", "2")
 epicsEnvSet("TEMP_AMP_MODULE", "1")
 
-epicsEnvSet("TEMP_BERGOZ_SRC", "${TEMP_IOC}:${TEMP_BERGOZ_NODE}:INPUT${TEMP_BERGOZ_MODULE}:VALUE")
-
-epicsEnvSet("TEMP_SRC", "${TEMP_IOC}:${TEMP_NODE}:INPUT${TEMP_MODULE}:VALUE")
-epicsEnvSet("TEMP_ELEC_SRC", "$(AMC0_PREFIX):FPGATemperature")
-epicsEnvSet("TEMP_AMP_SRC", "${TEMP_IOC}:${TEMP_AMP_NODE}:INPUT${TEMP_AMP_MODULE}:VALUE")
-
-epicsEnvSet("ETHER_CAT_SCALE", "0.01")
-epicsEnvSet("ETHER_CAT_OFFSET","273.15")
-
-epicsEnvSet("TEMP_FPGA_SCALE", "0.1224058") #to convert from the fpga reading to kelvin
-epicsEnvSet("TEMP_FPGA_OFFSET", "0")
-epicsEnvSet("TEMP_ELEC_SCALE", "1")
-epicsEnvSet("TEMP_ELEC_OFFSET", "0")
-epicsEnvSet("TEMP_TORO_SCALE", "$(ETHER_CAT_SCALE)")
-epicsEnvSet("TEMP_TORO_OFFSET", "$(ETHER_CAT_OFFSET)")
-epicsEnvSet("TEMP_AMP_SCALE", "$(ETHER_CAT_SCALE)")
-epicsEnvSet("TEMP_AMP_OFFSET", "$(ETHER_CAT_OFFSET)")
-epicsEnvSet("TEMP_BERGOZ_SCALE", "$(ETHER_CAT_SCALE)")
-epicsEnvSet("TEMP_BERGOZ_OFFSET", "$(ETHER_CAT_OFFSET)")
 
 cd $(TOP)
 

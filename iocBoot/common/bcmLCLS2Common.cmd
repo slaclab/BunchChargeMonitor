@@ -163,11 +163,30 @@ dbLoadRecords("db/lcls2BergozCalibration.db", "P=$(AMC0_PREFIX)")
 dbLoadRecords("db/lcls2BergozInfo.db","P=$(AMC0_PREFIX)")
 
 #Temprature monitoring
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=FPGATemperatureBitShift, SRC=$(AMC0_PREFIX):FPGATemperatureRaw, DEST=, SCALE=0.0625, OFFSET=0")#4 bit shift
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=FPGATemperature, SRC=$(AMC0_PREFIX):FPGATemperatureBitShift, DEST=, SCALE=$(TEMP_FPGA_SCALE), OFFSET=$(TEMP_FPGA_OFFSET)")
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=BergozTemperature, SRC=$(TEMP_BERGOZ_SRC), DEST=, SCALE=$(TEMP_BERGOZ_SCALE), OFFSET=$(TEMP_BERGOZ_OFFSET)")
+epicsEnvSet("ETHER_CAT_SCALE", "0.01")
+epicsEnvSet("ETHER_CAT_OFFSET","273.15")
 
-dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempElcCalc, SRC=${TEMP_ELEC_SRC}, DEST=${AMC0_PREFIX}:TempElc, SCALE=$(TEMP_ELEC_SCALE), OFFSET=$(TEMP_ELEC_OFFSET)")
+epicsEnvSet("TEMP_ATCA_ELEC_SCALE", "1")
+epicsEnvSet("TEMP_ATCA_ELEC_OFFSET", "0")
+epicsEnvSet("TEMP_TORO_SCALE", "$(ETHER_CAT_SCALE)")
+epicsEnvSet("TEMP_TORO_OFFSET", "$(ETHER_CAT_OFFSET)")
+epicsEnvSet("TEMP_AMP_SCALE", "$(ETHER_CAT_SCALE)")
+epicsEnvSet("TEMP_AMP_OFFSET", "$(ETHER_CAT_OFFSET)")
+epicsEnvSet("TEMP_BERGOZ_SCALE", "$(ETHER_CAT_SCALE)")
+epicsEnvSet("TEMP_BERGOZ_OFFSET", "$(ETHER_CAT_OFFSET)")
+
+epicsEnvSet("TEMP_FPGA_SCALE", "0.1224058") #to convert from the fpga reading to kelvin
+epicsEnvSet("TEMP_FPGA_OFFSET", "0")
+
+epicsEnvSet("TEMP_SRC", "${TEMP_IOC}:${TEMP_NODE}:INPUT${TEMP_MODULE}:VALUE")
+epicsEnvSet("TEMP_BERGOZ_ELEC_SRC", "${TEMP_IOC}:${TEMP_BERGOZ_NODE}:INPUT${TEMP_BERGOZ_MODULE}:VALUE")
+epicsEnvSet("TEMP_AMP_SRC", "${TEMP_IOC}:${TEMP_AMP_NODE}:INPUT${TEMP_AMP_MODULE}:VALUE")
+
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=FPGATemperatureBitShift, SRC=$(AMC0_PREFIX):FPGATemperatureRaw, DEST=, SCALE=0.0625, OFFSET=0")#4 bit shift
+
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempATCAElcCalc, SRC=$(AMC0_PREFIX):FPGATemperatureBitShift, DEST=${AMC0_PREFIX}:TempATCAElc, SCALE=$(TEMP_FPGA_SCALE), OFFSET=$(TEMP_FPGA_OFFSET)")
+
+dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempBergozElcCalc, SRC=${TEMP_BERGOZ_ELEC_SRC}, DEST=${AMC0_PREFIX}:TempBergozElc, SCALE=$(TEMP_BERGOZ_SCALE), OFFSET=$(TEMP_BERGOZ_OFFSET)")
 dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempToroCalc, SRC=${TEMP_SRC}, DEST=${AMC0_PREFIX}:TempToro, SCALE=$(TEMP_TORO_SCALE), OFFSET=$(TEMP_TORO_OFFSET) ")
 dbLoadRecords("db/tempProcess.db","P=$(AMC0_PREFIX), R=TempAmpCalc, SRC=${TEMP_AMP_SRC}, DEST=${AMC0_PREFIX}:TempAmp, SCALE=$(TEMP_AMP_SCALE), OFFSET=$(TEMP_AMP_OFFSET) ")
 
