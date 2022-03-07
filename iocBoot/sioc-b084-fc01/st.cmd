@@ -213,6 +213,12 @@ dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
 
+dbLoadRecords("db/carrierLCLS2.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+
+#coeficent calibraiton
+dbLoadRecords("db/farady_cup_coef_calib.db", "P=${AMC_CARRIER_PREFIX}, AMC=0")
+dbLoadRecords("db/coefficientScaling.db", "P=${AMC_CARRIER_PREFIX}, AMC=0")
+
 # Allow time for Keithley driver to connect
 epicsThreadSleep(1.0)
 

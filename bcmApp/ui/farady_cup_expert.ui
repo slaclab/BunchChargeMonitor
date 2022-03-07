@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Bunch Charge Expert ${CHAN} </string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Farady Expert Interfaces</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="Coef">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Coefficients...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>farady_cup_coef.ui</string>
+        </stringlist>
+       </property>
+       <property name="macros" stdset="0">
+        <stringlist/>
+       </property>
+       <property name="openInNewWindow" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="PyDMRelatedDisplayButton">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Sensor Timing...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>farady_cup_sensor_timing.ui</string>
+        </stringlist>
+       </property>
+       <property name="titles" stdset="0">
+        <stringlist>
+         <string>Sensor Timing...</string>
+        </stringlist>
+       </property>
+       <property name="openInNewWindow" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="Trig">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Triggers...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>$PYDM/evnt/tprDiagSC.ui</string>
+        </stringlist>
+       </property>
+       <property name="openInNewWindow" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMEDMDisplayButton" name="PyDMEDMDisplayButton">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Picoammeter Control...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>$EDM/gadc/bcmFaradyCup.edl</string>
+        </stringlist>
+       </property>
+       <property name="macros" stdset="0">
+        <stringlist>
+         <string>prefix=FARC:${AREA}:${POS},carrier_prefix=FARC:${AREA}:${POS}</string>
+        </stringlist>
+       </property>
+       <property name="openInNewWindow" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PyDMRelatedDisplayButton" name="FPGAConfig">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>FPGA Configuration...</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>$PYDM/gadc/general/fpga_config.py</string>
+        </stringlist>
+       </property>
+       <property name="openInNewWindow" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PyDMEDMDisplayButton</class>
+   <extends>PyDMRelatedDisplayButton</extends>
+   <header>edmbutton.edm_button</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PyDMRelatedDisplayButton</class>
+   <extends>QPushButton</extends>
+   <header>pydm.widgets.related_display_button</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
