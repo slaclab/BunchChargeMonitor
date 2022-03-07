@@ -1,0 +1,10 @@
+
+
+file coefScale.db
+{
+pattern {P, AMC, COEF}
+
+    {$(P), $(AMC), 0}
+    {$(P), $(AMC), 1}
+
+}

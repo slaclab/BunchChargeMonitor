@@ -1,0 +1,45 @@
+#This database handles adjusting the coeficents when the window size changes
+#0 running
+#1 calibration
+
+record(calcout, "$(P):$(AMC):CoefA$(COEF)_SAV"){
+    field(INPA, "$(P):$(AMC):SETCOEF")
+    field(INPB, "$(P):$(AMC):CoefA$(COEF)")
+    field(INPC, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH")
+    field(CALC, "A ? B : C")
+    field(OUT, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH"){
+    field(SCAN, "Passive")
+}
+
+record(calcout, "$(P):$(AMC):NumSamp1_SAV"){
+    field(INPA, "$(P):$(AMC):SETCOEF")
+    field(INPB, "$(P):$(AMC):NumSamp1RBV")
+    field(INPC, "$(P):$(AMC):NumSamp1_SAV")
+    field(CALC, "A ? B : C")
+    field(OUT, "$(P):$(AMC):NumSamp1_SAV_ARCH")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P):$(AMC):NumSamp1_SAV_ARCH"){
+    field(SCAN, "Passive")
+}
+
+record(calcout, "$(P):$(AMC):Calib_Coef_A$(COEF)"){
+    field(INPA, "$(P):$(AMC):SETCOEF")
+    field(INPB, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH")
+    field(INPC, "$(P):$(AMC):NumSamp1_SAV_ARCH")
+    field(INPD, "$(P):$(AMC):NumSamp1RBV")
+    field(INPE, "$(P):$(AMC):CoefA$(COEF)")
+    
+    field(CALC, "A ? 0 : B*(C/D)")
+    
+    field(OOPT, "When Non-zero")    
+    field(OUT, "$(P):$(AMC):CoefA$(COEF)")
+    field(FLNK, "$(P):$(AMC):CoefA$(COEF)")
+    
+    field(SCAN, "1 second")
+}

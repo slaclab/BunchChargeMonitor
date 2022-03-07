@@ -118,6 +118,9 @@ DB += lcls2BergozMode.db
 DB += lcls2BergozCalibration.db
 DB += lcls2BergozDataPoint.db
 DB += lcls2BergozInfo.db
+DB += coefScale.db
+DB += coefficientScaling.db
+DB += farady_cup_coef_calib.db
 # For BCM specific diagnostics
 DB += msgStatus.db
 # For byte swapping
