@@ -44,11 +44,6 @@ epicsEnvSet("FPGA_IP", "10.0.1.105")
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
-######################################
-# Automatically generated record prefix
-# Production area
-#epicsEnvSet("PREFIX","GUNB:FC01")
-
 epicsEnvSet("AREA","GUNB")
 epicsEnvSet("UNIT","999")
 
@@ -81,9 +76,7 @@ epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 # **********************************************************************
 # **** Environment variables for IOC Admin *****************************
-# Production area
-#epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
-# Dev Area
+
 epicsEnvSet(IOC_NAME,"SIOC:B084:FC01")
 
 # Start up enviroment variable

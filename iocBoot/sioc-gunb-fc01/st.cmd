@@ -44,11 +44,10 @@ epicsEnvSet("FPGA_IP", "10.0.1.106")
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
-# Automatically generated record prefix
-#epicsEnvSet("PREFIX","GUNB:FC01")
-
 epicsEnvSet("AREA","GUNB")
 epicsEnvSet("UNIT","999")
+
+######################################
 
 # BCM-FC in crate 1, slot 4, AMC 0
 epicsEnvSet("AMC0_PREFIX","FARC:$(AREA):$(UNIT)")
@@ -75,24 +74,13 @@ epicsEnvSet("K6482_ADDRESS","$(K6482_ADDRESS=ts-li00-nw02:2001)")
 epicsEnvSet("STREAM_PROTOCOL_PATH","${TOP}/db")
 
 
-# ***********************************************************************
-# **** Environment variables for Temperature Chassis on Ethercat ********
-
-# System Location:
-epicsEnvSet(FAC,"SYS2")
-epicsEnvSet("LOCA","GUNB")
-epicsEnvSet("TEMP_IOC_NAME","SIOC:${LOCA}:FC01")
-
-
 # **********************************************************************
 # **** Environment variables for IOC Admin *****************************
 
-epicsEnvSet(IOC_NAME,"SIOC:GUNB:FC01")
+epicsEnvSet("IOC_NAME","SIOC:GUNB:FC01")
 
 # Start up enviroment variable
 epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
-
-
 
 cd ${TOP}
 
@@ -218,6 +206,12 @@ dbLoadRecords("db/weightFunctionXAxis.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/calculatedWF.db", "P=$(AMC0_PREFIX),CHAN=0")
 dbLoadRecords("db/processRawWFHeader.db", "P=$(AMC0_PREFIX),CHAN=0")
 
+dbLoadRecords("db/carrierLCLS2.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+
+#coeficent calibraiton
+dbLoadRecords("db/farady_cup_coef_calib.db", "P=${AMC_CARRIER_PREFIX}, AMC=0")
+dbLoadRecords("db/coefficientScaling.db", "P=${AMC_CARRIER_PREFIX}, AMC=0")
+
 # Allow time for Keithley driver to connect
 epicsThreadSleep(1.0)
 
@@ -260,11 +254,6 @@ dbLoadRecords("db/tprDeviceNamePV.db","LOCA=${AREA},IOC_UNIT=${IOC_UNIT},INST=0,
 # **** Load message status   **********************************************
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
 
-
-# *************************************************************************
-# **** Load MPS scale factor **********************************************
-#dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
-#dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 
 # *************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring *******
