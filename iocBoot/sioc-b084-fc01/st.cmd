@@ -212,6 +212,9 @@ dbLoadRecords("db/carrierLCLS2.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}"
 dbLoadRecords("db/farady_cup_coef_calib.db", "P=${AMC_CARRIER_PREFIX}, AMC=0")
 dbLoadRecords("db/coefficientScaling.db", "P=${AMC_CARRIER_PREFIX}, AMC=0")
 
+#Provide shot to shot calibration
+dbLoadRecords("db/faradyCupAvgShot.db", "P=${AMC_CARRIER_PREFIX}, INP=TPG:SYS0:1:DST01:RATE")
+
 # Allow time for Keithley driver to connect
 epicsThreadSleep(1.0)
 

@@ -121,6 +121,7 @@ DB += lcls2BergozInfo.db
 DB += coefScale.db
 DB += coefficientScaling.db
 DB += farady_cup_coef_calib.db
+DB += faradyCupAvgShot.db
 # For BCM specific diagnostics
 DB += msgStatus.db
 # For byte swapping
