@@ -123,3 +123,6 @@ epicsEnvSet("TEMP_BERGOZ_OFFSET", "$(ETHER_CAT_OFFSET)")
 cd $(TOP)
 
 < iocBoot/common/bcmLCLS2Common.cmd
+
+dbpf TORO:GUNB:IM01:BpmSelect.ZNAM BPM1B
+dbpf TORO:GUNB:IM01:BpmSelect.ONAM BPM2B
