@@ -1,0 +1,21 @@
+#==============================================================================
+#
+# Abs:  Select status database file.
+#
+# Name: selectStatus.db
+#
+# Note: Must follow the LCLS naming conventions.
+#
+#==============================================================================
+
+
+record(calc, "$(P):USED_TMIT")
+{
+  field(INPA, "$(P):TmitTmit0")
+  field(INPB, "$(P):TmitTmit1")
+  field(INPC, "$(P):SelBpm")
+  field(INPD, "1")
+  field(CALC, "(C=D) ? B : A")
+  field(SCAN, ".5 second")
+  field(DESC, "Slects if bpm0 or bpm1 is used")
+}

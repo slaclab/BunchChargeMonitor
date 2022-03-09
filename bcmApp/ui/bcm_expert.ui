@@ -80,6 +80,29 @@
       </widget>
      </item>
      <item>
+      <widget class="PyDMRelatedDisplayButton" name="PyDMRelatedDisplayButton">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>BPM conection control..</string>
+       </property>
+       <property name="filenames" stdset="0">
+        <stringlist>
+         <string>bpm_control.ui</string>
+        </stringlist>
+       </property>
+       <property name="titles" stdset="0">
+        <stringlist/>
+       </property>
+       <property name="macros" stdset="0">
+        <stringlist>
+         <string>POS=IM01</string>
+        </stringlist>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="PyDMRelatedDisplayButton" name="FPGAConfig">
        <property name="toolTip">
         <string/>

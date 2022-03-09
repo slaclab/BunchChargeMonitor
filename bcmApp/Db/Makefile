@@ -124,6 +124,9 @@ DB += farady_cup_coef_calib.db
 DB += faradyCupAvgShot.db
 # For BCM specific diagnostics
 DB += msgStatus.db
+DB += bpmSelect.db
+DB += selectStatus.db
+DB += bpmBcmDiff.db
 # For byte swapping
 DB += swap.db
 

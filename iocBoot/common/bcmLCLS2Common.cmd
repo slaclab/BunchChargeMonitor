@@ -141,11 +141,14 @@ dbLoadRecords("db/iocMeta.db", "AREA=${AREA}, IOC_UNIT=${IOC_UNIT}")
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
+dbLoadRecords("db/selectStatus.db", "P=${AMC_CARRIER_PREFIX}")
+dbLoadRecords("db/bpmBcmDiff.db", "P=${AMC_CARRIER_PREFIX}, BcmChrg=$(AMC0_PREFIX)")
 dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=SrvRemotePortSwap")
 
 # *******************************
 # **** Load message status   ****
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${AMC_CARRIER_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
+dbLoadRecords("db/msgStatus.db", "P=${AMC_CARRIER_PREFIX}")
+dbLoadRecords("db/bpmSelect.db", "P=${AMC_CARRIER_PREFIX}")
 dbLoadRecords("db/monitorFPGAReboot.db", "P=${AMC_CARRIER_PREFIX}, KEY=-66686157")
 
 ###*************************
