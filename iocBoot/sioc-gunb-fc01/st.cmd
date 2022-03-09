@@ -215,6 +215,8 @@ dbLoadRecords("db/coefficientScaling.db", "P=${AMC_CARRIER_PREFIX}, AMC=0")
 # Allow time for Keithley driver to connect
 epicsThreadSleep(1.0)
 
+dbLoadRecords("db/faradyCupAvgShot.db", "P=${AMC_CARRIER_PREFIX}, INP=TPG:SYS0:1:DST01:RATE")
+
 # **********************************************************************
 # **** Load Keithley db ************************************************
 dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
