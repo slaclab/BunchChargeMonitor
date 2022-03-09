@@ -11,3 +11,4 @@ TORO:${AREA}:${POS}:TempAmpCoef
 TORO:${AREA}:${POS}:TempBergozElcCoef
 TORO:${AREA}:${POS}:TempATCAElcCoef
 TORO:${AREA}:${POS}:BergozMode
+TORO:${AREA}:IM01:SrvRemoteIp:IpAddr
