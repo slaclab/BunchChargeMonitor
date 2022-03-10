@@ -315,7 +315,7 @@ iocshCmd("makeAutosaveFiles")
 # Note: the last arg cannot be set to 0
 create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
-create_monitor_set("$(IOC).req", 60, "")
+create_monitor_set("$(IOC).req", 5, "")
 
 cd ${TOP}
 

@@ -7,7 +7,8 @@ include $(TOP)/configure/CONFIG
 #  Optimization of db files using dbst (DEFAULT: NO)
 #DB_OPT = YES
 REQ += facet2.req
-REQ += lcls2.req
+REQ += lcls2toro.req
+REQ += lcls2farc.req
 
 #----------------------------------------------------
 # Create and install (or just install)
