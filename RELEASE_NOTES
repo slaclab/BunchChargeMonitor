@@ -10,6 +10,10 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
+R4.1.0 Taine Eriksen (taine) - (3/10/2022)
+          -Inital stable release for LCLS2 deployment 
+          -Earlier tags were done before initial cabability had been done
+
 R3.12.0   Marcio Donadio (marcio) - (3/3/2021)
           - Added missing req files for autosave
 
