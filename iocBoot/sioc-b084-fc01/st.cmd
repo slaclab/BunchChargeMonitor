@@ -289,6 +289,8 @@ save_restoreSet_DatedBackupFiles(1)
 # Where "/data" is an NFS mount point setup when linuxRT target
 # boots up.
 set_requestfile_path("/data/${IOC}/autosave-req")
+set_requestfile_path("${TOP}/autosave", "")
+set_requestfile_path("${TOP}/iocBoot/${IOC}", "")
 
 # Where to write the save files that will be used to restore
 set_savefile_path("/data/${IOC}/autosave")
@@ -300,7 +302,8 @@ save_restoreSet_status_prefix("${IOC_NAME}:")
 
 ## Restore datasets
 set_pass0_restoreFile("info_settings.sav")
-set_pass1_restoreFile("info_settings.sav")
+set_pass0_restoreFile("info_positions.sav")
+set_pass1_restoreFile("$(IOC).sav")
 
 
 # ===========================================
@@ -336,6 +339,7 @@ iocshCmd("makeAutosaveFiles")
 # Note: the last arg cannot be set to 0
 create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
+create_monitor_set("$(IOC).req", 5, "")
 
 cd ${TOP}
 
