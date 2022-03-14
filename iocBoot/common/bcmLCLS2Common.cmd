@@ -140,7 +140,7 @@ dbLoadRecords("db/carrierLCLS2.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}"
 dbLoadRecords("db/iocMeta.db", "AREA=${AREA}, IOC_UNIT=${IOC_UNIT}")
 
 # Parse IP address
-dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
+dbLoadRecords("db/ipAddrParse.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp, SCAN=10 second")
 dbLoadRecords("db/selectStatus.db", "P=${AMC_CARRIER_PREFIX}")
 dbLoadRecords("db/bpmBcmDiff.db", "P=${AMC_CARRIER_PREFIX}, BcmChrg=$(AMC0_PREFIX)")
 dbLoadRecords("db/swap.db",   "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemotePort, DEST=SrvRemotePortSwap")

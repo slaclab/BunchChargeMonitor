@@ -106,6 +106,7 @@ DB += bcmLCLS2chan.db
 DB += carrierLCLS2.db
 DB += carrierFACET2.db
 DB += ipAddr.db
+DB += ipAddrParse.db
 DB += streamControl.db
 DB += waveform.db
 DB += iocMeta.db

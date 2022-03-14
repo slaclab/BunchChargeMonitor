@@ -24,7 +24,7 @@ file "RegisterIn.template" { pattern
 { $(P), UpTimeCnt,      "Seconds since last reset",     "YES",  "1 second", $(PORT),  "s",   UpTimeCnt     }
 { $(P), DeviceId,       "Device Identification",        "YES",  "Passive",  $(PORT),   "",   DeviceId      }
 { $(P), ServerRemotePort,  "big-Endian configuration",     "YES",  "1 second", $(PORT),   "",   ServerRemotePort }
-{ $(P), ServerRemoteIp,    "big-Endian configuration",     "YES",  "1 second", $(PORT),   "",   ServerRemoteIp }
+{ $(P), SrvRemoteIp,    "big-Endian configuration",     "YES",  "1 second", $(PORT),   "",   ServerRemoteIp }
 # BSA status
 { $(P), SofCount,       "",                             "YES",  "1 second", $(PORT),   "",   sofCount      }
 { $(P), EofCount,       "",                             "YES",  "1 second", $(PORT),   "",   eofCount      }
