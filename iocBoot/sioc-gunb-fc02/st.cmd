@@ -178,6 +178,6 @@ cd ${TOP}
 #////////////////////////////////////////#
 #Run script to generate archiver files   #
 #////////////////////////////////////////#
-#cd(${TOP}/bcmApp/scripts/)
-#system("./makeArchive.sh ${IOC} &")
-#cd(${TOP})
+cd(${TOP}/bcmApp/scripts/)
+system("./makeArchive.sh ${IOC} &")
+cd(${TOP})
