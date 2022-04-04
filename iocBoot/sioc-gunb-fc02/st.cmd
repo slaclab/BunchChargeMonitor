@@ -86,12 +86,9 @@ epicsThreadSleep(1.0)
 dbLoadRecords ("db/devKeithley6482.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),A=-1,NELM=1000,VDRVH=30,VDRVL=-30")
 dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),ADDR=-1,OMAX=0,IMAX=0")
 
-
-
 # *************************************************************************
 # **** Load message status   **********************************************
 dbLoadRecords("db/msgStatus.db","carrier_prefix=${IOC_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
-
 
 # *************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring *******
@@ -103,7 +100,6 @@ dbLoadRecords("db/iocAdminScanMon.db","IOC=${IOC_NAME}")
 # versions of software your IOC is referencing
 # The python parser is part of iocAdmin
 dbLoadRecords("db/iocRelease.db","IOC=${IOC_NAME}")
-
 
 # ************************************************************************
 # **** Load database for autosave status *********************************
@@ -171,6 +167,7 @@ iocshCmd("makeAutosaveFiles")
 # Note: the last arg cannot be set to 0
 create_monitor_set("info_positions.req", 5 )
 create_monitor_set("info_settings.req" , 30 )
+create_monitor_set("$(IOC).req", 5, "")
 
 cd ${TOP}
 

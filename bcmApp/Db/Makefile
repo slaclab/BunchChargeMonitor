@@ -9,6 +9,7 @@ include $(TOP)/configure/CONFIG
 REQ += facet2.req
 REQ += lcls2toro.req
 REQ += lcls2farc.req
+REQ += kiethly.req
 
 #----------------------------------------------------
 # Create and install (or just install)
