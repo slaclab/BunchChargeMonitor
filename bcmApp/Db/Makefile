@@ -55,6 +55,16 @@ DB_INSTALLS += $(YCPSWASYN)/db/RegisterStream.template
 DB_INSTALLS += $(YCPSWASYN)/db/RegisterStream16.template
 DB_INSTALLS += $(YCPSWASYN)/db/example.substitutions
 
+# Timing (tprTrigger, tprPatter, crossbarControl, event, BSA, BSSS scalr PVs and controls) 
+# --------------------------------------------------
+DB_INSTALLS += $(TPRTRIGGER)/db/tprTrig.db
+DB_INSTALLS += $(TPRTRIGGER)/db/tprDeviceNamePV.db
+
+DB_INSTALLS += $(BSADRIVER)/db/bsa.db
+
+DB_INSTALLS += $(BSADRIVER)/db/bsss.db
+DB_INSTALLS += $(BSADRIVER)/db/bsssCtrl.db
+
 # Keithley
 DB_INSTALLS += $(KEITHLEY6482)/db/asynRecord.db
 DB_INSTALLS += $(KEITHLEY6482)/db/devKeithley6482.db
@@ -72,23 +82,10 @@ DB_INSTALLS += $(ECASYN)/db/EL3202-0010.template
 # Autosave
 DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 
-# BSA
-DB_INSTALLS += $(BSADRIVER)/db/bsa.db
-
 # MPS
 DB_INSTALLS += $(L2MPSASYN)/db/mps.db
 DB_INSTALLS += $(L2MPSASYN)/db/mps_bcm.db
 DB_INSTALLS += $(L2MPSASYN)/db/mps_scale_factor.db
-
-# tprPattern 
-DB_INSTALLS += $(TPRPATTERN)/db/tprPattern.db
-
-# tprTrigger
-DB_INSTALLS += $(TPRTRIGGER)/db/tprTrig.db
-DB_INSTALLS += $(TPRTRIGGER)/db/tprDeviceNamePV.db
-
-# Crossbar
-DB_INSTALLS += $(CROSSBARCONTROL)/db/crossbarCtrl.db
 
 # IOC Admin
 DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db
@@ -143,7 +140,7 @@ DB += swap.db
 #DB_INSTALLS += $(EVENT)/db/PMC-trig.db
 #DB_INSTALLS += $(EVENT)/db/VME-trig.db
 #DB_INSTALLS += $(EVENT)/db/VME-TTB-trig.db
-DB_INSTALLS += $(EVENT)/db/Bsa.db
+#DB_INSTALLS += $(EVENT)/db/Bsa.db
 #
 # For event module BSA Test
 #DB += bsaSimulator.db
