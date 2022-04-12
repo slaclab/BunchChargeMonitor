@@ -10,7 +10,11 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 
-R4.1.4 Taine Eriksen (taine) - (4/4/2022)
+R4.2.0 Taine Eriksen (taine) - (4/4/2022)
+        -New Timing modules and removed suport for LCLS1 timing
+        -NO SUPORT FOR FACET
+
+4.1.4 Taine Eriksen (taine) - (4/4/2022)
         -Added autosave to gun farady cup
 
 R4.1.3 Taine Eriksen (taine) - (4/4/2022)

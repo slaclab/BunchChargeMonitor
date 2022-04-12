@@ -35,12 +35,12 @@ pcre_DIR = $(PCRE_LIB)
 
 # Support for CPSW
 cpsw_DIR = $(CPSW_FRAMEWORK_LIB)
-deviceLib_DIR = $(CPSW_DEVICE_LIBRARY_LIB)
 boost_system_DIR = $(BOOST_LIB)
 yaml-cpp_DIR = $(YAML_LIB)
+deviceLib_DIR = $(CPSW_DEVICE_LIBRARY_LIB)
 hpstpr_DIR = $(HPSTPR_LIB)
 yamlReader_DIR = $(YAMLREADER_LIB)
-commonATCA_DIR = $(COMMONATCA_LIB)
+l2Mps_DIR = $(L2MPS_LIB)
 
 # =====================================================
 
@@ -53,7 +53,7 @@ USR_LIBS_Linux += cpsw
 USR_LIBS_Linux += yaml-cpp
 USR_LIBS_Linux += boost_system
 USR_LIBS_Linux += hpstpr
-USR_LIBS_Linux += commonATCA
+USR_LIBS_Linux += l2Mps
 
 USR_LIBS_Linux += xml2 
 USR_LIBS_Linux += z 
@@ -67,33 +67,27 @@ USR_LIBS_Linux += pcre
 # ================================================
 # This will attempt to build an IOC application 
 # for every target including the host computer.
-# These lines will build ONLY for cross target
-PROD_IOC_linuxRT-x86_64 = bcm
-PROD_IOC = $(PROD_IOC_$(T_A))
+PROD_IOC = bcm
 
 # Ethercat for temperature chassis
-bcm_INCLUDES += $(ECASYN)/include
-bcm_DBD += ecAsyn.dbd
+#bcm_INCLUDES += $(ECASYN)/include
+#bcm_DBD += ecAsyn.dbd
 
 # bcm.dbd will be created and installed
 DBD += bcm.dbd
 
 # bcm.dbd will be made up from these files:
-bcm_DBD += bcmDrv.dbd
 bcm_DBD += base.dbd
-bcm_DBD += devIocStats.dbd
+bcm_DBD += bcmDrv.dbd
+#bcm_DBD += devIocStats.dbd
 bcm_DBD += asSupport.dbd
 # Include dbd files from all support applications:
 bcm_DBD += asyn.dbd
 bcm_DBD += drvAsynIPPort.dbd
 bcm_DBD += drvAsynSerialPort.dbd
+bcm_DBD += stream.dbd
 bcm_DBD += caPutLog.dbd
 bcm_DBD += $(CEXP_DBDS)
-blen_DBD += crossbarControl.dbd
-blen_DBD += tprTriggerAsynDriver.dbd
-blen_DBD += tprPatternAsynDriver.dbd
-bcm_DBD += stream.dbd
-
 #bcm_DBD += Keithley6482Test.dbd
 ifdef AUTOSAVE_ASSUPPORT
 bcm_DBD += asSupport.dbd
@@ -111,7 +105,7 @@ bcm_DBD += bsaAsynDriver.dbd
 #bcm_DBD += bsa.dbd
 bcm_DBD += yamlLoader.dbd
 bcm_DBD += yamlDownloader.dbd
-#bcm_DBD += l2MpsAsyn.dbd
+bcm_DBD += l2MpsAsyn.dbd
 
 # For calculated waveforms
 bcm_DBD += calc.dbd
