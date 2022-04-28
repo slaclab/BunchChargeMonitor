@@ -121,6 +121,16 @@ addBsa("FCSTATUS",   "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
+
+## Configure asyn port driver
+# YCPSWASYNConfig(
+#    Port Name,                 # the name given to this port driver
+#    Root Path                  # OPTIONAL: Root path to start the generation. If empty, the Yaml root will be used
+#    Record name Prefix,        # Record name prefix
+#    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
+#    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
+YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "${DICT_FILE}")
+
 ## Set MPS Configuration location
 # setMpsConfigurationPath(
 #   Path)                   # Path to the MPS configuraton TOP directory
@@ -136,15 +146,6 @@ setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link
 #    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
 #    MPS Root Path              # OPTIONAL: Root path to the MPS register area
 L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
-
-## Configure asyn port driver
-# YCPSWASYNConfig(
-#    Port Name,                 # the name given to this port driver
-#    Root Path                  # OPTIONAL: Root path to start the generation. If empty, the Yaml root will be used
-#    Record name Prefix,        # Record name prefix
-#    Use DB Autogeneration,     # Set to 1 for autogeneration of records from the YAML definition. Set to 0 to disable it
-#    Load dictionary,           # Dictionary file path with registers to load. An empty string will disable this function
-YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "${DICT_FILE}")
 
 # *********************************************************************
 # **** Driver setup for Keithley **************************************
