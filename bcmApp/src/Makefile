@@ -32,6 +32,7 @@ lzma_DIR = $(XZ_LIB)
 xml2_DIR = $(LIBXML2_LIB)
 
 pcre_DIR = $(PCRE_LIB)
+l2Mps_DIR         = $(L2MPS_LIB)
 
 # Support for CPSW
 cpsw_DIR = $(CPSW_FRAMEWORK_LIB)
@@ -53,6 +54,7 @@ USR_LIBS_Linux += cpsw
 USR_LIBS_Linux += yaml-cpp
 USR_LIBS_Linux += boost_system
 USR_LIBS_Linux += hpstpr
+USR_LIBS_Linux += l2Mps
 USR_LIBS_Linux += commonATCA
 
 USR_LIBS_Linux += xml2 
@@ -92,7 +94,6 @@ bcm_DBD += $(CEXP_DBDS)
 blen_DBD += crossbarControl.dbd
 blen_DBD += tprTriggerAsynDriver.dbd
 blen_DBD += tprPatternAsynDriver.dbd
-bcm_DBD += stream.dbd
 
 #bcm_DBD += Keithley6482Test.dbd
 ifdef AUTOSAVE_ASSUPPORT
@@ -108,10 +109,9 @@ bcm_DBD += calcSupport.dbd
 
 bcm_DBD += ycpswasyn.dbd
 bcm_DBD += bsaAsynDriver.dbd
-#bcm_DBD += bsa.dbd
 bcm_DBD += yamlLoader.dbd
 bcm_DBD += yamlDownloader.dbd
-#bcm_DBD += l2MpsAsyn.dbd
+bcm_DBD += l2MpsAsyn.dbd
 
 # For calculated waveforms
 bcm_DBD += calc.dbd
