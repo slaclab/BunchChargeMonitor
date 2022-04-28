@@ -121,6 +121,11 @@ addBsa("FCSTATUS",   "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
+## Set MPS Configuration location
+# setMpsConfigurationPath(
+#   Path)                   # Path to the MPS configuraton TOP directory
+setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link_node_db")
+
 # *********************************************************************
 # **** MPS Driver setup ***********************************************
 # LCLS2MPSCPASYNConfig(
@@ -230,6 +235,10 @@ dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRG,SECN=CHR
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
 dbLoadRecords("db/bsa.db", "DEV=${AMC0_PREFIX},PORT=bsaPort,BSAKEY=FCSTATUS,SECN=FCSTATUS")
+
+# **** Load MPS scale factor *********************************************
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 
 # ************************************************************************
 # **** Load TPR Triggers db **********************************************
@@ -357,3 +366,6 @@ dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
 #dbpf AMCC:${AREA}:${UNIT}:loadConfig 1
+#MPS workaround
+dbpf ${MPS_PREFIX}:THR_LOADED 1
+dbpf ${MPS_PREFIX}:MPS_EN 1
