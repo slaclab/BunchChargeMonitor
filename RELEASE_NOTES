@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.3.0 Jeremy Mock (jmock) (5/16/2022)
+        - Upgrade MPS to l2Mps R3.8.0 (bring back support for MPS)
+        - Fix stream device build problem
+        - change DIAG0 faraday cup to match correct unit number (not EIC)
 
 R4.2.0 Taine Eriksen (taine) - (4/4/2022)
         -New Timing modules and removed suport for LCLS1 timing

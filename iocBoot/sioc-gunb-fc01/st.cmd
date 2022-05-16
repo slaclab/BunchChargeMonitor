@@ -44,8 +44,8 @@ epicsEnvSet("FPGA_IP", "10.0.1.106")
 # 0 = No, 1 = Yes
 epicsEnvSet("AUTO_GEN", 0)
 
-epicsEnvSet("AREA","GUNB")
-epicsEnvSet("UNIT","999")
+epicsEnvSet("AREA","DIAG0")
+epicsEnvSet("UNIT","530")
 
 ######################################
 
