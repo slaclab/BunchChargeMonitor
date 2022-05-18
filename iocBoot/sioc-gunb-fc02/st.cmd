@@ -88,7 +88,7 @@ dbLoadRecords ("db/asynRecord.db" "P=$(K6482_P),R=$(K6482_R),PORT=$(K6482_PORT),
 
 # *************************************************************************
 # **** Load message status   **********************************************
-dbLoadRecords("db/msgStatus.db","carrier_prefix=${IOC_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
+dbLoadRecords("db/msgStatus.db","P=${IOC_PREFIX},DESC=Communications Diagnostics,BPM_LOCA=314,LOCA=$(UNIT),AREA=GUNB")
 
 # *************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring *******
