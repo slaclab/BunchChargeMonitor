@@ -195,7 +195,7 @@ dbLoadRecords("db/carrier.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
 
 dbLoadRecords("db/fc_calc.db", "P=${AMC0_PREFIX}")
 
-dbLoadRecords("db/iocMeta.db", "AREA=$(AREA), IOC_UNIT=$(IOC_UNIT)") 
+dbLoadRecords("db/iocMeta.db", "AREA=${AREA}, IOC_UNIT=${IOC_UNIT}") 
 
 # Parse IP address
 dbLoadRecords("db/ipAddr.db", "P=${AMC_CARRIER_PREFIX}, SRC=SrvRemoteIp")
@@ -370,3 +370,8 @@ dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
 #MPS workaround
 dbpf ${MPS_PREFIX}:THR_LOADED 1
 dbpf ${MPS_PREFIX}:MPS_EN 1
+
+# Defining Parameters for backdoor Tree Gui
+dbpf SIOC:${AREA}:${IOC_UNIT}:CPU cpu-gunb-sp01
+dbpf SIOC:${AREA}:${IOC_UNIT}:SHM shm-gunb-sp01-1
+dbpf SIOC:${AREA}:${IOC_UNIT}:ATCA_SLOT 6
