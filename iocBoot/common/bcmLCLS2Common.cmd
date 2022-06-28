@@ -287,8 +287,6 @@ set_pass1_restoreFile("$(IOC).sav")
 # Load common LCLS Access Configuration File
 < ${ACF_INIT}
 
-epicsThreadSleep(2)
-
 # Load initialization records
 dbLoadRecords("db/initBCM.db", "P1=$(AMC0_PREFIX), P2=${BERGOZ0_P}, R=${BERGOZ0_R}")
 
@@ -354,6 +352,8 @@ dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
 # Reactivate trigger to restart unsolicited messages from Bergoz
 epicsThreadSleep 1
 dbpf TPR:${AREA}:IM01:0:CH01_SYS2_TCTL 1
+
+dbpf ${AMC0_PREFIX}:INITBCM.PROC 1
 
 #////////////////////////////////////////#
 #Run script to generate archiver files   #

@@ -1,6 +1,6 @@
 record(dfanout, "$(P1):INITBCM") {
   field(DESC, "Initialize BCM Parameters")
-  field(PINI, "YES")
+#  field(PINI, "YES")
   field(VAL,  "1")
   field(OUTA, "$(P2)$(R)DELAY_WR.PROC PP")
   field(OUTB, "$(P1):BergozMode.PROC PP")
