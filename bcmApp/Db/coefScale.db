@@ -15,24 +15,24 @@ record(ao, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH"){
     field(SCAN, "Passive")
 }
 
-record(calcout, "$(P):$(AMC):NumSamp$(COEF)_SAV"){
+record(calcout, "$(P):$(AMC):NumSamp1_SAV"){
     field(INPA, "$(P):$(AMC):SETCOEF")
-    field(INPB, "$(P):$(AMC):NumSamp$(COEF)RBV")
-    field(INPC, "$(P):$(AMC):NumSamp$(COEF)_SAV")
+    field(INPB, "$(P):$(AMC):NumSamp1RBV")
+    field(INPC, "$(P):$(AMC):NumSamp1_SAV")
     field(CALC, "A ? B : C")
-    field(OUT, "$(P):$(AMC):NumSamp$(COEF)_SAV_ARCH")
+    field(OUT, "$(P):$(AMC):NumSamp1_SAV_ARCH")
     field(SCAN, "1 second")
 }
 
-record(ao, "$(P):$(AMC):NumSamp$(COEF)_SAV_ARCH"){
+record(ao, "$(P):$(AMC):NumSamp1_SAV_ARCH"){
     field(SCAN, "Passive")
 }
 
 record(calcout, "$(P):$(AMC):Calib_Coef_A$(COEF)"){
     field(INPA, "$(P):$(AMC):SETCOEF")
     field(INPB, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH")
-    field(INPC, "$(P):$(AMC):NumSamp$(COEF)_SAV_ARCH")
-    field(INPD, "$(P):$(AMC):NumSamp$(COEF)RBV")
+    field(INPC, "$(P):$(AMC):NumSamp1_SAV_ARCH")
+    field(INPD, "$(P):$(AMC):NumSamp1RBV")
     field(INPE, "$(P):$(AMC):CoefA$(COEF)")
     
     field(CALC, "A ? 0 : B*(C/D)")
