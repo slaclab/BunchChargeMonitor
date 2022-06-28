@@ -129,6 +129,8 @@ DB += selectStatus.db
 DB += bpmBcmDiff.db
 # For byte swapping
 DB += swap.db
+# For initialization processing
+DB += initBCM.db
 
 # ========================================
 # Install timing/event related databases

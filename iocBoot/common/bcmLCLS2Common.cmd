@@ -287,6 +287,10 @@ set_pass1_restoreFile("$(IOC).sav")
 # Load common LCLS Access Configuration File
 < ${ACF_INIT}
 
+epicsThreadSleep(2)
+
+# Load initialization records
+dbLoadRecords("db/initBCM.db", "P1=$(AMC0_PREFIX), P2=${BERGOZ0_P}, R=${BERGOZ0_R}")
 
 # ===========================================
 #               IOC INIT
