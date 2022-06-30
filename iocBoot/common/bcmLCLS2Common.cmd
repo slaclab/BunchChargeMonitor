@@ -353,6 +353,7 @@ dbpf TORO:${AREA}:${UNIT}:READ_PARMS 1
 epicsThreadSleep 1
 dbpf TPR:${AREA}:IM01:0:CH01_SYS2_TCTL 1
 
+epicsThreadSleep 10
 dbpf ${AMC0_PREFIX}:INITBCM.PROC 1
 
 #////////////////////////////////////////#
