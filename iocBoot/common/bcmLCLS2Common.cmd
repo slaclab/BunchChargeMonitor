@@ -277,6 +277,7 @@ save_restoreSet_status_prefix("${IOC_NAME}:")
 ## Restore datasets
 set_pass0_restoreFile("info_settings.sav")
 set_pass0_restoreFile("info_positions.sav")
+set_pass0_restoreFile("$(IOC).sav")
 set_pass1_restoreFile("$(IOC).sav")
 
 # ===========================================
