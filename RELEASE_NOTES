@@ -9,6 +9,13 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.4.2 Kyle Leleux (kleleux) (07/13/2022)
+        - Added PV for TempCalibATCA.
+R4.4.1 Kyle Leleux (kleleux) (07/06/2022)
+        - Set PINI to YES for lnQcal.
+        - Set ioc restore to happen both before and after record initialization
+        - Fixed bug that caused firmware and save-restored value to mismatch.
+
 R4.3.0 Jeremy Mock (jmock) (5/16/2022)
         - Upgrade MPS to l2Mps R3.8.0 (bring back support for MPS)
         - Fix stream device build problem

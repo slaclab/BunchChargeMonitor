@@ -179,6 +179,8 @@
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCoef2                                                    AMC1:CoefT2
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCalib                                                    AMC0:CoefTCal
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCalib                                                    AMC1:CoefTCal
+/mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/TempCalibATCA                                                AMC0:TempCalibATCA
+/mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/TempCalibATCA                                                AMC1:TempCalibATCA
 /mmio/AppTop/AppCore/SysGen[0]/DspCoreConfig/Coef_lnQcal                                                  AMC0:CoefLnQ
 /mmio/AppTop/AppCore/SysGen[1]/DspCoreConfig/Coef_lnQcal                                                  AMC1:CoefLnQ
 #Including Chan for cross platform suport with the FACET devices

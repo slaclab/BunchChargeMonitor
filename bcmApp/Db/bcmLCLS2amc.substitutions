@@ -140,12 +140,13 @@ file "RegisterDoubleOut.template" { pattern
 { $(P),     TempBergozElcCoef,    "Bergoz Elc temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef2 }
 { $(P),     TempATCAElcCoef,    "ATCA Elc temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef3 }
 #
-{ $(P),     CoefT0,       "Temp coef of toroid",        "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT0 }
-{ $(P),     CoefT1,       "Temp coef of amp",           "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT1 }
-{ $(P),     CoefT2,       "Temp coef of electronics",   "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT2 }
-{ $(P),     CoefTCal,     "Calib temperature",          "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):CoefTCal }
-{ $(P),     CoefLnQ,      "Natural log of Qcal value",  "YES",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefLnQ }
-{ $(P),     TmitCoef,     "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
+{ $(P),     CoefT0,        "Temp coef of toroid",        "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT0 }
+{ $(P),     CoefT1,        "Temp coef of amp",           "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT1 }
+{ $(P),     CoefT2,        "Temp coef of electronics",   "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):CoefT2 }
+{ $(P),     CoefTCal,      "Calib temperature",          "NO",  "Passive",   $(PORT),     "K",    AMC$(AMC):CoefTCal }
+{ $(P),     TempCalibATCA, "ATCA Calib temperature",     "YES", "Passive",   $(PORT),     "K",    AMC$(AMC):TempCalibATCA }
+{ $(P),     CoefLnQ,       "Natural log of Qcal value",  "YES", "Passive",   $(PORT),     "",     AMC$(AMC):CoefLnQ }
+{ $(P),     TmitCoef,      "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 }
 
 file "RegisterDoubleOutRBV.template" { pattern
@@ -158,6 +159,7 @@ file "RegisterDoubleOutRBV.template" { pattern
 { $(P),     CoefT1RBV,    "Temp coef of amp",           "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2RBV,    "Temp coef of electronics",   "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT2 }
 { $(P),     CoefTCalRBV,  "Calib temperature",          "YES", "1 second",  $(PORT),     "K",    AMC$(AMC):CoefTCal }
+{ $(P),     TempCalibATCARBV, "ATCA Calib temperature",     "YES", "1 second",   $(PORT),     "K",    AMC$(AMC):TempCalibATCA }
 { $(P),     CoefLnQRBV,   "Natural log of Qcal value",  "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefLnQ }
 { $(P),     TmitCoefRBV,  "Coef Tmit readback value from BPMS",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 { $(P),     TempToroCoefRBV,  "Toro temperature mitigation coef",  "YES",  "1 second",   $(PORT),     "",     AMC$(AMC):TempCoef0 }
