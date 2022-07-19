@@ -107,7 +107,9 @@ class FPGAConfig(Display):
         backdoorLoc = os.path.join(iocData, "{}/yaml/config".format(self.macros()['IOC']))
         
         for file in os.listdir(backdoorLoc):
-            if file.endswith("backdoor.cpsw.tar.gz"):
+            # revert back to this once new version is released:
+            #if file.endswith("backdoor.cpsw.tar.gz"):
+            if "AmcCarrierBcm-0x04060002-20220225002553-leosap-f50f9a0_backdoor.cpsw.tar.gz" in file:
                 backdoor = os.path.join(backdoorLoc, file)
                 break
              
