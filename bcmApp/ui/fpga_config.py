@@ -109,7 +109,7 @@ class FPGAConfig(Display):
         for file in os.listdir(backdoorLoc):
             # revert back to this once new version is released:
             #if file.endswith("backdoor.cpsw.tar.gz"):
-            if "AmcCarrierBcm-0x04060002-20220225002553-leosap-f50f9a0_backdoor.cpsw.tar.gz" in file:
+            if "AmcCarrierBcm-0x04060002" in file or "AmcCarrierBlen-0x04030000" in file:
                 backdoor = os.path.join(backdoorLoc, file)
                 break
              
