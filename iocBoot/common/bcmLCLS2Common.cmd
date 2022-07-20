@@ -41,6 +41,10 @@ addBsa("TOROSTATUS", "uint32")
 addBsa("CHRGNOTMIT", "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
+listBsa()
+bsssAssociateBsaChannels("bsaPort")
+bsssAsynDriverConfigure("bsssPort", "mmio/AmcCarrierCore/AmcCarrierBsa/Bsss")
+
 
 ## Set MPS Configuration location
 # setMpsConfigurationPath(
