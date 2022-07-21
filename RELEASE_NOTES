@@ -9,8 +9,15 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.4.4 Kyle Leleux (kleleux) (07/21/2022)
+        - Added bsss pvs to archive.
+
+R4.4.3 Kyle Leleux (kleleux) (07/21/2022)
+        - Implemented bsss for charge pvs.
+
 R4.4.2 Kyle Leleux (kleleux) (07/13/2022)
         - Added PV for TempCalibATCA.
+
 R4.4.1 Kyle Leleux (kleleux) (07/06/2022)
         - Set PINI to YES for lnQcal.
         - Set ioc restore to happen both before and after record initialization
