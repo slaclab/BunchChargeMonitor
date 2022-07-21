@@ -231,6 +231,18 @@ dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SEC
 dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
 dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
 
+# BSSS Control/Monintoring PVs
+dbLoadRecords("db/bsssCtrl.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort")
+
+# ************************************************************************
+# **** Load BSA driver DB ************************************************
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=RAWSUM,SECN=RAWSUM")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
 dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
