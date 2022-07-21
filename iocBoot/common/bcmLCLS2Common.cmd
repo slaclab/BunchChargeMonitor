@@ -235,13 +235,13 @@ dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SE
 dbLoadRecords("db/bsssCtrl.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort")
 
 # ************************************************************************
-# **** Load BSA driver DB ************************************************
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRG,SECN=CHRG")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=RAWSUM,SECN=RAWSUM")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+# **** Load BSSS driver DB ************************************************
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=0,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=1,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=2,BSAKEY=RAWSUM,SECN=RAWSUM")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=3,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=4,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=5,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
 
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
