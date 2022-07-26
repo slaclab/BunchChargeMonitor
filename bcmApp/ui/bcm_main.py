@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import os
 
@@ -554,15 +554,44 @@ class BCMExpert(Display):
         
         tmit_pc_lbl.precisionFromPV = False
         tmit_pc_lbl.precision = 3
- 
+        
         charge_lbl3 = QLabel("pC")
         charge_lbl3.setFont(font)
+        
+        tmit_pc_lbl_bsss = PyDMLabel()
+        tmit_pc_lbl_bsss.setText("charge")
+        if(self.type == "TORO"):
+            tmit_pc_lbl_bsss.channel = "ca://{}:{}:{}:{}".format(
+                              self.type,
+                              self.macros()["AREA"],
+                              self.macros()["POS"],
+                              "CHRGSCH1H")
+        else:
+            tmit_pc_lbl_bsss.channel = "ca://{}:{}:{}:{}:{}".format(
+                              self.type,
+                              self.macros()["AREA"],
+                              self.macros()["POS"],
+                              self.macros()["INST"],
+                              "CHRG")
+        tmit_pc_lbl_bsss.setStyleSheet("background-color: rgb(0, 0, 0);\
+                                    font: 11pt 'Sans Serif';\
+                                    color: rgb(0, 255, 0);\
+                                    border-color: rgb(0, 255, 0);")
+        tmit_pc_lbl_bsss.setMinimumWidth(100)
+        tmit_pc_lbl_bsss.setMaximumWidth(100)
+        
+        tmit_pc_lbl_bsss.precisionFromPV = False
+        tmit_pc_lbl_bsss.precision = 3
+ 
+        charge_lbl4 = QLabel("pC (from bsss)")
+        charge_lbl4.setFont(font)
         
         spacer1 = QSpacerItem(40, 20, QSizePolicy.Expanding)
         spacer2 = QSpacerItem(40, 20, QSizePolicy.Expanding)
         spacer3 = QSpacerItem(40, 20, QSizePolicy.Expanding)
         spacer4 = QSpacerItem(40, 20, QSizePolicy.Expanding)
-
+        spacer5 = QSpacerItem(40, 20, QSizePolicy.Expanding)
+    
         self.charge_layout.addItem(spacer1)
         self.charge_layout.addWidget(charge_lbl1)
         self.charge_layout.addItem(spacer2)
@@ -572,6 +601,9 @@ class BCMExpert(Display):
         self.charge_layout.addWidget(tmit_pc_lbl)
         self.charge_layout.addWidget(charge_lbl3)
         self.charge_layout.addItem(spacer4)
+        self.charge_layout.addWidget(tmit_pc_lbl_bsss)
+        self.charge_layout.addWidget(charge_lbl4)
+        self.charge_layout.addItem(spacer5)
 
         self.main_layout.addLayout(self.charge_layout)
         
