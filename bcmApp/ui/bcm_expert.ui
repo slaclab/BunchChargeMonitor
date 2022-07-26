@@ -80,12 +80,12 @@
       </widget>
      </item>
      <item>
-      <widget class="PyDMRelatedDisplayButton" name="PyDMRelatedDisplayButton">
+      <widget class="PyDMRelatedDisplayButton" name="BPM">
        <property name="toolTip">
         <string/>
        </property>
        <property name="text">
-        <string>BPM conection control..</string>
+        <string>BPM connection control...</string>
        </property>
        <property name="filenames" stdset="0">
         <stringlist>

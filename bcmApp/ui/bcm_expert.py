@@ -14,6 +14,7 @@ class BCMexpert(Display):
         self.setup_coef()
         self.setup_FPGAConfig()
         self.setup_trig()
+        self.setup_bpm()
     
     def setup_bergoz(self):
         self.ui.Bergoz.openInNewWindow = True
@@ -74,7 +75,15 @@ class BCMexpert(Display):
                     self.macros()["CPU"],
                     self.macros()["CRATE"])
         #there are only one set of triggers per slot and they are only mapped to one set of PVs with INST=0
-             
+
+    def setup_bpm(self):
+        '''
+        Author: Kyle Leleux (kleleux)
+        BPM connection control is only used for SIOC:GUNB:IM01 in sector 2, 
+        hide the button for everywhere else.
+        '''
+        if self.macros()["IOC"] != "sioc-gunb-im01":
+            self.ui.BPM.hide()
         
     def ui_filename(self):
         return "bcm_expert.ui"
