@@ -1,9 +1,9 @@
 
 
 record(calc, $(P):AvgCHRG){
-    field(DESC, "devide fc charge by beam rate")
+    field(DESC, "divide fc charge by beam rate")
     field(SCAN, ".1 second")
-    field(INPA, "$(INP)") 
-    field(INPB, "$(P):0:CHRG")
-    field(CALC, "A/B")
+    field(INPA, "$(P):0:CHRG")
+    field(INPB, "$(INP)") 
+    field(CALC, "ABS(A/B)")
 }
