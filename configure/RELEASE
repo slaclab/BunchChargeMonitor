@@ -30,7 +30,7 @@ SSCAN_MODULE_VERSION                = R2.10.2-1.0.0
 STREAMDEVICE_MODULE_VERSION         = R2.8.9-1.2.1
 
 #Timing
-BSADRIVER_MODULE_VERSION            = R2.1.0
+BSADRIVER_MODULE_VERSION            = R2.1.0-2.0
 ATCACOMMON_MODULE_VERSION           = R1.6.2
 TIMING_MODULE_VERSION               = R0.6
 TPRPATTERN_MODULE_VERSION           = R2.3.2
@@ -45,6 +45,7 @@ YCPSWASYN_MODULE_VERSION            = R3.3.5
 #BCM Spesific modules
 KEITHLEY6482_MODULE_VERSION         = R0.1.1
 BERGOZBCM_RF_ASYN_MODULE_VERSION    = R2.0.2
+PVXS_MODULE_VERSION                 = pvxs-git
 
 # ==========================================================
 # Define module paths using pattern
@@ -73,6 +74,7 @@ TPRTRIGGER          =$(EPICS_MODULES)/tprTrigger/$(TPRTRIGGER_MODULE_VERSION)
 TPRPATTERN          =$(EPICS_MODULES)/tprPattern/$(TPRPATTERN_MODULE_VERSION)
 TIMING              =$(EPICS_MODULES)/timingApi/$(TIMING_MODULE_VERSION)
 L2MPSASYN           =$(EPICS_MODULES)/l2MpsAsyn/$(L2MPSASYN_MODULE_VERSION)
+PVXS                =$(EPICS_MODULES)/pvxs/$(PVXS_MODULE_VERSION)
 # =====================================================================
 # Set EPICS_BASE last so it appears last in the DB, DBD, INCLUDE, and LIB search paths
 # ====================================================================

@@ -95,6 +95,7 @@ bcm_DBD += drvAsynIPPort.dbd
 bcm_DBD += drvAsynSerialPort.dbd
 bcm_DBD += caPutLog.dbd
 bcm_DBD += $(CEXP_DBDS)
+bcm_DBD += pvxsIoc.dbd
 blen_DBD += crossbarControl.dbd
 blen_DBD += tprTriggerAsynDriver.dbd
 blen_DBD += tprPatternAsynDriver.dbd
@@ -199,6 +200,9 @@ bcm_LIBS += autosave
 # Needed to link caPutLog support
 bcm_LIBS += caPutLog
 bcm_LIBS += seq pv
+
+bcm_LIBS += pvxsIoc
+bcm_LIBS += pvxs
 
 # Needed to link cexpsh() support
 bcm_LIBS += $(CEXP_LIBS)
