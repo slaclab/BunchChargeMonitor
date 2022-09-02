@@ -78,7 +78,8 @@ class CalPlotCtxBox(pg.ViewBox, QObject):
             rwf_mult = QAction("Raw Waveform times Weight Function", self.y_datasrc)
             iwf = QAction("Integration Window Waveform (Stream3)", self.y_datasrc)
             # PyQt5 requires a workaround for passing arguments to slots.
-            # We use lambdas.
+            # We use lambdas
+            print(sensor, WaveformType.RAW, WaveformType.RAW_TIMES, WaveformType.INT).
             rwf.triggered.connect(lambda: self.emit_ychange(
                 WaveformType.RAW, sensor))
             rwf_mult.triggered.connect(lambda: self.emit_ychange(
@@ -192,6 +193,7 @@ class BcmCalPlot(pg.PlotWidget):
         x_pv = "{}{}".format(src_pv_prefix, bcm_pv["x"])                
         y_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv[self.wf])
         window_pv = "{}:{}{}".format(src_pv_prefix,self.macros["INST"], bcm_pv["window"])      
+        print(x_pv, y_pv, window_pv)
 
         for curve_ch, window_ch in (self.curve.channels(), self.window_curve.channels()):
             try:
@@ -231,11 +233,10 @@ class BcmPyDMSlider(PyDMSlider):
         self.macros = macros
         self.sensor = ch.split(":")[0]
         self.window_edge = ch.split(":")[-1]
-        self.pv = "{}:{}:{}:{}:{}".format(\
+        self.pv = "{}:{}:{}:{}".format(\
                 self.macros["TYPE"],
                 self.macros["AREA"],
                 self.macros["POS"],
-                self.macros["INST"],
                 self.window_edge)
 
         self.value_label = PyDMLineEdit(self)
@@ -510,11 +511,10 @@ class BCMExpert(Display):
        
         nel_lbl = PyDMLabel()
         nel_lbl.setText("NEL")
-        nel_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
+        nel_lbl.channel = "ca://{}:{}:{}:{}".format(
                               self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"],
-                              self.macros()["INST"],
                               self.pvDict["nel"])
         nel_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
@@ -532,18 +532,16 @@ class BCMExpert(Display):
         tmit_pc_lbl = PyDMLabel()
         tmit_pc_lbl.setText("charge")
         if(self.type == "TORO"):
-            tmit_pc_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
+            tmit_pc_lbl.channel = "ca://{}:{}:{}:{}".format(
                               self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"],
-                              self.macros()["INST"],
                               self.pvDict["charge"])
         else:
-            tmit_pc_lbl.channel = "ca://{}:{}:{}:{}:{}".format(
+            tmit_pc_lbl.channel = "ca://{}:{}:{}:{}".format(
                               self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"],
-                              self.macros()["INST"],
                               "CHRG")
         tmit_pc_lbl.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
@@ -567,11 +565,10 @@ class BCMExpert(Display):
                               self.macros()["POS"],
                               "CHRGSCH1H")
         else:
-            tmit_pc_lbl_bsss.channel = "ca://{}:{}:{}:{}:{}".format(
+            tmit_pc_lbl_bsss.channel = "ca://{}:{}:{}:{}".format(
                               self.type,
                               self.macros()["AREA"],
                               self.macros()["POS"],
-                              self.macros()["INST"],
                               "CHRG")
         tmit_pc_lbl_bsss.setStyleSheet("background-color: rgb(0, 0, 0);\
                                     font: 11pt 'Sans Serif';\
@@ -659,11 +656,10 @@ class BCMExpert(Display):
             coef_btn = PyDMRelatedDisplayButton(filename="bcm_equation_params.ui")
             coef_btn.setText("Coefficients...")
             coef_btn.openInNewWindow = True
-            coef_btn.macros = "PREFIX={}:{}:{}:{}{}".format(
+            coef_btn.macros = "PREFIX={}:{}:{}{}".format(
                 self.type,
                 self.macros()["AREA"],
                 self.macros()["POS"],
-                self.macros()["INST"],
                 self.mad,
                 self.sensor)            
 
