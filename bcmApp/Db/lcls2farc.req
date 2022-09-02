@@ -1,9 +1,9 @@
-FARC:${AREA}:${POS}:0:CoefA0
+FARC:${AREA}:${POS}:CoefA0
 FARC:${AREA}:${POS}:CoefLnQ
 FARC:${AREA}:${POS}:TempToroCoef
 FARC:${AREA}:${POS}:TempAmpCoef
 FARC:${AREA}:${POS}:TempBergozElcCoef
 FARC:${AREA}:${POS}:TempATCAElcCoef
-FARC:${AREA}:${POS}:0:CoefA0_SAV_ARCH
-FARC:${AREA}:${POS}:0:NumSamp1_SAV_ARCH
-FARC:${AREA}:${POS}:0:CoefA1_SAV_ARCH
+FARC:${AREA}:${POS}:CoefA0_SAV_ARCH
+FARC:${AREA}:${POS}:NumSamp1_SAV_ARCH
+FARC:${AREA}:${POS}:CoefA1_SAV_ARCH

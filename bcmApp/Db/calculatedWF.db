@@ -1,42 +1,42 @@
 # We need to remove 28 words from the number of samples, because the stream
 # header overides this first data positions.
-record (calc, "$(P):$(CHAN):NumSamp0_H") {
+record (calc, "$(P):NumSamp0_H") {
   field(DESC, "Corrected numSamp0")
   field(CALC, "A<=28 ? 1 : A-28")
-  field(INPA, "$(P):$(CHAN):NumSamp0 CP")
+  field(INPA, "$(P):NumSamp0 CP")
 }
 
 # NumSamp1 is based on the time after TrigDelay. So we don't need to make a
 # correction for the header in this case.
-record (calc, "$(P):$(CHAN):NumSamp1_H") {
+record (calc, "$(P):NumSamp1_H") {
   field(DESC, "Corrected numSamp1")
   field(CALC, "A")
-  field(INPA, "$(P):$(CHAN):NumSamp1 CP")
+  field(INPA, "$(P):NumSamp1 CP")
 }
 
 # Trigger delay 1 is doubled from the point of view of the number of samples.
 # We should subtract 14 to discount the size of the header
-record (calc, "$(P):$(CHAN):TrigDelay1_H") {
+record (calc, "$(P)::TrigDelay1_H") {
   field(DESC, "Corrected trigDelay1")
   field(CALC, "A<14 ? 0 : A-14")
-  field(INPA, "$(P):$(CHAN):TrigDelay1 CP")
+  field(INPA, "$(P):TrigDelay1 CP")
 }
 
 # Weight function calculated from pre edge, edge, and pos edge sample amounts.
-record (acalcout, "$(P):$(CHAN):SCL_WF_CLC") {
+record (acalcout, "$(P)::SCL_WF_CLC") {
   field(DESC, "Weight function")
   field(CALC, "ARR(1){0,A-1} + ARR(-1){B*2,B*2+C-1}")
   field(NELM, "2020")
-  field(INPA, "$(P):$(CHAN):NumSamp0_H CP")
-  field(INPB, "$(P):$(CHAN):TrigDelay1_H CP")
-  field(INPC, "$(P):$(CHAN):NumSamp1_H CP")
+  field(INPA, "$(P):NumSamp0_H CP")
+  field(INPB, "$(P):TrigDelay1_H CP")
+  field(INPC, "$(P):NumSamp1_H CP")
 }
 
 # Transform an acalcout AVAL info into an waveform VAL, just to maintain
 # compatibility with previous systems.
-record (waveform, "$(P):$(CHAN):SCL_WF") {
+record (waveform, "$(P):SCL_WF") {
   field(DESC, "Weight function")
-  field(INP, "$(P):$(CHAN):SCL_WF_CLC.AVAL CP")
+  field(INP, "$(P):SCL_WF_CLC.AVAL CP")
   field(NELM, "2020")
   field(FTVL, "SHORT")
 }
@@ -47,80 +47,80 @@ record (waveform, "$(P):$(CHAN):SCL_WF") {
 
 # Need to use 2 acalcouts to get MAX and MIN from the waveform because the CALC
 # field is too small (36 characters)
-record (acalcout, "$(P):$(CHAN):RWF_MAX") {
+record (acalcout, "$(P):RWF_MAX") {
   field(DESC, "Max value of the raw waveform")
   field(CALC, "AMAX(AA)")
-  field(INAA, "$(P):$(CHAN):S_R_WF CP")
+  field(INAA, "$(P):S_R_WF CP")
   field(DOPT, "Use CALC")
   field(NELM, "2020")
 }
 
-record (acalcout, "$(P):$(CHAN):RWF_MIN") {
+record (acalcout, "$(P):RWF_MIN") {
   field(DESC, "Min value of the raw waveform")
   field(CALC, "AMIN(AA)")
-  field(INAA, "$(P):$(CHAN):S_R_WF CP")
+  field(INAA, "$(P):S_R_WF CP")
   field(DOPT, "Use CALC")
   field(NELM, "2020")
 }
 
 # Change the top of the visual weight function only if it is greater than 35%
 # of the last calculated top value.
-record (acalcout, "$(P):$(CHAN):WF_MAX") {
+record (acalcout, "$(P):WF_MAX") {
   field(DESC, "Smooth function for the top")
   field(CALC, "ABS(A-C)>ABS(A-B)*0.35?A:C")
-  field(INPA, "$(P):$(CHAN):RWF_MAX CP")
-  field(INPB, "$(P):$(CHAN):RWF_MIN CP")
-  field(OUT, "$(P):$(CHAN):WF_MAX.C")
+  field(INPA, "$(P):RWF_MAX CP")
+  field(INPB, "$(P):RWF_MIN CP")
+  field(OUT, "$(P):WF_MAX.C")
   field(DOPT, "Use CALC")
   field(NELM, "2020")
 }
 
 # Change the bottom of the visual weight function only if it is greater than 35%
 # of the last calculated bottom value.
-record (acalcout, "$(P):$(CHAN):WF_MIN") {
+record (acalcout, "$(P):WF_MIN") {
   field(DESC, "Smooth function for the bottom")
   field(CALC, "ABS(B-C)>ABS(A-B)*0.35?B:C")
-  field(INPA, "$(P):$(CHAN):RWF_MAX CP")
-  field(INPB, "$(P):$(CHAN):RWF_MIN CP")
-  field(OUT, "$(P):$(CHAN):WF_MIN.C")
+  field(INPA, "$(P):RWF_MAX CP")
+  field(INPB, "$(P):RWF_MIN CP")
+  field(OUT, "$(P):WF_MIN.C")
   field(DOPT, "Use CALC")
   field(NELM, "2020")
 }
 
 # Line before the edge (corresponding to +1 of the Weight Function)
-record (acalcout, "$(P):$(CHAN):SCL_VWF_PRE") {
+record (acalcout, "$(P):SCL_VWF_PRE") {
   field(DESC, "Equivalent to +1 in Weight")
   # Fills the array with the maximum of the raw waveform until the edge.
   # All other elements remain zero.
   field(CALC, "ARR(E){0,A-1}")
   field(NELM, "2020")
   # Number of samples pre-edge
-  field(INPA, "$(P):$(CHAN):NumSamp0_H CP")
-  field(INPE, "$(P):$(CHAN):WF_MAX CP")
+  field(INPA, "$(P):NumSamp0_H CP")
+  field(INPE, "$(P):WF_MAX CP")
   # Raw waveform 16 bits.
-  field(INAA, "$(P):$(CHAN):S_R_WF CP")
+  field(INAA, "$(P):S_R_WF CP")
 }
 
 # Line after the edge (corresponding to -1 of the Weight Function)
-record (acalcout, "$(P):$(CHAN):SCL_VWF_POS") {
+record (acalcout, "$(P):SCL_VWF_POS") {
   field(DESC, "Equivalent to -1 in Weight")
   # Fills the array with the minimum of the raw waveform after the edge.
   # All other elements remain zero.
   field(CALC, "ARR(D){B*2,B*2+C-1}")
   field(NELM, "2020")
   # Number of samples pre-edge
-  field(INPA, "$(P):$(CHAN):NumSamp0_H CP")
+  field(INPA, "$(P):NumSamp0_H CP")
   # Number of samples of the edge
-  field(INPB, "$(P):$(CHAN):TrigDelay1_H CP")
+  field(INPB, "$(P):TrigDelay1_H CP")
   # Number of samples pos-edge
-  field(INPC, "$(P):$(CHAN):NumSamp1_H CP")
-  field(INPD, "$(P):$(CHAN):WF_MIN CP")
+  field(INPC, "$(P):NumSamp1_H CP")
+  field(INPD, "$(P):WF_MIN CP")
   # Raw waveform 16 bits.
-  field(INAA, "$(P):$(CHAN):S_R_WF CP")
+  field(INAA, "$(P):S_R_WF CP")
 }
 
 # Line of the edge (corresponding to 0 of the Weight Function)
-record (acalcout, "$(P):$(CHAN):SCL_VWF_MID") {
+record (acalcout, "$(P):SCL_VWF_MID") {
   field(DESC, "Equivalent to 0 in Weight")
   # Fills the array with the average of the maximum and minimum raw waveform
   # and places it between the pre and the pos-edge curves.
@@ -128,86 +128,86 @@ record (acalcout, "$(P):$(CHAN):SCL_VWF_MID") {
   field(CALC, "ARR((D+E)/2){A,B*2-1}")
   field(NELM, "2020")
   # Number of samples pre-edge
-  field(INPA, "$(P):$(CHAN):NumSamp0_H CP")
+  field(INPA, "$(P):NumSamp0_H CP")
   # Number of samples of the edge
-  field(INPB, "$(P):$(CHAN):TrigDelay1_H CP")
-  field(INPD, "$(P):$(CHAN):WF_MIN CP")
-  field(INPE, "$(P):$(CHAN):WF_MAX CP")
+  field(INPB, "$(P):TrigDelay1_H CP")
+  field(INPD, "$(P):WF_MIN CP")
+  field(INPE, "$(P):WF_MAX CP")
   # Raw waveform 16 bits.
-  field(INAA, "$(P):$(CHAN):S_R_WF CP")
+  field(INAA, "$(P):S_R_WF CP")
 }
 
 # Last part of the weight function, after the pos-edge.
-record (acalcout, "$(P):$(CHAN):SCL_VWF_FINAL") {
+record (acalcout, "$(P):SCL_VWF_FINAL") {
   field(DESC, "Final portion, after pos-edge")
   # Obtain the same value as used for the edge, placing it at the end of the
   # curve.
   field(CALC, "ARR((D+E)/2){B*2+C,-1}")
   field(NELM, "2020")
   # Number of samples pre-edge
-  field(INPA, "$(P):$(CHAN):NumSamp0_H CP")
+  field(INPA, "$(P):NumSamp0_H CP")
   # Number of samples of the edge
-  field(INPB, "$(P):$(CHAN):TrigDelay1_H CP")
+  field(INPB, "$(P):TrigDelay1_H CP")
   # Number of samples pos-edge
-  field(INPC, "$(P):$(CHAN):NumSamp1_H CP")
-  field(INPD, "$(P):$(CHAN):WF_MIN CP")
-  field(INPE, "$(P):$(CHAN):WF_MAX CP")
+  field(INPC, "$(P):NumSamp1_H CP")
+  field(INPD, "$(P):WF_MIN CP")
+  field(INPE, "$(P):WF_MAX CP")
   # Raw waveform 16 bits.
-  field(INAA, "$(P):$(CHAN):S_R_WF CP")
+  field(INAA, "$(P):S_R_WF CP")
 }
 
 # This is the weight function multiplied by the raw min and max. The only
 # purpose is to fit the curve on the same chart as the raw data using the
 # same scale in the y-axis.
-record (acalcout, "$(P):$(CHAN):SCL_VWF") {
+record (acalcout, "$(P):SCL_VWF") {
   field(DESC, "Weight scaled for best plot")
   field(CALC, "AA+BB+CC+DD")
   field(NELM, "2020")
-  field(INAA, "$(P):$(CHAN):SCL_VWF_PRE.AVAL CP")
-  field(INBB, "$(P):$(CHAN):SCL_VWF_POS.AVAL CP")
-  field(INCC, "$(P):$(CHAN):SCL_VWF_MID.AVAL CP")
-  field(INDD, "$(P):$(CHAN):SCL_VWF_FINAL.AVAL CP")
+  field(INAA, "$(P):SCL_VWF_PRE.AVAL CP")
+  field(INBB, "$(P):SCL_VWF_POS.AVAL CP")
+  field(INCC, "$(P):SCL_VWF_MID.AVAL CP")
+  field(INDD, "$(P):SCL_VWF_FINAL.AVAL CP")
 }
 
 # Calculated waveforms when multiplying raw for weight
-record (acalcout, "$(P):$(CHAN):S_P_WF_CLC") {
+record (acalcout, "$(P):S_P_WF_CLC") {
   field(DESC, "Raw times weight")
-  field(INAA, "$(P):$(CHAN):S_R_WF CP")
-  field(INBB, "$(P):$(CHAN):SCL_WF_CLC.AVAL CP")
+  field(INAA, "$(P):S_R_WF CP")
+  field(INBB, "$(P):SCL_WF_CLC.AVAL CP")
   field(NELM, "2020")
   field(CALC, "AA * BB")
 }
 
 # Transform an acalcout AVAL info into an waveform VAL, just to maintain
 # compatibility with previous systems.
-record (waveform, "$(P):$(CHAN):S_P_WF") {
+record (waveform, "$(P):S_P_WF") {
   field(DESC, "Raw times weight")
-  field(INP, "$(P):$(CHAN):S_P_WF_CLC.AVAL CP")
+  field(INP, "$(P):S_P_WF_CLC.AVAL CP")
   field(NELM, "2020")
   field(FTVL, "SHORT")
 }
 
 # Slow raw waveform
-record (waveform, "$(P):$(CHAN):S_R_WF") {
+record (waveform, "$(P):S_R_WF") {
   field(DESC, "Slow raw waveform")
-  field(INP, "$(P):$(CHAN):R_WF")
+  field(INP, "$(P):R_WF")
   field(NELM, "2020")
   field(FTVL, "SHORT")
   field(SCAN, "1 second")
 }
 
 # Transform pC in Nel
-record (calc, "$(P):$(CHAN):CHRG_NEL") {
+record (calc, "$(P):CHRG_NEL") {
   field(DESC, "Transform pC in Nel")
-  field(INPA, "$(P):$(CHAN):CHRG CP")
+  field(INPA, "$(P):CHRG CP")
   field(CALC, "A / 1.60217662e-7")
   field(EGU, "Nel")
 }
 
 # Transform pC in nC
-record (calc, "$(P):$(CHAN):CHRG_NC") {
+record (calc, "$(P):CHRG_NC") {
   field(DESC, "Transform pC in nC")
-  field(INPA, "$(P):$(CHAN):CHRG CP")
+  field(INPA, "$(P):CHRG CP")
   field(CALC, "A/1000")
   field(EGU, "nC")
 }

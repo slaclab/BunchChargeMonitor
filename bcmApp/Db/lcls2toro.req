@@ -1,4 +1,4 @@
-TORO:${AREA}:${POS}:0:CoefA0
+TORO:${AREA}:${POS}:CoefA0
 TORO:${AREA}:${POS}:CoefLnQ
 TORO:${AREA}:${POS}:TempCalibATCA
 TORO:${AREA}:${POS}:AMC_SN
