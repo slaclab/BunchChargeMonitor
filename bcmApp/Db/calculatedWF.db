@@ -16,14 +16,14 @@ record (calc, "$(P):NumSamp1_H") {
 
 # Trigger delay 1 is doubled from the point of view of the number of samples.
 # We should subtract 14 to discount the size of the header
-record (calc, "$(P)::TrigDelay1_H") {
+record (calc, "$(P):TrigDelay1_H") {
   field(DESC, "Corrected trigDelay1")
   field(CALC, "A<14 ? 0 : A-14")
   field(INPA, "$(P):TrigDelay1 CP")
 }
 
 # Weight function calculated from pre edge, edge, and pos edge sample amounts.
-record (acalcout, "$(P)::SCL_WF_CLC") {
+record (acalcout, "$(P):SCL_WF_CLC") {
   field(DESC, "Weight function")
   field(CALC, "ARR(1){0,A-1} + ARR(-1){B*2,B*2+C-1}")
   field(NELM, "2020")
