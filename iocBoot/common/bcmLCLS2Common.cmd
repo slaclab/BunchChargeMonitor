@@ -24,7 +24,8 @@ bcm_registerRecordDeviceDriver(pdbbase)
 #    YAML Path,                 #directory where YAML includes can be found (optional)
 #    IP Address,                # OPTIONAL: Target FPGA IP Address. If not given it is taken from the YAML file
 # ==========================================================================================================
-DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
+# Commented out for applying fix to yaml file that fixes a known bsa issue -Kyle Leleux 09/15/2022
+#DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
 cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
 cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
 
