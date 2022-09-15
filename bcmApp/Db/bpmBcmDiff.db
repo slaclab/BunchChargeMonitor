@@ -2,7 +2,7 @@
 
 record(calcout, "$(P):BCM_BPM_DIFF_CALC"){
   field(INPA, "$(P):USED_TMIT")
-  field(INPB, "$(BcmChrg):0:CHRG")
+  field(INPB, "$(BcmChrg):CHRG")
   field(CALC, "abs(A-B)")
   field(OUT, "$(P):BCM_BPM_DIFF")
   field(SCAN, ".5 second")

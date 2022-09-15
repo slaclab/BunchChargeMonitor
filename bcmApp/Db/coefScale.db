@@ -2,44 +2,44 @@
 #0 running
 #1 calibration
 
-record(calcout, "$(P):$(AMC):CoefA$(COEF)_SAV"){
-    field(INPA, "$(P):$(AMC):SETCOEF")
-    field(INPB, "$(P):$(AMC):CoefA$(COEF)")
-    field(INPC, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH")
+record(calcout, "$(P):CoefA$(COEF)_SAV"){
+    field(INPA, "$(P):SETCOEF")
+    field(INPB, "$(P):CoefA$(COEF)")
+    field(INPC, "$(P):CoefA$(COEF)_SAV_ARCH")
     field(CALC, "A ? B : C")
-    field(OUT, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH")
+    field(OUT, "$(P):CoefA$(COEF)_SAV_ARCH")
     field(SCAN, "1 second")
 }
 
-record(ao, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH"){
+record(ao, "$(P):CoefA$(COEF)_SAV_ARCH"){
     field(SCAN, "Passive")
 }
 
-record(calcout, "$(P):$(AMC):NumSamp1_SAV"){
-    field(INPA, "$(P):$(AMC):SETCOEF")
-    field(INPB, "$(P):$(AMC):NumSamp1RBV")
-    field(INPC, "$(P):$(AMC):NumSamp1_SAV")
+record(calcout, "$(P):NumSamp1_SAV"){
+    field(INPA, "$(P):SETCOEF")
+    field(INPB, "$(P):NumSamp1RBV")
+    field(INPC, "$(P):NumSamp1_SAV")
     field(CALC, "A ? B : C")
-    field(OUT, "$(P):$(AMC):NumSamp1_SAV_ARCH")
+    field(OUT, "$(P):NumSamp1_SAV_ARCH")
     field(SCAN, "1 second")
 }
 
-record(ao, "$(P):$(AMC):NumSamp1_SAV_ARCH"){
+record(ao, "$(P):NumSamp1_SAV_ARCH"){
     field(SCAN, "Passive")
 }
 
-record(calcout, "$(P):$(AMC):Calib_Coef_A$(COEF)"){
-    field(INPA, "$(P):$(AMC):SETCOEF")
-    field(INPB, "$(P):$(AMC):CoefA$(COEF)_SAV_ARCH")
-    field(INPC, "$(P):$(AMC):NumSamp1_SAV_ARCH")
-    field(INPD, "$(P):$(AMC):NumSamp1RBV")
-    field(INPE, "$(P):$(AMC):CoefA$(COEF)")
+record(calcout, "$(P):Calib_Coef_A$(COEF)"){
+    field(INPA, "$(P):SETCOEF")
+    field(INPB, "$(P):CoefA$(COEF)_SAV_ARCH")
+    field(INPC, "$(P):NumSamp1_SAV_ARCH")
+    field(INPD, "$(P):NumSamp1RBV")
+    field(INPE, "$(P):CoefA$(COEF)")
     
     field(CALC, "A ? 0 : B*(C/D)")
     
     field(OOPT, "When Non-zero")    
-    field(OUT, "$(P):$(AMC):CoefA$(COEF)")
-    field(FLNK, "$(P):$(AMC):CoefA$(COEF)")
+    field(OUT, "$(P):CoefA$(COEF)")
+    field(FLNK, "$(P):CoefA$(COEF)")
     
     field(SCAN, "1 second")
 }

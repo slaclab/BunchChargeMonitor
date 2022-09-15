@@ -1,7 +1,7 @@
 # This database has items related to calibration of the sensor
 
 
-record(bi, "$(P):$(AMC):SETCOEF"){
+record(bi, "$(P):SETCOEF"){
     field(ZNAM, "Running")
     field(ONAM, "Calibration")
 }
