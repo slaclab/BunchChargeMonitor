@@ -52,7 +52,7 @@
         <bool>false</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:0:CoefA0RBV</string>
+        <string>ca://TORO:${AREA}:${POS}:CoefA0RBV</string>
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLabel::Exponential</enum>
@@ -161,7 +161,7 @@
         <bool>true</bool>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://TORO:${AREA}:${POS}:0:CoefA0</string>
+        <string>ca://TORO:${AREA}:${POS}:CoefA0</string>
        </property>
        <property name="displayFormat" stdset="0">
         <enum>PyDMLineEdit::Exponential</enum>

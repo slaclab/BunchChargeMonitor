@@ -150,7 +150,7 @@
             <bool>false</bool>
            </property>
            <property name="channel" stdset="0">
-            <string>ca://FARC:${AREA}:${POS}:0:CHRG</string>
+            <string>ca://FARC:${AREA}:${POS}:CHRG</string>
            </property>
           </widget>
          </item>
@@ -205,7 +205,7 @@
             <bool>false</bool>
            </property>
            <property name="channel" stdset="0">
-            <string>ca://FARC:${AREA}:${POS}:0:TMIT</string>
+            <string>ca://FARC:${AREA}:${POS}:TMIT</string>
            </property>
            <property name="displayFormat" stdset="0">
             <enum>PyDMLabel::Exponential</enum>
@@ -276,14 +276,14 @@
        </property>
        <property name="yAxes">
         <stringlist>
-         <string>{&quot;name&quot;: &quot;Axis 1&quot;, &quot;orientation&quot;: &quot;left&quot;, &quot;minRange&quot;: -1.0, &quot;maxRange&quot;: 1.0, &quot;autoRange&quot;: true}</string>
-         <string>{&quot;name&quot;: &quot;Axis 2&quot;, &quot;orientation&quot;: &quot;right&quot;, &quot;minRange&quot;: -1.0, &quot;maxRange&quot;: 1.0, &quot;autoRange&quot;: true}</string>
+         <string>{&quot;name&quot;: &quot;Axis 1&quot;, &quot;orientation&quot;: &quot;left&quot;, &quot;label&quot;: null, &quot;minRange&quot;: -1.0, &quot;maxRange&quot;: 1.0, &quot;autoRange&quot;: true, &quot;logMode&quot;: null}</string>
+         <string>{&quot;name&quot;: &quot;Axis 2&quot;, &quot;orientation&quot;: &quot;right&quot;, &quot;label&quot;: null, &quot;minRange&quot;: -1.0, &quot;maxRange&quot;: 1.0, &quot;autoRange&quot;: true, &quot;logMode&quot;: null}</string>
         </stringlist>
        </property>
        <property name="curves">
         <stringlist>
-         <string>{&quot;y_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:0:RWF_U16.VALA&quot;, &quot;x_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:SAMP_TIME.VALA&quot;, &quot;name&quot;: &quot;Farady cup reading&quot;, &quot;color&quot;: &quot;white&quot;, &quot;lineStyle&quot;: 1, &quot;lineWidth&quot;: 1, &quot;symbol&quot;: null, &quot;symbolSize&quot;: 10, &quot;yAxisName&quot;: &quot;Axis 1&quot;, &quot;redraw_mode&quot;: 2}</string>
-         <string>{&quot;y_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:0:SCL_WF&quot;, &quot;x_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:SAMP_TIME.VALA&quot;, &quot;name&quot;: &quot;&quot;, &quot;color&quot;: &quot;cyan&quot;, &quot;lineStyle&quot;: 1, &quot;lineWidth&quot;: 1, &quot;symbol&quot;: null, &quot;symbolSize&quot;: 10, &quot;yAxisName&quot;: &quot;Axis 2&quot;, &quot;redraw_mode&quot;: 2}</string>
+         <string>{&quot;y_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:RWF_U16.VALA&quot;, &quot;x_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:SAMP_TIME.VALA&quot;, &quot;plot_style&quot;: null, &quot;name&quot;: &quot;Farady cup reading&quot;, &quot;color&quot;: &quot;white&quot;, &quot;lineStyle&quot;: 1, &quot;lineWidth&quot;: 1, &quot;symbol&quot;: null, &quot;symbolSize&quot;: 10, &quot;yAxisName&quot;: &quot;Axis 1&quot;, &quot;barWidth&quot;: null, &quot;upperThreshold&quot;: null, &quot;lowerThreshold&quot;: null, &quot;thresholdColor&quot;: &quot;white&quot;, &quot;redraw_mode&quot;: 2}</string>
+         <string>{&quot;y_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:SCL_WF&quot;, &quot;x_channel&quot;: &quot;ca://FARC:${AREA}:${POS}:SAMP_TIME.VALA&quot;, &quot;plot_style&quot;: null, &quot;name&quot;: &quot;&quot;, &quot;color&quot;: &quot;cyan&quot;, &quot;lineStyle&quot;: 1, &quot;lineWidth&quot;: 1, &quot;symbol&quot;: null, &quot;symbolSize&quot;: 10, &quot;yAxisName&quot;: &quot;Axis 2&quot;, &quot;barWidth&quot;: null, &quot;upperThreshold&quot;: null, &quot;lowerThreshold&quot;: null, &quot;thresholdColor&quot;: &quot;white&quot;, &quot;redraw_mode&quot;: 2}</string>
         </stringlist>
        </property>
       </widget>
@@ -380,14 +380,14 @@
    <header>pydm.widgets.label</header>
   </customwidget>
   <customwidget>
-   <class>PyDMRelatedDisplayButton</class>
-   <extends>QPushButton</extends>
-   <header>pydm.widgets.related_display_button</header>
-  </customwidget>
-  <customwidget>
    <class>PyDMWaveformPlot</class>
    <extends>QGraphicsView</extends>
    <header>pydm.widgets.waveformplot</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMByteIndicator</class>
+   <extends>QWidget</extends>
+   <header>pydm.widgets.byte</header>
   </customwidget>
   <customwidget>
    <class>PyDMEnumComboBox</class>
@@ -395,9 +395,9 @@
    <header>pydm.widgets.enum_combo_box</header>
   </customwidget>
   <customwidget>
-   <class>PyDMByteIndicator</class>
-   <extends>QWidget</extends>
-   <header>pydm.widgets.byte</header>
+   <class>PyDMRelatedDisplayButton</class>
+   <extends>QPushButton</extends>
+   <header>pydm.widgets.related_display_button</header>
   </customwidget>
  </customwidgets>
  <resources/>

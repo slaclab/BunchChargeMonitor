@@ -136,7 +136,7 @@
           <bool>false</bool>
          </property>
          <property name="channel" stdset="0">
-          <string>ca://FARC:${AREA}:${POS}:0:CoefA1</string>
+          <string>ca://FARC:${AREA}:${POS}:CoefA1</string>
          </property>
          <property name="displayFormat" stdset="0">
           <enum>PyDMLineEdit::Exponential</enum>
@@ -161,7 +161,7 @@
           <bool>false</bool>
          </property>
          <property name="channel" stdset="0">
-          <string>ca://FARC:${AREA}:${POS}:0:CoefA0</string>
+          <string>ca://FARC:${AREA}:${POS}:CoefA0</string>
          </property>
          <property name="displayFormat" stdset="0">
           <enum>PyDMLineEdit::Exponential</enum>
@@ -186,7 +186,7 @@
           <bool>false</bool>
          </property>
          <property name="channel" stdset="0">
-          <string>ca://FARC:${AREA}:${POS}:0:CoefA0RBV</string>
+          <string>ca://FARC:${AREA}:${POS}:CoefA0RBV</string>
          </property>
          <property name="displayFormat" stdset="0">
           <enum>PyDMLabel::Exponential</enum>
@@ -211,7 +211,7 @@
           <bool>false</bool>
          </property>
          <property name="channel" stdset="0">
-          <string>ca://FARC:${AREA}:${POS}:0:CoefA1RBV</string>
+          <string>ca://FARC:${AREA}:${POS}:CoefA1RBV</string>
          </property>
          <property name="displayFormat" stdset="0">
           <enum>PyDMLabel::Exponential</enum>
@@ -256,7 +256,7 @@
         <string/>
        </property>
        <property name="channel" stdset="0">
-        <string>ca://FARC:${AREA}:${POS}:0:SETCOEF</string>
+        <string>ca://FARC:${AREA}:${POS}:SETCOEF</string>
        </property>
       </widget>
      </item>
@@ -271,14 +271,14 @@
    <header>pydm.widgets.label</header>
   </customwidget>
   <customwidget>
-   <class>PyDMLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>pydm.widgets.line_edit</header>
-  </customwidget>
-  <customwidget>
    <class>PyDMEnumComboBox</class>
    <extends>QComboBox</extends>
    <header>pydm.widgets.enum_combo_box</header>
+  </customwidget>
+  <customwidget>
+   <class>PyDMLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>pydm.widgets.line_edit</header>
   </customwidget>
  </customwidgets>
  <resources/>
