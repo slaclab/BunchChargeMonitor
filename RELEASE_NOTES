@@ -9,6 +9,11 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.5.0 Kyle Leleux (kleleux) (09/15/2022)
+        - Renamed PVs to removed :0: 
+        - Removed yaml downloader to fix bsa issue that was hardcoded in 000TopLevel.yaml
+        - Upgraded firmware
+
 R4.4.5 Kyle Leleux (kleleux) (07/21/2022)
         - Fixed bugs with archive script.
 
