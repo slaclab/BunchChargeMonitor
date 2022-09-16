@@ -9,6 +9,10 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.5.1 Kyle Leleux (kleleux) (09/15/2022)
+        - Forgot to remove :0: from faraday cup pvs as well.
+        - Updated displays to new pv names 
+
 R4.5.0 Kyle Leleux (kleleux) (09/15/2022)
         - Renamed PVs to removed :0: 
         - Removed yaml downloader to fix bsa issue that was hardcoded in 000TopLevel.yaml

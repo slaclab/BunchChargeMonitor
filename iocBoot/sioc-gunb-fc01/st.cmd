@@ -358,11 +358,11 @@ cd ${TOP}
 system("/bin/su root -c `pwd`/rtPrioritySetup.cmd")
 
 # Start loading configuration file
-dbpf AMCC:${AREA}:${UNIT}:saveConfigFile "/tmp/configDump.yaml"
-dbpf AMCC:${AREA}:${UNIT}:saveConfigRoot "mmio"
-dbpf AMCC:${AREA}:${UNIT}:saveConfig 1
-dbpf AMCC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsFC.yaml"
-dbpf AMCC:${AREA}:${UNIT}:loadConfigRoot "mmio"
+dbpf FARC:${AREA}:${UNIT}:saveConfigFile "/tmp/configDump.yaml"
+dbpf FARC:${AREA}:${UNIT}:saveConfigRoot "mmio"
+dbpf FARC:${AREA}:${UNIT}:saveConfig 1
+dbpf FARC:${AREA}:${UNIT}:loadConfigFile "yaml/AmcCarrierBcm_project.yaml/config/defaultsFC.yaml"
+dbpf FARC:${AREA}:${UNIT}:loadConfigRoot "mmio"
 # We should never load the configuration file after autosave already changed
 # the parameters. Uncomment the line below only if you are sure about what you
 # are doing.
