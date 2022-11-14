@@ -151,8 +151,10 @@ dbLoadRecords("db/facet2Calibration.db", "P=$(AMC1_PREFIX),CHAN=1")
 # BSA. Configure the PV name for BSA, the AMC number and the ADC number
 # inside the AMC. Numbers start from zero.
 # bcmBsaConfigure <PV name> <AMC number> <ADC number>
-dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC0_PREFIX):0,ATRB=TMIT,LNK=$(AMC0_PREFIX):EF_TMIT,SINK_SIZE=1")
-dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC1_PREFIX):0,ATRB=TMIT,LNK=$(AMC1_PREFIX):EF_TMIT,SINK_SIZE=1")
+dbLoadRecords("db/bsaATTREdef_FACET.db", "D=$(AMC0_PREFIX):0,ATTR=TMIT,EG=pC,HO="",LO="",PR="",LNK=$(AMC0_PREFIX):EF_TMIT,AD="",I=BLEN:${AREA}:${POS}:TMIT")
+dbLoadRecords("db/bsaATTREdef_FACET.db", "D=$(AMC1_PREFIX):0,ATTR=TMIT,EG=pC,HO="",LO="",PR="",LNK=$(AMC1_PREFIX):EF_TMIT,AD="",I=BLEN:${AREA}:${POS}:TMIT")
+#dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC0_PREFIX):0,ATRB=TMIT,LNK=$(AMC0_PREFIX):EF_TMIT,SINK_SIZE=1")
+#dbLoadRecords("db/Bsa.db", "DEVICE=$(AMC1_PREFIX):0,ATRB=TMIT,LNK=$(AMC1_PREFIX):EF_TMIT,SINK_SIZE=1")
 bcmBsaConfigure "$(AMC0_PREFIX):0:TMIT" 0 0
 bcmBsaConfigure "$(AMC1_PREFIX):0:TMIT" 1 0
 

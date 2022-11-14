@@ -35,6 +35,7 @@ ATCACOMMON_MODULE_VERSION           = R1.6.2
 TIMING_MODULE_VERSION               = R0.6
 TPRPATTERN_MODULE_VERSION           = R2.3.2
 TPRTRIGGER_MODULE_VERSION           = R2.6.1
+EVENT_MODULE_VERSION                = R1.5.2
 
 # Common Platform
 L2MPSASYN_MODULE_VERSION            = R3.11.0
@@ -75,6 +76,7 @@ TPRPATTERN          =$(EPICS_MODULES)/tprPattern/$(TPRPATTERN_MODULE_VERSION)
 TIMING              =$(EPICS_MODULES)/timingApi/$(TIMING_MODULE_VERSION)
 L2MPSASYN           =$(EPICS_MODULES)/l2MpsAsyn/$(L2MPSASYN_MODULE_VERSION)
 PVXS                =$(EPICS_MODULES)/pvxs/$(PVXS_MODULE_VERSION)
+EVENT               =$(EPICS_MODULES)/evrClient/$(EVENT_MODULE_VERSION)
 # =====================================================================
 # Set EPICS_BASE last so it appears last in the DB, DBD, INCLUDE, and LIB search paths
 # ====================================================================
