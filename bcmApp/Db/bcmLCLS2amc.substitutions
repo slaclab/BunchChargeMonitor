@@ -119,7 +119,7 @@ file "RegisterOutRBV.template" { pattern
 # Register with DoubleVal_RO interfaces
 #======================================
 
-file "RegisterDoubleIn.template" { pattern
+file "RegisterDoubleInAlarms.template" { pattern
 { P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
 { $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
 #{ $(P):$(CHAN),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
@@ -131,10 +131,10 @@ file "RegisterDoubleIn.template" { pattern
 
 file "RegisterDoubleOut.template" { pattern
 { P,              R,            DESC,                         PINI,  SCAN,        PORT,   EGU,    PARAM   }
-{ $(P),     TempToro,       "Temperature of toroid",            "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempToro }
-{ $(P),     TempAmp,        "Temperature of amp",               "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempAmp }
-{ $(P),     TempBergozElc,        "Temperature of Bergoz electronics",       "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempElc }
-{ $(P),     TempATCAElc,        "Temperature of ATCA electronics",       "NO",   "Passive",  $(PORT),     "K",    AMC$(AMC):TempATCAElc }
+{ $(P),     TempToro,       "Temperature of toroid",              "NO",   "Passive",  $(PORT), "K",     AMC$(AMC):TempToro }
+{ $(P),     TempAmp,        "Temperature of amp",                 "NO",   "Passive",  $(PORT), "K",     AMC$(AMC):TempAmp }
+{ $(P),     TempBergozElc,  "Temperature of Bergoz electronics",  "NO",   "Passive",  $(PORT), "K",     AMC$(AMC):TempElc }
+{ $(P),     TempATCAElc,    "Temperature of ATCA electronics",    "NO",   "Passive",  $(PORT), "K",     AMC$(AMC):TempATCAElc }
 { $(P),     TempToroCoef,   "Toro temperature mitigation coef", "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef0 }
 { $(P),     TempAmpCoef,    "Amp temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef1 }
 { $(P),     TempBergozElcCoef,    "Bergoz Elc temperature mitigation coef",  "YES",  "Passive", $(PORT),     "",     AMC$(AMC):TempCoef2 }
@@ -149,12 +149,19 @@ file "RegisterDoubleOut.template" { pattern
 { $(P),     TmitCoef,      "Coef Tmit readback value from BPMS",  "NO",  "Passive",   $(PORT),     "",     AMC$(AMC):TmitCoef }
 }
 
+#file "RegisterDoubleOutAlarms.template" { pattern
+#{ P,              R,            DESC,                             PINI,        SCAN,     PORT, EGU, LOLO,    LLSV, LOW,    LSV, HIGH,     HSV, HIHI,      HHSV,           PARAM   }
+#{ $(P),     TempToro,       "Temperature of toroid",              "NO",   "Passive",  $(PORT), "K",  270, "MAJOR", 290,"MINOR",  310, "MAJOR",  500, "INVALID", AMC$(AMC):TempToro }
+#{ $(P),     TempAmp,        "Temperature of amp",                 "NO",   "Passive",  $(PORT), "K",  270, "MAJOR", 280,"MINOR",  330, "MAJOR",  500, "INVALID", AMC$(AMC):TempAmp }
+#{ $(P),     TempBergozElc,  "Temperature of Bergoz electronics",  "NO",   "Passive",  $(PORT), "K",  270, "MAJOR", 280,"MINOR",  330, "MAJOR",  500, "INVALID", AMC$(AMC):TempElc }
+#{ $(P),     TempATCAElc,    "Temperature of ATCA electronics",    "NO",   "Passive",  $(PORT), "K",  270, "MAJOR", 280,"MINOR",  330, "MAJOR",  500, "INVALID", AMC$(AMC):TempATCAElc }
+
 file "RegisterDoubleOutRBV.template" { pattern
-{ P,              R,            DESC,                    PINI,   SCAN,       PORT,       EGU,    PARAM, HIHI, HIGH, LOW, LOLO, HHSV, HSV, LSV, LLSV}
-{ $(P),     TempToroRBV,      "Temperature of toroid",         "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempToro, "500", "310", "290", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
-{ $(P),     TempAmpRBV,   "Temperature of amp",            "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempAmp, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
-{ $(P),     TempBergozElcRBV,   "Temperature of bergoz electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempElc, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
-{ $(P),     TempATCAElcRBV,   "Temperature of atca electronics",    "YES", "1 second",   $(PORT),    "K",    AMC$(AMC):TempATCAElc, "500", "330", "280", "270", "INVALID", "MAJOR", "MINOR", "MAJOR"}
+{ P,              R,            DESC,                                 PINI,       SCAN,    PORT, EGU, LOLO,    LLSV, LOW,    LSV, HIGH,     HSV, HIHI,      HHSV,               PARAM}
+{ $(P),     TempToroRBV,      "Temperature of toroid",               "YES", "1 second", $(PORT), "K",  270, "MAJOR", 290,"MINOR",  310, "MAJOR",  500, "INVALID",  AMC$(AMC):TempToro}
+{ $(P),     TempAmpRBV,   "Temperature of amp",                      "YES", "1 second", $(PORT), "K",  270, "MAJOR", 280,"MINOR",  330, "MAJOR",  500, "INVALID",  AMC$(AMC):TempAmp}
+{ $(P),     TempBergozElcRBV,   "Temperature of bergoz electronics", "YES", "1 second", $(PORT), "K",  270, "MAJOR", 280,"MINOR",  330, "MAJOR",  500, "INVALID",  AMC$(AMC):TempElc}
+{ $(P),     TempATCAElcRBV,   "Temperature of atca electronics",     "YES", "1 second", $(PORT), "K",  270, "MAJOR", 280,"MINOR",  330, "MAJOR",  500, "INVALID",  AMC$(AMC):TempATCAElc}
 { $(P),     CoefT0RBV,    "Temp coef of toroid",        "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT0 }
 { $(P),     CoefT1RBV,    "Temp coef of amp",           "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT1 }
 { $(P),     CoefT2RBV,    "Temp coef of electronics",   "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CoefT2 }

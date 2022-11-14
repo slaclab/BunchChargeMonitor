@@ -26,7 +26,7 @@ file "tmit.template" { pattern
 #======================================
 
 file "RegisterDoubleIn.template" { pattern
-{ P,    R,            DESC,          PINI,   SCAN,     PORT,   	EGU,    		PARAM    , HOPR,   LOPR,   LOLO,    LOW,   HIGH,   HIHI}
-{ $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
+{ P,    R,            DESC,                PINI,   SCAN,         PORT,   	  EGU,    PARAM           , HOPR,   LOPR,   LOLO,    LOW,    HIGH,   HIHI}
+{ $(P),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  ,  275,     15,	   5,	  10,	  300,	  350}
 #{ $(P):$(CHAN),     CHRG,    "Charge",             "YES",  ".1 second",  $(PORT),     "pC",   AMC$(AMC):CHRG  , 275,		15,		5,		10,		300,	350}
 }

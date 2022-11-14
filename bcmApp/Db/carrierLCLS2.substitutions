@@ -18,31 +18,31 @@
 #======================================
 # Single register
 file "RegisterIn.template" { pattern
-{ P,          R,              DESC,                           PINI,   SCAN,       PORT, EGU,  PARAM         }
-{ $(P), DeviceDna,      "Xilinx Device DNA",            "YES",  "Passive",  $(PORT),   "",   DeviceDna     }
-{ $(P), FpgaVersion,    "FPGA Firmware Version Number", "YES",  "Passive",  $(PORT),   "",   FpgaVersion   }
-{ $(P), UpTimeCnt,      "Seconds since last reset",     "YES",  "1 second", $(PORT),  "s",   UpTimeCnt     }
-{ $(P), DeviceId,       "Device Identification",        "YES",  "Passive",  $(PORT),   "",   DeviceId      }
-{ $(P), ServerRemotePort,  "big-Endian configuration",     "YES",  "1 second", $(PORT),   "",   ServerRemotePort }
-{ $(P), SrvRemoteIp,    "big-Endian configuration",     "YES",  "1 second", $(PORT),   "",   ServerRemoteIp }
+{ P,          R,              DESC,                      PINI,       SCAN,     PORT,  EGU, PARAM         }
+{ $(P), DeviceDna,      "Xilinx Device DNA",            "YES",  "Passive",  $(PORT),   "", DeviceDna     }
+{ $(P), FpgaVersion,    "FPGA Firmware Version Number", "YES",  "Passive",  $(PORT),   "", FpgaVersion   }
+{ $(P), UpTimeCnt,      "Seconds since last reset",     "YES",  "1 second", $(PORT),  "s", UpTimeCnt     }
+{ $(P), DeviceId,       "Device Identification",        "YES",  "Passive",  $(PORT),   "", DeviceId      }
+{ $(P), ServerRemotePort,  "big-Endian configuration",  "YES",  "1 second", $(PORT),   "", ServerRemotePort }
+{ $(P), SrvRemoteIp,    "big-Endian configuration",     "YES",  "1 second", $(PORT),   "", ServerRemoteIp }
 # BSA status
-{ $(P), SofCount,       "",                             "YES",  "1 second", $(PORT),   "",   sofCount      }
-{ $(P), EofCount,       "",                             "YES",  "1 second", $(PORT),   "",   eofCount      }
-{ $(P), CrcErrCount,    "",                             "YES",  "1 second", $(PORT),   "",   CrcErrCount   }
-{ $(P), RxClkCount,     "",                             "YES",  "1 second", $(PORT),   "",   RxClkCount    }
-{ $(P), RxRstCount,     "",                             "YES",  "1 second", $(PORT),   "",   RxRstCount    }
-{ $(P), RxDecErrCount,  "",                             "YES",  "1 second", $(PORT),   "",   RxDecErrCount }
-{ $(P), RxDspErrCount,  "",                             "YES",  "1 second", $(PORT),   "",   RxDspErrCount }
-{ $(P), RxLinkUp,       "",                             "YES",  "1 second", $(PORT),   "",   RxLinkUp      }
+{ $(P), SofCount,       "",                             "YES",  "1 second", $(PORT),   "", sofCount      }
+{ $(P), EofCount,       "",                             "YES",  "1 second", $(PORT),   "", eofCount      }
+{ $(P), CrcErrCount,    "",                             "YES",  "1 second", $(PORT),   "", CrcErrCount   }
+{ $(P), RxClkCount,     "",                             "YES",  "1 second", $(PORT),   "", RxClkCount    }
+{ $(P), RxRstCount,     "",                             "YES",  "1 second", $(PORT),   "", RxRstCount    }
+{ $(P), RxDecErrCount,  "",                             "YES",  "1 second", $(PORT),   "", RxDecErrCount }
+{ $(P), RxDspErrCount,  "",                             "YES",  "1 second", $(PORT),   "", RxDspErrCount }
+#{ $(P), RxLinkUp,       "",                             "YES",  "1 second", $(PORT),   "",    RxLinkUp      }
 # CmnConfig status
-{ $(P), TmitTimeUp,     "",                             "YES",  "1 second", $(PORT),   "",   TmitTimeUp    }
-{ $(P), TmitTimeLow,    "",                             "YES",  "1 second", $(PORT),   "",   TmitTimeLow   }
-{ $(P), TmitStatus0,    "",                             "YES",  "1 second", $(PORT),   "",   TmitStatus0   }
-{ $(P), TmitStatus1,    "",                             "YES",  "1 second", $(PORT),   "",   TmitStatus1   }
-{ $(P), TmitTmit0,      "",                             "YES",  "1 second", $(PORT),   "",   TmitTmit0     }
-{ $(P), TmitTmit1,      "",                             "YES",  "1 second", $(PORT),   "",   TmitTmit1     }
-{ $(P), StatusOfBsa0,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa0  }
-{ $(P), StatusOfBsa1,   "",                             "YES",  "1 second", $(PORT),   "",   StatusOfBsa1  }
+{ $(P), TmitTimeUp,     "",                             "YES",  "1 second", $(PORT),   "", TmitTimeUp    }
+{ $(P), TmitTimeLow,    "",                             "YES",  "1 second", $(PORT),   "", TmitTimeLow   }
+{ $(P), TmitStatus0,    "",                             "YES",  "1 second", $(PORT),   "", TmitStatus0   }
+{ $(P), TmitStatus1,    "",                             "YES",  "1 second", $(PORT),   "", TmitStatus1   }
+{ $(P), TmitTmit0,      "",                             "YES",  "1 second", $(PORT),   "", TmitTmit0     }
+{ $(P), TmitTmit1,      "",                             "YES",  "1 second", $(PORT),   "", TmitTmit1     }
+{ $(P), StatusOfBsa0,   "",                             "YES",  "1 second", $(PORT),   "", StatusOfBsa0  }
+{ $(P), StatusOfBsa1,   "",                             "YES",  "1 second", $(PORT),   "", StatusOfBsa1  }
 #MPS debugging 
 { $(P), BpTimAlignErrCnt,   "",                             "YES",  "1 second", $(PORT),   "",   BpTimAlignErrCnt }
 { $(P), BpTmitIntMax,       "",                             "YES",  "1 second", $(PORT),   "",   BpTmitIntMax     }
@@ -51,6 +51,12 @@ file "RegisterIn.template" { pattern
 { $(P), CntDiag,            "",                             "YES",  "1 second", $(PORT),   "",   CntDiag          }
 { $(P), CntDiagMin,         "",                             "YES",  "1 second", $(PORT),   "",   CntDiagMin       }
 { $(P), CntDiagMax,         "",                             "YES",  "1 second", $(PORT),   "",   CntDiagMax       }
+}
+
+# Array of register
+file "RegisterInAlarms.template" { pattern
+{ P,           R, DESC, NELM,    PINI,       SCAN,     PORT,  LOLO, HIHI,    LLSV,       HHSV,   PARAM     }
+{ $(P), RxLinkUp,   "",   20,   "YES",  "1 second",  $(PORT),    0,    1, "MAJOR", "NO_ALARM",  RxLinkup   }
 }
 
 # Array of register
