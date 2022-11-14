@@ -65,6 +65,8 @@ DB_INSTALLS += $(BSADRIVER)/db/bsa.db
 DB_INSTALLS += $(BSADRIVER)/db/bsss.db
 DB_INSTALLS += $(BSADRIVER)/db/bsssCtrl.db
 
+DB_INSTALLS += $(EVENT)/db/bsaATTREdef_FACET.db
+
 # Keithley
 DB_INSTALLS += $(KEITHLEY6482)/db/asynRecord.db
 DB_INSTALLS += $(KEITHLEY6482)/db/devKeithley6482.db
