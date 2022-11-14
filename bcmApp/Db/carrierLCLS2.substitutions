@@ -53,7 +53,6 @@ file "RegisterIn.template" { pattern
 { $(P), CntDiagMax,         "",                             "YES",  "1 second", $(PORT),   "",   CntDiagMax       }
 }
 
-# Array of register
 file "RegisterInAlarms.template" { pattern
 { P,           R, DESC, NELM,    PINI,       SCAN,     PORT,  LOLO, HIHI,    LLSV,       HHSV,   PARAM     }
 { $(P), RxLinkUp,   "",   20,   "YES",  "1 second",  $(PORT),    0,    1, "MAJOR", "NO_ALARM",  RxLinkup   }
