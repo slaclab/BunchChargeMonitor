@@ -92,11 +92,12 @@ record(fanout, "$(P):SetBergozMode"){
     field(SCAN, "Passive")
     field(LNK0, "$(P):SetTrig0")
     field(LNK1, "$(P):SaveChan6Rate")
-    field(LNK4, "$(P):SetTLR5SelSrc")
-    field(LNK5, "$(P):SetTLR7SelSrc")
-    field(LNK6, "$(P):SetCalibEnable")
-    field(LNK7, "$(P):SetSWITCHES_WR")
-    field(LNK8, "$(P):SaveTrig6TWID")
+    field(LNK2, "$(P):SetTLR5SelSrc")
+    field(LNK3, "$(P):SetTLR7SelSrc")
+    field(LNK4, "$(P):SetCalibEnable")
+    field(LNK5, "$(P):SetSWITCHES_WR")
+    field(LNK6, "$(P):SaveTrig6TWID")
+    field(LNK7, "$(P):SaveTrig6DEST")
 }
 
 record(calcout, "$(P):SetTrig0"){
@@ -148,6 +149,28 @@ record(calcout, "$(P):SetTrig6TWID"){
     field(CALC, "!A ? B : 200")
     field(OUT, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SYS2_TWID")
     field(FLNK, "TPR:$(LOCA):$(IOC_UNIT):$(INST):TRG06_SYS2_TWID")
+}
+
+#save trig 6 dest
+record(calcout, "$(P):SaveTrig6DEST"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(INPB, "TPR:${LOCA}:${IOC_UNIT}:${INST}:CH06_DESTMODE")
+    field(INPC, "$(P):SaveTrig6DEST")
+    field(CALC, "!A ? C : B")
+    field(FLNK, "$(P):SetTrig6DEST")
+}
+
+#set trigger 6 dest
+record(calcout, "$(P):SetTrig6DEST"){
+    field(DESC, "")
+    field(SCAN, "Passive")
+    field(INPA, "$(P):BergozMode") 
+    field(INPB, "$(P):SaveTrig6DEST")
+    field(CALC, "!A ? B : 2")
+    field(OUT,  "TPR:${LOCA}:${IOC_UNIT}:${INST}:CH06_DESTMODE")
+    field(FLNK, "TPR:${LOCA}:${IOC_UNIT}:${INST}:CH06_DESTMODE")
 }
 
 record(calcout, "$(P):SetSWITCHES_WR"){
