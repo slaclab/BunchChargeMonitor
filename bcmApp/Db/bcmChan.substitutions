@@ -38,11 +38,11 @@ file "RegisterOutRBV.template" { pattern
 #======================================
 
 file "RegisterDoubleOutRBV.template" { pattern
-{ P,           R,               DESC,                    PINI,   SCAN,       PORT,       EGU,               PARAM                  }
-{ $(P),     CoefA0RBV,    "Coef A0 for 1st group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA0      }
-{ $(P),     CoefA1RBV,    "Coef A1 for 2nd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA1      }
-{ $(P),     CoefA2RBV,    "Coef A2 for 3rd group",      "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):CoefA2      }
-{ $(P),     CoefOffsetRBV,"Coef Offset",                "YES", "1 second",  $(PORT),     "",     AMC$(AMC):CHAN$(CHAN):Coef_offset }
+{ P,           R,               DESC,                    PINI,   SCAN,       PORT,       EGU, LOLO,LLSV, LOW,LSV, HIGH, HSV, HIHI,  HHSV,            PARAM                  }
+{ $(P),     CoefA0RBV,    "Coef A0 for 1st group",      "YES", "1 second",  $(PORT),     "",    "",  "",  "", "",   "",  "",   "",    "", AMC$(AMC):CHAN$(CHAN):CoefA0      }
+{ $(P),     CoefA1RBV,    "Coef A1 for 2nd group",      "YES", "1 second",  $(PORT),     "",    "",  "",  "", "",   "",  "",   "",    "", AMC$(AMC):CHAN$(CHAN):CoefA1      }
+{ $(P),     CoefA2RBV,    "Coef A2 for 3rd group",      "YES", "1 second",  $(PORT),     "",    "",  "",  "", "",   "",  "",   "",    "", AMC$(AMC):CHAN$(CHAN):CoefA2      }
+{ $(P),     CoefOffsetRBV,"Coef Offset",                "YES", "1 second",  $(PORT),     "",    "",  "",  "", "",   "",  "",   "",    "", AMC$(AMC):CHAN$(CHAN):Coef_offset }
 }
 
 file "RegisterDoubleOut.template" { pattern
