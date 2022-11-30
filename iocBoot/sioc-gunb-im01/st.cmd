@@ -95,7 +95,7 @@ epicsEnvSet("TEMP_IOC", "SIOC:${AREA}:IM02")
 epicsEnvSet("TEMP_NODE", "3")
 epicsEnvSet("TEMP_MODULE", "1")
 epicsEnvSet("TEMP_BERGOZ_NODE", "1")
-epicsEnvSet("TEMP_BERGOZ_MODULE", "1")
+epicsEnvSet("TEMP_BERGOZ_MODULE", "4")
 epicsEnvSet("TEMP_AMP_NODE", "3")
 epicsEnvSet("TEMP_AMP_MODULE", "2")
 
