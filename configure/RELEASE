@@ -30,8 +30,9 @@ SSCAN_MODULE_VERSION                = R2.10.2-1.0.0
 STREAMDEVICE_MODULE_VERSION         = R2.8.9-1.2.1
 
 #Timing
-BSADRIVER_MODULE_VERSION            = R2.1.0-2.0
-ATCACOMMON_MODULE_VERSION           = R1.6.2
+#BSADRIVER_MODULE_VERSION            = R2.1.0-2.0
+BSADRIVER_MODULE_VERSION            = R2.5.0-3.0
+ATCACOMMON_MODULE_VERSION           = R1.7.0
 TIMING_MODULE_VERSION               = R0.6
 TPRPATTERN_MODULE_VERSION           = R2.3.2
 TPRTRIGGER_MODULE_VERSION           = R2.6.1
@@ -46,7 +47,7 @@ YCPSWASYN_MODULE_VERSION            = R3.3.5
 #BCM Spesific modules
 KEITHLEY6482_MODULE_VERSION         = R0.1.1
 BERGOZBCM_RF_ASYN_MODULE_VERSION    = R2.0.2
-PVXS_MODULE_VERSION                 = pvxs-git
+PVXS_MODULE_VERSION                 = R0.3.1-0.0.1
 
 # ==========================================================
 # Define module paths using pattern
