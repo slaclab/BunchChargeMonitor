@@ -22,3 +22,4 @@ startup/
 etc/scanner.xml
 *.pyc
 gmon.out
+*.sw*
