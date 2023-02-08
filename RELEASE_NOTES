@@ -9,6 +9,11 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.6.0 Kyle Leleux (kleleux) (09/15/2022)
+        - Upgraded BSA modules
+        - Added PV for AdcValid with alarms
+        - Added script for offline calibration
+
 R4.5.1 Kyle Leleux (kleleux) (09/15/2022)
         - Forgot to remove :0: from faraday cup pvs as well.
         - Updated displays to new pv names 
