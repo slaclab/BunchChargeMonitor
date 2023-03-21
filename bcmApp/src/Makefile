@@ -177,6 +177,7 @@ bcm_LIBS += ecAsyn
 bcm_LIBS += scannerlib
 bcm_LIBS += rtutils
 
+bcm_LIBS += cpsw
 # Needed to link bsaDriver support
 bcm_LIBS += bsaDriver
 bsa_DIR = $(BSA_LIB)

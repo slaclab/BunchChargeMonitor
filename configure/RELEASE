@@ -31,11 +31,12 @@ STREAMDEVICE_MODULE_VERSION         = R2.8.9-1.2.1
 
 #Timing
 #BSADRIVER_MODULE_VERSION            = R2.1.0-2.0
-BSADRIVER_MODULE_VERSION            = R2.5.0-3.0
+BSADRIVER_MODULE_VERSION            = R3.0.0
 ATCACOMMON_MODULE_VERSION           = R1.7.0
 TIMING_MODULE_VERSION               = R0.6
 TPRPATTERN_MODULE_VERSION           = R2.3.2
 TPRTRIGGER_MODULE_VERSION           = R2.6.1
+#EVENT_MODULE_VERSION                = R4.5.5
 EVENT_MODULE_VERSION                = R1.5.2
 
 # Common Platform
@@ -78,6 +79,7 @@ TIMING              =$(EPICS_MODULES)/timingApi/$(TIMING_MODULE_VERSION)
 L2MPSASYN           =$(EPICS_MODULES)/l2MpsAsyn/$(L2MPSASYN_MODULE_VERSION)
 PVXS                =$(EPICS_MODULES)/pvxs/$(PVXS_MODULE_VERSION)
 EVENT               =$(EPICS_MODULES)/evrClient/$(EVENT_MODULE_VERSION)
+#EVENT               =$(EPICS_MODULES)/event/$(EVENT_MODULE_VERSION)
 # =====================================================================
 # Set EPICS_BASE last so it appears last in the DB, DBD, INCLUDE, and LIB search paths
 # ====================================================================

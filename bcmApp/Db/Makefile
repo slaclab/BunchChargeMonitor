@@ -64,6 +64,8 @@ DB_INSTALLS += $(BSADRIVER)/db/bsa.db
 
 DB_INSTALLS += $(BSADRIVER)/db/bsss.db
 DB_INSTALLS += $(BSADRIVER)/db/bsssCtrl.db
+DB_INSTALLS += $(BSADRIVER)/db/bsas.db
+DB_INSTALLS += $(BSADRIVER)/db/bsasCtrl.db
 
 DB_INSTALLS += $(EVENT)/db/bsaATTREdef_FACET.db
 
