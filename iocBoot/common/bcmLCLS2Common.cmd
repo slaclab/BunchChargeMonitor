@@ -226,24 +226,24 @@ dbLoadRecords("db/asynRecord.db" "P=$(BERGOZ0_P),R=asyn,PORT=$(BERGOZ0_IN_PORT),
 
 # ************************************************************************
 # **** Load BSA driver DB ************************************************
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
-dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),TPR=TPR:$(AREA):$(IOC_UNIT):0,PORT=bsaPort,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),TPR=TPR:$(AREA):$(IOC_UNIT):0,PORT=bsaPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),TPR=TPR:$(AREA):$(IOC_UNIT):0,PORT=bsaPort,BSAKEY=RAWSUM,SECN=RAWSUM")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),TPR=TPR:$(AREA):$(IOC_UNIT):0,PORT=bsaPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),TPR=TPR:$(AREA):$(IOC_UNIT):0,PORT=bsaPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+dbLoadRecords("db/bsa.db", "DEV=$(AMC0_PREFIX),TPR=TPR:$(AREA):$(IOC_UNIT):0,PORT=bsaPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
 
 # BSSS Control/Monintoring PVs
 dbLoadRecords("db/bsssCtrl.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort")
 
 # ************************************************************************
 # **** Load BSSS driver DB ************************************************
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=0,BSAKEY=CHRG,SECN=CHRG")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=1,BSAKEY=CHRGUNC,SECN=CHRGUNC")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=2,BSAKEY=RAWSUM,SECN=RAWSUM")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=3,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=4,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
-dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,IDX=5,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=RAWSUM,SECN=RAWSUM")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
 
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
