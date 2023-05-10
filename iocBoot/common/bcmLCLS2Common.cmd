@@ -44,9 +44,25 @@ addBsa("CHRGNOTMIT", "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 listBsa()
+
 bsssAssociateBsaChannels("bsaPort")
 bsssAsynDriverConfigure("bsssPort", "mmio/AmcCarrierCore/AmcCarrierBsa/Bsss")
 
+# Make association with BSA channels: bsasAssociateBsaChannels(<BSA port name)
+bsasAssociateBsaChannels("bsaPort")
+
+# Configure the 2-D table header titles
+# bsasBaseName(<BSA key>, <signal_header>)
+# <BSA key> must correspond with what was used with addBsa().
+# We've been conventioning to use the DEVICE_PREFIX macro to name header titles.
+bsasBaseName("CHRG",          "BLEN:$(AREA):$(POS):SENSPSUM"     )   
+bsasBaseName("CHRGUNC",       "BLEN:$(AREA):$(POS):BLEN"         )   
+bsasBaseName("RAWSUM",        "BLEN:$(AREA):$(POS):TMITSTAT"     )   
+bsasBaseName("CHRGFLOAT",     "BLEN:$(AREA):$(POS):SENSPSUMFLOAT")
+bsasBaseName("TOROSTATUS",    "BLEN:$(AREA):$(POS):BLENFLOAT"    )   
+bsasBaseName("CHRGNOTMIT",    "BLEN:$(AREA):$(POS):BLSTATUS"     )   
+
+bsasAsynDriverConfigure("bsasPort", "mmio/AmcCarrierCore/AmcCarrierBsa/Bsas", "${BSAS_PREFIX}:SC_DIAG0  ", "${BSAS_PREFIX}:SC_BSYD", "${BSAS_PREFIX}:SC_HXR", "${BSAS_PREFIX}:SC_SXR")
 
 ## Set MPS Configuration location
 # setMpsConfigurationPath(
@@ -244,6 +260,20 @@ dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=RAWSUM,SECN
 dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
 dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
 dbLoadRecords("db/bsss.db", "DEV=$(AMC0_PREFIX),PORT=bsssPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+
+# BSAS rate control template
+dbLoadRecords("db/bsasCtrl.db", "AREA=$(AREA),IOC_UNIT=$(IOC_UNIT),IOC_INST=0,PORT=bsasPort")
+
+# **** Load BSAS Scalar PV DB ****
+dbLoadRecords("db/bsas.db", "DEV=$(AMC0_PREFIX),PORT=bsasPort,BSAKEY=CHRG,SECN=CHRG")
+dbLoadRecords("db/bsas.db", "DEV=$(AMC0_PREFIX),PORT=bsasPort,BSAKEY=CHRGUNC,SECN=CHRGUNC")
+dbLoadRecords("db/bsas.db", "DEV=$(AMC0_PREFIX),PORT=bsasPort,BSAKEY=RAWSUM,SECN=RAWSUM")
+dbLoadRecords("db/bsas.db", "DEV=$(AMC0_PREFIX),PORT=bsasPort,BSAKEY=CHRGFLOAT,SECN=CHRGFLOAT")
+dbLoadRecords("db/bsas.db", "DEV=$(AMC0_PREFIX),PORT=bsasPort,BSAKEY=TOROSTATUS,SECN=TOROSTATUS")
+dbLoadRecords("db/bsas.db", "DEV=$(AMC0_PREFIX),PORT=bsasPort,BSAKEY=CHRGNOTMIT,SECN=CHRGNOTMIT")
+
+
+
 
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
