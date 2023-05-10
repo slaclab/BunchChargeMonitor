@@ -48,6 +48,7 @@ listBsa()
 bsssAssociateBsaChannels("bsaPort")
 bsssAsynDriverConfigure("bsssPort", "mmio/AmcCarrierCore/AmcCarrierBsa/Bsss")
 
+epicsEnvSet("BSAS_PREFIX", "BSAS:$(AREA):$(IOC_UNIT):0")
 # Make association with BSA channels: bsasAssociateBsaChannels(<BSA port name)
 bsasAssociateBsaChannels("bsaPort")
 
@@ -55,12 +56,12 @@ bsasAssociateBsaChannels("bsaPort")
 # bsasBaseName(<BSA key>, <signal_header>)
 # <BSA key> must correspond with what was used with addBsa().
 # We've been conventioning to use the DEVICE_PREFIX macro to name header titles.
-bsasBaseName("CHRG",          "BLEN:$(AREA):$(POS):SENSPSUM"     )   
-bsasBaseName("CHRGUNC",       "BLEN:$(AREA):$(POS):BLEN"         )   
-bsasBaseName("RAWSUM",        "BLEN:$(AREA):$(POS):TMITSTAT"     )   
-bsasBaseName("CHRGFLOAT",     "BLEN:$(AREA):$(POS):SENSPSUMFLOAT")
-bsasBaseName("TOROSTATUS",    "BLEN:$(AREA):$(POS):BLENFLOAT"    )   
-bsasBaseName("CHRGNOTMIT",    "BLEN:$(AREA):$(POS):BLSTATUS"     )   
+bsasBaseName("CHRG",          "BLEN:$(AREA):$(UNIT):SENSPSUM"     )   
+bsasBaseName("CHRGUNC",       "BLEN:$(AREA):$(UNIT):BLEN"         )   
+bsasBaseName("RAWSUM",        "BLEN:$(AREA):$(UNIT):TMITSTAT"     )   
+bsasBaseName("CHRGFLOAT",     "BLEN:$(AREA):$(UNIT):SENSPSUMFLOAT")
+bsasBaseName("TOROSTATUS",    "BLEN:$(AREA):$(UNIT):BLENFLOAT"    )   
+bsasBaseName("CHRGNOTMIT",    "BLEN:$(AREA):$(UNIT):BLSTATUS"     )   
 
 bsasAsynDriverConfigure("bsasPort", "mmio/AmcCarrierCore/AmcCarrierBsa/Bsas", "${BSAS_PREFIX}:SC_DIAG0  ", "${BSAS_PREFIX}:SC_BSYD", "${BSAS_PREFIX}:SC_HXR", "${BSAS_PREFIX}:SC_SXR")
 
