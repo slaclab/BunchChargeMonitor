@@ -9,6 +9,9 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.7.3 Kyle Leleux (kleleux) (05/10/2022)
+        - Fixed minor bug with severity of calibration pvs.
+
 R4.7.2 Kyle Leleux (kleleux) (05/10/2022)
         - Upgrade to bsaDriver R3.2.1
         - Implemented BSAS
