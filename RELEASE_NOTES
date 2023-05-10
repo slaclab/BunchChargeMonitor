@@ -9,6 +9,11 @@
 #  Auth: xx-Dec-2012, XXX         (xxx)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
+R4.7.2 Kyle Leleux (kleleux) (05/10/2022)
+        - Upgrade to bsaDriver R3.2.1
+        - Implemented BSAS
+        - Added minor alarms to calibration variables
+
 R4.6.0 Kyle Leleux (kleleux) (09/15/2022)
         - Upgraded BSA modules
         - Added PV for AdcValid with alarms
