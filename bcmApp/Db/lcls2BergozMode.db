@@ -75,10 +75,8 @@ record(mbbi, "$(P):BergozModeRBV"){
     field(ONST, "Calibration")
     field(TWST, "Broken")
     field(INP, "$(P):BergozModeCalcRBV")
-    field(HIGH, "1")
-    field(HIHI, "2")
-    field(HSV,  "MINOR")
-    field(HHSV, "MAJOR")
+    field(ONSV,  "MINOR")
+    field(TWSV, "MAJOR")
 }
 
 
