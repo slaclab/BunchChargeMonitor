@@ -28,7 +28,7 @@ bcm_registerRecordDeviceDriver(pdbbase)
 DownloadYamlFile("$(FPGA_IP)", "$(YAML_DIR)")
 cpswLoadYamlFile("${TOP_YAML}", "NetIODev", "", "${FPGA_IP}")
 cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
-cpswLoadConfigFile("$(TOP)/firmware/yaml/LCLS2/disable_bld_bss_bsas.yaml", "mmio/AmcCarrierCore/AmcCarrierBsa")
+cpswLoadConfigFile("$(TOP)/firmware/yaml/LCLS2/disable_bld_bsss_bsas.yaml", "mmio/AmcCarrierCore/AmcCarrierBsa")
 
 
 
