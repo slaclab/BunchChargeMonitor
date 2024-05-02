@@ -44,7 +44,7 @@ STATIC_BUILD                =YES
 LINUX_KERNEL_MODULES=$(PACKAGE_SITE_TOP)/linuxKernel_Modules
 
 LINUXRT_BUILDROOT_VERSION   =buildroot-2019.08
-LINUX_VERSION               =rhel6
+LINUX_VERSION               =rhel7
 # ========================================================================================================================
 # Support for EtherCAT
 # ========================================================================================================================
@@ -130,7 +130,7 @@ HPSTPR_INCLUDE=$(HPSTPR_TOP)/$(PKG_ARCH)/include
 
 # commonATCA API
 COMMONATCA_PACKAGE_NAME         =atca/commonATCA
-COMMONATCA_VERSION              =R1.3.1
+COMMONATCA_VERSION              =R2.0.0
 COMMONATCA_TOP=$(PACKAGE_SITE_TOP)/$(COMMONATCA_PACKAGE_NAME)/$(COMMONATCA_VERSION)
 COMMONATCA_LIB=$(COMMONATCA_TOP)/$(PKG_ARCH)/lib
 COMMONATCA_INCLUDE=$(COMMONATCA_TOP)/$(PKG_ARCH)/include

@@ -35,7 +35,6 @@ lzma_DIR          = $(XZ_LIB)
 xml2_DIR          = $(LIBXML2_LIB)
 
 pcre_DIR          = $(PCRE_LIB)
-l2Mps_DIR         = $(L2MPS_LIB)
 
 # Support for CPSW
 cpsw_DIR          = $(CPSW_FRAMEWORK_LIB)
@@ -45,6 +44,7 @@ yaml-cpp_DIR      = $(YAML_LIB)
 hpstpr_DIR        = $(HPSTPR_LIB)
 yamlReader_DIR    = $(YAMLREADER_LIB)
 commonATCA_DIR    = $(COMMONATCA_LIB)
+l2Mps_DIR         = $(L2MPS_LIB)
 bsa_DIR           = $(BSA_LIB)
 
 # =====================================================
@@ -58,9 +58,9 @@ USR_LIBS_Linux += cpsw
 USR_LIBS_Linux += yaml-cpp
 USR_LIBS_Linux += boost_system
 USR_LIBS_Linux += hpstpr
-USR_LIBS_Linux += l2Mps
 USR_LIBS_Linux += commonATCA
 USR_LIBS_Linux += bsa 
+USR_LIBS_Linux += l2Mps
 USR_LIBS_Linux += xml2 
 USR_LIBS_Linux += z 
 USR_LIBS_Linux += lzma 
@@ -74,8 +74,9 @@ USR_LIBS_Linux += pcre
 # This will attempt to build an IOC application 
 # for every target including the host computer.
 # These lines will build ONLY for cross target
-PROD_IOC_linuxRT-x86_64 = bcm
-PROD_IOC = $(PROD_IOC_$(T_A))
+#PROD_IOC_linuxRT-x86_64 = bcm
+#PROD_IOC = $(PROD_IOC_$(T_A))
+#PROD_IOC = bcm
 
 # Ethercat for temperature chassis
 bcm_INCLUDES += $(ECASYN)/include
@@ -96,9 +97,9 @@ bcm_DBD += drvAsynSerialPort.dbd
 bcm_DBD += caPutLog.dbd
 bcm_DBD += $(CEXP_DBDS)
 bcm_DBD += pvxsIoc.dbd
-blen_DBD += crossbarControl.dbd
-blen_DBD += tprTriggerAsynDriver.dbd
-blen_DBD += tprPatternAsynDriver.dbd
+#bcm_DBD += crossbarControl.dbd
+#bcm_DBD += tprTriggerAsynDriver.dbd
+#bcm_DBD += tprPatternAsynDriver.dbd
 
 #bcm_DBD += Keithley6482Test.dbd
 ifdef AUTOSAVE_ASSUPPORT
@@ -228,7 +229,7 @@ bcm_LIBS += $(EPICS_BASE_IOC_LIBS)
 # Install external epics executable
 # Install scanner program from Ethercat epics module
 #===================================================
-BIN_INSTALLS += $(ECASYN_BIN)/scanner
+#BIN_INSTALLS += $(ECASYN_BIN)/scanner
 
 
 #===========================
