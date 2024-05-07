@@ -76,7 +76,7 @@ USR_LIBS_Linux += pcre
 # These lines will build ONLY for cross target
 #PROD_IOC_linuxRT-x86_64 = bcm
 #PROD_IOC = $(PROD_IOC_$(T_A))
-#PROD_IOC = bcm
+PROD_IOC = bcm
 
 # Ethercat for temperature chassis
 bcm_INCLUDES += $(ECASYN)/include
