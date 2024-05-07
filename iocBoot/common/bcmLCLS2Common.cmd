@@ -35,12 +35,12 @@ cpswLoadConfigFile("$(TOP)/firmware/yaml/LCLS2/disable_bld_bsss_bsas.yaml", "mmi
 # **********************************************************************
 # **** Setup BSA Driver*************************************************
 # add BSA PVs
-addBsa("CHRG",       "uint32")
-addBsa("CHRGUNC",    "uint32")
-addBsa("RAWSUM",     "uint32")
-addBsa("CHRGFLOAT",  "float32")
-addBsa("TOROSTATUS", "uint32")
-addBsa("CHRGNOTMIT", "uint32")
+bsaAdd("CHRG",       "uint32")
+bsaAdd("CHRGUNC",    "uint32")
+bsaAdd("RAWSUM",     "uint32")
+bsaAdd("CHRGFLOAT",  "float32")
+bsaAdd("TOROSTATUS", "uint32")
+bsaAdd("CHRGNOTMIT", "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 listBsa()
