@@ -113,11 +113,11 @@ cpswLoadConfigFile("${YAML_CONFIG_FILE}", "mmio")
 # *********************************************************************
 # **** BSA Driver setup ***********************************************
 # add BSA PVs
-addBsa("CHRG",       "uint32")
-addBsa("JUNK",       "uint32")
-addBsa("CHRGUNC",    "uint32")
-addBsa("CHRGFLOAT",  "float32")
-addBsa("FCSTATUS",   "uint32")
+bsaAdd("CHRG",       "uint32")
+bsaAdd("JUNK",       "uint32")
+bsaAdd("CHRGUNC",    "uint32")
+bsaAdd("CHRGFLOAT",  "float32")
+bsaAdd("FCSTATUS",   "uint32")
 # BSA driver for yaml
 bsaAsynDriverConfigure("bsaPort", "mmio/AmcCarrierCore/AmcCarrierBsa","strm/AmcCarrierDRAM/dram")
 
