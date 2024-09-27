@@ -65,21 +65,13 @@ bsasBaseName("CHRGNOTMIT",    "BLEN:$(AREA):$(UNIT):BLSTATUS"     )
 
 bsasAsynDriverConfigure("bsasPort", "mmio/AmcCarrierCore/AmcCarrierBsa/Bsas", "${BSAS_PREFIX}:SC_DIAG0  ", "${BSAS_PREFIX}:SC_BSYD", "${BSAS_PREFIX}:SC_HXR", "${BSAS_PREFIX}:SC_SXR")
 
-## Set MPS Configuration location
-# setMpsConfigurationPath(
-#   Path)                   # Path to the MPS configuraton TOP directory
-setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link_node_db")
-
 # **********************************************************************
 # **** Setup MPS Driver ************************************************
 # LCLS2MPSCPASYNConfig(
 #    Port Name,                 # the name given to this port driver
 #    App ID,                    # Application ID
-#    Record name Prefix,        # Record name prefix
-#    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
-#    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
-#    MPS Root Path              # OPTIONAL: Root path to the MPS register area
-#L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
+#    Record name Prefix)        # Record name prefix
+
 L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}")
 
 dbLoadRecords("db/mps.db","P=${MPS_PREFIX},PORT=${MPS_PORT}")
@@ -281,8 +273,7 @@ dbLoadRecords("db/bsas.db", "DEV=$(AMC0_PREFIX),PORT=bsasPort,BSAKEY=CHRGNOTMIT,
 
 # ************************************************************************
 # **** Load MPS scale factor *********************************************
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHARGE,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
-dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=DIFF,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
+dbLoadRecords("db/mps_scale_factor.db", "P=${AMC0_PREFIX},PROPERTY=CHRG,EGU=pC,PREC=8,SLOPE=0.0078125,OFFSET=0")
 
 # ************************************************************************
 # **** Load iocAdmin databases to support IOC Health and monitoring ******
