@@ -37,7 +37,7 @@ epicsEnvSet("YAML_CONFIG_FILE", "$(YAML_DIR)/config/defaultsToro.yaml")
 epicsEnvSet("IOC_UNIT", "IM01")
 
 # FPGA IP address
-epicsEnvSet("FPGA_IP", "10.0.1.107")
+epicsEnvSet("FPGA_IP", "10.0.1.105")
 
 # Use Automatic generation of records from the YAML definition
 # 0 = No, 1 = Yes
@@ -65,8 +65,8 @@ epicsEnvSet("STARTUP","/usr/local/lcls/epics/iocCommon/${IOC_NAME}")
 # ***********************************************************************
 # **** Environment variables for MPS ************************************
 epicsEnvSet("MPS_PORT",   "mpsPort")
-epicsEnvSet("MPS_APP_ID", "0x06")
-epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:5")
+epicsEnvSet("MPS_APP_ID", "7")
+epicsEnvSet("MPS_PREFIX", "MPLN:GUNB:MP01:7")
 
 # ***********************************************************************
 # **** Environment variables for Temperature Chassis on Ethercat ********

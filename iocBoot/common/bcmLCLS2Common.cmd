@@ -79,8 +79,11 @@ setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link
 #    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
 #    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
 #    MPS Root Path              # OPTIONAL: Root path to the MPS register area
-L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
+#L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
+L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}")
 
+dbLoadRecords("db/mps.db","P=${MPS_PREFIX},PORT=${MPS_PORT}")
+dbLoadRecords("db/mps_bcm.db","P=${AMC0_PREFIX},PORT=${MPS_PORT},BAY=0")  # BCM Application (Bay 0=Right, 1=Left)
 
 # Dictionary file for manual (empty string if none)
 epicsEnvSet("DICT_FILE1", "firmware/bcmLCLS2.dict")
