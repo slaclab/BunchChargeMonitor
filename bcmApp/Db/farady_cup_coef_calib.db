@@ -4,7 +4,6 @@
 record(bi, "$(P):SETCOEF"){
     field(ZNAM, "Running")
     field(ONAM, "Calibration")
-    field(HIGH, "1")
-    field(HSV,  "MINOR")
+    field(OSV,  "MINOR")
 }
 
