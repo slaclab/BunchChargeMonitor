@@ -134,7 +134,7 @@ YCPSWASYNConfig("${CPSW_PORT}", "", "", "0", "${DICT_FILE}")
 ## Set MPS Configuration location
 # setMpsConfigurationPath(
 #   Path)                   # Path to the MPS configuraton TOP directory
-setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link_node_db")
+#setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link_node_db")
 
 # *********************************************************************
 # **** MPS Driver setup ***********************************************
@@ -145,7 +145,7 @@ setMpsConfigurationPath("${FACILITY_ROOT}/physics/mps_configuration/current/link
 #    AppType bay0,              # Bay 0 Application type (BPM, BLEN)
 #    AppType bay1,              # Bay 1 Application type (BPM, BLEN)
 #    MPS Root Path              # OPTIONAL: Root path to the MPS register area
-L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}", "", "")
+L2MPSASYNConfig("${MPS_PORT}","${MPS_APP_ID}", "${MPS_PREFIX}", "${AMC0_PREFIX}")
 
 # *********************************************************************
 # **** Driver setup for Keithley **************************************
@@ -184,6 +184,11 @@ tprTriggerAsynDriverConfigure("trig", "mmio/AmcCarrierCore")
 # **** Load YCPSWAsyn db **********************************************
 #Save/Load configuration related records
 dbLoadRecords("db/saveLoadConfig.db", "P=${AMC_CARRIER_PREFIX}, PORT=${CPSW_PORT}")
+
+# Load mps databases:
+dbLoadRecords("db/mps.db","P=${MPS_PREFIX},PORT=${MPS_PORT}")
+dbLoadRecords("db/mps_bcm.db","P=${AMC0_PREFIX},PORT=${MPS_PORT},BAY=0")  # BCM Application (Bay 0=Right, 1=Left)
+
 
 # Manually create records
 dbLoadRecords("db/bcmAmc.db", "P=$(AMC0_PREFIX), PORT=$(CPSW_PORT), AMC=0")
