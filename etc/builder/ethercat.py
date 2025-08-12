@@ -223,7 +223,7 @@ class EthercatDevice:
     def transferAssignments(self, elem):
         """transfer pdo assignments from an EthercatChainElem object"""
         if Debug:
-            print "transferAssignments for elem %s" % elem.portname
+            print(f"transferAssignments for elem {elem.portname}")
         if not elem.processedAssignedPdos:
             for smnumber in range(4):
                 for pdo_index in elem.assignedPdos[smnumber]:
@@ -241,9 +241,9 @@ class EthercatDevice:
             return
         if Debug:
             if not pdo.syncmanager in self.syncmanagers:
-                print "Syncmanager %d not found in device. " % pdo.syncmanager
+                print(f"Syncmanager {pdo.syncmanager} not found in device.")
             a = (pdo.syncmanager, self.syncmanagers[pdo.syncmanager].direction)
-            print "Adding pdo for syncmanager %s, direction %s" % a
+            print(f"Adding pdo for syncmanager {a}, direction {a}")
         if pdo.rxtx == "tx": 
             #assert self.syncmanagers[pdo.syncmanager].direction == "Inputs"
             self.txpdos.append(pdo)
@@ -389,7 +389,7 @@ class EthercatChain:
         assert self.dev_descriptions , "device descriptions not populated. should call getDeviceDescriptions"
         o = "<scanner>\n"
         o = o + "<devices>\n" 
-        for key, dev_description in self.dev_descriptions.iteritems():
+        for key, dev_description in self.dev_descriptions.items():
             o = o + dev_description.generateDeviceXml()
         o = o + "</devices>\n"
         o = o + self.generateChainXml()
@@ -422,7 +422,7 @@ def filteredDescriptions(dev_descriptions = None,filter = None):
     filtered_descriptions = {}
     for key in dev_descriptions:
         if key in filtered_descriptions.keys():
-            print "Duplicate key", key
+            print(f"Duplicate key", key)
             continue
         typename = key[0]
         if typename in filter:
@@ -479,7 +479,7 @@ def parsePdo(pdoNode, os, rxtx):
     index = parseInt(pdoNode.xpathEval("Index")[0].content)
     if Debug:
         a = (name, index, syncmanager)
-        print "Creating pdo name %s index %x syncmanager %s" % a
+        print(f"Creating pdo name {a:s} index {a:#x} syncmanager {a:s}")
     defaultPdo = False
     #Some Pdos have a sync manager - those are marked defaultPdo
     sm = pdoNode.xpathEval("@Sm")
@@ -502,7 +502,7 @@ def parseSyncManager(smNode):
     index = parseInt(smNode.xpathEval("@StartAddress")[0].content)
     if Debug:
         a = (index, direction, watchdog)
-        print "found syncmanager index=%x direction=%s watchdog=%d" % a
+        print(f"found syncmanager index={a:#x} direction={a:s} watchdog={a:d}")
     sm = SyncManager(index, direction, watchdog)
     return sm
 
@@ -558,7 +558,7 @@ def getAllDevices():
        for f in os.listdir(base):
            if f.endswith("xml"):
                filename = os.path.join(base, f)
-               for key, dev in getDescriptions(filename).iteritems():
+               for key, dev in getDescriptions(filename).items():
                    typename = key[0]
                    revision = key[1]
                    dev_descriptions[key] = dev
@@ -569,7 +569,7 @@ def getPdoEntryChoices(all_devices):
     global stypes
     if not stypes:
         stypes = []
-        for dev in all_devices.itervalues():
+        for dev in all_devices.values():
             for s in dev.getTypicalDeviceSignals():
                 stypes.append( (s, dev.type, dev.revision) )
         stypes = sorted(stypes, key=lambda s: "%s rev 0x%08x" % (s[1],s[2]) )

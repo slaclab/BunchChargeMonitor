@@ -13,7 +13,7 @@ import ethercat
 
 def main():
     if len(sys.argv) != 2:
-        print "usage: %s chain.xml" % (sys.argv[0])
+        print(f'usage: {sys.argv[0]} chain.xml')
         sys.exit(1)
     chainfile = sys.argv[1]
 
@@ -43,7 +43,7 @@ def main():
         
     ethercat.initialise()
     chain.getDeviceDescriptions()
-    print chain.generateMasterXml()
+    print(chain.generateMasterXml())
 
 if __name__ == "__main__":
     main()
