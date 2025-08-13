@@ -25,11 +25,10 @@ USR_INCLUDES += -I$(LIBXML2_INCLUDE)
 # Support Perl C regular expression library
 USR_INCLUDES += -I$(PCRE_INCLUDE)
 
-
-
 #======================================================
 # PATH TO "NON EPICS" EXTERNAL PACKAGES: USER LIBRARIES
 #======================================================
+tirpc_DIR         = $(TIRPC_LIB)
 z_DIR             = $(ZLIB_LIB)
 lzma_DIR          = $(XZ_LIB)
 xml2_DIR          = $(LIBXML2_LIB)
@@ -65,6 +64,9 @@ USR_LIBS_Linux += xml2
 USR_LIBS_Linux += z 
 USR_LIBS_Linux += lzma 
 USR_LIBS_Linux += pcre
+ifeq ($(NEEDS_TIRPC), YES)
+USR_LIBS_Linux += tirpc
+endif
 
 #======================================================
 
