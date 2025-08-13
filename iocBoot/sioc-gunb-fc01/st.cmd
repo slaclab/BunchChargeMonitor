@@ -1,4 +1,4 @@
-#!../../bin/rhel7-x86_64/bcm
+#!../../bin/rhel9-x86_64/bcm
 
 #########################################
 # This IOC is related to the Faraday Cup
